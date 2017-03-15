@@ -48,3 +48,86 @@ int main()
 	return 0;
 
 }
+練習問題5.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	double val1 = 0;
+	double val2 = 0;
+
+	cout << "少数を2つ入力して下さい\n";
+	cin >> val1 >> val2;
+
+	if (val1 < val2) {
+		cout << "最小値は" << val1 << "です\n" << "最大値は" << val2 << "です。\n";
+		cout << "二つの値の合計は" << val1 + val2 << "です。\n";
+		cout << "二つの値の差は" << val2 - val1 << "です\n";
+		cout << "それらの積は" << val1*val2 << "です\n";
+		cout << "比率は" << val1/val2 << "です\n";
+	}
+	else {
+		cout << "最小値は" << val2 << "です\n" << "最大値は" << val1 << "です。\n";
+		cout << "二つの値の合計は" << val1 + val2 << "です。\n";
+		cout << "二つの値の差は" << val1 - val2 << "です\n";
+		cout << "それらの積は" << val1*val2 << "です\n";
+		cout << "比率は" << val1/val2 << "です\n";
+	}
+	return　0;
+}
+
+練習問題6.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	cout << "整数を3つ入力して下さい\n";
+
+	int val1, val2, val3;
+
+	cin >> val1 >> val2 >> val3;
+
+	if (val1 > val2) {  		                                                  //if val1 > val2
+		if (val1 > val3) {      	                                          //compare  val1 val3
+			if (val3 > val2)
+				cout << val2 << "," << val3 << "," << val1 << '\n';
+			else if (val3 < val2)
+				cout << val3 << "," << val2 << "," << val1 << '\n';
+			else                                                              //val1 > val2 and val2 = val3
+				cout << val2 << "," << val3 << "," << val1 << '\n';
+
+		}
+		else {
+			cout << val2 << "," << val1 << "," << val3 << '\n';               //val1 > val2 and val1 = val3
+
+		}
+
+	}
+
+	else if (val2 > val1) {                                               	          // if val2 > val1
+		if (val3 > val2)                                                          //and val3 > val2
+			cout << val1 << "," << val2 << "," << val3 << '\n';
+		else if (val2 > val3) {                                                   // val2 > val1 and val2 > val3
+			if (val3 > val1)                                                  // then compare val1 val3 
+				cout << val1 << "," << val3 << "," << val2 << '\n';
+			else if (val1 > val3)
+				cout << val3 << "," << val1 << "," << val2 << '\n';
+			else {															  //when val2 > val1 = val3
+				cout << val1 << "," << val3 << "," << val2 << '\n';
+			}
+		}
+	}
+
+	else {																	  //when val1 = val2
+		if (val2 < val3) {
+			cout << val1 << "," << val2 << "," << val3 << '\n';
+		}
+		else {
+			cout << val3 << "," << val1 << "," << val2 << '\n';
+		}
+	}
+
+	return 0;
+}
