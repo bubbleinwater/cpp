@@ -131,3 +131,59 @@ int main()
 
 	return 0;
 }
+
+練習問題7.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	cout << "文字列を3つ入力して下さい\n";
+
+	string name1, name2, name3;
+
+	cin >> name1 >> name2 >> name3;
+
+	if (name1 > name2) {                       
+		if (name1 > name3) {                      
+			if (name3 > name2)
+				cout << name2 << "," << name3 << "," << name1 << '\n';
+			else if (name3 < name2)
+				cout << name3 << "," << name2 << "," << name1 << '\n';
+			else                                                    
+				cout << name2 << "," << name3 << "," << name1 << '\n';
+
+		}
+		else {
+			cout << name2 << "," << name1 << "," << name3 << '\n';       
+
+		}
+
+	}
+
+	else if (name2 > name1) {                               
+		if (name3 > name2)                                           
+			cout << name1 << "," << name2 << "," << name3 << '\n';
+		else if (name2 > name3) {                                          
+			if (name3 > name1)                            
+				cout << name1 << "," << name3 << "," << name2 << '\n';
+			else if (name1 > name3)
+				cout << name3 << "," << name1 << "," << name2 << '\n';
+			else {															  //when val2 > val1 = val3
+				cout << name1 << "," << name3 << "," << name2 << '\n';
+			}
+		}
+	}
+
+	else {																	  //when val1 = val2
+		if (name2 < name3) {
+			cout << name1 << "," << name2 << "," << name3 << '\n';
+		}
+		else {
+			cout << name3 << "," << name1 << "," << name2 << '\n';
+		}
+	}
+
+	return 0;                               //I renamed all "val" to "name"
+						//Is this a waste of time?
+}
