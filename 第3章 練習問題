@@ -209,3 +209,40 @@ int main()
 
 	return 0;
 }
+
+練習問題　9.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	int num = 0;
+	string oper = " ";
+	cout << "0から4の中の整数を0ならzeroのように小文字で入力してください\n";
+
+	cin >> oper;
+	if (oper == "zero") {
+		num = 0; cout << oper << " is " << num;
+	}
+	else if (oper == "one") {
+		num = 1;
+		cout << oper << " is " << num;
+	}
+	else if (oper == "two") {
+		num = 2;
+		cout << oper << " is " << num;
+	}
+	else if (oper == "three") {
+		num = 3;
+		cout << oper << " is " << num;
+	}
+	else if (oper == "four") {
+		num = 4;
+		cout << oper << " is " << num;
+	}
+	else
+		cout << "not a number I know\n";
+
+	return 0;
+
+}
