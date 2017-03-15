@@ -1,4 +1,4 @@
-練習問題2.
+//練習問題2.
 
 #include "../../std_lib_facilities.h"
 
@@ -16,4 +16,35 @@ int main()
 	cout << mile << "マイルは" << kilo << "kmです。\n";
 
 	return 0;
+}
+
+
+//練習問題4.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	int val1 = 0;
+	int val2 = 0;
+
+	cout << "整数値を2つ入力して下さい\n";
+	cin >> val1 >> val2;
+
+	if (val1 < val2) {
+		cout << "最小値は" << val1 << "です\n" << "最大値は" << val2 << "です。\n";
+		cout << "二つの値の合計は" << val1 + val2 << "です。\n";
+		cout << "二つの値の差は" << val2 - val1 << "です\n";
+		cout << "それらの積は" << val1*val2 << "です\n";
+		cout << "比率は" << val1/val2 << "です\n";          //this program. when val1 is larger than val2,
+	}                                                          //ratio will be 0.   I must fix.
+	else {
+		cout << "最小値は" << val2 << "です\n" << "最大値は" << val1 << "です。\n";
+		cout << "二つの値の合計は" << val1 + val2 << "です。\n";
+		cout << "二つの値の差は" << val1 - val2 << "です\n";
+		cout << "それらの積は" << val1*val2 << "です\n";
+		cout << "比率は" << val1/val2 << "です\n";
+	}
+	return 0;
+
 }
