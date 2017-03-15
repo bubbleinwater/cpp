@@ -1,0 +1,55 @@
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	string first_name;
+	cout << "Enter the name of the person you want to write to\n";
+	cin >> first_name;
+	cout << "Dear," << first_name << ",\n";
+	cout << " How are you? "
+		<< "I'm fine.\n"
+		<< " It's been a long time\n";
+	string friend_name;
+	cout << "Please enter your another friend's name?\n";
+	cin >> friend_name;
+	cout << " Have you seen " << friend_name << " lately?\n";
+
+	char friend_gender = 0;
+
+	cout << "Please enter your friend's gender here.If you are a man=> enter (m).If you are a female => enter (f)\n";
+	cin >> friend_gender;
+
+	char male = 'm';
+	char female = 'f';
+	if (friend_gender == male)
+		cout << "If you see " << friend_name << " please ask him to call me.\n";
+	if (friend_gender == female)
+		cout << "If you see " << friend_name << " please ask her to call me.\n";
+
+	int age;
+	cout << "Please enter recipient's age\n";
+
+	cin >> age;
+	if (age < 110 && age > 0) {
+		cout << "I hear you just had a birthday and you are " << age << " years old!\n";
+	
+		if (age < 12)
+			cout << "Next year you will be " << age + 1 << '\n';
+		if (age == 17)
+			cout << "Next year you will be able to vote\n";
+		if (age > 70)
+			cout << "I hope you are enjoying retirement\n";
+	
+	}
+	if (age > 110 || age < 0)
+		simple_error("you're kidding!");
+
+	cout << "Yours sincerely\n"
+		<< '\n'                                   //\n2times
+		<< '\n';
+
+	cout << "           wasabi\n";              //sign
+
+	return 0;
+	
+}
