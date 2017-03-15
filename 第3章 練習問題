@@ -169,13 +169,13 @@ int main()
 				cout << name1 << "," << name3 << "," << name2 << '\n';
 			else if (name1 > name3)
 				cout << name3 << "," << name1 << "," << name2 << '\n';
-			else {															  //when val2 > val1 = val3
-				cout << name1 << "," << name3 << "," << name2 << '\n';
+			else {												
+			cout << name1 << "," << name3 << "," << name2 << '\n';
 			}
 		}
 	}
 
-	else {																	  //when val1 = val2
+	else {										
 		if (name2 < name3) {
 			cout << name1 << "," << name2 << "," << name3 << '\n';
 		}
@@ -186,4 +186,26 @@ int main()
 
 	return 0;                               //I renamed all "val" to "name"
 						//Is this a waste of time?
+}
+
+練習問題 8.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	int number = 0;
+	int oper = 0;
+
+	cout << "整数を一つ入力してください\n";
+
+	cin >> number;
+	oper = number % 2;
+	
+	if (oper == 0)
+		cout << number << " is an even number\n";
+	else
+		cout << number << " is an odd number\n";
+
+	return 0;
 }
