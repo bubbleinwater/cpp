@@ -25,6 +25,28 @@ int main()
 		cout << "If you see " << friend_name << " please ask him to call me.\n";
 	if (friend_gender == female)
 		cout << "If you see " << friend_name << " please ask her to call me.\n";
+		
+		
+/*
+性別を尋ねるif文で
+if (friend_gender == "m")
+と入力したところ、
+オペランドに互換性がありません("char"と"const char")
+というエラーが出た。
+if (frienf_name == 'm')
+などと書き換えたところ、
+これらのオペランドと一致する演算子"=="はありません
+二項演算子'==':型'std::string'の左オペランドを扱う演算子が見つかりません(または変換できません)
+と出た。
+結論
+比較するときには
+別途、
+char male = 'm';
+などと事前にchar型の変数を宣言してそれと比較させないとダメなのかもなと思った。
+今ちょっと考えたら
+そもそもstringで扱えばよかった。
+*/
+
 
 	int age;
 	cout << "Please enter recipient's age\n";
