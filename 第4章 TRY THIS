@@ -1,0 +1,27 @@
+P95 円、ユーロ、ポンドをドルに変換するプログラム。
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	constexpr double dollar_per_yen = 0.00887;                          //I'm not sure about my english;
+　constexpr double dollar_per_euro = 1.0748;
+	constexpr double dollar_per_pound = 1.2384;
+	double amount = 0;
+	char unit = ' ';
+
+	cout << "Please enter an amount of money followed by a unit (y or e or p):\n";
+
+	cin >> amount >> unit;
+
+	if (unit == 'y')
+		cout << amount << "yen == " << amount*dollar_per_yen << "dollars\n";
+	else if (unit == 'e')
+		cout << amount << "euro == " << amount*dollar_per_euro << "dollars\n";
+	else if (unit == 'p')
+		cout << amount << "pound == " << amount*dollar_per_pound << "dollars\n";
+	else
+		cout << "Sorry, I don't know a unit called '" << unit << "'\n";
+
+	return 0;
+}
