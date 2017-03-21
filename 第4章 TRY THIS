@@ -58,3 +58,45 @@ int main()
 
 	return 0;
 }
+
+yuanとkrone
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	constexpr double dollar_per_jyen = 0.00887;
+	constexpr double dollar_per_euro = 1.0748;
+	constexpr double dollar_per_pound = 1.2384;
+	constexpr double dollar_per_cyuan = 0.14477;
+	constexpr double dollar_per_krone = 0.144693;
+	double amount = 0;
+	char unit = ' ';
+
+	cout << "Please enter an amount of money followed by a unit (y or e or p):\n";
+
+	cin >> amount >> unit;
+
+	switch (unit) {
+	case'j':
+		cout << amount << "yen == " << amount*dollar_per_jyen << "dollars\n";
+		break;
+	case'e':
+		cout << amount << "euro == " << amount*dollar_per_euro << "dollars\n";
+		break;
+	case'p':
+		cout << amount << "pound == " << amount*dollar_per_pound << "dollars\n";
+		break;
+	case'c':
+		cout << amount << "gen == " << amount*dollar_per_cyuan << "dollars\n";
+		break;
+	case'k':
+		cout << amount << "krone ==" << amount*dollar_per_krone << "dollars\n";
+		break;
+	default:
+		cout << "Sorry, I don't know a unit called '" << unit << "'\n";
+		break;
+	}
+
+	return 0;
+}
