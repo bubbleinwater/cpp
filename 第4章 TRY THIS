@@ -100,3 +100,22 @@ int main()
 
 	return 0;
 }
+
+P101　charとそれを代入したintを出力するプログラム
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+
+	char a = 'a';
+	int aa = a;
+
+	while (aa <= 122) {
+		cout << a << '\t' << aa << '\n';
+		++a;
+		aa = a;
+	}
+
+	return 0;
+}
