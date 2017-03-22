@@ -134,3 +134,35 @@ int main()
 
 	return 0;
 }
+
+with ABC and 123
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	char a = 'a';
+	for (int aa = 97; aa <= 122; ++aa) {
+		a = aa;
+		cout << a << '\t' << aa << '\n';
+	}
+	cout << '\n';
+	for (int AA = 65; AA <= 90; ++AA) {
+		a = AA;
+		cout << a << '\t' << AA << '\n';
+	}
+	cout << '\n';
+	for (int digit = 49; digit <= 57; ++digit) {
+		a = digit;
+		cout << a << '\t' << digit << '\n';
+	}
+	//
+	//char A = 'A';
+	//int AA = A;
+	//cout << "Ais" << AA << '\n';
+	//char a1 = '9';
+	//int aa1 = a1;
+	//cout << aa1 << '\n';
+
+	return 0;
+}
