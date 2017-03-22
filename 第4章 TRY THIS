@@ -166,3 +166,25 @@ int main()
 
 	return 0;
 }
+
+p102
+#include "../../std_lib_facilities.h"
+
+
+int square(int x)
+{
+	int sum = 0;
+	for (int i = 0; i < x; i++) {
+		sum += x;
+	}
+	return sum;
+}
+int main()
+{
+	int num = 0;
+	cout << "整数を一つ入力してください\n";
+	cin >> num;
+	cout << "2乗すると" << square(num) << "です\n";
+
+	return 0;
+}
