@@ -1,0 +1,15 @@
+1.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	int val1 = 0;
+	int val2 = 0;
+	cout << "2つの整数を入力\n";
+
+	while (cin>>val1 && cin>>val2) {
+		cout <<"You entered"<< val1 <<" and "<< val2<<'\n';
+	}
+	return 0;
+}
