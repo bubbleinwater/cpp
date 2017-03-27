@@ -188,3 +188,28 @@ int main()
 
 	return 0;
 }
+
+P 115 bleep
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	vector<string>words;
+
+	for (string temp; cin >> temp;)
+		words.push_back(temp);
+
+	cout << "number of words : " << words.size()<<'\n';
+
+	sort(words);
+	string dislike = "guy";        //I really really like girl. sorry guys there.
+
+	for (int i = 0; i < words.size(); ++i)
+		if (i == 0 || words[i - 1] != words[i])
+			if (words[i] != dislike)
+				cout << words[i] << '\n';
+			else
+				cout << '\a';
+
+	return 0;
+}
