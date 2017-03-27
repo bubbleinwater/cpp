@@ -29,3 +29,24 @@ int main()
 	}
 	return 0;
 }
+
+3.
+
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	vector<int> val(2);
+	cout << "2つの整数を入力\n";
+
+	while (cin>>val[0] && cin>>val[1]) {
+		sort(val);
+		if (val[0] == val[1])
+			cout << "the numbers are equal\n";
+		else
+			cout <<"the smaller value is: "<< val[0] 
+			<<" and the larger value is: "<< val[1]<<'\n';
+	}
+	return 0;
+}
