@@ -70,3 +70,26 @@ int main()
 	}
 	return 0;
 }
+
+5.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	vector<double> val(2);
+	cout << "2つの整数を入力\n";
+
+	while (cin>>val[0] && cin>>val[1]) {
+		sort(val);
+		if (val[0] == val[1])
+			cout << "the numbers are equal\n";
+		else if (val[0] < val[1]) {
+			cout << "the smaller value is: " << val[0]
+				<< " and the larger value is: " << val[1] << '\n';
+			if ((val[1] - val[0]) < 1.0/100)
+				cout << "the numbers are almost equal\n";
+		}
+	}
+	return 0;
+}
