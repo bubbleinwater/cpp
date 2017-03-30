@@ -353,9 +353,9 @@ void setvallength(int x, double length) {
 
 	else
 	{
-		sort(val);
-		small_val = val[0];
-		large_val = val[val.size() - 1];
+		sort(val);					// 11.  realize me. I should not use this
+		small_val = val[0];				//before 11.??
+		large_val = val[val.size() - 1];		//uuum.....
 
 		if (length < small_val)
 			cout << length << "m. the shortest so far\n";
@@ -410,7 +410,7 @@ int main()
 
 	cout << "入力された値の個数は" << i << "です。\nその数を全て足すと" << sum << "mです。\n";
 	cout << "入力されていた値をすべて書き出します。\n";
-	sort(val);
+	sort(val);					//11.?
 	for (int i = 1; i < val.size(); ++i)		//I want use " for(double x:val) " style(sorry i don't know the stylle's name.)
 		cout << val[i] << "m\n";		//but could not figure out how to remove val[0] from vector 
 							//user didn't enter the first value of vector val "0"
