@@ -175,3 +175,77 @@ int main()
 	}
 	return 0;
 }
+
+8.
+
+#include "../../std_lib_facilities.h"
+
+
+
+
+vector<double> val(1);
+
+void setvallength(int x, double length) {
+	double small_val = 0.0;
+	double large_val = 0.0;
+
+	if (x == 0)
+	{
+		cout << "Please enter the second length followed by(cm,m,in,ft)\n";
+		val.push_back(length);
+	}
+
+	else
+	{
+		sort(val);
+		small_val = val[0];
+		large_val = val[val.size() - 1];
+
+		if (length < small_val)
+			cout << length << "cm. the shortest so far\n";
+
+		else if (length > large_val)
+			cout << length << "cm. the longest so far\n";
+		
+		else
+			cout << "Please enter another number\n";
+
+		val.push_back(length);
+	}
+}
+
+int main()
+{
+	cout << "Please enter a length followed by(cm,m,in,ft)\n";
+	double new_val = 0.0;
+	string length_unit = " ";
+
+	for (int i = 0; cin >> new_val >> length_unit; ++i) {
+
+		if (length_unit == "cm") {
+			setvallength(i, new_val);
+		}
+		else if (length_unit == "m") {
+			new_val *= 100;
+			setvallength(i, new_val);
+		}
+		else if (length_unit == "in") {
+			new_val *= 2.54;
+			setvallength(i, new_val);
+		}
+		else if (length_unit == "ft") {
+			new_val *= (12 * 2.54);
+			setvallength(i, new_val);
+		}
+
+		else
+		{
+			cout << "I don't know a unit called '" << length_unit << "'.\nPlease enter another length.\n";
+			new_val = 0.0;
+			length_unit = " ";
+			--i;
+		}
+
+	}
+	return 0;
+}
