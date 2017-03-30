@@ -331,3 +331,89 @@ int main()
 
 	return 0;
 }
+
+10.
+
+#include "../../std_lib_facilities.h"
+
+
+
+
+vector<double> val(1);
+
+void setvallength(int x, double length) {
+	double small_val = 0.0;
+	double large_val = 0.0;
+
+	if (x == 0)
+	{
+		cout << "Please enter the second length followed by(cm,m,in,ft)\n";
+		val.push_back(length);
+	}
+
+	else
+	{
+		sort(val);
+		small_val = val[0];
+		large_val = val[val.size() - 1];
+
+		if (length < small_val)
+			cout << length << "m. the shortest so far\n";
+
+		else if (length > large_val)
+			cout << length << "m. the longest so far\n";
+		
+		else
+			cout << "Please enter another number\n";
+
+		val.push_back(length);
+		
+	}
+}
+
+int main()
+{
+	cout << "Please enter a length followed by(cm,m,in,ft)\n";
+	double new_val = 0.0;
+	string length_unit = " ";
+	int i;
+	for (i = 0; cin >> new_val >> length_unit; ++i) {
+
+		if (length_unit == "cm") {
+			new_val *= 0.01;
+			setvallength(i, new_val);
+		}
+		else if (length_unit == "m") {
+			setvallength(i, new_val);
+		}
+		else if (length_unit == "in") {
+			new_val *= 0.0254;
+			setvallength(i, new_val);
+		}
+		else if (length_unit == "ft") {
+			new_val *= (12 * 0.0254);
+			setvallength(i, new_val);
+		}
+
+		else
+		{
+			cout << "I don't know a unit called '" << length_unit << "'.\nPlease enter another length.\n";
+			new_val = 0.0;
+			length_unit = " ";
+			--i;
+		}
+		
+	}
+	double sum = 0.0;
+	for (double y : val)
+		sum += y;
+
+	cout << "入力された値の個数は" << i << "です。\nその数を全て足すと" << sum << "mです。\n";
+	cout << "入力されていた値をすべて書き出します。\n";
+	sort(val);
+	for (int i = 1; i < val.size(); ++i)		//I want use " for(double x:val) " style(sorry i don't know the stylle's name.)
+		cout << val[i] << "m\n";		//but could not figure out how to remove val[0] from vector 
+							//user didn't enter the first value of vector val "0"
+
+	return 0;
+}
