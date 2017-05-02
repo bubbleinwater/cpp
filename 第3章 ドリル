@@ -42,7 +42,6 @@ char male = 'm';
 そもそもstringで扱えばよかった。
 */
 
-
 #include "../../std_lib_facilities.h"
 
 int main()
@@ -72,10 +71,11 @@ int main()
 
 	if (age <= 12)
 		cout << "Next year you will be " << age + 1 << "!\n";
-	else if (age = 17)
+	else if (age == 17)
 		cout << "Next year you will be able to vote";
 	else if (age >= 70)
 		cout << "I hope you are enjoying retirement";
 
+	cout << "\nYours sincerely" << "\n\n\nbubble in water";
 		return 0;
 }
