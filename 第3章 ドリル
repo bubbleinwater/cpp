@@ -2,30 +2,25 @@
 
 int main()
 {
-	string first_name;
+	string first_name, friend_name;
+	char friend_gender;
 	cout << "Enter the name of the person you want to write to\n";
 	cin >> first_name;
-	cout << "Dear," << first_name << ",\n";
-	cout << " How are you? "
-		<< "I'm fine.\n"
-		<< " It's been a long time\n";
-	string friend_name;
-	cout << "Please enter your another friend's name?\n";
-	cin >> friend_name;
-	cout << " Have you seen " << friend_name << " lately?\n";
+	cout << "Enter the name of the person who you want to call you.followed by 'm' or 'f'(MALE=>m,FEMALE=>f)\n";
+	cin >> friend_name >> friend_gender;
 
-	char friend_gender = 0;
 
-	cout << "Please enter your friend's gender here.If you are a man=> enter (m).If you are a female => enter (f)\n";
-	cin >> friend_gender;
-
-	char male = 'm';
-	char female = 'f';
-	if (friend_gender == male)
+	cout << "Dear " << first_name << ","
+		<< "How are you?" << "\n I'm fine." << "\n Do you still love listening music? Recently I always listening to the album 'CHUBBY GROOVE' from INABA/SALAS\n"
+		<< "\n Have you seen " << friend_name << " lately?\n";
+	if (friend_gender == 'm')
 		cout << "If you see " << friend_name << " please ask him to call me.\n";
-	if (friend_gender == female)
+	if (friend_gender == 'f')
 		cout << "If you see " << friend_name << " please ask her to call me.\n";
-		
+	
+		return 0;
+}
+	
 		
 /*
 性別を尋ねるif文で
@@ -42,7 +37,7 @@ if (frienf_name == 'm')
 比較するときには
 別途、
 char male = 'm';
-などと事前にchar型の変数を宣言してそれと比較させないとダメなのかもなと思った。
+などと事前にchar型の変数を宣言してそれと比較させないとダメなのかもなと思った。※よく読んだら問題文に書いてあった。
 今ちょっと考えたら
 そもそもstringで扱えばよかった。
 */
