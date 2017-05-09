@@ -25,29 +25,47 @@ int main()
 
 int main()
 {
-	int val1 = 0;
-	int val2 = 0;
-
-	cout << "整数値を2つ入力して下さい\n";
+	int val1, val2,difference = 0,rem,div1 = 0,div2 = 0;
+	cout << "整数を２つ入力して下さい\n";
 	cin >> val1 >> val2;
 
-	if (val1 < val2) {
-		cout << "最小値は" << val1 << "です\n" << "最大値は" << val2 << "です。\n";
-		cout << "二つの値の合計は" << val1 + val2 << "です。\n";
-		cout << "二つの値の差は" << val2 - val1 << "です\n";
-		cout << "それらの積は" << val1*val2 << "です\n";
-		cout << "比率は" << val1/val2 << "です\n";          //this program. when val1 is larger than val2,
-	}                                                          //ratio will be 0.   I must fix.
-	else {
-		cout << "最小値は" << val2 << "です\n" << "最大値は" << val1 << "です。\n";
-		cout << "二つの値の合計は" << val1 + val2 << "です。\n";
-		cout << "二つの値の差は" << val1 - val2 << "です\n";
-		cout << "それらの積は" << val1*val2 << "です\n";
-		cout << "比率は" << val1/val2 << "です\n";
+	if (val1 > val2) {
+		cout << "最小値は" << val2 << "最大値は" << val1 << "です\n";
+		difference = val1 - val2;
+		rem = val1 % val2;
+		if (rem == 0) {
+			div1 = val1 / val2;
+		}
 	}
-	return 0;
+	else if (val1 < val2) {
+		cout << "最小値は" << val1 << "最大値は" << val2 << "です\n";
+		difference = val2 - val1;
+		rem = val2 % val1;
+		if (rem == 0) {
+			div2 = val2 / val1;
+		}
+	}
+	else
+		cout << "二つの値は等しいです\n";
 
+	cout << "二つの値の合計は" << val1 + val2 << "です\n";
+	cout << "二つの値の差は" << difference << "です\n";
+	cout << "二つの値の積は" << val1*val2 << "です\n";
+	if (div2 == 0) {
+		if (rem != 0)
+			cout << "比率は" << val1 << "/" << val2 << "です\n";
+		else
+			cout << "比率は" << div1 << "です\n";
+	}
+	else
+		if (rem != 0)
+			cout << "比率は" << val1 << "/" << val2 << "です\n";
+		else
+			cout << 1 << "/" << div2 << "です\n";
+	
+	return 0;
 }
+
 練習問題5.
 
 #include "../../std_lib_facilities.h"
