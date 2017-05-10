@@ -72,28 +72,30 @@ int main()
 
 int main()
 {
-	double val1 = 0;
-	double val2 = 0;
-
-	cout << "少数を2つ入力して下さい\n";
+	double val1, val2, difference = 0;
+	cout << "整数を２つ入力して下さい\n";
 	cin >> val1 >> val2;
 
-	if (val1 < val2) {
-		cout << "最小値は" << val1 << "です\n" << "最大値は" << val2 << "です。\n";
-		cout << "二つの値の合計は" << val1 + val2 << "です。\n";
-		cout << "二つの値の差は" << val2 - val1 << "です\n";
-		cout << "それらの積は" << val1*val2 << "です\n";
-		cout << "比率は" << val1/val2 << "です\n";
+	if (val1 > val2) {
+		cout << "最小値は" << val2 << "最大値は" << val1 << "です\n";
+		difference = val1 - val2;
 	}
-	else {
-		cout << "最小値は" << val2 << "です\n" << "最大値は" << val1 << "です。\n";
-		cout << "二つの値の合計は" << val1 + val2 << "です。\n";
-		cout << "二つの値の差は" << val1 - val2 << "です\n";
-		cout << "それらの積は" << val1*val2 << "です\n";
-		cout << "比率は" << val1/val2 << "です\n";
+
+	else if (val1 < val2) {
+		cout << "最小値は" << val1 << "最大値は" << val2 << "です\n";
+		difference = val2 - val1;
 	}
-	return　0;
+	else
+		cout << "二つの値は等しいです\n";
+
+	cout << "二つの値の合計は" << val1 + val2 << "です\n";
+	cout << "二つの値の差は" << difference << "です\n";
+	cout << "二つの値の積は" << val1*val2 << "です\n";
+	cout << "比率は" << val1 / val2 << "です。\n";
+	
+	return 0;
 }
+
 
 練習問題6.
 
