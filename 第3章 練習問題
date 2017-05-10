@@ -131,61 +131,39 @@ int main()
 }
 
 
-練習問題7.
+練習問題 7.
 
 #include "../../std_lib_facilities.h"
 
 int main()
 {
-	cout << "文字列を3つ入力して下さい\n";
+	string val1, val2, val3,tmp;
 
-	string name1, name2, name3;
+	cout << "文字列を3つ入力してください\n";
 
-	cin >> name1 >> name2 >> name3;
+	cin >> val1 >> val2 >> val3;
 
-	if (name1 > name2) {                       
-		if (name1 > name3) {                      
-			if (name3 > name2)
-				cout << name2 << "," << name3 << "," << name1 << '\n';
-			else if (name3 < name2)
-				cout << name3 << "," << name2 << "," << name1 << '\n';
-			else                                                    
-				cout << name2 << "," << name3 << "," << name1 << '\n';
-
-		}
-		else {
-			cout << name2 << "," << name1 << "," << name3 << '\n';       
-
-		}
-
-	}
-
-	else if (name2 > name1) {                               
-		if (name3 > name2)                                           
-			cout << name1 << "," << name2 << "," << name3 << '\n';
-		else if (name2 > name3) {                                          
-			if (name3 > name1)                            
-				cout << name1 << "," << name3 << "," << name2 << '\n';
-			else if (name1 > name3)
-				cout << name3 << "," << name1 << "," << name2 << '\n';
-			else {												
-			cout << name1 << "," << name3 << "," << name2 << '\n';
+	if (val1 > val2) {
+		tmp = val2; val2 = val1; val1 = tmp;
+		if (val2 > val3) {
+			tmp = val3; val3 = val2; val2 = tmp;
+			if (val1 > val2) {
+				tmp = val1; val1 = val2; val2 = tmp;
 			}
 		}
 	}
-
-	else {										
-		if (name2 < name3) {
-			cout << name1 << "," << name2 << "," << name3 << '\n';
-		}
-		else {
-			cout << name3 << "," << name1 << "," << name2 << '\n';
+	else if (val2 > val3) {
+		tmp = val3; val3 = val2; val2 = tmp;
+		if (val1 > val2) {
+			tmp = val1; val1 = val2; val2 = tmp;
 		}
 	}
 
-	return 0;                               //I renamed all "val" to "name"
-						//Is this a waste of time?
+	cout << "(" << val1 << "," << val2 << "," << val3 << ")";
+
+	return 0;
 }
+
 
 練習問題 8.
 
