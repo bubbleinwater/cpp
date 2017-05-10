@@ -187,42 +187,43 @@ int main()
 	return 0;
 }
 
-練習問題　9.
+　練習問題　9.
 
 #include "../../std_lib_facilities.h"
 
 int main()
 {
-	int num = 0;
-	string oper = " ";
-	cout << "0から4の中の整数を0ならzeroのように小文字で入力してください\n";
+	string oper;
+	cout << "英単語を数字に変換します数字の英単語を入力してください\n";
 
 	cin >> oper;
+
 	if (oper == "zero") {
-		num = 0; cout << oper << " is " << num;
+		cout << "That is" << 0 <<'\n';
 	}
+
 	else if (oper == "one") {
-		num = 1;
-		cout << oper << " is " << num;
+		cout << "That is" << 1 <<'\n';
 	}
+
 	else if (oper == "two") {
-		num = 2;
-		cout << oper << " is " << num;
+		cout << "That is" << 2 <<'\n';
 	}
+
 	else if (oper == "three") {
-		num = 3;
-		cout << oper << " is " << num;
+		cout << "That is" << 3 <<'\n';
 	}
+
 	else if (oper == "four") {
-		num = 4;
-		cout << oper << " is " << num;
+		cout << "That is" << 4 <<'\n';
 	}
-	else
+
+	else {
 		cout << "not a number I know\n";
-
+	}
 	return 0;
-
 }
+
 練習問題 10.
 #include "../../std_lib_facilities.h"
 
