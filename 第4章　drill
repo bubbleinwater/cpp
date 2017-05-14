@@ -15,42 +15,29 @@ int main()
 }
 
 
-2.
+ドリル2.3.
 
 #include "../../std_lib_facilities.h"
 
 int main()
 {
-	vector<int> val(2);                                   //I don't kwon why yet(or i just could not read the english message)
-	cout << "2つの整数を入力\n";				//, but (2) is needed after val
 
-	while (cin>>val[0] && cin>>val[1]) {
-		sort(val);
-		cout <<"the smaller value is: "<< val[0] <<" and the larger value is: "<< val[1]<<'\n';
-	}
-	return 0;
-}
+	int val1, val2;
+	cout << "入力された2つの整数を小さい順に表示します。|を入力すると終了します。\n";
 
-3.
-
-
-#include "../../std_lib_facilities.h"
-
-int main()
-{
-	vector<int> val(2);
-	cout << "2つの整数を入力\n";
-
-	while (cin>>val[0] && cin>>val[1]) {
-		sort(val);
-		if (val[0] == val[1])
-			cout << "the numbers are equal\n";
+	while (cin >> val1 >> val2) {
+		if (val1 > val2) {
+			cout << "the smaller value is: " << val2 << ", the larger value is: " << val1 << '\n';
+		}
+		else if (val1 < val2) {
+			cout << "the smaller value is: " << val1 << ", the larger value is: " << val2 << '\n';
+		}
 		else
-			cout <<"the smaller value is: "<< val[0] 
-			<<" and the larger value is: "<< val[1]<<'\n';
+			cout << "the numbers are equal\n";
 	}
 	return 0;
 }
+
 
 4.
 
