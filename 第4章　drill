@@ -1,18 +1,19 @@
-1.
+ドリル1.
 
 #include "../../std_lib_facilities.h"
 
 int main()
 {
-	int val1 = 0;
-	int val2 = 0;
-	cout << "2つの整数を入力\n";
 
-	while (cin>>val1 && cin>>val2) {
-		cout <<"You entered"<< val1 <<" and "<< val2<<'\n';
+	int val1, val2;
+	cout << "入力された2つの整数を並べて表示します。|を入力すると終了します。\n";
+
+	while (cin >> val1 >> val2) {
+		cout << val1 << ' ' << val2 << '\n';
 	}
 	return 0;
 }
+
 
 2.
 
