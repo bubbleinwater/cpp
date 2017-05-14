@@ -73,7 +73,7 @@ int main()
 	double amount = 0;
 	char unit = ' ';
 
-	cout << "Please enter an amount of money followed by a unit (y or e or p):\n";
+	cout << "Please enter an amount of money followed by a unit (j or e or p or k or c):\n";
 
 	cin >> amount >> unit;
 
