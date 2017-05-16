@@ -306,88 +306,87 @@ int main()
 	return 0;
 }
 
-10.
+ドリル 10.
 
 #include "../../std_lib_facilities.h"
 
 
+double maxv = 0, miniv = 0,sum = 0;
+
+void otherdenyer(int i,double val2)
+{
 
 
-vector<double> val(1);
-
-void setvallength(int x, double length) {
-	double small_val = 0.0;
-	double large_val = 0.0;
-
-	if (x == 0)
-	{
-		cout << "Please enter the second length followed by(cm,m,in,ft)\n";
-		val.push_back(length);
+	if (i == 0) {
+		maxv = val2;
+		miniv = val2;
 	}
-
-	else
-	{
-		sort(val);					// 11.  realize me. I should not use this
-		small_val = val[0];				//before 11.??
-		large_val = val[val.size() - 1];		//uuum.....
-
-		if (length < small_val)
-			cout << length << "m. the shortest so far\n";
-
-		else if (length > large_val)
-			cout << length << "m. the longest so far\n";
-		
-		else
-			cout << "Please enter another number\n";
-
-		val.push_back(length);
-		
+	else if (i != 0 && val2 > maxv) {
+		maxv = val2;
+		cout << "the longest so far\n";
 	}
+	else if (i != 0 && val2 < miniv) {
+		miniv = val2;
+		cout << "the shortest so far\n";
+	}
+	else {}
+
+
 }
+
 
 int main()
 {
-	cout << "Please enter a length followed by(cm,m,in,ft)\n";
-	double new_val = 0.0;
-	string length_unit = " ";
-	int i;
-	for (i = 0; cin >> new_val >> length_unit; ++i) {
+	int j = 0;
+	double val1 = 0;
+	string unit;
+	vector <double> length;
 
-		if (length_unit == "cm") {
-			new_val *= 0.01;
-			setvallength(i, new_val);
-		}
-		else if (length_unit == "m") {
-			setvallength(i, new_val);
-		}
-		else if (length_unit == "in") {
-			new_val *= 0.0254;
-			setvallength(i, new_val);
-		}
-		else if (length_unit == "ft") {
-			new_val *= (12 * 0.0254);
-			setvallength(i, new_val);
-		}
+	cout << "入力された長さの最大と最小を追跡します。単位は(cm,m,in,ft)の4つに限ります。|を入力すると終了します。\n";
 
-		else
-		{
-			cout << "I don't know a unit called '" << length_unit << "'.\nPlease enter another length.\n";
-			new_val = 0.0;
-			length_unit = " ";
+	for (int i = 0; cin >> val1 >> unit; ++i) {
+
+		if (unit == "cm") {
+			val1 *= 0.01;
+			length.push_back(val1);
+			sum += val1;
+			unit = " ";
+			otherdenyer(i, val1);
+		}
+		else if(unit =="m"){ 
+			{}
+			length.push_back(val1);
+			sum += val1;
+			unit = " "; 
+			otherdenyer(i, val1);
+		}
+		else if (unit == "in") {
+			val1 *= 0.0254;
+			length.push_back(val1);
+			sum += val1;
+			unit = " ";	
+			otherdenyer(i, val1);
+		}
+		else if (unit == "ft") {
+			//1ft == 12in == 12*0.0254m
+			constexpr double fttom = 12 * 0.0254;
+			val1 *= fttom;
+			length.push_back(val1);
+			sum += val1;
+			unit = " ";
+			otherdenyer(i, val1);
+		}
+		else {
+			cout << "Denied.Please enter another length followed by(cm,m,in,ft).\n";
 			--i;
-		}
-		
+			}
+		j = i;
 	}
-	double sum = 0.0;
-	for (double y : val)
-		sum += y;
 
-	cout << "入力された値の個数は" << i << "です。\nその数を全て足すと" << sum << "mです。\n";
-	cout << "入力されていた値をすべて書き出します。\n";
-	sort(val);					//11.?
-	for (int i = 1; i < val.size(); ++i)		//I want use " for(double x:val) " style(sorry i don't know the stylle's name.)
-		cout << val[i] << "m\n";		//but could not figure out how to remove val[0] from vector 
-							//user didn't enter the first value of vector val "0"
-
+	cout << "最小値は" << miniv << "m, 最大値は" << maxv << "m, 値の個数は" << j + 1 << ", 値の合計は" << sum << "mです。\n";
+	cout << "入力された値を全て書き出します。\n";
+	for (double x : length) {
+		cout << x << '\n';
+	}
 	return 0;
 }
