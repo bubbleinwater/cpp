@@ -91,40 +91,37 @@ int main()
 	return 0;
 }
 
-
-6.
+ドリル 6.
 
 #include "../../std_lib_facilities.h"
 
 int main()
 {
-	vector<double> val;
-	cout << "整数を一つ入力してください。\n";
-	double small_val = 0.0;
-	double large_val = 0.0;
-	double new_val = 0.0;
-	for (int i = 0; cin >> new_val; ++i) {
-		if (i != 0) {
-			sort(val);
-			small_val = val[0];
-			large_val = val[val.size() - 1];
 
-			if (new_val < small_val)
-				cout << new_val << " the smallest so far\n";
-			else if (new_val>large_val)
-				cout << new_val << " the largest so far\n";
-			else
-				cout << "Please enter another number\n";
-			val.push_back(new_val);
-		}
+	double val1 = 0;
+	double max,mini;
 
-		else {
-			cout << "Please enter second number\n";
-			val.push_back(new_val);
+	cout << "入力された数字の最大と最小を追跡します。|を入力すると終了します。\n";
+
+	for (int i = 0; cin >> val1; ++i) {
+		if (i == 0) {
+			max = val1;
+			mini = val1;
 		}
+		else if (i != 0 && val1 > max) {
+			max = val1;
+			cout << "the largest so far\n";
+		}
+		else if (i != 0 && val1 < mini) {
+			mini = val1;
+			cout << "the smallest so far\n";
+		}
+		else {}
+		
 	}
 	return 0;
 }
+
 
 7.
 
