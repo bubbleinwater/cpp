@@ -27,3 +27,29 @@ int main()
 	return 0;
 }
 
+練習問題 3.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	vector <double> roads;
+	double sum =0;
+
+	cout << "隣の都市まで行くのに通る道の長さを入力してください。\n";
+
+	for (double road; cin >> road;)
+		roads.push_back(road);
+	sort(roads);
+
+	for (double x : roads)
+		sum += x;
+
+	cout << "道順での最も短い道は" << roads[0] << '\n';
+	cout << "道順での最長の道は" << roads[roads.size()-1] << "です\n";
+	cout << "それぞれの平均は" << sum / roads.size() << "です\n";
+
+	return 0;
+}
+
+
