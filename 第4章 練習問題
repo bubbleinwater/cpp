@@ -53,3 +53,474 @@ int main()
 }
 
 
+練習問題 4.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	char answer;
+	char oddeven;
+
+	cout << "思い浮かべた数字を特定します。以下の質問(最大で7つです)にyかnで答えてください。\n";
+	cout << "まず初めの質問です。あなたが思い浮かべた数字は偶数ですか？\n";
+	cin >> oddeven;																//yなら偶数、nなら奇数
+
+	cout << "あなたが思い浮かべた数字は51以上ですか？\n";
+	cin >> answer;
+	if (answer == 'y') {
+		cout << "あなたが思い浮かべた数字は73以上ですか？\n";				//50以上確定時
+		cin >> answer;
+		if (answer == 'y') {
+			cout << "あなたが思い浮かべた数字は89以上ですか？\n";							//	75以上
+			cin >> answer;
+			if (answer == 'y') {
+				cout << "あなたが思い浮かべた数字は93以上ですか？\n";			//88以上
+
+
+				cin >> answer;// 97 98 99 100
+				if (answer == 'y') {
+					cout << "あなたが思い浮かべた数字は97以上ですか？\n";										//	93以上
+					cin >> answer;
+					if (answer == 'y') {
+						cout << "あなたが思い浮かべた数字は99以上ですか?\n";				//97以上
+						cin >> answer;
+						if (answer == 'y') {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は100ですね。\n";
+							else cout << "あなたが思い浮かべた数字は99ですね\n";
+						}
+						else {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は98ですね\n";
+							else cout << "あなたが思い浮かべた数字はですね97ですね\n";
+						}
+
+					}
+					else {//93 から 96
+						cout << "あなたが思い浮かべた数字は95以上ですか？\n";
+						cin >> answer;
+						if (answer == 'y') {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は96ですね\n";
+							else cout << "あなたが思い浮かべた数字は95ですね\n";
+						}
+
+						else {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は94ですね\n";
+							else cout << "あなたが思い浮かべた数字は93ですね\n";
+						}
+
+					}
+				}
+				/*93以上? no*/			else {		//89 から　92
+					cout << "あなたが思い浮かべた数字は91以上ですか？\n";
+					cin >> answer;
+					if (answer == 'y') {
+						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は92ですね\n";
+						else cout << "あなたが思い浮かべた数字は91ですね\n";
+					}
+					else {
+						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は90ですね\n";
+						else cout << "あなたが思い浮かべた数字は89ですね\n";
+					}
+				}
+			}
+			else {//81 から 88
+				cout << "あなたが思い浮かべた数字は81以上ですか？\n";				//88以下
+				cin >> answer;
+
+				if (answer == 'y') {
+					cout << "あなたが思い浮かべた数字は85以上ですか?\n";
+					cin >> answer;
+					if (answer == 'y') {
+						cout << "あなたが思い浮かべた数字は87以上ですか？\n";
+						cin >> answer;
+						if (answer == 'y') {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は88ですね\n";
+							else cout << "あなたが思い浮かべた数字は87ですね\n";
+						}
+						else {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は86ですね\n";
+							else cout << "あなたが思い浮かべた数字は85ですね\n";
+						}
+					}
+					else {//81 から　84
+						cout << "あなたが思い浮かべた数字は83以上ですか？\n";
+						cin >> answer;
+						if (answer == 'y') {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は84ですね\n";
+							else cout << "あなたが思い浮かべた数字は83ですね\n";
+						}
+						else {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は82ですね\n";
+							else cout << "あなたが思い浮かべた数字は81ですね\n";
+						}
+					}
+				}
+				else {
+					cout << "あなたが思い浮かべた数字は77以上ですか？\n";
+
+					cin >> answer;
+					if (answer == 'y') {
+						cout << "あなたが思い浮かべた数字は79以上ですか？\n";
+						if (answer == 'y') {
+							if (oddeven == 'y')
+								cout << "あなたが思い浮かべた数字は80ですね\n";
+							else cout << "あなたが思い浮かべた数字は79ですね\n";
+						}
+						else {
+							if (oddeven == 'y')
+								cout << "あなたが思い浮かべた数字78ですね\n";
+							else cout << "あなたが思い浮かべた数字は77ですね\n";
+						}
+					}
+					else {
+						cout << "あなたが思い浮かべた数字は75以上ですか？\n";
+						cin >> answer;
+						if (answer == 'y') {
+							if (oddeven == 'y')
+								cout << "あなたが思い浮かべた数字は76ですね\n";
+							else cout << "あなたが思い浮かべた数字は75ですね\n";
+						}
+						else {
+							if (oddeven == 'y')
+								cout << "あなたが思い浮かべた数字74ですね\n";
+							else cout << "あなたが思い浮かべた数字は73ですね\n";
+
+						}
+					}
+				}
+			}
+				
+			}
+	//	else{/*５１以上　７2以下*/}
+		else {
+			cout << "あなたが思い浮かべた数字は63以上ですか？\n";					//50以上72以下
+			cin >> answer;
+			if (answer == 'y') {
+				cout << "あなたが思い浮かべた数字は69以上ですか？\n";
+				cin >> answer;
+				if (answer == 'y') {
+					cout << "あなたが思い浮かべた数字は71以上ですか？\n";
+					cin >> answer;
+					if (answer == 'y') {
+						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は72ですね.\n";
+						else {
+							cout << "あなたが思い浮かべた数字は71ですね\n";
+						}
+					}
+					else {
+						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は70ですね\n";
+						else cout << "あなたが思い浮かべた数字は69ですね\n";
+					}
+				}
+				else {
+					cout << "あなたが思い浮かべた数字は67以上ですか？\n";
+					cin >> answer;
+
+					if (answer == 'y') {
+						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は68ですね.\n";
+						else {
+							cout << "あなたが思い浮かべた数字は67ですね\n";
+						}
+					}
+					else {
+						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は66ですね\n";
+						else cout << "あなたが思い浮かべた数字は65ですね\n";
+
+					}
+				}
+			}
+			else {
+				cout << "あなたが思い浮かべた数字は59以上ですか？\n";
+				cin >> answer;
+				if (answer == 'y') {
+
+					cout << "あなたが思い浮かべた数字は61以上ですか？\n";
+					cin >> answer;
+					if (answer == 'y') {
+						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は62ですね.\n";
+						else {
+							cout << "あなたが思い浮かべた数字は61ですね\n";
+						}
+					}
+					else{
+					if (oddeven == 'y')cout << "あなたが思い浮かべた数字は60ですね\n";
+					else cout << "あなたが思い浮かべた数字は59ですね\n";
+				}
+
+				}
+				else {
+					cout << "あなたが思い浮かべた数字は55以上ですか？\n";
+				cin >> answer;
+
+				if (answer == 'y') {
+					cout << "あなたが思い浮かべた数字は57以上ですか？\n";
+					if (answer == 'y') {
+						if (oddeven == 'y')
+							cout << "あなたが思い浮かべた数字は58ですね\n";
+						else
+							cout << "あなたが思い浮かべた数字は57ですね\n";
+					}
+					else {
+						if (oddeven == 'y')
+							cout << "あなたが思い浮かべた数字は56ですね\n";
+						else
+							cout << "あなたが思い浮かべた数字は55ですね\n";
+					}
+				}
+				cout << "あなたが思い浮かべた数字は53以上ですか？\n";
+				cin >> answer;
+				if (answer == 'y') {
+					if (oddeven == 'y')
+						cout << "あなたが思い浮かべた数字は54ですね\n";
+					else
+						cout << "あなたが思い浮かべた数字は53ですね\n";
+				}
+				else {
+					if (oddeven == 'y')
+						cout << "あなたが思い浮かべた数字は52ですね\n";
+					else
+						cout << "あなたが思い浮かべた数字は51ですね\n";
+				}
+
+				
+				}
+			}
+		}
+
+
+
+
+
+
+
+
+	}//これのNOが50以下
+
+	else {
+		cout << "あなたが思い浮かべた数字は23以上ですか？\n";					//50以下確定時
+		cin >> answer;
+		if (answer == 'y') {
+			cout << "あなたが思い浮かべた数字は39以上ですか？\n";
+			cin >> answer;
+
+			if (answer == 'y') {
+				cout << "あなたが思い浮かべた数字は43以上ですか？\n";
+				cin >> answer;
+
+				if (answer == 'y') {
+					cout << "あなたが思い浮かべた数字は47以上ですか？\n";
+					cin >> answer;
+					if (answer == 'y') {
+						cout << "あなたが思い浮かべた数字は49以上ですか？\n";
+						cin >> answer;
+
+						if (answer == 'y') {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字50はですね。\n";
+							else cout << "あなたが思い浮かべた数字は49ですね。\n";
+						}
+						else {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は48ですね。\n";
+							else cout << "あなたが思い浮かべた数字は47ですね。\n";
+						}
+					}
+					else {
+						cout << "あなたが思い浮かべた数字は45以上ですか？\n";
+						cin >> answer;
+
+						if (answer == 'y') {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は46ですね。\n";
+							else cout << "あなたが思い浮かべた数字は45ですね。\n";
+						}
+						else {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は44ですね\n";
+							else cout << "あなたが思い浮かべた数字は43ですね\n";
+						}
+					}
+				}
+				else {
+					cout << "あなたが思い浮かべた数字は41以上ですか？\n";
+					cin >> answer;
+
+					if (answer == 'y') {
+						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は42ですね\n";
+						else cout << "あなたが思い浮かべた数字は41ですね\n";
+					}
+					else {
+						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は40ですね。\n";
+						else cout << "あなたが思い浮かべた数字は39ですね。\n";
+					}
+				}
+			}//38以下
+			else
+			{
+				cout << "あなたが思い浮かべた数字は31以上ですか？\n";
+				cin >> answer;
+
+				if (answer == 'y') {
+					cout << "あなたが思い浮かべた数字は35以上ですか?\n";
+
+					cin >> answer;
+
+					if (answer == 'y') {
+						cout << "あなたが思い浮かべた数字は37以上ですか？\n";
+						cin >> answer;
+
+						if (answer == 'y') {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は38ですね\n";
+							else cout << "あなたが思い浮かべた数字は37ですね\n";
+						}
+						else {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は36ですね\n";
+							else cout << "あなたが思い浮かべた数字は35ですね\n";
+						}
+					}
+					else
+					{
+						cout << "あなたが思い浮かべた数字は33以上ですか？\n";
+						cin >> answer;
+
+						if (answer == 'y') {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は34ですね\n";
+							else cout << "あなたが思い浮かべた数字は33ですね\n";
+						}
+						else
+						{
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は32ですね。\n";
+							else cout << "あなたが思い浮かべた数字は31ですね。\n";
+						}
+					}
+				}//30以下
+
+				else {
+					cout << "あなたが思い浮かべた数字は27以上ですか？\n";
+					cin >> answer;
+
+					if (answer == 'y') {
+						cout << "あなたが思い浮かべた数字は29以上ですか？\n";
+						cin >> answer;
+
+						if (answer == 'y') {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は30ですね。\n";
+							else cout << "あなたが思い浮かべた数字は29ですね。\n";
+						}
+						else {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は28ですね。\n";
+							else cout << "あなたが思い浮かべた数字は27ですね。\n";
+						}
+					}
+					else {
+
+						cout << "あなたが思い浮かべた数字は25以上ですか？\n";
+						cin >> answer;
+
+						if (answer == 'y') {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は26ですね。\n";
+							else cout << "あなたが思い浮かべた数字は25ですね。\n";
+						}
+						else {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は24ですね。\n";
+							else cout << "あなたが思い浮かべた数字は23ですね。\n";
+						}
+					}
+				}
+			}
+
+		}//22以下
+		else
+		{
+			cout << "あなたが思い浮かべた数字は15以上ですか？\n";
+
+			cin >> answer;
+
+			if (answer == 'y') {
+				cout << "あなたが思い浮かべた数字は19以上ですか？\n";
+				cin >> answer;
+
+				if (answer == 'y') {
+					cout << "あなたが思い浮かべた数字は21以上ですか？\n";
+					cin >> answer;
+					if (answer == 'y') {
+						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は22ですね。\n";
+						else cout << "あなたが思い浮かべた数字は21ですね。\n";
+					}
+					else {
+						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は20ですね。\n";
+						else cout << "あなたが思い浮かべた数字は21ですね。\n";
+					}
+				}
+				else {
+					cout << "あなたが思い浮かべた数字は17以上ですか？\n";
+					cin >> answer;
+
+					if (answer == 'y') {
+						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は18ですね。\n";
+						else cout << "あなたが思い浮かべた数字は17ですね。\n";
+					}
+					else {
+						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は16ですね。\n";
+						else cout << "あなたが思い浮かべた数字は15ですね。\n";
+					}
+				}
+			}//1４以下
+			else {
+				cout << "あなたが思い浮かべた数字は7以上ですか？\n";
+				cin >> answer;
+
+				if (answer == 'y') {
+					cout << "あなたが思い浮かべた数字は11以上ですか？\n";
+					cin >> answer;
+
+					if (answer == 'y') {
+						cout << "あなたが思い浮かべた数字は13以上ですか？\n";
+						cin >> answer;
+
+						if (answer == 'y') {
+							if (oddeven == 'y')	cout << "あなたが思い浮かべた数字は14ですね。\n";
+							else cout << "あなたが思い浮かべた数字は13ですね。\n";
+						}
+						else {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は12ですね。\n";
+							else cout << "あなたが思い浮かべた数字は11ですね。\n";
+						}
+					}
+					else
+					{
+						cout << "あなたが思い浮かべた数字は9以上ですか？\n";
+						cin >> answer;
+
+						if (answer == 'y') {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は10ですね。\n";
+							else cout << "あなたが思い浮かべた数字は9ですね。\n";
+						}
+						else {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は8ですね。\n";
+							else cout << "あなたが思い浮かべた数字は7ですね。\n";
+						}
+					}
+				}//6以下
+				else {
+					cout << "あなたが思い浮かべた数字は3以上ですか？\n";
+					cin >> answer;
+
+					if (answer == 'y') {
+						cout << "あなたが思い浮かべた数字は5以上ですか？\n";
+						cin >> answer;
+
+						if (answer == 'y') {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は6ですね。\n";
+							else cout << "あなたが思い浮かべた数字は5ですね。\n";
+						}
+						else {
+							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は4ですね。\n";
+							else cout << "あなたが思い浮かべた数字は3ですね。\n";
+						}
+					}
+					else { if (oddeven == 'y')cout << "あなたが思い浮かべた数字は2ですね。\n";
+					else cout << "あなたが思い浮かべた数字は1ですね。\n";
+					}
+				}
+			}
+		}
+	}
+	return 0;
+}
