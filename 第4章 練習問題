@@ -637,7 +637,6 @@ int main()
 int main()//こういうことかな
 {
 	int premasu = 0;
-	int currentmasu=1;
 	int sum;
 
 	for (int i = 1; i < 65; ++i) {
@@ -658,3 +657,67 @@ int main()//こういうことかな
 	}
 	return 0;
 }
+
+練習問題 9.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	int masu;
+	int premasu = 0;
+	int sum;
+
+	cout << "何マス目までの合計を求めますか?\n";
+	cin >> masu;
+
+	for (int i = 1; i <= masu; ++i) {
+
+		if (i == 1) {
+			cout << "現在のマス目は" << i << "です。\n";
+			cout << "今のマスのグレイン量は1です。\n";
+			premasu += 1;
+			sum = 1;
+		}
+		else {
+			cout << "\n現在のマス目は" << i << "です。\n";
+			cout << "今のマスのグレイン量は" << premasu * 2 << "です\n";
+			premasu = premasu * 2;
+			sum += premasu;
+			cout << "現在の褒美の量の合計は" << sum << "です。\n";
+		}
+	}
+	return 0;
+}
+//double v.
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	int masu;
+	double premasu = 0;
+	double sum;
+
+	cout << "何マス目までの合計を求めますか?\n";
+	cin >> masu;
+
+	for (int i = 1; i <= masu; ++i) {
+
+		if (i == 1) {
+			cout << "現在のマス目は" << i << "です。\n";
+			cout << "今のマスのグレイン量は1です。\n";
+			premasu += 1;
+			sum = 1;
+		}
+		else {
+			cout << "\n現在のマス目は" << i << "です。\n";
+			cout << "今のマスのグレイン量は" << premasu * 2 << "です\n";
+			premasu = premasu * 2;
+			sum += premasu;
+			cout << "現在の褒美の量の合計は" << sum << "です。\n";
+		}
+	}
+	return 0;
+}
+
+
