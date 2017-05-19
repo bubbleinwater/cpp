@@ -721,3 +721,46 @@ int main()
 }
 
 
+練習問題 10.			//uuummよくわからんなあああーー。
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	vector<char> jankens;
+	char janken;
+	char te = ' ';
+	cout << "まず初めに、それぞれ3つずつ、文字、（p,s,r）を好きな順番で入力してください。\n";
+
+	for (int j = 0; j < 9;++j) {
+		cin >> janken;
+		jankens.push_back(janken);
+	}
+	if (jankens[3] == 'p') {
+		char tmp = jankens[4];
+		jankens[4] = 's';
+		jankens[6] = 's';
+		jankens[2] = tmp;
+	}
+	if (jankens[7] == 'r') {
+		char tmp = jankens[1];
+		jankens[1] = 'r';
+		jankens[2] = 'p';
+		jankens[3] = 's';
+		jankens[4] = tmp;
+	}
+	if (jankens[5] == 's') {
+		jankens[1] = 's';
+		jankens[3] = 'r';
+		jankens[8] = 'r';
+	}
+
+	cout << "それでは、じゃんけんをしましょう。\nあなたの入力を合図にランダムに(p,s,r)のどれかを出力します。\n";
+	for (int i = 0; i < 8; ++i) {
+	
+		cout << "\nじゃんけん\n";
+		
+		cin >> te;
+		cout << "ぽいっ" << jankens[i];
+	}
+		return 0;
+}
