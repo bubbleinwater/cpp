@@ -551,3 +551,29 @@ int main()
 
 	return 0;
 }
+
+練習問題 6.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	vector <string>number = { "zero","one","two","three","four","five","six","secven","eight","nine" };
+	int num;
+	cout << "一桁の数字を入力してください。:";
+	cin >> num;
+	cout << number[num]<<'\n';
+
+	string numword;
+	cout << "続いて、一桁の数字を単語で入力してください。\n";
+	cin >> numword;
+
+	int i = 0;
+	for (string x : number) {
+		if (numword == x) {
+			cout << i << '\n';
+		}
+		++i;
+	}
+	return 0;
+}
