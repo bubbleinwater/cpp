@@ -524,3 +524,30 @@ int main()
 	}
 	return 0;
 }
+
+練習問題 5.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	double val1, val2;
+	char math = ' ';
+
+	cout << "このプログラムは2つの値を四則演算するものです。二つの値の後に(+,-,*,/)のどれかを入力してください。\n";
+
+	cin >> val1 >> val2 >> math;
+
+	switch (math) {
+	case '+':cout << "the sum of " << val1 << " and " << val2 << " is " << val1 + val2<<'\n';
+		break;
+	case '-':cout << val1 << " minus " << val2 << " equals " << val1 - val2 << '\n';
+		break;
+	case '*':cout << val1 << " times " << "val2" << " equals " << val1 * val2 << '\n';
+		break;
+	case '/':cout << val1 << " divided by " << val2 << " equals " << val1 / val2 << '\n';
+		break;
+	}
+
+	return 0;
+}
