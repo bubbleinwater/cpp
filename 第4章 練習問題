@@ -629,3 +629,31 @@ int main()
 	return 0;
 
 }
+
+練習問題 8.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	int premasu=1;
+	int currentmasu;
+	int sum;
+	cout << "64マスまであります。何マス目の褒美の量を求めますか？\n";
+	while (cin >> currentmasu) {//1（日本語の問題文の意味がよくわからないから）順に入れてくれることを期待する。
+		cout << "現在のマス目は" << currentmasu << "です。\n";
+		if (currentmasu == 1) {
+			cout << "今のマスのグレイン量は1です。\n";
+			sum = 1;
+		}
+		else {
+			cout << "今のマスのグレインの量は" << premasu * 2 << "です\n";
+			premasu = premasu * 2;
+			sum += premasu;
+			cout << "現在の褒美の量の合計は" << sum << "です。\n";
+		}
+
+
+	}        							//intでは、結果は、20億を超えてすこしすると-が付き
+	return 0;							//さらに進むと、0になった。
+}									//sumは最終的に-1になった。
