@@ -879,3 +879,56 @@ int main()
 
 		return 0;
 }
+
+練習問題 14.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	int max;
+	vector<int> eratos;
+	vector<int> primes = { 2 };
+
+	cout << "素数を求めます。\n";
+	cout << "いくつまでの素数を求めますか?\n";
+	cin >> max;
+
+	//limitまでの2の倍数をeratos先に入れる。
+	for (int m = 1; 2 * m <= max; ++m) {
+		eratos.push_back(2 * m);
+
+	}
+
+	for (int i = 2; i <= max; ++i)
+	{
+		int judge = 0;				//eratos要素にあるかないかを確かめる変数
+
+		for (int y : eratos) {
+			if (i == y) { ++judge; }
+			else {}
+		}
+
+
+		if (judge == 0) {		//なかった場合にprimesに格納
+			primes.push_back(i);
+																	//考え方が全くだめなやつ
+			for (int j = 1; i*j <= max; ++j) {						//	for (int j = 2; i*j <= 100; ++j) {
+				int judge1 = 0;										//
+				for (int ii = 0; ii <= eratos.size() - 1; ++ii) {	//	for (int x : eratos) {		//要素にないものをeratosに格納
+					if (i*j == eratos[ii]) { ++judge1; }			//		if (i*j == x) {}
+					else {}											//		else {
+				}													//			eratos.push_back(i*j);
+				if (judge1 == 0)									//		}
+					eratos.push_back(i*j);							//	}
+			}														//}
+		}
+		else {}		//すでにiがeratosにあった場合
+	}
+		cout << max << "までの素数は\n";
+		for (int n : primes) {
+			cout << n << '\n';
+		}
+
+		return 0;
+}
