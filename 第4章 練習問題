@@ -894,7 +894,7 @@ int main()
 	cout << "いくつまでの素数を求めますか?\n";
 	cin >> max;
 
-	//limitまでの2の倍数をeratos先に入れる。
+	//maxまでの2の倍数をeratos先に入れる。
 	for (int m = 1; 2 * m <= max; ++m) {
 		eratos.push_back(2 * m);
 
@@ -931,4 +931,51 @@ int main()
 		}
 
 		return 0;
+}
+
+練習問題 15.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	vector<int> primes = { 2,3 };
+	int rem;
+	int max;
+	int n;
+	cout << "あらかじめ、1からいくつの数字までの素数を記憶しますか？\n";
+	cin >> max;
+
+	cout << "何個目までの素数を出力しますか？\n";
+	cin >> n;
+
+	for (int i = 4; i <= max; i++) {
+		int judge = 0;
+		for (int j = 0; j < primes.size() - 1; ++j) {
+			rem = i % primes[j];
+			if (rem == 0) { ++judge; }
+			else {}
+		}
+		if (judge == 0) {
+			primes.push_back(i);
+		}
+	}
+
+
+	if (n <= primes.size() ) {
+		cout << n << "個の素数は\n";
+		for (int y = 0; y < n;++y) {
+			cout << primes[y] << "\n";
+		}
+		cout << "です。\n";
+	}
+	else {
+		cout <<n<< "個目の素数の値は" << max << "を超えています。\n" << max << "以下の素数は\n";
+		for (int x : primes) {
+			cout << x<<'\n';
+		}
+		cout << "で、"<<primes.size()<<"個です。\n";
+	}
+
+	return 0;
 }
