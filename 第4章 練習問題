@@ -1080,3 +1080,66 @@ int main()
 
 	return 0;
 }
+
+練習問題 17.
+
+#include "../../std_lib_facilities.h"
+
+
+int main()
+{
+	int j = 0;
+	string val1;
+	vector<string> tsudoi;
+	vector<int> num(100);
+	string maxv = " ", miniv = " ";
+
+
+
+	cout << "入力された文字列の(辞書式に並べた時の)最大値と最小値を追跡します。\n";
+
+	for (int i = 0; cin >> val1; ++i) {
+
+			tsudoi.push_back(val1);
+
+				if (i == 0) {
+					maxv = val1;
+					miniv = val1;
+				}
+				else if (i != 0 && val1 > maxv) {
+					maxv = val1;
+					cout << "the latest so far\n";			//is my english right?
+				}
+				else if (i != 0 && val1 < miniv) {
+					miniv = val1;
+					cout << "the firstest so far\n";		//correct english?
+				}
+				else {}
+
+				j = i;
+	}
+
+	for (int k = 0; k < tsudoi.size()-1; ++k) {
+		for (int L = k + 1; L < tsudoi.size(); ++L) {
+			if (tsudoi[k] == tsudoi[L]) num[k] += 1;
+			else{}
+		}
+	}
+	int exit = 0;
+	for (int i = 0; i < num.size()-1; ++i) {
+		if (exit == 1)break;
+		for (int j = i+1; j < num.size();++j)
+			if (num[i] > num[j]) {
+				if (j == num.size() - 1) {
+					exit = 1;
+					cout << "最頻値は" << tsudoi[i] << "です。\n";
+				}
+			}
+		else break;
+	}
+
+	cout << "最小値は" << miniv << ", 最大値は" << maxv << ", 値の個数は" << j + 1 << "です。\n";
+	
+
+	return 0;
+}
