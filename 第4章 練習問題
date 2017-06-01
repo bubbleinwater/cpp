@@ -1168,3 +1168,28 @@ int main()
 
 	return 0;
 }
+
+こっちの方が繰り返せていいかな？　18.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	double a, b, c;
+	double ans1, ans2;
+	double bb4ac;
+	double rootbb4ac;
+	cout << "ax^2+bx+cの形の2次方程式を解きます。\na、b、cの順に入力してください。\n";
+	for (; cin >> a >> b >> c;){
+
+		if (b*b - 4 * a*c >= 0) {
+			bb4ac = b*b - 4 * a*c;
+			rootbb4ac = sqrt(bb4ac);
+			ans1 = -1 * (b - rootbb4ac) / 2 * a;
+			ans2 = -1 * (b + rootbb4ac) / 2 * a;
+			cout << "この2次方程式の解は、" << ans1 << "と" << ans2 << "です。\n";
+		}
+		else cout << "この2次方程式の解は実数の範囲にありません。\n";
+}
+	return 0;
+}
