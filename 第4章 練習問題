@@ -1236,7 +1236,7 @@ int main()
 	return 0;
 }
 
-練習問題 20.		//これならok!!なぜだかはわからない。
+練習問題 19.		//これならok!!なぜだかはわからない。
 
 #include "../../std_lib_facilities.h"
 
