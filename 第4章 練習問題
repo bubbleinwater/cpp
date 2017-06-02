@@ -1324,16 +1324,21 @@ int main()
 			}
 		}
 	}
+
+
+	cin.clear();								//これでいいのかな？
+	cin.ignore();								//調べたら見つかったんだけど。
 	cout << "入力された中から、指定された名前の方の点数を出力します。\n";
+	
 	for (int y = 0; cin >> thename; ++y) {
 		int judge = 0;
 		for (int x = 0; x < names.size(); ++x) {
 			if (thename == names[x]) {
 				cout << thename << "さんの点数は" << scores[x] << "です。\n";
-				judge = 1;
+				++judge;
 			}
 		}
-		if (judge != 0) {
+		if (judge == 0) {
 			cout << "name not found.\n";
 		}
 	}
