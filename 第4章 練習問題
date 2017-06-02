@@ -1195,7 +1195,7 @@ int main()
 }
 
 
-練習問題 19.
+//練習問題 19.
 //これだと abort() has been calledになる。なぜだあああああああ
 #include "../../std_lib_facilities.h"
 
@@ -1216,7 +1216,7 @@ int main()
 		else {
 			int judge = 0;
 			for (int j = 1; j <= i; ++j) {
-				if (names[i] == names[j]) {
+				if (names[i] == names[j]) {			//ここがダメらしい。
 					judge += 1;
 					}
 			}
@@ -1233,5 +1233,52 @@ int main()
 	for (int i = 0; i < names.size();++i) {
 		cout << names[i] << " " << scores[i] << '\n';
 	}
+	return 0;
+}
+
+練習問題 20.		//これならok!!なぜだかはわからない。
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	vector<string> names(1);
+	vector<int> scores(1);
+	string name;
+	int score;
+
+	cout << "最初に名前とスコアを入力してください。\n同じ名前を２つ以上使うことはできません。\n";
+
+	for (int i = 0; cin >> name >> score; ++i) {
+		int judge = 0;
+		if (i == 0) {
+			names[i] = name;
+			scores[i] = score;
+		}
+		else {
+			for (int j = 0; j <= i; ++j) {
+				if(i == j){}
+				else if (name == names[j]) {			name[i]==name[j]だとだめなのかな？？？？
+					judge += 1;
+					}
+				else{}
+			}
+			
+			if (judge != 0) {
+				cout << "その名前は既に入力されています。\n";
+				name = " ";
+				score = 0;
+				--i;						//ここに--i;がないと、abort() has been calledになる。
+			}
+			else {
+				names.push_back(name);
+				scores.push_back(score);
+			}
+		}
+	}
+	for (int i = 0; i < names.size();++i) {
+		cout << names[i] << " " << scores[i] << '\n';
+	}
+
 	return 0;
 }
