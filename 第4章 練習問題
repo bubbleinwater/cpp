@@ -1193,3 +1193,45 @@ int main()
 }
 	return 0;
 }
+
+
+練習問題 19.
+//これだと abort() has been calledになる。なぜだあああああああ
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	vector<string> names(1);
+	vector<int> scores(1);
+	string name;
+	int score;
+
+	cout << "最初に名前とスコアを入力してください。\n同じ名前を２つ以上使うことはできません。\n";
+
+	for (int i = 0; cin >> name >> score;++i) {
+		if (i == 0) {
+			names[0] = name;
+			scores[0] = score;
+		}
+		else {
+			int judge = 0;
+			for (int j = 1; j <= i; ++j) {
+				if (names[i] == names[j]) {
+					judge += 1;
+					}
+			}
+			if (judge != 0) {
+				cout << "その名前は既に入力されています。\n";
+			}
+
+			else {
+				names.push_back(name);
+				scores.push_back(score);
+			}
+		}
+	}
+	for (int i = 0; i < names.size();++i) {
+		cout << names[i] << " " << scores[i] << '\n';
+	}
+	return 0;
+}
