@@ -100,3 +100,47 @@ int main()
 	}
 	return 0;
 }
+
+練習問題6. 
+
+#include "../../std_lib_facilities.h"
+
+double ctof(double c)
+//事前条件: 引数は-273.15以上であり、
+//事後条件: 0以上の値を返す。
+{
+
+	if (!(c >= -273.15)) simple_error("不正な入力: 下限値を超えています。\n");
+	double f = c * 9 / 5 + 32;
+	if (f < -459.67) simple_error("error. ctok() post-condition");
+	return f;
+}
+
+double ftoc(double f)
+//事前条件: 引数は0以上であり、
+//事後条件: -273.15以上の値を返す。
+{
+
+	if (!(f >= -459.67)) simple_error("不正な入力: 下限値を超えています。\n");
+	double c = (f - 32) * 5/9;
+	if (c < -273.15) simple_error("error. ftoc() post-condition");
+	return c;
+}
+
+
+int main()
+{
+	cout << "値を入力した後に単位(セ氏ならばc、華氏ならばf)を入力してください。\n";
+	double v = 0;
+	char unit;
+	cin >> v >> unit;
+	if (unit == 'c') {
+		double f = ctof(v);
+		cout <<"摂氏"<<v << "度は、華氏"<< f << "度です。\n";
+	}
+	if (unit == 'f') {
+		double c = ftoc(v);
+		cout <<"華氏"<< v << "度は、摂氏" << c << "度です。\n";
+	}
+	return 0;
+}
