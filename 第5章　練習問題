@@ -146,6 +146,7 @@ int main()
 }
 
 練習問題7. 
+
 #include "../../std_lib_facilities.h"
 
 int main()
@@ -158,21 +159,32 @@ int main()
 
 	double x1=0, x2=0;
 	double D = (b*b) - (4 * a*c);
+	double postcon1, postcon2;
 
 	if (D>0) {
 		x1 = (-b + sqrt(D)) / 2 * a;
 		x2 = (-b - sqrt(D)) / 2 * a;
-		cout <<a<<"x^2+"<<b<<"x+"<<c<< "=0 の2つの解は" << x1 << "と" << x2<<"です。\n";
+
+		postcon1 = a*x1*x1 + b*x1 + c;
+		postcon2 = a*x2*x2 + b*x2 + c;
+
+		if (!(postcon1 == 0 && postcon2 == 0))simple_error("error post-condition");
+
+		cout <<"("<<a<<")x^2+("<<b<<")x+("<<c<< ")=0 の2つの解は" << x1 << "と" << x2<<"です。\n";
 	}
 
 	else if (D == 0) {
 		x1 = -b / (2 * a);
-		cout << a << "x^2+" << b << "x+" << c << "=0 の解は一つで、" << x1 << "です。\n";
+		postcon1 = a*x1*x1 + b*x1 + c;
+		if (postcon1 != 0) simple_error("error post-condition");
+		cout <<"("<< a << ")x^2+(" << b << ")x+(" << c << ")=0 の解は一つで、" << x1 << "です。\n";
 	}
 
 	else if (D < 0) {
-		cout << a << "x^2+" << b << "x+" << c << "=0 には実数の範囲で解はありません。\n";
+		cout << "実数の範囲で解はありません。\n";
 	}
+
+
 
 	return 0;
 }
