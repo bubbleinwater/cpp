@@ -39,7 +39,7 @@ double ctok(double c)
 //事後条件: 0以上の値を返す。
 {
 
-	if (!(c > -273.15)) simple_error("不正な入力: 下限値を超えています。\n");
+	if (!(c >= -273.15)) simple_error("不正な入力: 下限値を超えています。\n");
 	double k = c + 273.15;
 	if (k < 0) simple_error("error. ctok() post-condition");
 	return k;
@@ -53,5 +53,50 @@ int main()
 	double k = ctok(c);
 	cout << k << '\n';
 
+	return 0;
+}
+
+
+練習問題5.
+
+#include "../../std_lib_facilities.h"
+
+double ctok(double c)
+//事前条件: 引数は-273.15以上であり、
+//事後条件: 0以上の値を返す。
+{
+
+	if (!(c >= -273.15)) simple_error("不正な入力: 下限値を超えています。\n");
+	double k = c + 273.15;
+	if (k < 0) simple_error("error. ctok() post-condition");
+	return k;
+}
+
+double ktoc(double k)
+//事前条件: 引数は0以上であり、
+//事後条件: -273.15以上の値を返す。
+{
+
+	if (!(k >= 0)) simple_error("不正な入力: 下限値を超えています。\n");
+	double c = k - 273.15;
+	if (c < -273.15) simple_error("error. ktoc() post-condition");
+	return c;
+}
+
+
+int main()
+{
+	cout << "値を入力した後に単位(セ氏ならばc、ケルビンならばk)を入力してください。\n";
+	double v = 0;
+	char unit;
+	cin >> v >> unit;
+	if (unit == 'c') {
+		double k = ctok(v);
+		cout <<v << "℃は、"<< k << "ケルビンです\n";
+	}
+	if (unit == 'k') {
+		double c = ktoc(v);
+		cout << v << "ケルビンは、" << c << "℃です。\n";
+	}
 	return 0;
 }
