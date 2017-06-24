@@ -144,3 +144,35 @@ int main()
 	}
 	return 0;
 }
+
+練習問題7. 
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	double a = 0, b = 0, c = 0;
+
+	cout << "2次方程式の解を求めます。\nax^2+bx+c=0の形のa,b,cを順に入力してください。\n";
+
+	cin >> a >> b >> c;
+
+	double x1=0, x2=0;
+	double D = (b*b) - (4 * a*c);
+
+	if (D>0) {
+		x1 = (-b + sqrt(D)) / 2 * a;
+		x2 = (-b - sqrt(D)) / 2 * a;
+		cout <<a<<"x^2+"<<b<<"x+"<<c<< "=0 の2つの解は" << x1 << "と" << x2<<"です。\n";
+	}
+
+	else if (D == 0) {
+		x1 = -b / (2 * a);
+		cout << a << "x^2+" << b << "x+" << c << "=0 の解は一つで、" << x1 << "です。\n";
+	}
+
+	else if (D < 0) {
+		cout << a << "x^2+" << b << "x+" << c << "=0 には実数の範囲で解はありません。\n";
+	}
+
+	return 0;
+}
