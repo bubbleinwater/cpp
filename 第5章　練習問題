@@ -30,3 +30,28 @@ int main()
 
 	return 0;
 }
+
+練習問題4.
+#include "../../std_lib_facilities.h"
+
+double ctok(double c)
+//事前条件: 引数は-273.15以上であり、
+//事後条件: 0以上の値を返す。
+{
+
+	if (!(c > -273.15)) simple_error("不正な入力: 下限値を超えています。\n");
+	double k = c + 273.15;
+	if (k < 0) simple_error("error. ctok() post-condition");
+	return k;
+}
+
+int main()
+{
+	cout << "ケルビンに変換します。セ氏を入力してください。\n";
+	double c = 0;
+	cin >> c;
+	double k = ctok(c);
+	cout << k << '\n';
+
+	return 0;
+}
