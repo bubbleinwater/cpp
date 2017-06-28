@@ -213,3 +213,30 @@ int main()
 
 	return 0;
 }
+
+練習問題9.　わかんねえーー
+
+練習問題　10.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	int x = 0;
+	double num,sum = 0;
+	vector<double> nums;
+	cout << "合計したい値の数を入力してください。\n";
+	cin >> x;
+
+	cout << "整数を入力し、最後に垂直バー(|)を入力してください。\n";
+	for (int i = 0; cin >> num; ++i) {
+		nums.push_back(num);
+	}
+	for (int i = 0; i < x; ++i) { sum += nums[i]; }
+
+	cout << "最初の" << x << "個の数字( ";
+	for (int i = 0; i < x;++i)cout << nums[i]<<" ";
+	cout << ")の合計は" << sum << "です。\n";
+
+	return 0;
+}
