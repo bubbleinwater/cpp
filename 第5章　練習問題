@@ -271,3 +271,21 @@ int main()
 
 	return 0;
 }
+
+練習問題11.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	constexpr double max = 31;      //最大値は832040であった。
+	vector<double> Fibseq = { 0,1 };
+
+	for (int i = 2; i < max; ++i) {
+		Fibseq.push_back(Fibseq[i - 2] + Fibseq[i - 1]);
+	}
+
+	for (double y : Fibseq)cout << y<<'\n';
+	
+	return 0;
+}
