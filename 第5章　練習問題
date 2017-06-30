@@ -289,3 +289,81 @@ int main()
 	
 	return 0;
 }
+
+練習問題12.　　　//!!途中経過!!
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	int x, y;
+	int bull = 0;
+	int cow = 0;
+	vector<int> vsmatch{ 0,0,0,0 };
+	cout << "bulls and cows!!\n";
+	vector<int> q1{ 4,5,2,8 };
+	vector<int> q2{ 2,8,5,3 };
+	vector<int> q3{ 1,6,3,2 };
+	vector<int> q4{ 7,5,3,9 };
+	vector<int> q5{ 4,2,1,7 };
+	vector<int> q6{ 9,5,8,2 };
+
+
+	cout << "1から6までのどこを当てますか？\n";//まだランダムは無理
+	cin >> x;
+	if (x == 1) { for (int i = 0; i < 4; ++i)vsmatch[i] = q1[i]; }
+	if (x == 2) { for (int i = 0; i < 4; ++i)vsmatch[i] = q2[i]; }
+	if (x == 3) { for (int i = 0; i < 4; ++i)vsmatch[i] = q3[i]; }
+	if (x == 4) { for (int i = 0; i < 4; ++i)vsmatch[i] = q4[i]; }
+	if (x == 5) { for (int i = 0; i < 4; ++i)vsmatch[i] = q5[i]; }
+	if (x == 6) { for (int i = 0; i < 4; ++i)vsmatch[i] = q6[i]; }
+
+
+	for (int h : vsmatch)cout << h;
+	cout << "\nvsmatchの[1]は" << vsmatch[1]<<'\n';
+
+	if (!(x >= 0 && x <= 6))simple_error("1から6までの数字を入力してください。\n");
+
+	cout << "推測した1から9の数字を重複なしで4つ入力してください。\n";
+	vector<int> ans;
+	for (int i = 0; i <= 3; ++i) {
+		cin >> y;
+		ans.push_back(y);
+	}
+
+	if (vsmatch[0] == ans[0]) { bull += 1; }
+	if (vsmatch[1] == ans[1]) { bull += 1; }
+	if (vsmatch[2] == ans[2]) { bull += 1; }
+	if (vsmatch[3] == ans[3]) { bull += 1; }
+
+	cout << "今のbullは" << bull << '\n';
+
+	try {
+		int test1 = 0;
+		int test2 = 0;
+		for (int i = 0; i < 4; ++i)
+		{
+			cerr << "ここは？\n";
+			test1 = vsmatch[i];
+			for (int j = 0; j <= 3;++j) {				//ここを(int j = 0; i <= 3; ++j)にしてて全然進まなかった(T.T)
+				test2 = ans[j];					//はあああああああああまじでつらかった。	
+				cout << "今のtest2は" << test2 << '\n';		//とりあえずiをjに変えて他はそのままアップ
+				if (i != j) {
+					cerr << "ここ？\n";
+					if (test1 == test2) {
+						cow += 1;
+					}
+				}
+			}
+		}
+//ここ以降は実行されてない。
+
+		cout << bull << " bull and " << cow << " cow" << '\n';
+
+		return 0;
+	}
+	catch (exception) {
+		cerr << "何がダメなのかわからない。\n"; 
+		keep_window_open( );
+	}
+}
