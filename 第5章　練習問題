@@ -518,3 +518,72 @@ int main()
 		keep_window_open( );
 	}*/
 }
+
+練習問題　14.			//関数を使ったりもできるのでしょうか.....
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	vector<int>sunday;
+	vector<int>monday;
+	vector<int>tuesday;
+	vector<int>wednesday;
+	vector<int>thursday;
+	vector<int>friday;
+	vector<int>saturday;
+	vector<int>draft;
+	string dayofweek;
+	int x;
+	double sumsun = 0;
+	double summon = 0;
+	double sumtues = 0;
+	double sumwednes = 0;
+	double sumthurs = 0;
+	double sumfri = 0;
+	double sumsatur = 0;
+	double sumdraft = 0;
+
+	cout << "曜日(monday(mon,mo)など必ず小文字)の後に値を入力してください。ctrl+Zで終了します。\n";
+	for (int i = 0; cin >> dayofweek >> x; ++i)
+	{
+		if (dayofweek == "sunday" || dayofweek == "sun" || dayofweek == "su") {
+			sunday.push_back(x);
+		}
+		else if (dayofweek == "monday" || dayofweek == "mon" || dayofweek == "mo") {
+				monday.push_back(x);
+			}
+		else if (dayofweek == "tuesday" || dayofweek == "tue" || dayofweek == "tu") {
+			tuesday.push_back(x);
+		}
+		else if (dayofweek == "wednesday" || dayofweek == "wed" || dayofweek == "we") {
+			wednesday.push_back(x);
+		}
+		else if (dayofweek == "thursday" || dayofweek == "thu" || dayofweek == "th") {
+			thursday.push_back(x);
+		}
+		else if (dayofweek == "friday" || dayofweek == "fri" || dayofweek == "fr") {
+			friday.push_back(x);
+		}
+		else if (dayofweek == "saturday" || dayofweek == "sat" || dayofweek == "sa") {
+			saturday.push_back(x);
+		}
+		else { draft.push_back(x); }
+	}
+
+	for (int y : sunday)sumsun += y;
+	for (int y : monday)summon += y;
+	for (int y : tuesday)sumtues += y;
+	for (int y : wednesday)sumwednes += y;
+	for (int y : thursday)sumthurs += y;
+	for (int y : friday)sumfri += y;
+	for (int y : saturday)sumsatur += y;
+	for (int y : draft)sumdraft += y;
+	cout << "sundayの値は合計で" << sumsun << '\n' << "mondayの値は合計で" << summon << '\n'
+		<< "tuesdayの値は合計で" << sumtues << '\n' << "wednesdayの値は合計で" << sumwednes << '\n'
+		<< "thursdayの値は合計で" << sumthurs << '\n' << "fridayの値は合計で" << sumfri << '\n'
+		<< "saturdayの値は合計で" << sumsatur << '\n'<<"です\n";
+	cout << "拒否した値の個数は" << draft.size() << "で、その合計は" << sumdraft << "です。\n";
+
+	return 0;
+}
