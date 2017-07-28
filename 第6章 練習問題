@@ -513,86 +513,53 @@ catch (...) {
 
 
 練習問題 4.
-
-
-
-#include "../../std_lib_facilities.h"
-
+#include"../../std_lib_facilities.h"			//みなさま、いかがでしょうか。
 
 class Name_value {
 public:
 	string name;
 	double value;
 
-	Name_value(string st)					//ここ、よくわかっていない。
-		:name(st), value(0) { }				//名前だけ渡されるときとかないからなくていいのかな？
-	Name_value(string st,double val)			//電卓のプログラムをまだりかいしていないから、そっち
-		:name(st),value(val){ }				//からそのまま借りてきただけ.		
-
+	Name_value()
+		:name(" "),value(0){}
+	Name_value(string st)
+		:name(st),value(0){ }
+	Name_value(string st,double val)
+		:name(st),value(val){ }
 };
 
-class Name_value_stream {
-public:
-	void putintostream(Name_value nv);
-	void name_search(Name_value nv);
+Name_value putintostream(){
+	char ch;
+	cin >> ch;
+	if (ch == ';') { return (Name_value(";", 0)); }
+	cin.putback(ch);
 
-private:
-	vector<Name_value> names_stream_for_search;		//識別子がややこしい
+	Name_value nv;
+	string tmpname;
+	double tmpvalue;
+	cin >> tmpname >> tmpvalue;
+	nv.name = tmpname;
+	nv.value = tmpvalue;
 
-};
-
-
-
-
-void Name_value_stream::putintostream(Name_value n){
-	Name_value_stream::names_stream_for_search.push_back(n);
-};
-
-Name_value_stream nv;
-
-void Name_value_stream::name_search(Name_value nv)			//これは第4章のやつそのまま使っただけだけど
-{									//だったら第4章の方がコードが散らかってないと思う。
-	int judge = 0;
-	for (int i = 0; i < names_stream_for_search.size(); i++) {
-		if (nv.name == names_stream_for_search[i].name)
-			++judge;
-	}
-	if (judge != 0)
-		error("You could not use same name twice.");
-
+	return nv;
 }
 
-int main() {
+
+int main()
+{
 	vector<Name_value> NV;
-	string name;
-	double value;
-	
-	
-	cout << "名前と点数を入力してください。\n";
-	int i = 0;
-	while (cin) {
-
-		cin >> name >> value;					//Tokenでやれってことなのかな。Tokenにしてないし
-//		NV.push_back( Name_value(name,value));			//ここはまだまとまってなくて、valueにも値を入れないと
-		if (name != ";") {					//coutしない。
-			if (i != 0) {
-				nv.name_search(Name_value(name, value));
-			}
-			nv.putintostream(Name_value(name, value));
-			NV.push_back(Name_value(name, value));
-
-			++i;
-		}
-		else{
-
+	while (true) {
+		Name_value n_v = putintostream();
+		if (n_v.name == ";") {
 			for (int i = 0; i < NV.size(); ++i) {
-				cout <<'\n'<< NV[i].name << "さんの点数は" << NV[i].value << "です。";
+				cout << '\n' << NV[i].name << "さんの点数は" << NV[i].value << "です。";
 			}
-			cout << "\n";
-			break;
+			cout << '\n';
+			return 0;
 		}
+		else { NV.push_back(n_v); }
+
+
 	}
-
-
 	return 0;
 }
