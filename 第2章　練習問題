@@ -11,3 +11,25 @@ int main()
 
 	return 0;
 }
+
+5.用語
+
+//	コメント
+<<	出力演算子
+#include	ヘッダーを読み込み、そのファイルの機能を利用可能にする
+C++
+main()	c++のプログラムに必含まれていなければならない関数。ここからスタートする。
+object code	機械が読めるコード
+関数	機能をまとめたもの(?)
+コメント	未来の自分もしくはコードを読む他の人への説明
+コンパイラー	ソースコードをオブジェクトコードにしてくれるプログラム
+compile-time-error
+executable
+output
+source code
+統合開発環境
+プログラム
+statement
+header
+library
+linker	別々のオブジェクトコードをつなげてくれる(?)
