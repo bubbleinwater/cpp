@@ -4,13 +4,12 @@
 int main()
 {
 	cout << "Please enter your first name and age(followed by 'enter'):/n";
-	string first_name = "???";
-	int age = -1;
-	cin >> first_name;
-	cin >> age;
-	cout << "hello, " << first_name << " (age "<<age<<")!\n\n";
+	string first;
+	string second;
+	cin >> first >>second;
+	cout << "Hello, " << first <<' '<< second <<'\n';
 
-	keep_window_open();		//this function won't work as it's wished when you type in 22 carlos.
+	keep_window_open();
 
 	return 0;
 }
