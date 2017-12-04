@@ -44,4 +44,31 @@ p65try this
 
 ここでの単語の意味は、大文字か小文字かというのも含めて全く同じ文字列のことを言っている。
 ゆえに、ここではSheとsheは同じ単語ではない。
-														
+	
+
+
+p74trythis
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	double d = 0;
+	cout << "double型の変数dに値を入力\n";
+	while (cin >> d) {
+		int i = d;
+		cout << "int iにdouble dの値を代入\n";
+		char c = i;
+		cout << "char cにint iを代入\n";
+		int i2 = c;
+		cout << "int i2にchar cの値を代入\n";
+		cout << "d==" << d
+			<< " i==" << i
+			<< " i2==" << i2
+			<< " char(" << c << ")\n";
+		cout << "変数dに値を入力\n";
+	}
+
+	keep_window_open();
+	return 0;
+}													
