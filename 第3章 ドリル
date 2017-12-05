@@ -83,48 +83,42 @@ step 4.
 
 #include "../../std_lib_facilities.h"
 
-
 int main()
 {
-	string first_name, friend_name;
-	char friend_gender;
-	cout << "Enter the name of the person you want to write to\n";
+	cout << " Enter the name of the person you want to write to\n";
+
+	string first_name;
 	cin >> first_name;
-	cout << "Enter the name of the person who you want to call you.followed by 'm' or 'f'(MALE=>m,FEMALE=>f)\n";
-	cin >> friend_name >> friend_gender;
+	cout << "next, enter your another friend's name "
+		<<"followed by friend's gender(f for female,m for male.)\n";
 
+	string friend_name;
+	cin >> friend_name;
 
-	cout << "Dear " << first_name << ","
-		<< "How are you?" << "\n I'm fine." << "\n Do you still love listening music? Recently I always listening to the album 'CHUBBY GROOVE' from INABA/SALAS\n"
-		<< "\n Have you seen " << friend_name << " lately?\n";
-	if (friend_gender == 'm')
-		cout << "If you see " << friend_name << " please ask him to call me.\n";
+	char friend_gender = 0;
+	cin >> friend_gender;
+
+	cout << " Dear " << first_name << ", "
+		<< "How are you? I am fine.\n I went to STARBUCKS this morning."
+		<<" I really like the starbucks latte.\n\n";
+	cout << " Have you seen " << friend_name << " lately?\n";
+	cout << "If you see " << friend_name << " please ask ";
+	
 	if (friend_gender == 'f')
-		cout << "If you see " << friend_name << " please ask her to call me.\n";
+		cout << "her";
+	if (friend_gender == 'm')
+		cout << "him";
 	
-		return 0;
+	cout << " to call me.\n";
+
+
+	keep_window_open();
+	return 0;
 }
-	
-		
-/*
-性別を尋ねるif文で
-if (friend_gender == "m")
-と入力したところ、
-オペランドに互換性がありません("char"と"const char")
-というエラーが出た。
-if (frienf_name == 'm')
-などと書き換えたところ、
-これらのオペランドと一致する演算子"=="はありません
-二項演算子'==':型'std::string'の左オペランドを扱う演算子が見つかりません(または変換できません)
-と出た。
-結論
-比較するときには
-別途、
-char male = 'm';
-などと事前にchar型の変数を宣言してそれと比較させないとダメなのかもなと思った。※よく読んだら問題文に書いてあった。
-今ちょっと考えたら
-そもそもstringで扱えばよかった。
-*/
+
+
+step 6
+
 
 #include "../../std_lib_facilities.h"
 
