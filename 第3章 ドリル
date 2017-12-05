@@ -1,4 +1,88 @@
+﻿
+p76第3章　drill
+
+step 1.
+
 #include "../../std_lib_facilities.h"
+
+int main()
+{
+	cout << " Please enter your first name.\n";
+
+	string first_name;
+	cin >> first_name;
+
+	cout << "Hello," << first_name << '\n';
+
+	keep_window_open();
+	return 0;
+}
+
+
+1-2
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	cout << " Enter the name of the person you want to write to\n";
+
+	string first_name;
+	cin >> first_name;
+
+	cout << "Dear " << first_name << ",\n";
+
+	keep_window_open();
+	return 0;
+}
+
+step 2.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	cout << " Enter the name of the person you want to write to\n";
+
+	string first_name;
+	cin >> first_name;
+
+	cout << " Dear " << first_name << ", "
+		<< "How are you? I am fine.\n I went to STARBUCKS this morning.\n";
+
+	keep_window_open();
+	return 0;
+}
+
+step 3.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	cout << " Enter the name of the person you want to write to\n";
+
+	string first_name;
+	cin >> first_name;
+	cout << "next, enter your another friend's name\n";
+
+	string friend_name;
+	cin >> friend_name;
+
+	cout << " Dear " << first_name << ", "
+		<< "How are you? I am fine.\n I went to STARBUCKS this morning."
+		<<" I really like the starbucks latte.\n\n";
+	cout << " Have you seen " << friend_name << " lately?\n";
+
+
+	keep_window_open();
+	return 0;
+}
+
+step 4.
+
+#include "../../std_lib_facilities.h"
+
 
 int main()
 {
