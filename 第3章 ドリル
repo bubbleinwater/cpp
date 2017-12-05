@@ -116,6 +116,64 @@ int main()
 	return 0;
 }
 
+step 5.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	cout << " Enter the name followed her/him age of the person you want to write to\n";
+
+	string first_name;
+	cin >> first_name;
+	double age = 0;
+	cin >> age;
+
+	cout << "next, enter your another friend's name "
+		<<"followed by friend's gender(f for female,m for male.)\n";
+
+	string friend_name;
+	cin >> friend_name;
+
+	char friend_gender = 0;
+	cin >> friend_gender;
+	/*
+	cout << "and ";
+		if (friend_gender == 'f')
+			cout << "her";
+	if (friend_gender == 'm')
+		cout << "him";
+	cout << " age?";
+
+	double age = 0;
+	cin >> age;
+	*/
+	cout << " Dear " << first_name << ", "
+		<< "How are you? I am fine.\n I went to STARBUCKS this morning."
+		<<" I really like the starbucks latte.\n\n";
+	cout << " Have you seen " << friend_name << " lately?\n";
+	cout << " If you see " << friend_name << " please ask ";
+	
+	if (friend_gender == 'f')
+		cout << "her";
+	if (friend_gender == 'm')
+		cout << "him";
+	
+	cout << " to call me.\n";
+
+	if (age <= 0 || 110 <= age) {
+		cout << "your age:" << age << "?\n";
+		simple_error("you're kidding!");
+	}
+	else
+		cout << " I hear you just had a birthday and you are "
+		<< age << " years old.\n";
+
+	keep_window_open();
+	return 0;
+}
+
+
 
 step 6
 
