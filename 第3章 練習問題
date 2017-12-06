@@ -1,69 +1,50 @@
-//練習問題2.
+﻿//練習問題2.
 
 #include "../../std_lib_facilities.h"
 
 int main()
 {
-	cout << "マイルをキロメートルに変換します。\n" << "マイル数を入力してください\n";
+	cout << "kmに変換します。単位がマイルの値を入力してください。\n";
+	double length;
+	cin >> length;
 
-	double mile = 0.0;
-	double kilo = 0.0;
+//mileをkmに変換して出力
+	cout << length << "mileは" << length * 1.609 << "kmです。\n";
 
-	cin >> mile;
-
-	kilo = mile * 1.609;
-
-	cout << mile << "マイルは" << kilo << "kmです。\n";
-
+	keep_window_open();
 	return 0;
 }
-
 
 //練習問題4.
 
 #include "../../std_lib_facilities.h"
 
+void sizeofnumber(int big, int small)
+{
+	cout << "大きい方の数は" << big
+		<< "\n小さい方の数は" << small
+		<< "\n差は" << big-small << "です。\n";
+}
 int main()
 {
-	int val1, val2,difference = 0,rem,div1 = 0,div2 = 0;
-	cout << "整数を２つ入力して下さい\n";
-	cin >> val1 >> val2;
-
-	if (val1 > val2) {
-		cout << "最小値は" << val2 << "最大値は" << val1 << "です\n";
-		difference = val1 - val2;
-		rem = val1 % val2;
-		if (rem == 0) {
-			div1 = val1 / val2;
-		}
-	}
-	else if (val1 < val2) {
-		cout << "最小値は" << val1 << "最大値は" << val2 << "です\n";
-		difference = val2 - val1;
-		rem = val2 % val1;
-		if (rem == 0) {
-			div2 = val2 / val1;
-		}
-	}
-	else
-		cout << "二つの値は等しいです\n";
-
-	cout << "二つの値の合計は" << val1 + val2 << "です\n";
-	cout << "二つの値の差は" << difference << "です\n";
-	cout << "二つの値の積は" << val1*val2 << "です\n";
-	if (div2 == 0) {
-		if (rem != 0)
-			cout << "比率は" << val1 << "/" << val2 << "です\n";
+	int val1, val2;
+	cout << "整数値を2つ入力してください。\n";
+	while (cin >> val1 >> val2)
+	{
+		if (val1 < val2)
+			sizeofnumber(val2, val1);
+		else if (val1 > val2)
+			sizeofnumber(val1, val2);
 		else
-			cout << "比率は" << div1 << "です\n";
+			cout << "二つの数の大きさは等しいです。\n";
+		double ratio = 1.0*val1 / val2;
+
+		cout << "合計は" << val1 + val2
+			<< "\n積は" << val1 * val2
+			<< "\n比率は" << ratio << "です。\n";
 	}
-	else
-		if (rem != 0)
-			cout << "比率は" << val1 << "/" << val2 << "です\n";
-		else
-			cout << 1 << "/" << div2 << "です\n";
-	
-	return 0;
+	keep_window_open();//ループを抜けるために入力した
+	return 0;			//文字がこちらにも使われる。
 }
 
 練習問題5.
