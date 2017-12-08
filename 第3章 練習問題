@@ -161,19 +161,19 @@ int main()
 
 int main()
 {
-	int number = 0;
-	int oper = 0;
+	cout << "整数値を1つ入力してください。\n";
+	int num1,div;
 
-	cout << "整数を一つ入力してください\n";
+	while (cin >> num1) {
+		div = num1 % 2;
 
-	cin >> number;
-	oper = number % 2;
-	
-	if (oper == 0)
-		cout << number << " is an even number\n";
-	else
-		cout << number << " is an odd number\n";
+		if (div != 0)
+			cout << "値" << num1 << "は奇数です。\n";
+		else
+			cout << "値" << num1 << "は偶数です。\n";
+	}
 
+	keep_window_open();
 	return 0;
 }
 
