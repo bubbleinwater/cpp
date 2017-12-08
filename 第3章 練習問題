@@ -215,6 +215,7 @@ int main()
 }
 
 練習問題 10.
+
 #include "../../std_lib_facilities.h"
 
 int main()
@@ -223,27 +224,24 @@ int main()
 
 	string operation = " ";
 	double val1, val2;
-	cin >> operation >> val1 >> val2;
+	
+	while (cin >> operation >> val1 >> val2)
+	{
+		if (operation == "+" || operation == "plus")
+			cout << val1 << " " << operation << " " << val2 << " is " << val1 + val2 << "\n";
+		else if (operation == "-" || operation == "minus")
+			cout << val1 << " " << operation << " " << val2 << " is " << val1 - val2 << "\n";
+		else if (operation == "*" || operation == "mul")
+			cout << val1 << " " << operation << " " << val2 << " is " << val1 * val2 << "\n";
+		else if (operation == "/" || operation == "div")
+			cout << val1 << " " << operation << " " << val2 << " is " << val1 / val2 << "\n";
+	}
 
-	if (operation == "+")
-		cout << val1 << " " << operation << " " << val2 << " is " << val1 + val2 << "\n";    //should "is" been replaced by "equals"?
-	else if (operation == "-")
-		cout << val1 << " " << operation << " " << val2 << " is " << val1 - val2 << "\n";
-	else if (operation == "*")
-		cout << val1 << " " << operation << " " << val2 << " is " << val1 * val2 << "\n";
-	else if (operation == "/")
-		cout << val1 << " " << operation << " " << val2 << " is " << val1 / val2 << "\n";
-	else if (operation == "plus")
-		cout << val1 << " " << operation << " " << val2 << " is " << val1 + val2 << "\n";
-	else if (operation == "minus")
-		cout << val1 << " " << operation << " " << val2 << " is " << val1 - val2 << "\n";
-	else if (operation == "mul")
-		cout << val1 << " multiplied by " << val2 << " is " << val1 * val2 << "\n";
-	else if (operation == "div")
-		cout << val1 << " divided by " << val2 << " is " << val1 / val2 << "\n";
-
+	keep_window_open();
 	return 0;
 }
+
+
 練習問題 11.
 #include "../../std_lib_facilities.h"
 
