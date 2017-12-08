@@ -84,33 +84,38 @@ int main()
 
 int main()
 {
-	int val1, val2, val3,tmp;
+	cout << "整数値を3つ入力してください。\n";
+	int val1, val2, val3;
+	while (cin >> val1 >> val2 >> val3)
+	{
 
-	cout << "整数値を3つ入力してください\n";
-
-	cin >> val1 >> val2 >> val3;
-	// 10 4 6 if-check
-	if (val1 > val2) {
-		tmp = val2; val2 = val1; val1 = tmp;
-		if (val2 > val3) {
-			tmp = val3; val3 = val2; val2 = tmp;
-			if (val1 > val2) {
-				tmp = val1; val1 = val2; val2 = tmp;
-			}
+		int tmp;
+		if (val1 > val2)
+		{
+			tmp = val1;
+			val1 = val2;
+			val2 = tmp;
 		}
-	}
-	else if (val2 > val3) {
-		tmp = val3; val3 = val2; val2 = tmp;
-		if (val1 > val2) {
-			tmp = val1; val1 = val2; val2 = tmp;
+		if (val2 > val3)
+		{
+			tmp = val2;
+			val2 = val3;
+			val3 = tmp;
 		}
+		if (val1 > val2)
+		{
+			tmp = val1;
+			val1 = val2;
+			val2 = tmp;
+		}
+
+		cout << "(" << val1 << "," << val2 << "," << val3 << ")\n";
+
 	}
 
-	cout << "(" << val1 << "," << val2 << "," << val3 << ")";
-
+	keep_window_open();
 	return 0;
 }
-
 
 練習問題 7.
 
