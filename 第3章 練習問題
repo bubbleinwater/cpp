@@ -1,4 +1,4 @@
-﻿//練習問題2.
+﻿_//練習問題2.
 
 #include "../../std_lib_facilities.h"
 
@@ -17,66 +17,71 @@ int main()
 
 //練習問題4.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
-void sizeofnumber(int big, int small)
-{
-	cout << "大きい方の数は" << big
-		<< "\n小さい方の数は" << small
-		<< "\n差は" << big-small << "です。\n";
-}
 int main()
 {
 	int val1, val2;
-	cout << "整数値を2つ入力してください。\n";
-	while (cin >> val1 >> val2)
-	{
-		if (val1 < val2)
-			sizeofnumber(val2, val1);
-		else if (val1 > val2)
-			sizeofnumber(val1, val2);
-		else
-			cout << "二つの数の大きさは等しいです。\n";
-		double ratio = 1.0*val1 / val2;
+	cout << "整数を2つ入力してください\n";
+	cin >> val1 >> val2;
 
-		cout << "合計は" << val1 + val2
-			<< "\n積は" << val1 * val2
-			<< "\n比率は" << ratio << "です。\n";
-	}
-	keep_window_open();//ループを抜けるために入力した
-	return 0;			//文字がこちらにも使われる。
+	if (val1 - val2 < 0) 
+		cout << "最小値は" << val1 << " 最大値は" << val2 << "です。\n";
+	else if (val1 - val2 == 0)
+		cout << "2つの値は等しいです。\n";
+	else
+		cout << "最小値は" << val2 << " 最大値は" << val1 << "です。\n";
+	
+	cout << "2数の合計は" << val1 + val2
+		<< "\n差の絶対値は";
+	if (val1 - val2 < 0)
+		cout << (val1 - val2)* -1 << "です。\n";
+	else if (val1 - val2 > 0)
+		cout << val1 - val2 << "です。\n";
+	else
+		cout << "差はありません。\n";
+	
+	cout << "積は" << val1 * val2 << "です。\n";
+	double div = (double)val1 / val2;
+	cout << "比率は" << div << "です。\n";
+
+	keep_window_open();
+	return 0;
 }
 
 練習問題5.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	double val1, val2, difference = 0;
-	cout << "整数を２つ入力して下さい\n";
+	double val1, val2;
+	cout << "値を2つ入力してください\n";
 	cin >> val1 >> val2;
 
-	if (val1 > val2) {
-		cout << "最小値は" << val2 << "最大値は" << val1 << "です\n";
-		difference = val1 - val2;
-	}
-
-	else if (val1 < val2) {
-		cout << "最小値は" << val1 << "最大値は" << val2 << "です\n";
-		difference = val2 - val1;
-	}
+	if (val1 - val2 < 0) 
+		cout << "最小値は" << val1 << " 最大値は" << val2 << "です。\n";
+	else if (val1 - val2 == 0)
+		cout << "2つの値は等しいです。\n";
 	else
-		cout << "二つの値は等しいです\n";
-
-	cout << "二つの値の合計は" << val1 + val2 << "です\n";
-	cout << "二つの値の差は" << difference << "です\n";
-	cout << "二つの値の積は" << val1*val2 << "です\n";
-	cout << "比率は" << val1 / val2 << "です。\n";
+		cout << "最小値は" << val2 << " 最大値は" << val1 << "です。\n";
 	
+	cout << "2数の合計は" << val1 + val2
+		<< "\n差の絶対値は";
+	if (val1 - val2 < 0)
+		cout << (val1 - val2)* -1 << "です。\n";
+	else if (val1 - val2 > 0)
+		cout << val1 - val2 << "です。\n";
+	else
+		cout << "差はありません。\n";
+	
+	cout << "積は" << val1 * val2 << "です。\n";
+	double div = val1 / val2;
+	cout << "比率は" << div << "です。\n";
+
+	keep_window_open();
 	return 0;
 }
-
 
 練習問題6.
 
