@@ -122,6 +122,8 @@ int main()
 	return 0;
 }
 
+練習問題7.
+
 #include "std_lib_facilities.h"
 
 int main()
