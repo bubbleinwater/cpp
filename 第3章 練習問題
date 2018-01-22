@@ -122,40 +122,36 @@ int main()
 	return 0;
 }
 
-//valはnameなどに変えた方がいいのだろうか。
-練習問題 7.
-
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	cout << "任意の文字列を3つ入力してください。\n";
-	string val1, val2, val3,tmp;
-	while (cin >> val1 >> val2 >> val3)
-	{
-		if (val1 > val2)
-		{
-			tmp = val1;
-			val1 = val2;
-			val2 = tmp;
-		}
-		if (val2 > val3)
-		{
-			tmp = val2;
-			val2 = val3;
-			val3 = tmp;
-		}
-		if (val1 > val2)
-		{
-			tmp = val1;
-			val1 = val2;
-			val2 = tmp;
-		}
+	cout << "名前など、文字列を3つ入力してください。辞書式に出力します。\n";
+	string st1, st2, st3;
+	string tmpst = " ";
 
-		cout << "(" << val1 << "," << val2 << "," << val3 << ")\n";
-
+while(cin >> st1 >> st2 >> st3){
+	if (st1 > st2) {
+		tmpst = st1;
+		st1 = st2;
+		st2 = tmpst;
 	}
-	keep_window_open();
+
+	if (st2 > st3) {
+		tmpst = st2;
+		st2 = st3;
+		st3 = tmpst;
+	}
+
+	if (st1 > st2) {
+		tmpst = st1;
+		st1 = st2;
+		st2 = tmpst;
+	}
+
+	cout << "(" << st1 << "," << st2 << "," << st3 << ")\n";
+}
+
 	return 0;
 }
 
