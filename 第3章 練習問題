@@ -162,25 +162,23 @@ int main()
 
 練習問題 8.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	cout << "整数値を1つ入力してください。\n";
-	int num1,div;
+	cout << "整数を入力してください。\n";
+	int num;
+	while (cin >> num) {
 
-	while (cin >> num1) {
-		div = num1 % 2;
-
-		if (div != 0)
-			cout << "値" << num1 << "は奇数です。\n";
+		if (num % 2 != 0)
+			cout << "値" << num << "は奇数です。\n";
 		else
-			cout << "値" << num1 << "は偶数です。\n";
+			cout << "値" << num << "は偶数です。\n";
 	}
 
-	keep_window_open();
 	return 0;
 }
+
 
 　練習問題　9.
 
