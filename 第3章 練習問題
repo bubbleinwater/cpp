@@ -213,24 +213,29 @@ int main()
 
 
 練習問題 10.
-#include "std_lib_facilities.h"
+
+#include "../../std_lib_facilities.h"
 
 int main()
 {
-	cout << "演算の種類と数字を(* 1 2)のように入力してください。\n";
-	char ch;
-	int val1, val2;
+	cout << "望む演算と、演算したい数字二つを順に入力してください\n";
 
-	while (cin >> ch >> val1 >> val2) {
-		if (ch == '+')
-			cout << "答えは" << val1 + val2 << "です。\n";
-		if (ch == '-')
-			cout << "答えは" << val1 - val2 << "です。\n";
-		if (ch == '*')
-			cout << "答えは" << val1 * val2 << "です。\n";
-		if (ch == '/')
-			cout << "答えは" << val1 / val2 << "です。\n";
+	string operation = " ";
+	double val1, val2;
+	
+	while (cin >> operation >> val1 >> val2)
+	{
+		if (operation == "+" || operation == "plus")
+			cout << val1 << " " << operation << " " << val2 << " is " << val1 + val2 << "\n";
+		else if (operation == "-" || operation == "minus")
+			cout << val1 << " " << operation << " " << val2 << " is " << val1 - val2 << "\n";
+		else if (operation == "*" || operation == "mul")
+			cout << val1 << " " << operation << " " << val2 << " is " << val1 * val2 << "\n";
+		else if (operation == "/" || operation == "div")
+			cout << val1 << " " << operation << " " << val2 << " is " << val1 / val2 << "\n";
 	}
+
+	keep_window_open();
 	return 0;
 }
 
