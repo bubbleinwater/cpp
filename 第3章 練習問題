@@ -283,86 +283,97 @@ int main()
 	return 0;
 }
 練習問題　11-2
-#include "../../std_lib_facilities.h"
+
+#include "std_lib_facilities.h"
 
 int main()
 {
-	int penny = 0;
-	int nickel = 0;
-	int dime = 0;
-	int quarter = 0;
-	int half_dollar = 0;
-	int dollar = 0;
-	int sum = 0;
-	int dollar_sum = 0;
-	int cent_sum = 0;
+	
+	int penny = 0, nickel = 0, dime = 0, quarter = 0, halfdollar = 0, dollar = 0;
 
-	cout << "How many pennies do you have? :";
+	cout << "How many pennies dou you have? ";
 	cin >> penny;
-	cout << "How many nickels do you have? :";
+	cout << "\nHow many nickels dou you have? ";
 	cin >> nickel;
-	cout << "How many dimes do you have? :";
+	cout << "\nHow many dimes dou you have? ";
 	cin >> dime;
-	cout << "How many quarters do you have? :";
+	cout << "\nHow many quarters dou you have? ";
 	cin >> quarter;
-	cout << "How many half dollars do you have? :";
-	cin >> half_dollar;
-	cout << "How many dollars do you have? :";
+	cout << "\nHow many half dollars dou you have? ";
+	cin >> halfdollar;
+	cout << "\nHow many dollars dou you have? ";
 	cin >> dollar;
-	cout << '\n';
-	if (penny == 1)
-		cout << "You have " << penny << " penny.\n";
+
+	//plural or not
+	if (penny > 1)
+		cout << "\nYou have " << penny << " pennies.\n";
 	else
-		cout << "You have " << penny << " pennies.\n";
-	if (nickel == 1)
-		cout << "You have " << nickel << " nickel.\n";
-	else
+		cout << "\nYou have " << penny << " penny.\n";
+
+	if (nickel > 1)
 		cout << "You have " << nickel << " nickels.\n";
-	if (dime == 1)
-		cout << "You have " << dime << " dime.\n";
 	else
+		cout << "You have " << nickel << " nickel.\n";
+
+	if (dime > 1)
 		cout << "You have " << dime << " dimes.\n";
-	if (quarter == 1)
-		cout << "You have " << quarter << " quarter.\n";
 	else
+		cout << "You have " << dime << " dime.\n";
+
+	if (quarter > 1)
 		cout << "You have " << quarter << " quarters.\n";
-	if (half_dollar == 1)
-		cout << "You have " << half_dollar << " half dollar.\n";
 	else
-		cout << "You have " << half_dollar << " half dollars.\n";
-	if (dollar == 1)
-		cout << "You have " << dollar << " dollar.\n";
+		cout << "You have " << quarter << " quarter.\n";
+
+	if (halfdollar > 1)
+		cout << "You have " << halfdollar << " half dollars.\n";
 	else
+		cout << "You have " << halfdollar << " half dollar.\n";
+
+	if (dollar > 1)
 		cout << "You have " << dollar << " dollars.\n";
+	else
+		cout << "You have " << dollar << " dollar.\n";
 
-	sum = penny + (nickel * 5) + (dime * 10)
-		+ (quarter * 25) + (half_dollar * 50) + (dollar * 100);
-	//cout << "sum is" << sum << ".\n";                                                    //check
-
-	if (sum == 0)
-		cout << "oh,you have no money.\n";
-	else if (sum == 1)
-		cout << "The value of all of your coins is 1 cent.\n";
-	else if (100 > sum && sum > 1)
-		cout << "The value of all of your coins is" << sum << " cents.\n";
-	else if (sum >= 10*10) {											//if sum is greater than 100.
-		cent_sum = sum % 100;                                       //now Im about trying to use "%"
-		dollar_sum = (sum - cent_sum)/100;
-		if (dollar_sum == 1) {
-			if (cent_sum <= 1)
-				cout << "The value of all of your coins is " << dollar_sum << " dollar " << cent_sum << " cent.\n";
-			else
-			{
-				cout << "The value of all of your coins is " << dollar_sum << " dollar " << cent_sum << " cents.\n";
-			}
-		}
-		else {
-			if (cent_sum <= 1)
-				cout << "The value of all of your coins is " << dollar_sum << " dollars " << cent_sum << " cent.\n";
-			else
-				cout << "The value of all of your coins is " << dollar_sum << " dollars " << cent_sum << " cents.\n";
-		}
+	int sum = penny + nickel * 5 + dime * 10 + quarter * 25 + halfdollar * 50 + dollar * 100;
+	
+	//i for dollar and sum for cent.
+	int i = 0;
+	for (; sum > 100; ++i) {
+		sum -= 100;
 	}
 
+	//under 1 dollar
+	if (i == 0) {
+		cout << "The value of all of your coins is "
+			<< sum;
+		if (sum != 1)
+			cout << " cents.\n";
+		else
+			cout << " cent.\n";
+	}
+
+	//1 dollar and
+	else if (i == 1) {
+		cout << "The value of all of your coins is "
+			<< i << " dollar and " << sum;
+		if (sum != 1)
+			cout << " cents.\n";
+		else
+			cout << " cent.\n";
+	}
+
+	//not less than 2 dollars
+	else {
+		cout << "The value of all of your coins is "
+			<< i << " dollars and " << sum;
+			if (sum != 1)
+				cout << " cents.\n";
+			else
+				cout << " cent.\n";
+	}
+
+	keep_window_open();
 	return 0;
 }
+
