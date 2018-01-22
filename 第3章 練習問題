@@ -180,40 +180,37 @@ int main()
 
 　練習問題　9.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	string oper;
-	cout << "英単語を数字に変換します数字の英単語を入力してください\n";
+	cout << "値をzeroやoneのように文字で入力してください。\n";
+	string stnum;
+	int num;
+	while (cin >> stnum) {
+		if (stnum == "zero" || stnum == "Zero" || stnum == "ZERO")
+			num = 0;
+		else if (stnum == "one" || stnum == "One" || stnum == "ONE")
+			num = 1;
+		else if (stnum == "two" || stnum == "Two" || stnum == "TWO")
+			num = 2;
+		else if (stnum == "three" || stnum == "Three" || stnum == "THREE")
+			num = 3;
+		else if (stnum == "four" || stnum == "Four" || stnum == "FOUR")
+			num = 4;
+//		else if (stnum == "" || stnum == "" || stnum == "")
+//			num =
+		else {
+			cout << "not a number I know.\n";
+			num = -1;
+		}
 
-	cin >> oper;
-
-	if (oper == "zero") {
-		cout << "That is" << 0 <<'\n';
-	}
-
-	else if (oper == "one") {
-		cout << "That is" << 1 <<'\n';
-	}
-
-	else if (oper == "two") {
-		cout << "That is" << 2 <<'\n';
-	}
-
-	else if (oper == "three") {
-		cout << "That is" << 3 <<'\n';
-	}
-
-	else if (oper == "four") {
-		cout << "That is" << 4 <<'\n';
-	}
-
-	else {
-		cout << "not a number I know\n";
+		if (num != -1)
+			cout << "入力された数字は" << num << "です。\n";
 	}
 	return 0;
 }
+
 
 練習問題 10.
 
