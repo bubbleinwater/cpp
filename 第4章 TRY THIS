@@ -1,30 +1,31 @@
-P95 円、ユーロ、ポンドをドルに変換するプログラム。
+﻿P95 円、ユーロ、ポンドをドルに変換するプログラム。
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	constexpr double dollar_per_yen = 0.00887;                          //I'm not sure about my english;
-　constexpr double dollar_per_euro = 1.0748;
-	constexpr double dollar_per_pound = 1.2384;
-	double amount = 0;
+	double money = 0;
 	char unit = ' ';
-
-	cout << "Please enter an amount of money followed by a unit (y or e or p):\n";
-
-	cin >> amount >> unit;
+	constexpr double dollar_per_yen = 0.00914;
+	constexpr double dollar_per_euro = 1.2431;
+	constexpr double dollar_per_pound = 1.4229;
+	cout << "円、ユーロ、もしくはポンド単位のお金を入力し"
+		<<"単位(y,e,pのいずれか)をそれに続けてください。\n";
+	cin >> money >> unit;
 
 	if (unit == 'y')
-		cout << amount << "yen == " << amount*dollar_per_yen << "dollars\n";
+		cout << money << "円は" << money * dollar_per_yen << "ドルです。\n";
 	else if (unit == 'e')
-		cout << amount << "euro == " << amount*dollar_per_euro << "dollars\n";
+		cout << money << "ユーロは" << money * dollar_per_euro << "ドルです。\n";
 	else if (unit == 'p')
-		cout << amount << "pound == " << amount*dollar_per_pound << "dollars\n";
+		cout << money << "ポンドは" << money * dollar_per_pound << "ドルです。\n";
 	else
-		cout << "Sorry, I don't know a unit called '" << unit << "'\n";
+		cout << "Sorry I don't know a unit called " << unit << ".\n";
 
+	keep_window_open();
 	return 0;
 }
+
 
 switchに書き換える
 #include "../../std_lib_facilities.h"
