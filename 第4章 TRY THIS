@@ -92,14 +92,16 @@ int main() {
 
 #include "../../std_lib_facilities.h"
 
-int main()
-{
-	char a = 'a';
-	for (int aa = 97; aa <= 122; ++aa) {
-		a = aa;
-		cout << a << '\t' << aa << '\n';
+int main() {
+	char ch = 'a';
+	int count = ch;
+	for (int i = 0; i < 26;++i) {
+		cout << ch << '\t' << count<<'\n';
+		++count;
+		ch = count;
 	}
 
+	keep_window_open();
 	return 0;
 }
 
@@ -135,27 +137,27 @@ int main()
 	return 0;
 }
 
-p102
-#include "../../std_lib_facilities.h"
+p104
 
+#include "std_lib_facilities.h"
 
-int square(int x)
-{
-	int sum = 0;
-	for (int i = 0; i < x; i++) {
-		sum += x;
-	}
-	return sum;
+int square(int x) {
+	int result = 0;
+	for (int i = 0; i < x; ++i)	result += x;
+	return result;
 }
-int main()
-{
-	int num = 0;
-	cout << "整数を一つ入力してください\n";
-	cin >> num;
-	cout << "2乗すると" << square(num) << "です\n";
 
+int main() {
+	int val;
+	cout << "2乗したい整数値を入力してください。\n";
+	cin >> val;
+
+	cout <<val<<"を2乗すると"<< square(val)<<"です。\n";
+
+	keep_window_open();
 	return 0;
 }
+
 
 P 115 bleep
 #include "../../std_lib_facilities.h"
