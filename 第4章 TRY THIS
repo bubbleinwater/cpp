@@ -28,100 +28,67 @@ int main()
 
 
 switchに書き換える
-#include "../../std_lib_facilities.h"
+
+#include "std_lib_facilities.h"
 
 int main()
 {
-	constexpr double dollar_per_yen = 0.00887;
-	constexpr double dollar_per_euro = 1.0748;
-	constexpr double dollar_per_pound = 1.2384;
-	double amount = 0;
+	double money = 0;
 	char unit = ' ';
-
-	cout << "Please enter an amount of money followed by a unit (y or e or p):\n";
-
-	cin >> amount >> unit;
-
+	constexpr double dollar_per_yen = 0.00914;
+	constexpr double dollar_per_euro = 1.2431;
+	constexpr double dollar_per_pound = 1.4229;
+	constexpr double dollar_per_yuan = 0.15805;
+	constexpr double dollar_per_krone = 0.16645;
+	cout << "円、ユーロ、もしくはポンド単位のお金を入力し"
+		<<"単位(y,e,p,c,kのいずれか)をそれに続けてください。\n";
+	cin >> money >> unit;
+	
 	switch (unit) {
-	case'y':
-		cout << amount << "yen == " << amount*dollar_per_yen << "dollars\n";
+	case 'y':
+		cout << money << "円は" << money * dollar_per_yen << "ドルです。\n";
 		break;
-	case'e':
-		cout << amount << "euro == " << amount*dollar_per_euro << "dollars\n";
+	case 'e':
+		cout << money << "ユーロは" << money * dollar_per_euro << "ドルです。\n";
 		break;
-	case'p':
-		cout << amount << "pound == " << amount*dollar_per_pound << "dollars\n";
+	case 'p':
+		cout << money << "ポンドは" << money * dollar_per_pound << "ドルです。\n";
+		break;
+	case 'c':
+			cout<< money << "元は" << money * dollar_per_yuan << "ドルです。\n";
+			break;
+	case 'k':
+		cout << money << "クローネは" << money * dollar_per_krone << "ドルです。\n";
 		break;
 	default:
-		cout << "Sorry, I don't know a unit called '" << unit << "'\n";
+		cout << ":Sorry, I don't know a unit called "<<unit<<".\n";
 		break;
 	}
-
-	return 0;
-}
-
-yuanとkrone
-
-#include "../../std_lib_facilities.h"
-
-int main()
-{
-	constexpr double dollar_per_jyen = 0.00887;
-	constexpr double dollar_per_euro = 1.0748;
-	constexpr double dollar_per_pound = 1.2384;
-	constexpr double dollar_per_cyuan = 0.14477;
-	constexpr double dollar_per_krone = 0.144693;
-	double amount = 0;
-	char unit = ' ';
-
-	cout << "Please enter an amount of money followed by a unit (j or e or p or k or c):\n";
-
-	cin >> amount >> unit;
-
-	switch (unit) {
-	case'j':
-		cout << amount << "yen == " << amount*dollar_per_jyen << "dollars\n";
-		break;
-	case'e':
-		cout << amount << "euro == " << amount*dollar_per_euro << "dollars\n";
-		break;
-	case'p':
-		cout << amount << "pound == " << amount*dollar_per_pound << "dollars\n";
-		break;
-	case'c':
-		cout << amount << "gen == " << amount*dollar_per_cyuan << "dollars\n";
-		break;
-	case'k':
-		cout << amount << "krone ==" << amount*dollar_per_krone << "dollars\n";
-		break;
-	default:
-		cout << "Sorry, I don't know a unit called '" << unit << "'\n";
-		break;
-	}
-
+	
+	keep_window_open();
 	return 0;
 }
 
 P101　charとそれを代入したintを出力するプログラム
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
-int main()
-{
+int main() {
+	char ch = 'a';
+	int count = ch;
+	int i = 0;
 
-	char a = 'a';                                                     //int aa=97;
-	int aa = a;                                                       //char a = aa;
-
-	while (aa <= 122) {
-		cout << a << '\t' << aa << '\n';
-		++a;                                                      //++aa;
-		aa = a;                                                   //a = aa;
+	while (i < 26) {
+		cout << ch << '\t' << count<<'\n';
+		++count;
+		ch = count;
+		++i;
 	}
 
+	keep_window_open();
 	return 0;
 }
 
-rewrite using for statement
 
 #include "../../std_lib_facilities.h"
 
