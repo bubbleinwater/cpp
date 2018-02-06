@@ -160,27 +160,54 @@ int main() {
 }
 
 
-P 115 bleep
-#include "../../std_lib_facilities.h"
+P 115 bleep //without vector
+
+#include "std_lib_facilities.h"
+#include <Windows.h>
 
 int main()
 {
-	vector<string>words;
+	string disliked = "Broccoli";
 
-	for (string temp; cin >> temp;)
-		words.push_back(temp);
+	cout << "単語を入力してください。\n";
+	string liked_only;
+	while (cin >> liked_only)
+		if (liked_only != disliked)
+			cout << "I like " << liked_only << '\n';
+		else {
+			cout << "I don't like " << "B**EE***E**P\n";
+			Beep(440, 2000);
+		}
+	
+	keep_window_open();
+	return 0;
+}
 
-	cout << "number of words : " << words.size()<<'\n';
+//with vector
+
+#include "std_lib_facilities.h"
+#include <Windows.h>
+
+int main()
+{
+	string disliked = "Broccoli";
+	vector<string> words;
+
+	cout << "単語をスペースで区切り入力してください。\n";
+	for (string liked; cin >> liked;)
+		words.push_back(liked);
 
 	sort(words);
-	string dislike = "guy";        //I really really like girl. sorry guys there.
 
-	for (int i = 0; i < words.size(); ++i)
-		if (i == 0 || words[i - 1] != words[i])
-			if (words[i] != dislike)
-				cout << words[i] << '\n';
-			else
-				cout << '\a';
+	for (string x : words)
+		if (x != disliked)
+			cout <<"I like "<< x << '\n';
+		else
+		{
+			cout <<"I don't like B**EE*E**P\n";
+			Beep(440, 400);
+}
 
+	keep_window_open();
 	return 0;
 }
