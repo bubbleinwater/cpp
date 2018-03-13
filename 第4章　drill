@@ -106,36 +106,71 @@ int main()
 }
 
 
-ドリル 6.
-
-#include "../../std_lib_facilities.h"
+6.
+//---------I did    compile-time error    ---------------
+#include "std_lib_facilities.h"
 
 int main()
 {
+	cout << "整数値を2つ入力してください。|を入力すると繰り返しを終了します。\n";
+	double val;
+	double smallest=0;
+	double largest=0;
 
-	double val1 = 0;
-	double max,mini;
+	while (cin >> val)
+	{
+		if (!smallest) smallest = val;
+		if (!largest) largest = val;
 
-	cout << "入力された数字の最大と最小を追跡します。|を入力すると終了します。\n";
-
-	for (int i = 0; cin >> val1; ++i) {
-		if (i == 0) {
-			max = val1;
-			mini = val1;
+		if (val < smallest) {
+			cout << val << ": the smallest so far.\n";
+			smallest = val;
 		}
-		else if (i != 0 && val1 > max) {
-			max = val1;
-			cout << "the largest so far\n";
+		else if (val > largest) {
+			cout << val << ": the largest so far.\n";
+			largest = val;
 		}
-		else if (i != 0 && val1 < mini) {
-			mini = val1;
-			cout << "the smallest so far\n";
-		}
-		else {}
-		
 	}
+
+	keep_window_open();
 	return 0;
 }
+//--------------------------------------------
+
+#include "std_lib_facilities.h"
+
+int main()
+{
+	cout << "整数値を2つ入力してください。|を入力すると繰り返しを終了します。\n";
+	double val;
+	double smallest=0;
+	double largest=0;
+	int i = 0;
+
+	while (cin >> val)
+	{
+		if (i == 0) {
+			smallest = val;
+			largest = val;
+			++i;
+		}
+
+		cout << val;
+		if (val < smallest) {
+			cout << ": the smallest so far.\n";
+			smallest = val;
+		}
+		else if (val > largest) {
+			cout << ": the largest so far.\n";
+			largest = val;
+		}
+		else cout << '\n';
+	}
+
+	keep_window_open();
+	return 0;
+}
+
 
 ドリル 7.
 
