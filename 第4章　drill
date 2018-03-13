@@ -172,50 +172,45 @@ int main()
 }
 
 
-ドリル 7.
+7.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-
-	double val1 = 0;
+	cout << "整数値を2つ入力してください。|を入力すると繰り返しを終了します。\n";
+	double val;
+	double smallest=0;
+	double largest=0;
+	int i = 0;
 	string unit;
-	double max,mini;
 
-	cout << "入力された	長さの最大と最小を追跡します。単位は(cm,m,in,ft)の4つに限ります。|を入力すると終了します。\n";
-
-	for (int i = 0; cin >> val1 >> unit; ++i) {
-
-		if (unit == "cm") {
-			val1 *= 0.01;
-		}
-		else if(unit =="m"){}
-		else if (unit == "in") {
-			val1 *= 0.0254;
-		}
-		else if (unit == "ft") {
-			//1ft == 12in == 12*0.0254m
-			constexpr double fttom = 12 * 0.0254;
-			val1 *= fttom;
-		}
-
+	while (cin >> val >> unit)
+	{
+		if(unit == "cm"){}
+		if (unit == "m")val *= 100;
+		if (unit == "in")val *= 2.54;
+		if (unit == "ft")val * 12 * 2.54;
 
 		if (i == 0) {
-			max = val1;
-			mini = val1;
+			smallest = val;
+			largest = val;
+			++i;
 		}
-		else if (i != 0 && val1 > max) {
-			max = val1;
-			cout << "the longest so far\n";
+
+		cout << val<<"cm";
+		if (val < smallest) {
+			cout << ": the shortest so far.\n";		//smallest to shortest
+			smallest = val;
 		}
-		else if (i != 0 && val1 < mini) {
-			mini = val1;
-			cout << "the shortest so far\n";
+		else if (val > largest) {
+			cout << ": the longest so far.\n";		//largest to longest
+			largest = val;
 		}
-		else {}
-		
+		else cout << '\n';
 	}
+
+	keep_window_open();
 	return 0;
 }
 
