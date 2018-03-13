@@ -323,89 +323,70 @@ int main()
 }
 
 
-ドリル 10.
+10.
 
-#include "../../std_lib_facilities.h"
-
-
-double maxv = 0, miniv = 0,sum = 0;
-
-void otherdenyer(int i,double val2)
-{
-
-
-	if (i == 0) {
-		maxv = val2;
-		miniv = val2;
-	}
-	else if (i != 0 && val2 > maxv) {
-		maxv = val2;
-		cout << "the longest so far\n";
-	}
-	else if (i != 0 && val2 < miniv) {
-		miniv = val2;
-		cout << "the shortest so far\n";
-	}
-	else {}
-
-
-}
-
+#include "std_lib_facilities.h"
 
 int main()
 {
-	int j = 0;
-	double val1 = 0;
+	cout << "長さとその単位(cm,m,in,ft)を入力してください。|を入力すると繰り返しを終了します。\n";
+	double val;
+	double shortest=0;
+	double longest=0;
+	int first_number = 0;
 	string unit;
-	vector <double> length;
+	//1cm = 0.01m,1in = 2.54cm, 1ft = 12in
+	constexpr double m_per_cm = 0.01;
+	constexpr double m_per_in = 0.0254;
+	constexpr double m_per_ft = 0.3048;
 
-	cout << "入力された長さの最大と最小を追跡します。単位は(cm,m,in,ft)の4つに限ります。|を入力すると終了します。\n";
+	double sum=0;
+	int i = 0;
 
-	for (int i = 0; cin >> val1 >> unit; ++i) {
+	vector<double> meter;
 
-		if (unit == "cm") {
-			val1 *= 0.01;
-			length.push_back(val1);
-			sum += val1;
-			unit = " ";
-			otherdenyer(i, val1);
-		}
-		else if(unit =="m"){ 
-			{}
-			length.push_back(val1);
-			sum += val1;
-			unit = " "; 
-			otherdenyer(i, val1);
-		}
-		else if (unit == "in") {
-			val1 *= 0.0254;
-			length.push_back(val1);
-			sum += val1;
-			unit = " ";	
-			otherdenyer(i, val1);
-		}
-		else if (unit == "ft") {
-			//1ft == 12in == 12*0.0254m
-			constexpr double fttom = 12 * 0.0254;
-			val1 *= fttom;
-			length.push_back(val1);
-			sum += val1;
-			unit = " ";
-			otherdenyer(i, val1);
-		}
-		else {
-			cout << "Denied.Please enter another length followed by(cm,m,in,ft).\n";
-			--i;
+	while (cin >> val >> unit)
+	{
+		if (unit == "cm") { val *= m_per_cm; unit = "m"; }
+		if (unit == "m") {}
+		if (unit == "in") { val *= m_per_in; unit = "m";}
+		if (unit == "ft") { val *= m_per_ft; unit = "m";}
+
+		
+		if (unit == "m") {
+			++i;
+			sum += val;
+			meter.push_back(val);
+
+			if (first_number == 0) {
+				shortest = val;
+				longest = val;
+				++first_number;
 			}
-		j = i;
+
+			cout << val << "m";
+			if (val < shortest) {
+				cout << ": the shortest so far.\n";
+				shortest = val;
+			}
+			else if (val > longest) {
+				cout << ": the longest so far.\n";
+				longest = val;
+			}
+			else cout << '\n';
+		}
+		else cout << "The unit called " << unit << " is denied.\n";
 	}
 
-	cout << "最小値は" << miniv << "m, 最大値は" << maxv << "m, 値の個数は" << j + 1 << ", 値の合計は" << sum << "mです。\n";
-	cout << "入力された値を全て書き出します。\n";
-	for (double x : length) {
-		cout << x << '\n';
-	}
+	cout <<'\n'<< i << " numbers.\n" << "shortest: " << shortest << "m\n"
+		<< "longest: " << longest << "m\n" << "total: " << sum << "m\n\n";
+
+	for (double x : meter)
+		cout << x << "m\n";
+
+	keep_window_open();	
 	return 0;
+
 }
 
 ドリル 11.
