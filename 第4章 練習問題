@@ -50,7 +50,7 @@ int main()
 	return 0;
 }
 
-練習問題 4.
+練習問題 4.(first time)
 
 #include "../../std_lib_facilities.h"
 
@@ -521,6 +521,68 @@ int main()
 	}
 	return 0;
 }
+
+
+練習問題4.(second time)//--interim--
+
+#include"../../std_lib_facilities.h"
+
+int main()
+{
+	vector<int>range(100);
+
+	//1から100までを格納
+	for (int i = 1; i < 101; ++i) {
+		range[i - 1] = i;
+	}
+
+	/*
+	for (int x : range)cout << x << '\n';
+	*/
+	char ans= ' ';
+	cout << " 最大7つの質問で、数字を特定します。\n"
+		<<"1から100までの数字を１つ思い浮かべてください。\n";
+	cout << "Is the number even?(y or n)\n";
+	cin >> ans;
+	
+	//偶数
+	if (ans == 'y') {
+		while (range.size()>5) {
+			cout << "Is the number less than " << range[range.size() / 2 ]<< "?\n";//less than 51?
+			cin >> ans;
+			if (ans == 'y') {//erase 51-100
+				range.erase(range.begin() + (range.size() / 2), range.begin() + (range.size()));
+			}
+			else {//erase 1-51
+				range.erase(range.begin(), range.begin() + (range.size() / 2 + 1));
+			}
+			for (int x : range)cout << x << '\n';
+		}
+	}
+
+	//奇数
+	else {
+		while (range.size()>5) {
+			cout << "Is the number less than " << range[range.size() / 2 -1] << "?\n";//less than 50?
+			cin >> ans;
+
+			if (ans == 'y') {//erase50-100
+				range.erase(range.begin() + (range.size() / 2 - 1), range.begin() + (range.size()));
+			}
+			else {//erase1-50
+				range.erase(range.begin(), range.begin() + (range.size() / 2));
+			}
+			for (int x : range)cout << x << '\n';
+
+		}
+	}
+	
+	
+	keep_window_open();
+	return 0;
+}
+
+
 
 練習問題 5.
 
