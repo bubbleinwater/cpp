@@ -590,7 +590,7 @@ int main()
 						range.erase(range.begin() + (range.size() / 2 + 1), range.begin() + (range.size()));
 					}
 					else if (ans == 'n') {//erase range[0] -  A-1 
-						range.erase(range.begin(), range.begin() + (range.size() / 2 -1));
+						range.erase(range.begin(), range.begin() + (range.size() / 2 ));
 					}
 					for (int x : range)cout << x << '\n';
 				}
@@ -643,6 +643,7 @@ int main()
 	keep_window_open();
 	return 0;
 }
+
 
 練習問題 5.
 
