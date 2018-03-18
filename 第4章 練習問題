@@ -50,477 +50,248 @@ int main()
 	return 0;
 }
 
-練習問題 4.(first time)
+練習問題 4.
 
-#include "../../std_lib_facilities.h"
+#include"std_lib_facilities.h"
 
 int main()
 {
-	char answer;
-	char oddeven;
+	vector<int>range(100);
 
-	cout << "思い浮かべた数字を特定します。以下の質問(最大で7つです)にyかnで答えてください。\n";
-	cout << "まず初めの質問です。あなたが思い浮かべた数字は偶数ですか？\n";
-	cin >> oddeven;																//yなら偶数、nなら奇数
+	//range = {1,2,3 .....100}
+	for (int i = 1; i < 101; ++i) {
+		range[i - 1] = i;
+	}
 
-	cout << "あなたが思い浮かべた数字は51以上ですか？\n";
-	cin >> answer;
-	if (answer == 'y') {
-		cout << "あなたが思い浮かべた数字は73以上ですか？\n";				//50以上確定時
-		cin >> answer;
-		if (answer == 'y') {
-			cout << "あなたが思い浮かべた数字は89以上ですか？\n";							//	75以上
-			cin >> answer;
-			if (answer == 'y') {
-				cout << "あなたが思い浮かべた数字は93以上ですか？\n";			//88以上
-
-
-				cin >> answer;// 97 98 99 100
-				if (answer == 'y') {
-					cout << "あなたが思い浮かべた数字は97以上ですか？\n";										//	93以上
-					cin >> answer;
-					if (answer == 'y') {
-						cout << "あなたが思い浮かべた数字は99以上ですか?\n";				//97以上
-						cin >> answer;
-						if (answer == 'y') {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は100ですね。\n";
-							else cout << "あなたが思い浮かべた数字は99ですね\n";
-						}
-						else {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は98ですね\n";
-							else cout << "あなたが思い浮かべた数字はですね97ですね\n";
-						}
-
-					}
-					else {//93 から 96
-						cout << "あなたが思い浮かべた数字は95以上ですか？\n";
-						cin >> answer;
-						if (answer == 'y') {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は96ですね\n";
-							else cout << "あなたが思い浮かべた数字は95ですね\n";
-						}
-
-						else {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は94ですね\n";
-							else cout << "あなたが思い浮かべた数字は93ですね\n";
-						}
-
-					}
-				}
-				/*93以上? no*/			else {		//89 から　92
-					cout << "あなたが思い浮かべた数字は91以上ですか？\n";
-					cin >> answer;
-					if (answer == 'y') {
-						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は92ですね\n";
-						else cout << "あなたが思い浮かべた数字は91ですね\n";
-					}
-					else {
-						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は90ですね\n";
-						else cout << "あなたが思い浮かべた数字は89ですね\n";
-					}
-				}
+	char ans= ' ';
+	int even_or_not = 0;
+	cout << " Think one number.\n"
+		<<"Please answer my question.(max:7)\n\n";
+	cout << "Is the number even?(y or n)\n";
+	cin >> ans;
+	
+	//when it's even
+	if (ans == 'y') {
+		even_or_not = 1;
+		while (range.size() > 99) {
+			cout << "Is the number less than " << range[range.size() / 2] << "?\n";//less than {range[50]==51}?
+			cin >> ans;
+			if (ans == 'y') {//erase (51-100)　resultsize: 50
+				range.erase(range.begin() + (range.size() / 2), range.begin() + (range.size()));
 			}
-			else {//81 から 88
-				cout << "あなたが思い浮かべた数字は81以上ですか？\n";				//88以下
-				cin >> answer;
-
-				if (answer == 'y') {
-					cout << "あなたが思い浮かべた数字は85以上ですか?\n";
-					cin >> answer;
-					if (answer == 'y') {
-						cout << "あなたが思い浮かべた数字は87以上ですか？\n";
-						cin >> answer;
-						if (answer == 'y') {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は88ですね\n";
-							else cout << "あなたが思い浮かべた数字は87ですね\n";
-						}
-						else {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は86ですね\n";
-							else cout << "あなたが思い浮かべた数字は85ですね\n";
-						}
-					}
-					else {//81 から　84
-						cout << "あなたが思い浮かべた数字は83以上ですか？\n";
-						cin >> answer;
-						if (answer == 'y') {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は84ですね\n";
-							else cout << "あなたが思い浮かべた数字は83ですね\n";
-						}
-						else {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は82ですね\n";
-							else cout << "あなたが思い浮かべた数字は81ですね\n";
-						}
-					}
-				}
-				else {
-					cout << "あなたが思い浮かべた数字は77以上ですか？\n";
-
-					cin >> answer;
-					if (answer == 'y') {
-						cout << "あなたが思い浮かべた数字は79以上ですか？\n";
-						if (answer == 'y') {
-							if (oddeven == 'y')
-								cout << "あなたが思い浮かべた数字は80ですね\n";
-							else cout << "あなたが思い浮かべた数字は79ですね\n";
-						}
-						else {
-							if (oddeven == 'y')
-								cout << "あなたが思い浮かべた数字78ですね\n";
-							else cout << "あなたが思い浮かべた数字は77ですね\n";
-						}
-					}
-					else {
-						cout << "あなたが思い浮かべた数字は75以上ですか？\n";
-						cin >> answer;
-						if (answer == 'y') {
-							if (oddeven == 'y')
-								cout << "あなたが思い浮かべた数字は76ですね\n";
-							else cout << "あなたが思い浮かべた数字は75ですね\n";
-						}
-						else {
-							if (oddeven == 'y')
-								cout << "あなたが思い浮かべた数字74ですね\n";
-							else cout << "あなたが思い浮かべた数字は73ですね\n";
-
-						}
-					}
-				}
+			else if (ans == 'n') {//erase (1-50)  resultsize: 50
+				range.erase(range.begin(), range.begin() + (range.size() / 2));
 			}
-				
+		}
+
+		while (range.size() > 49) {
+			cout << "Is the number less than " << range[range.size() / 2 - 1] << "?\n";//less than half(25or75)?
+			cin >> ans;
+			if (ans == 'y') {//erase (half+1 - and above)resultsize: 25
+				range.erase(range.begin() + (range.size() / 2), range.begin() + (range.size()));
 			}
-	//	else{/*５１以上　７2以下*/}
-		else {
-			cout << "あなたが思い浮かべた数字は63以上ですか？\n";					//50以上72以下
-			cin >> answer;
-			if (answer == 'y') {
-				cout << "あなたが思い浮かべた数字は69以上ですか？\n";
-				cin >> answer;
-				if (answer == 'y') {
-					cout << "あなたが思い浮かべた数字は71以上ですか？\n";
-					cin >> answer;
-					if (answer == 'y') {
-						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は72ですね.\n";
-						else {
-							cout << "あなたが思い浮かべた数字は71ですね\n";
-						}
-					}
-					else {
-						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は70ですね\n";
-						else cout << "あなたが思い浮かべた数字は69ですね\n";
-					}
-				}
-				else {
-					cout << "あなたが思い浮かべた数字は67以上ですか？\n";
-					cin >> answer;
-
-					if (answer == 'y') {
-						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は68ですね.\n";
-						else {
-							cout << "あなたが思い浮かべた数字は67ですね\n";
-						}
-					}
-					else {
-						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は66ですね\n";
-						else cout << "あなたが思い浮かべた数字は65ですね\n";
-
-					}
-				}
+			else if (ans == 'n') {//erase (1 - half)resultsize: 25
+				range.erase(range.begin(), range.begin() + (range.size() / 2));
 			}
-			else {
-				cout << "あなたが思い浮かべた数字は59以上ですか？\n";
-				cin >> answer;
-				if (answer == 'y') {
+		}
+			while (range.size() > 7) {
 
-					cout << "あなたが思い浮かべた数字は61以上ですか？\n";
-					cin >> answer;
-					if (answer == 'y') {
-						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は62ですね.\n";
-						else {
-							cout << "あなたが思い浮かべた数字は61ですね\n";
-						}
+				if ((range[range.size() / 2]) % 2 == 0) {//when the number center of vector is even. 
+					cout << "Is the number less than " << range[range.size() / 2] + 1 << "?\n";//? A(38, , ,)
+					cin >> ans;
+					if (ans == 'y') {//erase A+1 - range.size()
+						range.erase(range.begin() + (range.size() / 2 + 1), range.begin() + (range.size()));
 					}
-					else{
-					if (oddeven == 'y')cout << "あなたが思い浮かべた数字は60ですね\n";
-					else cout << "あなたが思い浮かべた数字は59ですね\n";
-				}
-
-				}
-				else {
-					cout << "あなたが思い浮かべた数字は55以上ですか？\n";
-				cin >> answer;
-
-				if (answer == 'y') {
-					cout << "あなたが思い浮かべた数字は57以上ですか？\n";
-					if (answer == 'y') {
-						if (oddeven == 'y')
-							cout << "あなたが思い浮かべた数字は58ですね\n";
-						else
-							cout << "あなたが思い浮かべた数字は57ですね\n";
+					else if (ans == 'n') {//erase range[0] -  A-1 
+						range.erase(range.begin(), range.begin() + (range.size() / 2 + 1));
 					}
-					else {
-						if (oddeven == 'y')
-							cout << "あなたが思い浮かべた数字は56ですね\n";
-						else
-							cout << "あなたが思い浮かべた数字は55ですね\n";
-					}
-				}
-				cout << "あなたが思い浮かべた数字は53以上ですか？\n";
-				cin >> answer;
-				if (answer == 'y') {
-					if (oddeven == 'y')
-						cout << "あなたが思い浮かべた数字は54ですね\n";
-					else
-						cout << "あなたが思い浮かべた数字は53ですね\n";
-				}
-				else {
-					if (oddeven == 'y')
-						cout << "あなたが思い浮かべた数字は52ですね\n";
-					else
-						cout << "あなたが思い浮かべた数字は51ですね\n";
+					for (int x : range)cout << x << '\n';
 				}
 
-				
+				else if ((range[range.size() / 2]) % 2 != 0) {
+					cout << "Is the number less than " << range[range.size() / 2]  << "?\n";//? A(13,63,33,83)
+					cin >> ans;
+					if (ans == 'y') {//erase A+1 - range.size()
+						range.erase(range.begin() + (range.size() / 2 + 1), range.begin() + (range.size()));
+					}
+					else if (ans == 'n') {//erase range[0] -  A-1 
+						range.erase(range.begin(), range.begin() + (range.size() / 2 ));
+					}
+
+					for (int x : range)cout << x << '\n';
 				}
 			}
 		}
 
 
+	//odd
 
-
-
-
-
-
-	}//これのNOが50以下
-
-	else {
-		cout << "あなたが思い浮かべた数字は23以上ですか？\n";					//50以下確定時
-		cin >> answer;
-		if (answer == 'y') {
-			cout << "あなたが思い浮かべた数字は39以上ですか？\n";
-			cin >> answer;
-
-			if (answer == 'y') {
-				cout << "あなたが思い浮かべた数字は43以上ですか？\n";
-				cin >> answer;
-
-				if (answer == 'y') {
-					cout << "あなたが思い浮かべた数字は47以上ですか？\n";
-					cin >> answer;
-					if (answer == 'y') {
-						cout << "あなたが思い浮かべた数字は49以上ですか？\n";
-						cin >> answer;
-
-						if (answer == 'y') {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字50はですね。\n";
-							else cout << "あなたが思い浮かべた数字は49ですね。\n";
-						}
-						else {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は48ですね。\n";
-							else cout << "あなたが思い浮かべた数字は47ですね。\n";
-						}
-					}
-					else {
-						cout << "あなたが思い浮かべた数字は45以上ですか？\n";
-						cin >> answer;
-
-						if (answer == 'y') {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は46ですね。\n";
-							else cout << "あなたが思い浮かべた数字は45ですね。\n";
-						}
-						else {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は44ですね\n";
-							else cout << "あなたが思い浮かべた数字は43ですね\n";
-						}
-					}
-				}
-				else {
-					cout << "あなたが思い浮かべた数字は41以上ですか？\n";
-					cin >> answer;
-
-					if (answer == 'y') {
-						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は42ですね\n";
-						else cout << "あなたが思い浮かべた数字は41ですね\n";
-					}
-					else {
-						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は40ですね。\n";
-						else cout << "あなたが思い浮かべた数字は39ですね。\n";
-					}
-				}
-			}//38以下
-			else
-			{
-				cout << "あなたが思い浮かべた数字は31以上ですか？\n";
-				cin >> answer;
-
-				if (answer == 'y') {
-					cout << "あなたが思い浮かべた数字は35以上ですか?\n";
-
-					cin >> answer;
-
-					if (answer == 'y') {
-						cout << "あなたが思い浮かべた数字は37以上ですか？\n";
-						cin >> answer;
-
-						if (answer == 'y') {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は38ですね\n";
-							else cout << "あなたが思い浮かべた数字は37ですね\n";
-						}
-						else {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は36ですね\n";
-							else cout << "あなたが思い浮かべた数字は35ですね\n";
-						}
-					}
-					else
-					{
-						cout << "あなたが思い浮かべた数字は33以上ですか？\n";
-						cin >> answer;
-
-						if (answer == 'y') {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は34ですね\n";
-							else cout << "あなたが思い浮かべた数字は33ですね\n";
-						}
-						else
-						{
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は32ですね。\n";
-							else cout << "あなたが思い浮かべた数字は31ですね。\n";
-						}
-					}
-				}//30以下
-
-				else {
-					cout << "あなたが思い浮かべた数字は27以上ですか？\n";
-					cin >> answer;
-
-					if (answer == 'y') {
-						cout << "あなたが思い浮かべた数字は29以上ですか？\n";
-						cin >> answer;
-
-						if (answer == 'y') {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は30ですね。\n";
-							else cout << "あなたが思い浮かべた数字は29ですね。\n";
-						}
-						else {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は28ですね。\n";
-							else cout << "あなたが思い浮かべた数字は27ですね。\n";
-						}
-					}
-					else {
-
-						cout << "あなたが思い浮かべた数字は25以上ですか？\n";
-						cin >> answer;
-
-						if (answer == 'y') {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は26ですね。\n";
-							else cout << "あなたが思い浮かべた数字は25ですね。\n";
-						}
-						else {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は24ですね。\n";
-							else cout << "あなたが思い浮かべた数字は23ですね。\n";
-						}
-					}
-				}
+	else if (ans == 'n') {
+		while (range.size() > 99) {
+			cout << "Is the number less than " << range[range.size() / 2 -1] << "?\n";//less than {range[49]==50}?
+			cin >> ans;
+			if (ans == 'y') {//erase (51-100)　resultsize: 50
+				range.erase(range.begin() + (range.size() / 2), range.begin() + (range.size()));
 			}
+			else if (ans == 'n') {//erase (1-50)  resultsize: 50
+				range.erase(range.begin(), range.begin() + (range.size() / 2));
+			}
+			for (int x : range)cout << x << '\n';
+		}
 
-		}//22以下
-		else
-		{
-			cout << "あなたが思い浮かべた数字は15以上ですか？\n";
+		while (range.size() > 49) {
+			cout << "Is the number less than " << range[range.size() / 2 ] << "?\n";//less than half+1 (26or76)?
+			cin >> ans;
+			if (ans == 'y') {//erase (half+1 - and above)
+				range.erase(range.begin() + (range.size() / 2), range.begin() + (range.size()));
+			}
+			else if (ans == 'n') {//erase (1 - half)
+				range.erase(range.begin(), range.begin() + (range.size() / 2));
+			}
+			for (int x : range)cout << x << '\n';
 
-			cin >> answer;
 
-			if (answer == 'y') {
-				cout << "あなたが思い浮かべた数字は19以上ですか？\n";
-				cin >> answer;
-
-				if (answer == 'y') {
-					cout << "あなたが思い浮かべた数字は21以上ですか？\n";
-					cin >> answer;
-					if (answer == 'y') {
-						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は22ですね。\n";
-						else cout << "あなたが思い浮かべた数字は21ですね。\n";
+			while (range.size() > 7) {//
+				if ((range[range.size() / 2]) % 2 != 0) {//when the center is even
+					cout << "Is the number less than " << range[range.size() / 2] + 1 << "?\n";//? A(13,63,33,83)
+					cin >> ans;
+					if (ans == 'y') {//erase A+1 - range.size()
+						range.erase(range.begin() + (range.size() / 2 + 1), range.begin() + (range.size()));
 					}
-					else {
-						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は20ですね。\n";
-						else cout << "あなたが思い浮かべた数字は21ですね。\n";
+					else if (ans == 'n') {//erase range[0] -  A-1 
+						range.erase(range.begin(), range.begin() + (range.size() / 2 + 1));
 					}
+					for (int x : range)cout << x << '\n';
 				}
-				else {
-					cout << "あなたが思い浮かべた数字は17以上ですか？\n";
-					cin >> answer;
-
-					if (answer == 'y') {
-						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は18ですね。\n";
-						else cout << "あなたが思い浮かべた数字は17ですね。\n";
+				else if ((range[range.size() / 2]) % 2 == 0) {//when the center is odd
+					cout << "Is the number less than " << range[range.size() / 2] << "?\n";//? A(38, , ,)
+					cin >> ans;
+					if (ans == 'y') {//erase A+1 - range.size()
+						range.erase(range.begin() + (range.size() / 2 + 1), range.begin() + (range.size()));
 					}
-					else {
-						if (oddeven == 'y')cout << "あなたが思い浮かべた数字は16ですね。\n";
-						else cout << "あなたが思い浮かべた数字は15ですね。\n";
+					else if (ans == 'n') {//erase range[0] -  A-1 
+						range.erase(range.begin(), range.begin() + (range.size() / 2));
 					}
-				}
-			}//1４以下
-			else {
-				cout << "あなたが思い浮かべた数字は7以上ですか？\n";
-				cin >> answer;
-
-				if (answer == 'y') {
-					cout << "あなたが思い浮かべた数字は11以上ですか？\n";
-					cin >> answer;
-
-					if (answer == 'y') {
-						cout << "あなたが思い浮かべた数字は13以上ですか？\n";
-						cin >> answer;
-
-						if (answer == 'y') {
-							if (oddeven == 'y')	cout << "あなたが思い浮かべた数字は14ですね。\n";
-							else cout << "あなたが思い浮かべた数字は13ですね。\n";
-						}
-						else {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は12ですね。\n";
-							else cout << "あなたが思い浮かべた数字は11ですね。\n";
-						}
-					}
-					else
-					{
-						cout << "あなたが思い浮かべた数字は9以上ですか？\n";
-						cin >> answer;
-
-						if (answer == 'y') {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は10ですね。\n";
-							else cout << "あなたが思い浮かべた数字は9ですね。\n";
-						}
-						else {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は8ですね。\n";
-							else cout << "あなたが思い浮かべた数字は7ですね。\n";
-						}
-					}
-				}//6以下
-				else {
-					cout << "あなたが思い浮かべた数字は3以上ですか？\n";
-					cin >> answer;
-
-					if (answer == 'y') {
-						cout << "あなたが思い浮かべた数字は5以上ですか？\n";
-						cin >> answer;
-
-						if (answer == 'y') {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は6ですね。\n";
-							else cout << "あなたが思い浮かべた数字は5ですね。\n";
-						}
-						else {
-							if (oddeven == 'y')cout << "あなたが思い浮かべた数字は4ですね。\n";
-							else cout << "あなたが思い浮かべた数字は3ですね。\n";
-						}
-					}
-					else { if (oddeven == 'y')cout << "あなたが思い浮かべた数字は2ですね。\n";
-					else cout << "あなたが思い浮かべた数字は1ですね。\n";
-					}
+					for (int x : range)cout << x << '\n';
 				}
 			}
 		}
 	}
+	
+	while (range.size() > 3)//all way to HERE
+	{
+	if (even_or_not == 1) {//when the number we want is even
+
+		if (range[0] % 2 == 0) {//when the first element is even
+			cout << "Is the number less than " << range[range.size() / 2] << "?\n";//? when(26 27 28 29 30 31 32) remains then 29
+			cin >> ans;
+			if (ans == 'y') {//erase (center and above)
+				range.erase(range.begin() + (range.size() / 2) + 1, range.begin() + range.size());
+				for (int x : range)cout << x << '\n';
+			}
+			else if (ans == 'n') {//erase (1 - center)
+				range.erase(range.begin(), range.begin() + (range.size() / 2));
+				for (int x : range)cout << x << '\n';
+			}
+		}
+
+		else if ((range[0] % 2 != 0)) {//when range[0] is odd
+
+			cout << "Is the number less than " << range[range.size() / 2 - 1] << "?\n";//? when(1 2 3 4 5 6 7) remains then what
+			cin >> ans;
+			if (ans == 'y') {
+				cout << "the number you are thinking is " << range[1] << ".\n";
+				for (int x : range)cout << x << '\n';
+				keep_window_open();
+				return 0;
+			}
+			else if (ans == 'n') {//erase [0] - [2]
+				range.erase(range.begin(), range.begin() + (range.size() / 2) );
+				for (int x : range)cout << x << '\n';
+				cout << "Is the number less than " << range[1] << "?\n";//?w(4 5 6 7) remain then 5
+				cin >> ans;
+				if (ans == 'y') {
+					cout << "the number you are thinking is " << range[0] << ".\n";
+					break;
+				}
+				else if (ans == 'n') {
+					cout << "the number you are thinking is " << range[2] << ".\n";
+				}
+				break;
+
+			}
+		}
+		
+			
+		}
+	
+
+	else if (even_or_not == 0)//when the number is odd
+	{
+		if (range[0] % 2 == 0) {//first element is even
+			cout << "Is the number less than " << range[range.size() / 2 - 1] << "?\n";//? when(26 27 28 29 30 31 32) remains then 28
+			cin >> ans;
+			if (ans == 'y') {//
+				cout << "the number you are thinking is " << range[1] << ".\n";
+				keep_window_open();
+				return 0;
+			}
+			else if (ans == 'n') {//erase 1 - center-1
+				range.erase(range.begin(), range.begin() + (range.size() / 2));
+				cout << "Is the number less than " << range[1] << "?\n";//?w(4 5 6 7) remain then 5
+				cin >> ans;
+				if (ans == 'y') {
+					cout << "the number you are thinking is " << range[0] << ".\n";
+					break;
+				}
+				else if (ans == 'n') {
+					cout << "the number you are thinking is " << range[2] << ".\n";
+				}
+				break;
+			}
+		}
+
+		else if ((range[0] % 2 != 0)) {//when range[0] is odd
+
+			cout << "Is the number less than " << range[range.size() / 2 ] << "?\n";//? when(1 2 3 4 5 6 7) remains then what
+			cin >> ans;
+			if (ans == 'y') {//erase center - range.size()
+				range.erase(range.begin() + (range.size() / 2) , range.begin() + range.size());
+
+				cout << "Is the number less than " << range[1] << "?\n";//?w(4 5 6 7) remain then 5
+				cin >> ans;
+				if (ans == 'y') {
+					cout << "the number you are thinking is " << range[0] << ".\n";
+					break;
+				}
+				else if (ans == 'n') {
+					cout << "the number you are thinking is " << range[2] << ".\n";
+				}
+				break;
+			}
+			else if (ans == 'n') {//erase [0] - [2]
+				range.erase(range.begin(), range.begin() + (range.size() / 2));
+				
+				cout << "Is the number less than " << range[2] << "?\n";//?w(4 5 6 7) remain then 5
+				cin >> ans;
+				if (ans == 'y') {
+					cout << "the number you are thinking is " << range[1] << ".\n";
+					break;
+				}
+				else if (ans == 'n') {
+					cout << "the number you are thinking is " << range[3] << ".\n";
+				}
+				break;
+			}
+		}
+	}
+	
+	}
+
+	keep_window_open();
 	return 0;
 }
+
 
 
 練習問題 5.
