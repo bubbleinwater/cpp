@@ -525,8 +525,7 @@ int main()
 
 練習問題4.(second time)//--interim-----
 
-
-#include"../../std_lib_facilities.h"
+#include"std_lib_facilities.h"
 
 int main()
 {
@@ -573,16 +572,28 @@ int main()
 
 
 			while (range.size() > 7) {
-				cout << "Is the number less than " << range[range.size() / 2 ] << "?\n";//? A(13,63,33,83)
-				cin >> ans;
-				if (ans == 'y') {//erase A+1 - range.size()
-					range.erase(range.begin() + (range.size() / 2 + 1), range.begin() + (range.size()));
+				if ((range[range.size() / 2]) % 2 == 0) {
+					cout << "Is the number less than " << range[range.size() / 2] + 1 << "?\n";//? A(13,63,33,83)
+					cin >> ans;
+					if (ans == 'y') {//erase A+1 - range.size()
+						range.erase(range.begin() + (range.size() / 2 + 1), range.begin() + (range.size()));
+					}
+					else if (ans == 'n') {//erase range[0] -  A-1 
+						range.erase(range.begin(), range.begin() + (range.size() / 2 + 1));
+					}
+					for (int x : range)cout << x << '\n';
 				}
-				else if (ans == 'n') {//erase range[0] -  A-1 
-					range.erase(range.begin(), range.begin() + (range.size() / 2 - 1 ));
+				else if ((range[range.size() / 2]) % 2 != 0) {
+					cout << "Is the number less than " << range[range.size() / 2]  << "?\n";//? A(38, , ,)
+					cin >> ans;
+					if (ans == 'y') {//erase A+1 - range.size()
+						range.erase(range.begin() + (range.size() / 2 + 1), range.begin() + (range.size()));
+					}
+					else if (ans == 'n') {//erase range[0] -  A-1 
+						range.erase(range.begin(), range.begin() + (range.size() / 2 -1));
+					}
+					for (int x : range)cout << x << '\n';
 				}
-				for (int x : range)cout << x << '\n';
-
 			}
 			while (range.size()>4) {
 				cout << "Is the number less than " << range[range.size() / 2 - 1 ] << "?\n";//? when(1 2 3 4 5 6 7) remain then 3
@@ -632,7 +643,6 @@ int main()
 	keep_window_open();
 	return 0;
 }
-
 
 練習問題 5.
 
