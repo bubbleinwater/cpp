@@ -386,57 +386,78 @@ int main()
 	return 0;
 }
 
+
 練習問題 7.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
+	vector<string> number(20);
 	string val1, val2;
-	char math = ' ';
+	double num1, num2;
+	char oper = ' ';
 
-	cout << "このプログラムは一桁の2つの値を四則演算するものです。二つの値の後に(+,-,*,/)のどれかを入力してください。\n";
+	cout << "Enter two number followed by (+,-,*,/)\n";
 
-	vector <string>number = { "zero","one","two","three","four","five","six","seven","eight","nine" ,"0","1","2","3","4","5","6","7","8","9"};//0～9そのまま、10～19は-10
-	double num1,num2;
+	number[0] = "zero";
+	number[1] = "one";
+	number[2] = "two";
+	number[3] = "three";
+	number[4] = "four";
+	number[5] = "five";
+	number[6] = "six";
+	number[7] = "seven";
+	number[8] = "eight";
+	number[9] = "nine";
+	number[10] = "0";
+	number[11] = "1";
+	number[12] = "2";
+	number[13] = "3";
+	number[14] = "4";
+	number[15] = "5";
+	number[16] = "6";
+	number[17] = "7";
+	number[18] = "8";
+	number[19] = "9";
 
-	cin >> val1 >> val2 >> math;
-
-	int i = 0;
-	for (string x : number) {
-		if (val1 == x) {
-			if(i<10)
-			num1 = i ;
-			else num1 = i - 10;
+	while (cin >> val1 >> val2) {
+		for (int i = 0; i < 10; ++i) {
+			if (number[i] == val1)
+				num1 = i;
+			if (number[i] == val2)
+				num2 = i;
 		}
-		++i;
-	}
-
-	int j = 0;
-	for (string y : number) {
-		if (val2 == y) {
-			if (j<10)
-				num2 = j;
-			else num2 = j - 10;
+		for (int i = 10; i < 20; ++i) {
+			if (number[i] == val1)
+				num1 = i - 10;
+			if (number[i] == val2)
+				num2 = i - 10;
 		}
-		++j;
+
+		while (cin >> oper) {
+			switch (oper) {
+			case '+':
+				cout << "The sum of " << val1 << " and " << val2 << " is " << num1 + num2 << '\n';
+				break;
+			case '-':
+				cout << "The dif of " << val1 << " minus " << val2 << " is " << num1 - num2 << '\n';
+				break;
+			case '*':
+				cout << "The pro of " << val1 << " mul " << val2 << " is " << num1 * num2 << '\n';
+				break;
+			case '/':
+				cout << "The quo of " << val1 << " div " << val2 << " is " << num1 / num2 << '\n';
+				break;
+			}
+			break;
+		}
 	}
 	
-
-	switch (math) {
-	case '+':cout << "the sum of " << num1 << " and " << num2 << " is " << num1 + num2 << '\n';
-		break;
-	case '-':cout << num1 << " minus " << num2 << " equals " << num1 - num2 << '\n';
-		break;
-	case '*':cout << num1 << " times " << num2 << " equals " << num1*num2 << '\n';
-		break;
-	case '/':cout << num1 << " divided by " << num2 << " equals " << num1 / num2 << '\n';
-		break;
-	}
-
+	keep_window_open();
 	return 0;
-
 }
+
 
 練習問題 8.
 
