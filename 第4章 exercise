@@ -325,7 +325,7 @@ int main()
 }
 
 
-練習問題 6.
+練習問題 6-1
 
 #include "std_lib_facilities.h"
 
@@ -334,7 +334,6 @@ int main()
 	vector<string> number(10);
 	int num;
 	cout << "Enter one digit(1-9)\n";
-	while (cin >> num) {
 
 		number[0] = "zero";
 		number[1] = "one";
@@ -347,6 +346,7 @@ int main()
 		number[8] = "eight";
 		number[9] = "nine";
 
+while (cin >> num) {
 		cout << number[num] << '\n';
 	}
 
@@ -354,6 +354,37 @@ int main()
 	return 0;
 }
 
+ 6-2
+ #include "std_lib_facilities.h"
+
+int main()
+{
+	vector<string> number(10);
+	string num = " ";
+	cout << "Enter one number(like  one or two or three or ...)\n";
+
+	number[0] = "zero";
+	number[1] = "one";
+	number[2] = "two";
+	number[3] = "three";
+	number[4] = "four";
+	number[5] = "five";
+	number[6] = "six";
+	number[7] = "seven";
+	number[8] = "eight";
+	number[9] = "nine";
+
+	while (cin >> num) {
+		int i = -1;
+		for (string x : number) {
+			++i;
+			if (x == num)cout << i << '\n';
+		}
+	}
+
+	keep_window_open();
+	return 0;
+}
 
 練習問題 7.
 
