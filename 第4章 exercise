@@ -296,30 +296,34 @@ int main()
 
 練習問題 5.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
 	double val1, val2;
-	char math = ' ';
+	char oper = ' ';
+	cout << "Enter 2 numbers followed by (+,-,*,/)\n";
 
-	cout << "このプログラムは2つの値を四則演算するものです。二つの値の後に(+,-,*,/)のどれかを入力してください。\n";
-
-	cin >> val1 >> val2 >> math;
-
-	switch (math) {
-	case '+':cout << "the sum of " << val1 << " and " << val2 << " is " << val1 + val2<<'\n';
-		break;
-	case '-':cout << val1 << " minus " << val2 << " equals " << val1 - val2 << '\n';
-		break;
-	case '*':cout << val1 << " times " << "val2" << " equals " << val1 * val2 << '\n';
-		break;
-	case '/':cout << val1 << " divided by " << val2 << " equals " << val1 / val2 << '\n';
-		break;
+	while (cin >> val1 >> val2 >> oper) {
+		switch (oper) {
+		case '+':
+			cout << "The sum of " << val1 << " and " << val2 << " is " << val1 + val2 << '\n';
+			break;
+		case '-':
+			cout << "The dif of " << val1 << " minus " << val2 << " is " << val1 - val2 << '\n';
+			break;
+		case '*':
+			cout << "The pro of " << val1 << " mul " << val2 << " is " << val1 * val2 << '\n';
+			break;
+		case '/':
+			cout << "The quo of " << val1 << " div " << val2 << " is " << val1 / val2 << '\n';
+			break;
+		}
 	}
-
+	keep_window_open();
 	return 0;
 }
+
 
 練習問題 6.
 
