@@ -532,22 +532,32 @@ int main()
 	cin.clear();
 	cout << "please enter r(for rock)p(for paper)s(for scissors)\n";
 	for (int i = 0; i < rps.size(); ++i) {
-		if (rps[i] % 5 == 0 && rps[i] % 2 != 0 && rps[i] % 7 != 0) {my_hand='r'; }
-		else if (rps[i] % 2 == 0 && rps[i] % 7 == 0) { my_hand='p'; }
+		if (rps[i] % 5 == 0 && rps[i] % 2 != 0 && rps[i] % 7 != 0) { my_hand = 'r'; }
+		else if (rps[i] % 2 == 0 && rps[i] % 7 == 0) { my_hand = 'p'; }
 		else { my_hand = 's'; }
 		cout << "you: ";
 		cin >> your_hand;
-		cout <<"me: "<< my_hand;		//o 'p' q 'r' 's' t..
-		if (my_hand == your_hand) { cout << "\nDRAW\n"; }
-		else if ((my_hand == 'p'&&your_hand == 's') || (my_hand == 'r'&&your_hand == 'p') || (my_hand == 's'&&your_hand == 'r')) {
-			cout << "\nYOU WIN!!\n";
-		}
-		else { cout << "\nYOU LOSE.\n"; }
-	}
+		cout << "me: " << my_hand;
 
+	switch (your_hand) {
+		case 's':
+			if (my_hand == 'p') { cout << "\nYOU WIN!!\n"; break; }
+			if (my_hand == 'r') { cout << "\nYOU LOSE.\n"; break; }
+			if (my_hand == 's') { cout << "\ndraw\n"; break; }
+		case 'r':
+			if (my_hand == 's'){ cout << "\nYOU WIN!!\n"; break;}
+			if (my_hand == 'p'){ cout << "\nYOU LOSE.\n"; break;}
+			if (my_hand == 'r'){ cout << "\ndraw\n"; break;}
+		case 'p':
+			if (my_hand == 'r') { cout << "\nYOU WIN!!\n"; break; }
+			if (my_hand == 's') { cout << "\nYOU LOSE.\n"; break; }
+			if (my_hand == 'p') { cout << "\ndraw\n"; break; }
+		}
+	}
 	keep_window_open();
 	return 0;
 }
+
 
 練習問題 11.
 
