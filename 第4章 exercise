@@ -514,48 +514,39 @@ int main()
 }
 
 
-練習問題 10.			//uuummよくわからんなあああーー。
-#include "../../std_lib_facilities.h"
+練習問題 10.
+
+#include "std_lib_facilities.h"
 
 int main()
 {
-	vector<char> jankens;
-	char janken;
-	char te = ' ';
-	cout << "まず初めに、それぞれ3つずつ、文字、（p,s,r）を好きな順番で入力してください。\n";
-
-	for (int j = 0; j < 9;++j) {
-		cin >> janken;
-		jankens.push_back(janken);
-	}
-	if (jankens[3] == 'p') {
-		char tmp = jankens[4];
-		jankens[4] = 's';
-		jankens[6] = 's';
-		jankens[2] = tmp;
-	}
-	if (jankens[7] == 'r') {
-		char tmp = jankens[1];
-		jankens[1] = 'r';
-		jankens[2] = 'p';
-		jankens[3] = 's';
-		jankens[4] = tmp;
-	}
-	if (jankens[5] == 's') {
-		jankens[1] = 's';
-		jankens[3] = 'r';
-		jankens[8] = 'r';
+	vector<int>rps;
+	int val = 0;
+	char your_hand = ' ';
+	char my_hand = ' ';
+	cout << "please enter some integer";
+	while (cin >> val) {
+		rps.push_back(val);
 	}
 
-	cout << "それでは、じゃんけんをしましょう。\nあなたの入力を合図にランダムに(p,s,r)のどれかを出力します。\n";
-	for (int i = 0; i < 8; ++i) {
-	
-		cout << "\nじゃんけん\n";
-		
-		cin >> te;
-		cout << "ぽいっ" << jankens[i];
+	cin.clear();
+	cout << "please enter r(for rock)p(for paper)s(for scissors)\n";
+	for (int i = 0; i < rps.size(); ++i) {
+		if (rps[i] % 5 == 0 && rps[i] % 2 != 0 && rps[i] % 7 != 0) {my_hand='r'; }
+		else if (rps[i] % 2 == 0 && rps[i] % 7 == 0) { my_hand='p'; }
+		else { my_hand = 's'; }
+		cout << "you: ";
+		cin >> your_hand;
+		cout <<"me: "<< my_hand;		//o 'p' q 'r' 's' t..
+		if (my_hand == your_hand) { cout << "\nDRAW\n"; }
+		else if ((my_hand == 'p'&&your_hand == 's') || (my_hand == 'r'&&your_hand == 'p') || (my_hand == 's'&&your_hand == 'r')) {
+			cout << "\nYOU WIN!!\n";
+		}
+		else { cout << "\nYOU LOSE.\n"; }
 	}
-		return 0;
+
+	keep_window_open();
+	return 0;
 }
 
 練習問題 11.
