@@ -461,29 +461,27 @@ int main()
 
 練習問題 8.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
-int main()//こういうことかな
+int main()
 {
-	int premasu = 0;
-	int sum;
+	int reward = 1;
+	int sum_of_reward = 0;
+	int square_number = 0;
 
-	for (int i = 1; i < 65; ++i) {
+	while(sum_of_reward<1000000001){
+		++square_number;
+		
+		if(square_number >= 2)
+			reward *= 2;
+		
+		sum_of_reward += reward;
 
-		if (i == 1) {
-			cout << "現在のマス目は" << i << "です。\n";
-			cout << "今のマスのグレイン量は1です。\n";
-			premasu += 1;
-			sum = 1;
-		}
-		else {
-			cout << "\n現在のマス目は" << i << "です。\n";
-			cout << "今のマスのグレイン量は" << premasu * 2 << "です\n";
-			premasu = premasu * 2;
-			sum += premasu;
-			cout << "現在の褒美の量の合計は" << sum << "です。\n";
-		}
-	}
+		cout << "Square number: " << square_number
+			<< "\nReward at this square: " << reward
+			<< "\nAll reward: " << sum_of_reward << '\n';
+	}	
+	keep_window_open();
 	return 0;
 }
 
