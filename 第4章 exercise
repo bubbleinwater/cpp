@@ -487,63 +487,29 @@ int main()
 
 練習問題 9.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	int masu;
-	int premasu = 0;
-	int sum;
+	
+	double reward = 1;
+	double sum_of_reward = 0;
+	double square_number = 0;
 
-	cout << "何マス目までの合計を求めますか?\n";
-	cin >> masu;
+	while(square_number<64){
+		++square_number;
+		
+		if(square_number >= 2)
+			reward *= 2;
+		
+		sum_of_reward += reward;
 
-	for (int i = 1; i <= masu; ++i) {
-
-		if (i == 1) {
-			cout << "現在のマス目は" << i << "です。\n";
-			cout << "今のマスのグレイン量は1です。\n";
-			premasu += 1;
-			sum = 1;
-		}
-		else {
-			cout << "\n現在のマス目は" << i << "です。\n";
-			cout << "今のマスのグレイン量は" << premasu * 2 << "です\n";
-			premasu = premasu * 2;
-			sum += premasu;
-			cout << "現在の褒美の量の合計は" << sum << "です。\n";
-		}
+		cout << "Square number: " << square_number
+			<< "\nReward at this square: " << reward
+			<< "\nAll reward: " << sum_of_reward << '\n';
 	}
-	return 0;
-}
-//double v.
-#include "../../std_lib_facilities.h"
-
-int main()
-{
-	int masu;
-	double premasu = 0;
-	double sum;
-
-	cout << "何マス目までの合計を求めますか?\n";
-	cin >> masu;
-
-	for (int i = 1; i <= masu; ++i) {
-
-		if (i == 1) {
-			cout << "現在のマス目は" << i << "です。\n";
-			cout << "今のマスのグレイン量は1です。\n";
-			premasu += 1;
-			sum = 1;
-		}
-		else {
-			cout << "\n現在のマス目は" << i << "です。\n";
-			cout << "今のマスのグレイン量は" << premasu * 2 << "です\n";
-			premasu = premasu * 2;
-			sum += premasu;
-			cout << "現在の褒美の量の合計は" << sum << "です。\n";
-		}
-	}
+	
+	keep_window_open();
 	return 0;
 }
 
