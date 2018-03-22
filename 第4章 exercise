@@ -561,68 +561,58 @@ int main()
 
 練習問題 11.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	vector<int> primes = { 2,3 };
-	int rem;
+	cout << "primes\n";
+
+	vector<int> primes = { 2,3,5 };
 	
-
-	for (int i = 4 ; i <= 100; i++) {
-		int judge = 0;
-		for (int j = 0; j < primes.size()-1; ++j) {
-			rem = i % primes[j];
-			if (rem == 0) { ++judge; }
-			else {}
+	for (int i = 6; i <= 100; ++i) {
+		int j = 0;
+		for (int x : primes) {
+			if (i % x == 0) {
+				j++;
+			}
 		}
-		if (judge == 0) {
-			primes.push_back(i);
-		}
+			if (j == 0) { primes.push_back(i); }
 	}
-
-	cout << "1から100までのうちの素数は\n";
-	for (int y : primes) {
-		cout << y << "\n";
-	}
-	cout << "です。\n";
-
+	for (int x : primes)cout << x << '\n';
+	
+	keep_window_open();
 	return 0;
 }
+
 
 練習問題 12.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	vector<int> primes = { 2,3 };
-	int rem;
-	int max;
-	cout << "1からいくつまでの素数を見つけ出しますか？\n";
-
+	cout << "primes\n";
+	int max = 0;
+	cout << " Enter max number.\n";
 	cin >> max;
 
-	for (int i = 4 ; i <= max; i++) {
-		int judge = 0;
-		for (int j = 0; j < primes.size()-1; ++j) {
-			rem = i % primes[j];
-			if (rem == 0) { ++judge; }
-			else {}
+	vector<int> primes = { 2,3,5 };
+	
+	for (int i = 6; i <= max; ++i) {
+		int j = 0;
+		for (int x : primes) {
+			if (i % x == 0) {
+				j++;
+			}
 		}
-		if (judge == 0) {
-			primes.push_back(i);
-		}
+			if (j == 0) { primes.push_back(i); }
 	}
-
-	cout << "1から"<<max<<"までのうちの素数は\n";
-	for (int y : primes) {
-		cout << y << "\n";
-	}
-	cout << "です。\n";
-
+	for (int x : primes)cout << x << '\n';
+	
+	keep_window_open();
 	return 0;
 }
+
 
 練習問題 13.
 #include "../../std_lib_facilities.h"
