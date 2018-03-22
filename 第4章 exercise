@@ -674,48 +674,36 @@ int main()
 
 練習問題 15.
 
-#include "../../std_lib_facilities.h"
+#include"std_lib_facilities.h"
 
 int main()
 {
-	vector<int> primes = { 2,3 };
-	int rem;
-	int max;
-	int n;
-	cout << "あらかじめ、1からいくつの数字までの素数を記憶しますか？\n";
-	cin >> max;
+	vector<int>number;
+	vector<int>primes = { 2 };
+	int max = 100000;
+	int num = 0;
 
-	cout << "何個目までの素数を出力しますか？\n";
-	cin >> n;
+	cout << "How many prime number do you want to know?.\n";
+	cin >> num;
 
-	for (int i = 4; i <= max; i++) {
-		int judge = 0;
-		for (int j = 0; j < primes.size() - 1; ++j) {
-			rem = i % primes[j];
-			if (rem == 0) { ++judge; }
-			else {}
-		}
-		if (judge == 0) {
-			primes.push_back(i);
-		}
+	for (int i = 1; i <= max; ++i) {
+		number.push_back(i);
 	}
 
-
-	if (n <= primes.size() ) {
-		cout << n << "個の素数は\n";
-		for (int y = 0; y < n;++y) {
-			cout << primes[y] << "\n";
-		}
-		cout << "です。\n";
-	}
-	else {
-		cout <<n<< "個目の素数の値は" << max << "を超えています。\n" << max << "以下の素数は\n";
+	for (int i = 1; i < number.size(); ++i) {
+		int j = 0;
 		for (int x : primes) {
-			cout << x<<'\n';
+			if (number[i] % x == 0) { ++j; }
 		}
-		cout << "で、"<<primes.size()<<"個です。\n";
+		if (j == 0) { 
+			primes.push_back(number[i]);
+			if (primes.size() == num)break;
+		}
 	}
 
+	for (int x : primes)cout << x << '\n';
+
+	keep_window_open();
 	return 0;
 }
 
