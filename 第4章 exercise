@@ -707,106 +707,43 @@ int main()
 	return 0;
 }
 
-練習問題 16.		//ああああーーーー疲れたああああああああああ。。。。。。。。
-			   //要素がないvectorのnumに値を代入しようとしてたみたいで、それを見落としてかなかなか進まなかった。
-			   //これだと100までしかできないけどとりあえず先に進みます。
-			   //あ、あと最頻値個数がかぶった時後ろの値しか出せないやコレ。。。。
+練習問題 16.
 
 #include "../../std_lib_facilities.h"
 
-double maxv = 0, miniv = 0, sum = 0;
-
-void otherdenyer(int aa, double val2)
-{
-	if (aa == 0) {
-		maxv = val2;
-		miniv = val2;
-	}
-	else if (aa != 0 && val2 > maxv) {
-		maxv = val2;
-		cout << "the longest so far\n";
-	}
-	else if (aa != 0 && val2 < miniv) {
-		miniv = val2;
-		cout << "the shortest so far\n";
-	}
-	else {}
-}
-
-
 int main()
 {
-	int j = 0;
-	double val1 = 0;
-	string unit;
-	vector<double> tsudoi;
-	vector<int> num(100);　　　　//ここでvector<int>num;だけだと、74行目でエラーが起きる。push_back()を使う必要があるのかな？？？
+	vector<int> numbers;
+	int tmp;
+	int num1 = 0;
+	int num2 = 0;
+	int mode = 0;
 
-	cout << "入力された長さをｍに変換し最大値と最小値を追跡します。単位は(cm,m,in,ft)の4つに限ります。|を入力すると終了します。終了後に、最小値と最大値と値の個数と値の合計を書き出します。\n";
+	cout << "enter some integer.\n";
 
-	for (int i = 0; cin >> val1 >> unit; ++i) {
-
-		if (unit == "cm") {
-			val1 *= 0.01;
-			tsudoi.push_back(val1);
-			sum += val1;
-			unit = " ";
-			otherdenyer(i, val1);				//otherdenyerってcmminft以外は入れないってことか。
-		}
-		else if (unit == "m") {
-			{}
-			tsudoi.push_back(val1);
-			sum += val1;
-			unit = " ";
-			otherdenyer(i, val1);
-		}
-		else if (unit == "in") {
-			val1 *= 0.0254;
-			tsudoi.push_back(val1);
-			sum += val1;
-			unit = " ";
-			otherdenyer(i, val1);
-		}
-		else if (unit == "ft") {
-			//1ft == 12in == 12*0.0254m
-			constexpr double fttom = 12 * 0.0254;
-			val1 *= fttom;
-			tsudoi.push_back(val1);
-			sum += val1;
-			unit = " ";
-			otherdenyer(i, val1);
-		}
-		else {
-			cout << "Denied.Please enter another length followed by(cm,m,in,ft).\n";
-			--i;
-		}
-		j = i;
+	while (cin >> tmp) {
+		numbers.push_back(tmp);
 	}
 
-	for (int k = 0; k < tsudoi.size()-1; ++k) {
-		for (int L = k + 1; L < tsudoi.size(); ++L) {
-			if (tsudoi[k] == tsudoi[L]) num[k] += 1;
-			else{}
-		}
-	}
-	int exit = 0;
-	for (int i = 0; i < num.size()-1; ++i) {
-		if (exit == 1)break;
-		for (int j = i+1; j < num.size();++j)
-			if (num[i] > num[j]) {
-				if (j == num.size() - 1) {
-					exit = 1;
-					cout << "最頻値は" << tsudoi[i] << "です。\n";
-				}
+	for (int i = 0; i < numbers.size(); ++i) {
+		for (int x : numbers) {
+			if (numbers[i] == x) {
+				++num1;
 			}
-		else break;
+		}
+		if (num2 < num1) {
+			mode = numbers[i];
+			num2 = num1;
+			num1 = 0;
+		}
 	}
 
-	cout << "最小値は" << miniv << "m, 最大値は" << maxv << "m, 値の個数は" << j + 1 << ", 値の合計は" << sum << "mです。\n";
-	
+	cout << "Mode is " << mode << '\n';
 
+	keep_window_open();
 	return 0;
 }
+
 
 練習問題 17.
 
