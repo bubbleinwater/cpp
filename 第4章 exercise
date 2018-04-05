@@ -858,66 +858,51 @@ int main()
 }
 
 
-練習問題 20.		//前にもあったんだけど、最初のfor文をintに文字リテラル入れて終了させると自動的に、後ろのfor文も終了しちゃう。
+練習問題 20.	
 
 #include "../../std_lib_facilities.h"
 
 int main()
 {
-	vector<string> names(1);
-	vector<int> scores(1);
+	vector<string>names;
+	vector<int>scores;
 	string name;
 	int score;
-	string thename = " ";
 
-	cout << "最初に名前とスコアを入力してください。\n同じ名前を２つ以上使うことはできません。\n";
+	cout << "Please enter name and score.\n"
+		<<"enter NoName and 0 for exit.\n";
 
-	for (int i = 0; cin >> name >> score; ++i) {
-		int judge = 0;
-		if (i == 0) {
-			names[i] = name;
-			scores[i] = score;
+	while (cin >> name >> score) {
+		if (name == "NoName" && score == 0) { break; }
+
+		if (names.size() == 0) {
+			names.push_back(name);
+			scores.push_back(score);
 		}
 		else {
-			for (int j = 0; j <= i; ++j) {
-				if(i == j){}
-				else if (name == names[j]) {
-					judge += 1;
-					}
-				else{}
+			for (string x : names) {
+				if (name == x) {
+					error("same name.");
+				}
 			}
-			
-			if (judge != 0) {
-				cout << "その名前は既に入力されています。\n";
-				name = " ";
-				score = 0;
-				--i;
-			}
-			else {
-				names.push_back(name);
-				scores.push_back(score);
-			}
+			names.push_back(name);
+			scores.push_back(score);
 		}
+
+
 	}
-
-
-	cin.clear();								//これでいいのかな？
-	cin.ignore();								//調べたら見つかったんだけど。
-	cout << "入力された中から、指定された名前の方の点数を出力します。\n";
+	cin.clear();
 	
-	for (int y = 0; cin >> thename; ++y) {
-		int judge = 0;
-		for (int x = 0; x < names.size(); ++x) {
-			if (thename == names[x]) {
-				cout << thename << "さんの点数は" << scores[x] << "です。\n";
-				++judge;
-			}
+	cout << "Who's score?\n";
+	while (cin >> name) {
+		int i;
+		for (i = 0; i < names.size(); ++i) {
+			if (name == names[i]) { cout << name << "'s score is " << scores[i] << '\n'; i = -1; break; }
 		}
-		if (judge == 0) {
-			cout << "name not found.\n";
-		}
+		if (i != -1) { cout << "name not found.\n"; }
 	}
 
+	keep_window_open();
 	return 0;
 }
 
