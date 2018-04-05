@@ -860,7 +860,7 @@ int main()
 
 練習問題 20.	
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
@@ -870,7 +870,7 @@ int main()
 	int score;
 
 	cout << "Please enter name and score.\n"
-		<<"enter NoName and 0 for exit.\n";
+		<<"enter NoName and 0 for next.\n";
 
 	while (cin >> name >> score) {
 		if (name == "NoName" && score == 0) { break; }
@@ -906,63 +906,54 @@ int main()
 	return 0;
 }
 
+
 練習問題 21.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	vector<string> names(1);
-	vector<int> scores(1);
+	vector<string>names;
+	vector<int>scores;
 	string name;
 	int score;
-	int thescore = 0;
 
-	cout << "最初に名前とスコアを入力してください。\n同じ名前を２つ以上使うことはできません。\n";
+	cout << "Please enter name and score.\n"
+		<<"enter NoName and 0 for next.\n";
 
-	for (int i = 0; cin >> name >> score; ++i) {
-		int judge = 0;
-		if (i == 0) {
-			names[i] = name;
-			scores[i] = score;
+	while (cin >> name >> score) {
+		if (name == "NoName" && score == 0) { break; }
+
+		if (names.size() == 0) {
+			names.push_back(name);
+			scores.push_back(score);
 		}
 		else {
-			for (int j = 0; j <= i; ++j) {
-				if(i == j){}
-				else if (name == names[j]) {
-					judge += 1;
-					}
-				else{}
+			for (string x : names) {
+				if (name == x) {
+					error("same name.");
+				}
 			}
-			
-			if (judge != 0) {
-				cout << "その名前は既に入力されています。\n";
-				name = " ";
-				score = 0;
-				--i;
-			}
-			else {
-				names.push_back(name);
-				scores.push_back(score);
-			}
+			names.push_back(name);
+			scores.push_back(score);
 		}
-	}
-	cin.clear();
-	cin.ignore();
-	cout << "先に入力された中から、指定された点数の方の名前を出力します。\n";
-	
-	for (int y = 0; cin >> thescore; ++y) {
-		int judge = 0;
-		for (int x = 0; x < names.size(); ++x) {
-			if (thescore == scores[x]) {
-				cout <<"点数が"<< thescore << "の方は" << names[x] << "さんです。\n";
-				++judge;
-			}
-		}
-		if (judge == 0) {
-			cout << "score not found.\n";
-		}
+
+
 	}
 
+	cin.clear();
+
+	cout << "which score?\n";
+	while (cin >> score) {
+		int j = 0;
+		cout << "score " << score << ":";
+		for (int i = 0; i < names.size(); ++i) {
+			if (score == scores[i]) { cout << ' ' << names[i] << ' '; ++j; }
+		}
+		cout << '\n';
+		if (j == 0) { cout << "score not found.\n"; }
+	}
+
+	keep_window_open();
 	return 0;
 }
