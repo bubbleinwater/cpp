@@ -8,7 +8,6 @@ try {
 	for (int x; cin >> x;) {
 		v.push_back(x);
 	}
-	cin.clear();
 	for (int i = 0; i <= v.size(); ++i) {
 		cout << "v[" << i << "] == " << v[i] << '\n';
 	}
