@@ -41,26 +41,33 @@ int main()
 }
 //-------debugged
 
-練習問題3.
+exercise 3.
+#include"../../std_lib_facilities.h"
 
-#include "../../std_lib_facilities.h"
+class bad_temperature{};
 
 double ctok(double c)
 {
+	if (c < -273.15) throw bad_temperature();
 	double k = c + 273.15;
 	return k;
 }
 
 int main()
-{
-	cout << "ケルビンに変換します。セ氏を入力してください。\n";
+try{
 	double c = 0;
 	cin >> c;
-	if (c < -273.15) simple_error("不正な入力: 下限値を超えています。\n");
 	double k = ctok(c);
 	cout << k << '\n';
 
+	keep_window_open();
 	return 0;
+}
+catch (bad_temperature) {
+	error("bad temp");
+
+	keep_window_open();
+	return 1;
 }
 
 練習問題4.
