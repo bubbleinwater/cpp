@@ -1,14 +1,25 @@
 練習問題1.　trythis
 
-練習問題2.
-エラーのリスト
-  ctok関数内でkをintと宣言しているがdoubleと宣言すべき。
-  ctok関数でkを返すべきところ、return intとしている。さらに式文が　;　で閉じられていない。
-  main関数内で宣言していないdにcinで入力しようとしている。ここではcin >> c;とすべき
-  セ氏の入力をうながすプロンプト文を書くべき。
-  ctok関数に渡す引数が"c"と、文字列cを渡すように書かれているがdouble k = ctok(c); とすべき
-  Coutと書かれているがcoutと書くべき
-  
+exercise 2.
+//-----error
+#include"../../std_lib_facilities.h"
+
+double ctok(double c)
+{
+	int k = c + 273.15;
+	return int
+}
+
+int main()
+{
+	double c = 0;
+	cin >> d;
+	double k = ctok("c");
+	Cout << k << '/n';
+}
+
+//---------error
+
 練習問題3.
 
 #include "../../std_lib_facilities.h"
