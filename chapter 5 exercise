@@ -145,50 +145,54 @@ catch (bad_temperature) {
 	return 1;
 }
 
+exercise 6.
 
-練習問題6. 
+#include"../../std_lib_facilities.h"
 
-#include "../../std_lib_facilities.h"
+class bad_temperature{};
 
 double ctof(double c)
-//事前条件: 引数は-273.15以上であり、
-//事後条件: 0以上の値を返す。
+//-273.15 <= c
 {
-
-	if (!(c >= -273.15)) simple_error("不正な入力: 下限値を超えています。\n");
+	if (c < -273.15) throw bad_temperature();
 	double f = c * 9 / 5 + 32;
-	if (f < -459.67) simple_error("error. ctok() post-condition");
 	return f;
 }
-
 double ftoc(double f)
-//事前条件: 引数は0以上であり、
-//事後条件: -273.15以上の値を返す。
+//-459.67 <= f
 {
-
-	if (!(f >= -459.67)) simple_error("不正な入力: 下限値を超えています。\n");
-	double c = (f - 32) * 5/9;
-	if (c < -273.15) simple_error("error. ftoc() post-condition");
+	if (f < -459.67) throw bad_temperature();
+	double c = (f - 32) * 5 / 9;
 	return c;
 }
 
-
 int main()
-{
-	cout << "値を入力した後に単位(セ氏ならばc、華氏ならばf)を入力してください。\n";
-	double v = 0;
-	char unit;
-	cin >> v >> unit;
-	if (unit == 'c') {
-		double f = ctof(v);
-		cout <<"摂氏"<<v << "度は、華氏"<< f << "度です。\n";
+try{
+	cout << "Please enter a temperature followed by (c or f)\n";
+	double T = 0;
+	char n = ' ';
+	cin >> T >> n;
+	if (n == 'c') {
+		if (T < -273.15)throw bad_temperature();
+		double f = ctof(T);
+		cout << T << "c = " << f << "f\n";
 	}
-	if (unit == 'f') {
-		double c = ftoc(v);
-		cout <<"華氏"<< v << "度は、摂氏" << c << "度です。\n";
+	else if (n == 'f') {
+		if (T < 0)throw bad_temperature();
+		double c = ftoc(T);
+		cout << T << "f = " << c << "c\n";
 	}
+
+	keep_window_open();
 	return 0;
 }
+catch (bad_temperature) {
+	error("bad temp");
+
+	keep_window_open();
+	return 1;
+}
+
 
 練習問題7. 
 
