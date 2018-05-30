@@ -230,7 +230,7 @@ catch (bad_variable) {
 
 exercise 8.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 class not_enough{};
 
@@ -270,7 +270,7 @@ catch (not_enough) {
 
 exercise 9.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 class not_enough{};
 class not_int{};
@@ -321,62 +321,51 @@ catch(not_int){
 	return 2;
 }
 
+exercise 10.
+#include "std_lib_facilities.h"
 
-練習問題　10.
-
-#include "../../std_lib_facilities.h"
-
-int main()
-{
-	int x = 0;
-	double num,sum = 0;
-	vector<double> nums;
-	cout << "合計したい値の数を入力してください。\n";
-	cin >> x;
-
-	cout << "整数を入力し、最後に垂直バー(|)を入力してください。\n";
-	for (int i = 0; cin >> num; ++i) {
-		nums.push_back(num);
-	}
-	for (int i = 0; i < x; ++i) { sum += nums[i]; }
-
-	cout << "最初の" << x << "個の数字( ";
-	for (int i = 0; i < x;++i)cout << nums[i]<<" ";
-	cout << ")の合計は" << sum << "です。\n";
-
-	return 0;
-}
-
-練習問題10.2
-
-#include "../../std_lib_facilities.h"
+class not_enough{};
+class not_int{};
 
 int main()
-{
-	int x = 0;
-	double num,sum = 0;
-	vector<double> nums;
-	vector<double> prog;
-	cout << "合計したい値の数を入力してください。\n";
-	cin >> x;
+try{
+	cout << "How many numbers dow you want to sum?\n";
+	int N = 0;
+	cin >> N;
 
-	cout << "整数を入力し、最後に垂直バー(|)を入力してください。\n";
-	for (int i = 0; cin >> num; ++i) {
-		nums.push_back(num);
-	}
-	for (int i = 0; i < x; ++i) { sum += nums[i]; }
-	for (int i = 1; i < nums.size(); ++i) {
-		prog.push_back(nums[i] - nums[i - 1]);
+	vector<double> v;
+	vector<double> vv;
+	double n = 0;
+	double sum = 0;
+
+	cout << "Please enter numbers you want to sum.(enter | to end)\n";
+	while (cin>>n) {
+		v.push_back(n);
 	}
 
-	cout << "最初の" << x << "個の数字( ";
-	for (int i = 0; i < x;++i)cout << nums[i]<<" ";
-	cout << ")の合計は" << sum << "です。\n";
-	cout << "ベクターprogの内容を出力します。\n";
-	for (double y : prog)cout << y << '\n';
+	if (v.size() < N) { throw not_enough(); }
 
+	for (int i = 0; i < N;++i) { sum += v[i]; }
+	for (int i = 1; i < N; ++i) { vv.push_back(v[i] - v[i - 1]); }
+	cout <<"result : "<< sum<<'\n';
+
+	for (double x : vv)cout << x << '\n';
+
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
 	return 0;
 }
+catch (not_enough) {
+	cerr << "error : not enough\n";
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 1;
+}
+
 
 練習問題11.
 
