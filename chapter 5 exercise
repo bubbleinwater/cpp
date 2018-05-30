@@ -228,31 +228,46 @@ catch (bad_variable) {
 	return 1;
 }
 
-
-練習問題8.
+exercise 8.
 
 #include "../../std_lib_facilities.h"
 
+class not_enough{};
+
 int main()
-{
-	int x = 0;
-	int num,sum = 0;
-	vector<int> nums;
-	cout << "合計したい値の数を入力してください。\n";
-	cin >> x;
+try{
+	cout << "How many numbers dow you want to sum?\n";
+	int N = 0;
+	cin >> N;
 
-	cout << "整数を入力し、最後に垂直バー(|)を入力してください。\n";
-	for (int i = 0; cin >> num; ++i) {
-		nums.push_back(num);
+	vector<int> v;
+	int n = 0;
+	int sum = 0;
+
+	cout << "Please enter numbers you want to sum.(enter | to end)\n";
+	while (cin>>n) {
+		v.push_back(n);
 	}
-	for (int i = 0; i < x; ++i) { sum += nums[i]; }
 
-	cout << "最初の" << x << "個の数字( ";
-	for (int i = 0; i < x;++i)cout << nums[i]<<" ";
-	cout << ")の合計は" << sum << "です。\n";
+	if (v.size() < N) { throw not_enough(); }
 
+	for (int i = 0; i < N;++i) { sum += v[i]; }
+	cout <<"result : "<< sum<<'\n';
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
 	return 0;
 }
+catch (not_enough) {
+	cerr << "not enough\n";
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 1;
+}
+
 
 練習問題9.　わかんねえーー
 
