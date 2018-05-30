@@ -268,8 +268,59 @@ catch (not_enough) {
 	return 1;
 }
 
+exercise 9.
 
-練習問題9.　わかんねえーー
+#include "../../std_lib_facilities.h"
+
+class not_enough{};
+class not_int{};
+
+int main()
+try{
+	cout << "How many numbers dow you want to sum?\n";
+	int N = 0;
+	cin >> N;
+
+	vector<double> v;
+	double n = 0;
+	double sum = 0;
+
+	cout << "Please enter numbers you want to sum.(enter | to end)\n";
+	while (cin>>n) {
+		v.push_back(n);
+	}
+
+	if (v.size() < N) { throw not_enough(); }
+
+	for (int i = 0; i < N;++i) { sum += v[i]; }
+	
+	int intsum = sum;
+	if (sum != intsum) { throw not_int(); }
+	
+	cout <<"result : "<< sum<<'\n';
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 0;
+}
+catch (not_enough) {
+	cerr << "error : not enough\n";
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 1;
+}
+catch(not_int){
+	cerr << "error : not int\n";
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 2;
+}
+
 
 練習問題　10.
 
