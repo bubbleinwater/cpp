@@ -366,22 +366,43 @@ catch (not_enough) {
 	return 1;
 }
 
-
-練習問題11.
-
-#include "../../std_lib_facilities.h"
+exercise 11.
+#include "std_lib_facilities.h"
 
 int main()
 {
-	constexpr double max = 31;      //最大値は832040であった。
-	vector<double> Fibseq = { 0,1 };
 
-	for (int i = 2; i < max; ++i) {
-		Fibseq.push_back(Fibseq[i - 2] + Fibseq[i - 1]);
+	//this for search	
+	//	for (int i = 2147483643; i <= 2147483651;++i) {
+	//		cout << i << '\n';
+	//		if (i >= 2147483647)cout << "ok\n";
+	//	}
+	//I learned from this,when the number more than 2147483648 is entered,
+	//the value inside the variable become negative number.
+
+	vector<int>Fibonacci{1,1,2,3};
+	while (Fibonacci[Fibonacci.size() - 2] + Fibonacci[Fibonacci.size() - 1] > 0) {
+		Fibonacci.push_back(Fibonacci[Fibonacci.size() - 2] + Fibonacci[Fibonacci.size() - 1]);
 	}
 
-	for (double y : Fibseq)cout << y<<'\n';
-	
+	while (true) {
+		cout << "How many Fibonacci numbers do you want me to write out?\n";
+		int limit = 0;
+		cin >> limit;
+		if (!cin) { return 0; }
+		while (limit > Fibonacci.size() ) {
+			cout << "exceeded the limit. Please re-enter.\n";
+			cin >> limit;
+			if (!cin) { return 0; }
+		}
+
+		for (int i = 0; i < limit; ++i) {
+			cout << Fibonacci[i] << '\n';
+		}
+
+	}
+
+	keep_window_open();
 	return 0;
 }
 
