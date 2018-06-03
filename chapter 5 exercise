@@ -378,7 +378,7 @@ int main()
 	//		if (i >= 2147483647)cout << "ok\n";
 	//	}
 	//I learned from this,when the number more than 2147483648 is entered,
-	//the value inside the variable become negative number.
+	//the value put in this variable become negative number.
 
 	vector<int>Fibonacci{1,1,2,3};
 	while (Fibonacci[Fibonacci.size() - 2] + Fibonacci[Fibonacci.size() - 1] > 0) {
