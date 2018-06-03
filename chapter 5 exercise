@@ -406,159 +406,63 @@ int main()
 	return 0;
 }
 
-練習問題12.　　　//!!途中経過!!
 
-#include "../../std_lib_facilities.h"
+exercise 12.
 
-int main()
-{
-	int x, y;
-	int bull = 0;
-	int cow = 0;
-	vector<int> vsmatch{ 0,0,0,0 };
-	cout << "bulls and cows!!\n";
-	vector<int> q1{ 4,5,2,8 };
-	vector<int> q2{ 2,8,5,3 };
-	vector<int> q3{ 1,6,3,2 };
-	vector<int> q4{ 7,5,3,9 };
-	vector<int> q5{ 4,2,1,7 };
-	vector<int> q6{ 9,5,8,2 };
-
-
-	cout << "1から6までのどこを当てますか？\n";//まだランダムは無理
-	cin >> x;
-	if (x == 1) { for (int i = 0; i < 4; ++i)vsmatch[i] = q1[i]; }
-	if (x == 2) { for (int i = 0; i < 4; ++i)vsmatch[i] = q2[i]; }
-	if (x == 3) { for (int i = 0; i < 4; ++i)vsmatch[i] = q3[i]; }
-	if (x == 4) { for (int i = 0; i < 4; ++i)vsmatch[i] = q4[i]; }
-	if (x == 5) { for (int i = 0; i < 4; ++i)vsmatch[i] = q5[i]; }
-	if (x == 6) { for (int i = 0; i < 4; ++i)vsmatch[i] = q6[i]; }
-
-
-	for (int h : vsmatch)cout << h;
-	cout << "\nvsmatchの[1]は" << vsmatch[1]<<'\n';
-
-	if (!(x >= 0 && x <= 6))simple_error("1から6までの数字を入力してください。\n");
-
-	cout << "推測した1から9の数字を重複なしで4つ入力してください。\n";
-	vector<int> ans;
-	for (int i = 0; i <= 3; ++i) {
-		cin >> y;
-		ans.push_back(y);
-	}
-
-	if (vsmatch[0] == ans[0]) { bull += 1; }
-	if (vsmatch[1] == ans[1]) { bull += 1; }
-	if (vsmatch[2] == ans[2]) { bull += 1; }
-	if (vsmatch[3] == ans[3]) { bull += 1; }
-
-	cout << "今のbullは" << bull << '\n';
-
-	try {
-		int test1 = 0;
-		int test2 = 0;
-		for (int i = 0; i < 4; ++i)
-		{
-			cerr << "ここは？\n";
-			test1 = vsmatch[i];
-			for (int j = 0; j <= 3;++j) {				//ここを(int j = 0; i <= 3; ++j)にしてて全然進まなかった(T.T)
-				test2 = ans[j];					//はあああああああああまじでつらかった。	
-				cout << "今のtest2は" << test2 << '\n';		//とりあえずiをjに変えて他はそのままアップ
-				if (i != j) {
-					cerr << "ここ？\n";
-					if (test1 == test2) {
-						cow += 1;
-					}
-				}
-			}
-		}
-//ここ以降は実行されてない。
-
-		cout << bull << " bull and " << cow << " cow" << '\n';
-
-		return 0;
-	}
-	catch (exception) {
-		cerr << "何がダメなのかわからない。\n"; 
-		keep_window_open( );
-	}
-}
-
-練習問題12.
-
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	int x, y;
+	vector<int>the_number(4);
+	the_number[0] = 2;
+	the_number[1] = 5;
+	the_number[2] = 1;
+	the_number[3] = 9;
+
 	int bull = 0;
 	int cow = 0;
-	vector<int> vsmatch{ 0,0,0,0 };
-	cout << "bulls and cows!!\n";
-	vector<int> q1{ 4,5,2,8 };
-	vector<int> q2{ 2,8,5,3 };
-	vector<int> q3{ 1,6,3,2 };
-	vector<int> q4{ 7,5,3,9 };
-	vector<int> q5{ 4,2,1,7 };
-	vector<int> q6{ 9,5,8,2 };
 
-
-	cout << "1から6までのどこを当てますか？\n";//まだランダムは無理なので
-	cin >> x;
-	if (x == 1) { for (int i = 0; i < 4; ++i)vsmatch[i] = q1[i]; }
-	if (x == 2) { for (int i = 0; i < 4; ++i)vsmatch[i] = q2[i]; }
-	if (x == 3) { for (int i = 0; i < 4; ++i)vsmatch[i] = q3[i]; }
-	if (x == 4) { for (int i = 0; i < 4; ++i)vsmatch[i] = q4[i]; }
-	if (x == 5) { for (int i = 0; i < 4; ++i)vsmatch[i] = q5[i]; }
-	if (x == 6) { for (int i = 0; i < 4; ++i)vsmatch[i] = q6[i]; }
-
-
-//testing	for (int h : vsmatch)cout << h;
-//testing	cout << "\nvsmatchの[1]は" << vsmatch[1]<<'\n';
-
-	if (!(x >= 0 && x <= 6))simple_error("1から6までの数字を入力してください。\n");
+	vector<int>answer(4);
+	cout << "We play 'Bulls and Cows'\n";
 	while (bull != 4) {
 		bull = 0;
 		cow = 0;
-		cout << "推測した1から9の数字を重複なしで4つ入力してください。\n";
-		vector<int> ans;
-		for (int i = 0; i <= 3; ++i) {
-			cin >> y;
-			ans.push_back(y);
+		cout << "Please enter four different integer.\n";
+
+		int temp = 0;
+		int check = 1;
+
+		while (check != 0) {
+			check = 0;
+
+			for (int i = 0; i < 4; ++i) { cin >> temp; answer[i] = temp; }
+
+			for (int i = 0; i < 4; ++i) {
+				for (int j = 0; j < 4; ++j) {
+					if (answer[i] == answer[j] && i != j) { ++check; }
+				}
+			}
+			if (check != 0) { cout << "Please enter four different integer.\n"; }
 		}
 
-		if (vsmatch[0] == ans[0]) { bull += 1; }
-		if (vsmatch[1] == ans[1]) { bull += 1; }
-		if (vsmatch[2] == ans[2]) { bull += 1; }
-		if (vsmatch[3] == ans[3]) { bull += 1; }
-
-		/*	try {*/
-		int test1 = 0;
-		int test2 = 0;
-		for (int i = 0; i < 4; ++i)
-		{
-			test1 = vsmatch[i];
-			for (int j = 0; j <= 3; ++j) {
-				test2 = ans[j];
-				if (i != j) {
-					if (test1 == test2) {
-						cow += 1;
-					}
+		for (int i = 0; i < 4; ++i) {
+			for (int j = 0; j < 4; ++j) {
+				if (the_number[i] == answer[j] && i == j) {
+					++bull;
+				}
+				else if (the_number[i] == answer[j] && i != j) {
+					++cow;
 				}
 			}
 		}
-
-		cout << bull << " bull and " << cow << " cow" << '\n';
+		cout << "\"" << bull << "bull and " << cow << "cow" << "\"\n";
 	}
-	cout << "Bingo！！";
-		return 0;
-/*	}
+	cout << "B I N G O!!\n";
 
-	catch (exception) {
-		cerr << "何がダメなのかわからない。\n"; 
-		keep_window_open( );　//最初ここにkeep_windows _open書いてなくてすぐ閉じた
-	}*/
+	keep_window_open();
+	return 0;
 }
+
 
 練習問題13.
 
@@ -585,7 +489,7 @@ int main()
 
 //nに違う文字を入力してもランダムにならない。
 //あと気がついたんだけど、本にはrandint(10)を4回って書いてあるけど、それだとmaxが
-//10になる。miniも0だから1から9にはならない。
+//10になる。miniも0だから1から9にはならない。//ここ0から9でいいんだよ?
 //4つのすべてが異なる、一桁の数字にならない。同じ文字が含まれてると
 //cowがincrementされる。
 //randomとかのコードとか読めばもうわかるだろってことかな。
