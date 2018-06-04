@@ -463,81 +463,84 @@ int main()
 	return 0;
 }
 
+exercise 13.
 
-練習問題13.
-
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	int n, y;
-	int bull = 0;
-	int cow = 0;
-	
-	cout << "bulls and cows!!\n";
-	vector<int> q1(4);
-	
-	cout << "好きな文字を入力してください。\n";
-	cin >> n;
 
-	srand(n);
-
-	q1[0] = randint(1, 9);
-	q1[1] = randint(1, 9);
-	q1[2] = randint(1, 9);
-	q1[3] = randint(1, 9);
-
-//nに違う文字を入力してもランダムにならない。
-//あと気がついたんだけど、本にはrandint(10)を4回って書いてあるけど、それだとmaxが
-//10になる。miniも0だから1から9にはならない。//ここ0から9でいいんだよ?
-//4つのすべてが異なる、一桁の数字にならない。同じ文字が含まれてると
-//cowがincrementされる。
-//randomとかのコードとか読めばもうわかるだろってことかな。
-//............わからない.....。
-
-
-	while (bull != 4) {
-		bull = 0;
-		cow = 0;
-		cout << "推測した1から9の数字を重複なしで4つ入力してください。\n";
-		vector<int> ans;
-		for (int i = 0; i <= 3; ++i) {
-			cin >> y;
-			ans.push_back(y);
+	cout << "Before we start this game, please give me one integer.(this makes the game exciting.)\n";
+	while (true) {
+		int n = 0;
+		cin >> n;
+		srand(n);
+		vector<int>the_number(4);
+		the_number[0] = randint(9);
+		the_number[1] = randint(9);
+		while (the_number[0] == the_number[1])
+		{
+			the_number[1] = randint(9);
+		}
+		the_number[2] = randint(9);
+		while (the_number[0] == the_number[2] || the_number[1] == the_number[2])
+		{
+			the_number[2] = randint(9);
+		}
+		the_number[3] = randint(9);
+		while(the_number[0]==the_number[3]|| the_number[1] == the_number[3]|| the_number[2] == the_number[3])
+		{
+			the_number[3] = randint(9);
 		}
 
-		if (q1[0] == ans[0]) { bull += 1; }
-		if (q1[1] == ans[1]) { bull += 1; }
-		if (q1[2] == ans[2]) { bull += 1; }
-		if (q1[3] == ans[3]) { bull += 1; }
+//		for (int x : the_number)cout << x;
 
-/*	try {*/
-		int test1 = 0;	//testに代入する必要ないかなもう。でもたいへんだからいいや(って言ったらbjarneさん怒るかな。
-		int test2 = 0;
-		for (int i = 0; i < 4; ++i)
-		{
-			test1 = q1[i];
-			for (int j = 0; j <= 3; ++j) {
-				test2 = ans[j];
-				if (i != j) {
-					if (test1 == test2) {
-						cow += 1;
+		int bull = 0;
+		int cow = 0;
+
+		vector<int>answer(4);
+		cout << "We play 'Bulls and Cows'\n";
+		while (bull != 4) {
+			bull = 0;
+			cow = 0;
+			cout << "Please enter four different integer.\n";
+
+			int temp = 0;
+			int check = 1;
+
+			while (check != 0) {
+				check = 0;
+
+				for (int i = 0; i < 4; ++i) { cin >> temp; answer[i] = temp; }
+
+				for (int i = 0; i < 4; ++i) {
+					for (int j = 0; j < 4; ++j) {
+						if (answer[i] == answer[j] && i != j) { ++check; }
+					}
+				}
+				if (check != 0) { cout << "Please enter four different integer.\n"; }
+			}
+
+			for (int i = 0; i < 4; ++i) {
+				for (int j = 0; j < 4; ++j) {
+					if (the_number[i] == answer[j] && i == j) {
+						++bull;
+					}
+					else if (the_number[i] == answer[j] && i != j) {
+						++cow;
 					}
 				}
 			}
+			cout << "\"" << bull << "bull and " << cow << "cow" << "\"\n";
 		}
-		for (int h : q1)cout << h;
-		cout <<'\n'<< bull << " bull and " << cow << " cow" << '\n';
-	}
-	cout << "Bingo！！";
-		return 0;
-/*	}
+		cout << "B I N G O!!\n";
 
-	catch (exception) {
-		cerr << "何がダメなのかわからない。\n"; 
-		keep_window_open( );
-	}*/
+		cout << "Before we start next game, please gime me another one integer.\n";
+	}
+	keep_window_open();
+	return 0;
 }
+
 
 練習問題　14.			//関数を使ったりもできるのでしょうか.....
 
