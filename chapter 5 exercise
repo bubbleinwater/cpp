@@ -541,72 +541,101 @@ int main()
 	return 0;
 }
 
+exercise 14.
 
-練習問題　14.			//関数を使ったりもできるのでしょうか.....
+#include "std_lib_facilities.h"
 
-#include "../../std_lib_facilities.h"
 
 int main()
 {
-	vector<int>sunday;
-	vector<int>monday;
-	vector<int>tuesday;
-	vector<int>wednesday;
-	vector<int>thursday;
-	vector<int>friday;
-	vector<int>saturday;
-	vector<int>draft;
-	string dayofweek;
-	int x;
-	double sumsun = 0;
-	double summon = 0;
-	double sumtues = 0;
-	double sumwednes = 0;
-	double sumthurs = 0;
-	double sumfri = 0;
-	double sumsatur = 0;
-	double sumdraft = 0;
+	vector<int>sun;
+	vector<int>mon;
+	vector<int>tues;
+	vector<int>wednes;
+	vector<int>thurs;
+	vector<int>fri;
+	vector<int>satur;
+	vector<int>others;
+	
+	int sun_sum = 0;
+	int mon_sum = 0;
+	int tues_sum = 0;
+	int wednes_sum = 0;
+	int thurs_sum = 0;
+	int fri_sum = 0;
+	int satur_sum = 0;
+	int others_sum = 0;
 
-	cout << "曜日(monday(mon,mo)など必ず小文字)の後に値を入力してください。ctrl+Zで終了します。\n";
-	for (int i = 0; cin >> dayofweek >> x; ++i)
-	{
-		if (dayofweek == "sunday" || dayofweek == "sun" || dayofweek == "su") {
-			sunday.push_back(x);
-		}
-		else if (dayofweek == "monday" || dayofweek == "mon" || dayofweek == "mo") {
-				monday.push_back(x);
+	string weekday = " ";
+	int value = 0;
+
+	cout << "Please enter weekday & value pairs.(e.g.tuesday -3) Enter q for exit.\n";
+	
+	while (cin >> weekday) {
+		if (weekday == "q") { break; }
+		cin >> value;
+
+		if (weekday == "Sunday" || weekday == "Sun" || weekday == "sunday" || weekday == "sun") {
+			sun_sum += value;
+			sun.push_back(value);
 			}
-		else if (dayofweek == "tuesday" || dayofweek == "tue" || dayofweek == "tu") {
-			tuesday.push_back(x);
+		else if (weekday == "Monday" || weekday == "Mon" || weekday == "monday" || weekday == "mon") {
+			mon_sum += value;mon.push_back(value);
 		}
-		else if (dayofweek == "wednesday" || dayofweek == "wed" || dayofweek == "we") {
-			wednesday.push_back(x);
+		else if (weekday == "Tuesday" || weekday == "Tues" || weekday == "tuesday" || weekday == "tues") {
+			tues_sum += value;tues.push_back(value);
 		}
-		else if (dayofweek == "thursday" || dayofweek == "thu" || dayofweek == "th") {
-			thursday.push_back(x);
+		else if (weekday == "Wednesday" || weekday == "Wednes" || weekday == "wednesday" || weekday == "wednes") {
+			wednes_sum += value;wednes.push_back(value);
 		}
-		else if (dayofweek == "friday" || dayofweek == "fri" || dayofweek == "fr") {
-			friday.push_back(x);
+		else if (weekday == "Thursday" || weekday == "Thurs" || weekday == "thursday" || weekday == "thurs") {
+			thurs_sum += value;thurs.push_back(value);
 		}
-		else if (dayofweek == "saturday" || dayofweek == "sat" || dayofweek == "sa") {
-			saturday.push_back(x);
+		else if (weekday == "Friday" || weekday == "Fri" || weekday == "friday" || weekday == "fri") {
+			fri_sum += value;fri.push_back(value);
 		}
-		else { draft.push_back(x); }
+		else if (weekday == "Saturday" || weekday == "Satur" || weekday == "saturday" || weekday == "satur") {
+			satur_sum += value;satur.push_back(value);
+		}
+		else {
+		others_sum += value; others.push_back(value);
+		}
+
 	}
 
-	for (int y : sunday)sumsun += y;
-	for (int y : monday)summon += y;
-	for (int y : tuesday)sumtues += y;
-	for (int y : wednesday)sumwednes += y;
-	for (int y : thursday)sumthurs += y;
-	for (int y : friday)sumfri += y;
-	for (int y : saturday)sumsatur += y;
-	for (int y : draft)sumdraft += y;
-	cout << "sundayの値は合計で" << sumsun << '\n' << "mondayの値は合計で" << summon << '\n'
-		<< "tuesdayの値は合計で" << sumtues << '\n' << "wednesdayの値は合計で" << sumwednes << '\n'
-		<< "thursdayの値は合計で" << sumthurs << '\n' << "fridayの値は合計で" << sumfri << '\n'
-		<< "saturdayの値は合計で" << sumsatur << '\n'<<"です\n";
-	cout << "拒否した値の個数は" << draft.size() << "で、その合計は" << sumdraft << "です。\n";
+	cout << "Sunday\n";
+	for (int x : sun)cout << x << '\n';
+	cout << "\nMonday\n";
+	for (int x : mon)cout << x << '\n';
+	cout << "\nTuesday\n";
+	for (int x : tues)cout << x << '\n';
+	cout << "\nWednesday\n";
+	for (int x : wednes)cout << x << '\n';
+	cout << "\nThursday\n";
+	for (int x : thurs)cout << x << '\n';
+	cout<< "\nFriday\n";
+	for (int x : fri)cout << x << '\n';
+	cout << "\nSaturday\n";
+	for (int x : satur)cout << x << '\n';
+	cout << "\nOthers\n";
+	for (int x : others)cout << x << '\n';
 
+
+	cout << "\nSum"
+		<< "\n Sunday : " << sun_sum
+		<< "\n Monday : " << mon_sum
+		<< "\n Tuesday : " << tues_sum
+		<< "\n Wednesday : " << wednes_sum
+		<< "\n Thursday : " << thurs_sum
+		<< "\n Friday : " << fri_sum
+		<< "\n Saturday : " << satur_sum
+		<< "\n Others : " << others_sum << "\n";
+	
+	if (others.size() != 0) {
+		if (others.size() == 1)cout << others.size() << " item rejected.\n";
+		else cout << others.size() << " items rejected.\n";
+	}
+
+	keep_window_open();
 	return 0;
 }
