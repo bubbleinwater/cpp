@@ -1,9 +1,6 @@
+2.
 
-2.                //I'm not clear at "return 0;" at the end of primary2
-                  //Is that OK?
-
-
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 //------------------------------------------------------------------------------
 
@@ -11,8 +8,7 @@ class Token{
 public:
 	char kind;        // what kind of token
 	double value;     // for numbers: a value 
-
-	Token(char ch)    // make a Token from a char//つまりcharだけ渡されたとき
+	Token(char ch)    // make a Token from a char
 		:kind(ch), value(0) { }
 	Token(char ch, double val)     // make a Token from a char and a double
 		:kind(ch), value(val) { }
@@ -64,8 +60,7 @@ Token Token_stream::get()
 	switch (ch) {
 	case '=':    // for "print"
 	case 'x':    // for "quit"
-	case '(': case ')': case '+': case '-': case '*': case '/':
-	case '{': case '}':
+	case '{':case '}':case '(': case ')': case '+': case '-': case '*': case '/':
 		return Token(ch);        // let each character represent itself
 	case '.':
 	case '0': case '1': case '2': case '3': case '4':
@@ -74,7 +69,7 @@ Token Token_stream::get()
 		cin.putback(ch);         // put digit back into the input stream
 		double val;
 		cin >> val;              // read a floating-point number
-		return Token( '8', val );   // let '8' represent "a number"
+		return Token('8', val);   // let '8' represent "a number"
 	}
 	default:
 		error("Bad token");
@@ -85,84 +80,62 @@ Token Token_stream::get()
 
 Token_stream ts;        // provides get() and putback() 
 
-						//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 double expression();    // declaration so that primary() can call expression()
 
-						//------------------------------------------------------------------------------
-
-						// deal with numbers and parentheses
-
-
-
-//-----------------
-
-double primary2()
-{
-	Token t = ts.get();
-	switch (t.kind) {
-	case '(':    // handle '(' expression ')'
-	{
-		double d = expression();
-		t = ts.get();
-		if (t.kind != ')') error("')' expected");
-			return d;
-	}
-	case '8':            // we use '8' to represent a number
-		return t.value;  // return the number's value
-	default:
-//		error("primary expected");
-		ts.putback(t);
-		return 0;
-	}
-}
-
 //------------------------------------------------------------------------------
 
+//deal with {, } . I call them pre_primary
 
-double primary1()
-{
-	double left  = primary2();
-	Token t = ts.get();
-
-	switch (t.kind) {
-	case '{':    // handle '{' expression '}'
-	{
+double pre_primary() {
 		double d = expression();
-		t = ts.get();
+		Token t = ts.get();
 		if (t.kind != '}') error("'}' expected");
 		return d;
-	}
-	case '8':            // we use '8' to represent a number
-		return t.value;  // return the number's value
-	default:
-//		error("at primary1");
-		ts.putback(t);
-		return left;
-
-
-	}
 }
 
+// deal with numbers and parentheses
 
+double primary() {
+	Token t = ts.get();
+	while (true) {
+		switch (t.kind) {
+		case '{':
+		{
+			double left = pre_primary();
+			return left;
+		}
+		case '(':    // handle '(' expression ')'
+		{
+			double d = expression();
+			t = ts.get();
+			if (t.kind != ')') error("')' expected");
+			return d;
+		}
+		case '8':            // we use '8' to represent a number
+			return t.value;  // return the number's value
+
+		}
+	}
+}
 //------------------------------------------------------------------------------
 
-
-// deal with *, /, and %
+// deal with *, /
 double term()
 {
-	double left = primary1();
+	double left = primary();
 	Token t = ts.get();        // get the next token from token stream
 
 	while (true) {
 		switch (t.kind) {
 		case '*':
-			left *= primary1();
+			left *= primary();
 			t = ts.get();
 			break;
 		case '/':
 		{
-			double d = primary1();
+			double d = primary();
 			if (d == 0) error("divide by zero");
 			left /= d;
 			t = ts.get();
@@ -202,39 +175,39 @@ double expression()
 
 //------------------------------------------------------------------------------
 
+
 int main()
 try
 {
-	cout << "Welcome to our simple calculator."
-		<< "\nPlease enter expressions using floating-point numbers.\n"
-		<< "You can use +, -, *, /, (, ) and press x for quit, press = for print.\n";
-
 	double val = 0;
+	cout << "Welcome to our simple calculator.\nYou can use +,-,*,/,{,(,),}. And = for print,x for quit."<<"\nPlease enter expressions using floating-point numbers.\n";
 	while (cin) {
 		Token t = ts.get();
-		
+
 		if (t.kind == 'x') break; // 'x' for quit
-		if (t.kind == '=')        // '=' for "print now"
-			cout << val << '\n';
-		else
-			ts.putback(t);
+		if (t.kind == '=')        // ';' for "print now"
+			cout << "= " << val << '\n';
+		else ts.putback(t); 
+
 		val = expression();
 	}
-	keep_window_open();
 }
 catch (exception& e) {
 	cerr << "error: " << e.what() << '\n';
+	cin.clear();
+	cin.ignore();
 	keep_window_open();
 	return 1;
 }
 catch (...) {
 	cerr << "Oops: unknown exception!\n";
+	cin.clear();
+	cin.ignore();
 	keep_window_open();
 	return 2;
 }
 
 //------------------------------------------------------------------------------
-
 
 
 
