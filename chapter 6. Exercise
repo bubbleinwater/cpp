@@ -210,11 +210,6 @@ catch (...) {
 //------------------------------------------------------------------------------
 
 
-
-3.  練習問題
-//I thought I haven't changed "grammar". maybe I don't understand what the grammar is.
-//I added factorial() but, sentences in primary1 and primary2 are kind of mess. is there any better idea?
-
 #include "../../std_lib_facilities.h"
 
 //------------------------------------------------------------------------------
@@ -223,8 +218,7 @@ class Token{
 public:
 	char kind;        // what kind of token
 	double value;     // for numbers: a value 
-
-	Token(char ch)    // make a Token from a char//つまりcharだけ渡されたとき
+	Token(char ch)    // make a Token from a char
 		:kind(ch), value(0) { }
 	Token(char ch, double val)     // make a Token from a char and a double
 		:kind(ch), value(val) { }
@@ -276,8 +270,7 @@ Token Token_stream::get()
 	switch (ch) {
 	case '=':    // for "print"
 	case 'x':    // for "quit"
-	case '(': case ')': case '+': case '-': case '*': case '/':
-	case '{': case '}': case '!':
+	case '!': case '{': case '}': case '(': case ')': case '+': case '-': case '*': case '/':
 		return Token(ch);        // let each character represent itself
 	case '.':
 	case '0': case '1': case '2': case '3': case '4':
@@ -286,7 +279,7 @@ Token Token_stream::get()
 		cin.putback(ch);         // put digit back into the input stream
 		double val;
 		cin >> val;              // read a floating-point number
-		return Token( '8', val );   // let '8' represent "a number"
+		return Token('8', val);   // let '8' represent "a number"
 	}
 	default:
 		error("Bad token");
@@ -299,118 +292,95 @@ Token_stream ts;        // provides get() and putback()
 
 //------------------------------------------------------------------------------
 
-int factorial(double n) {
-	int N = n;
-	if (N == 0) { return 1; }			//NO "if(N = 0){}"
-
-	for (int i = N-1; i >= 1; --i) {
-		N *= i;
-	}
-
-	return N;
-}
-
-
 double expression();    // declaration so that primary() can call expression()
 
 //------------------------------------------------------------------------------
 
-						// deal with numbers and parentheses
+//deal with {, } . I call them pre_primary
 
-
-
-//-----------------
-
-double primary2()
-{
-	Token t = ts.get();
-	switch (t.kind) {
-	case '(':    // handle '(' expression ')'
-	{
+double pre_primary() {
 		double d = expression();
-		t = ts.get();
-		if (t.kind != ')') error("')' expected");
-
-		Token tforfact = ts.get();
-		if (tforfact.kind == '!') { d = factorial(d); }
-		else (ts.putback(tforfact));
-		return d;  // return the number's value
-
-	}
-	case '8':		// we use '8' to represent a number
-	{
-		double left = t.value;
-		Token tforfact = ts.get();
-		if (tforfact.kind == '!') { left = factorial(left); }
-		else (ts.putback(tforfact));
-		return left;  // return the number's value
-	}
-	default:
-//		error("primary expected");		//for testing
-		ts.putback(t);
-		return 0;
-	}
-}
-
-//------------------------------------------------------------------------------
-
-
-double primary1()
-{
-	double left  = primary2();
-	Token t = ts.get();
-
-	switch (t.kind) {
-	case '{':    // handle '{' expression '}'
-	{
-		double d = expression();
-		t = ts.get();
+		Token t = ts.get();
 		if (t.kind != '}') error("'}' expected");
-
-		Token tforfact = ts.get();
-		if (tforfact.kind == '!') { d = factorial(d); }
-		else (ts.putback(tforfact));
-
-		return d;
-	}
-	case '8':		// we use '8' to represent a number
-	{
-		double left = t.value;
-		Token tforfact = ts.get();
-		if (tforfact.kind == '!') { left = factorial(left); }
-		else (ts.putback(tforfact));
-		return left;  // return the number
-//		return t.value;  // return the number's value
-	}
-	default:
-//		error("at primary1");		for test
+		t = ts.get();
+		if(t.kind == '!')
+		{
+			int d_factorial = int(d);
+			for (int i = 1; i < int(d); ++i) {
+				d_factorial *= i;
+		}
+			return d_factorial;
+		}
 		ts.putback(t);
-		return left;
-
-
-	}
+		return d;
 }
 
+// deal with numbers and parentheses
 
+double primary() {
+	Token t = ts.get();
+	while (true) {
+		switch (t.kind) {
+		case '{':
+		{
+			double left = pre_primary();
+			return left;
+		}
+		case '(':    // handle '(' expression ')'
+		{
+			double d = expression();
+			t = ts.get();
+			if (t.kind != ')') error("')' expected");
+//----------------------
+			t = ts.get();
+			if (t.kind == '!')
+			{
+				int d_factorial = int(d);
+				for (int i = 1; i < int(d); ++i) {
+					d_factorial *= i;
+				}
+				return d_factorial;
+			}
+			ts.putback(t);
+//----------------------
+			return d;
+		}
+		case '8':            // we use '8' to represent a number
+//----------------------
+			double d = t.value;
+			t = ts.get();
+			if (t.kind == '!')
+			{
+				int d_factorial = int(d);
+				for (int i = 1; i < int(d); ++i) {	// "for (int i = 1; i < d; ++i)" didn't work.
+					d_factorial *= i;
+				}
+				return d_factorial;
+			}
+			ts.putback(t);
+//----------------------
+			return d;  // return the number's value
+
+		}
+	}
+}
 //------------------------------------------------------------------------------
 
-
-// deal with *, /, and %
+// deal with *, /
 double term()
 {
-	double left = primary1();
-	Token t = ts.get();      	// get the next token from token stream
-
+	double left = primary();
+	Token t = ts.get();        // get the next token from token stream
 
 	while (true) {
 		switch (t.kind) {
 		case '*':
-			left *= primary1();
+			left *= primary();
 			t = ts.get();
 			break;
 		case '/':
 		{
-			double d = primary1();
+			double d = primary();
 			if (d == 0) error("divide by zero");
 			left /= d;
 			t = ts.get();
@@ -450,39 +420,40 @@ double expression()
 
 //------------------------------------------------------------------------------
 
+
 int main()
 try
 {
-	cout << "Welcome to our simple calculator."
-		<< "\nPlease enter expressions using floating-point numbers.\n"
-		<< "You can use +, -, *, /, (, ) and press x for quit, press = for print.\n";
-
 	double val = 0;
+	cout << "Welcome to our simple calculator.\nYou can use +,-,*,/,{,(,),},! . And = for print,x for quit."<<"\nPlease enter expressions using floating-point numbers.\n";
 	while (cin) {
 		Token t = ts.get();
-		
+
 		if (t.kind == 'x') break; // 'x' for quit
-		if (t.kind == '=')        // '=' for "print now"
-			cout << val << '\n';
-		else
-			ts.putback(t);
+		if (t.kind == '=')        // ';' for "print now"
+			cout << "= " << val << '\n';
+		else ts.putback(t); 
+
 		val = expression();
 	}
-	keep_window_open();
 }
 catch (exception& e) {
 	cerr << "error: " << e.what() << '\n';
+	cin.clear();
+	cin.ignore();
 	keep_window_open();
 	return 1;
 }
 catch (...) {
 	cerr << "Oops: unknown exception!\n";
+	cin.clear();
+	cin.ignore();
 	keep_window_open();
 	return 2;
 }
 
-//------------------------------------------------------------------------------
 
+//------------------------------------------------------------------------------
 
 
 練習問題 4.
