@@ -455,55 +455,49 @@ catch (...) {
 
 //------------------------------------------------------------------------------
 
+Exercise 4.				//yeeeeaaah yeeeeees I made it!!!
 
-練習問題 4.
-#include"../../std_lib_facilities.h"			//みなさま、いかがでしょうか。
+
+#include "std_lib_facilities.h"
 
 class Name_value {
 public:
 	string name;
-	double value;
-
-	Name_value()
-		:name(" "),value(0){}
-	Name_value(string st)
-		:name(st),value(0){ }
-	Name_value(string st,double val)
-		:name(st),value(val){ }
-};
-
-Name_value putintostream(){
-	char ch;
-	cin >> ch;
-	if (ch == ';') { return (Name_value(";", 0)); }
-	cin.putback(ch);
-
-	Name_value nv;
-	string tmpname;
-	double tmpvalue;
-	cin >> tmpname >> tmpvalue;
-	nv.name = tmpname;
-	nv.value = tmpvalue;
-
-	return nv;
-}
+	int value;
+	Name_value(string n,int val)
+		:name(n),value(val){ }
+};					//still, I totally don't understand what they do here.
 
 
 int main()
 {
-	vector<Name_value> NV;
-	while (true) {
-		Name_value n_v = putintostream();
-		if (n_v.name == ";") {
-			for (int i = 0; i < NV.size(); ++i) {
-				cout << '\n' << NV[i].name << "さんの点数は" << NV[i].value << "です。";
-			}
-			cout << '\n';
-			return 0;
+	vector<Name_value>names_values;
+	string name;
+	int value;
+
+	cout << "Please enter name and score.\n"
+		<< "enter NoName and 0 for exit.\n";
+
+	while (cin >> name >> value) {
+		if (name == "NoName" && value == 0) { break; }
+
+		if (names_values.size() == 0) {
+			names_values.push_back(Name_value(name, value));
 		}
-		else { NV.push_back(n_v); }
-
-
+		else {
+			for (int i = 0; i < names_values.size(); ++i) {
+				if (name == names_values[i].name) {
+					simple_error("same name.");
+				}
+			}
+			names_values.push_back(Name_value(name, value));
+		}
 	}
+
+	for (int i = 0; i < names_values.size(); ++i) {
+		cout << names_values[i].name << " " << names_values[i].value << "\n";
+	}
+
+	keep_window_open();
 	return 0;
 }
