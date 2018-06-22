@@ -501,3 +501,76 @@ int main()
 	keep_window_open();
 	return 0;
 }
+
+exercise 5.
+
+exercise 6.
+#include "../../std_lib_facilities.h"
+
+//--the ----------
+
+int article(string s) {
+
+	if (s == "the" || s == "The")return 0;
+	else error("something wrong.");
+}
+
+
+//--C++ birds fish dogs-------
+int noun(string s) {
+	if (s == "the" || s == "The") {
+		int val = article(s);
+		if (val != 0)error("something wrong");
+		cin >> s;
+	}
+
+	if (s == "birds" || s == "fish" || s == "dogs" || s == "C++" )return 0;
+	else return 1;
+}
+
+//--rules fly swim run-----
+int verb(string s) {
+	int val = noun(s);
+	if (val == 1)return 1;
+	cin >> s;
+	if (s == "rules" || s == "fly" || s == "swim" || s == "run")return 0;
+	else return 1;
+}
+
+//--and or but-------
+int conjunctioin(string s) {
+	int val = verb(s);
+	if (val == 1)return 1;
+	cin >> s;
+	if (s == "and" || s == "or" || s == "but" ){cin >> s;val = verb(s);}
+	cin >> s;
+	if(s == ".")return 0;
+	else return 1;
+}
+
+
+ int sentence(string s) {
+	 int val = conjunctioin(s);
+	 if(val == 0)return 0;
+	 else if(val == 1) return 1;
+}
+
+
+int main()
+{
+	cout << "Please enter a sentence .(enter Ctrl + z for exit .)\n";
+
+	string word = " ";
+	while(cin >> word)
+	{
+		int ok_or_not = 0;
+			ok_or_not = sentence(word);
+			if(ok_or_not == 0)cout << "Ok\n";
+			else cout << "not Ok.\n";
+		
+	}
+
+	keep_window_open();
+	return 0;
+}
+
