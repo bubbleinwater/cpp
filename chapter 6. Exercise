@@ -210,7 +210,7 @@ catch (...) {
 //------------------------------------------------------------------------------
 
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 //------------------------------------------------------------------------------
 
@@ -502,10 +502,12 @@ int main()
 	return 0;
 }
 
+
 exercise 5.
 
 exercise 6.
-#include "../../std_lib_facilities.h"
+
+#include "std_lib_facilities.h"
 
 //--the ----------
 
