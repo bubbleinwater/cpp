@@ -576,3 +576,153 @@ int main()
 	return 0;
 }
 
+exercise 7.
+
+//------ (T.T){ I know nothing about a bitwise logical expression
+//------ (^_^){ after I understand them, I will do.
+
+
+exercise 8.
+
+#include "std_lib_facilities.h"
+
+int main()
+{
+
+	cout << "Before we start this game, please give me one integer.(this makes the game exciting.)\n";
+	while (true) {
+		int n = 0;
+		cin >> n;
+		srand(n);
+		vector<int>the_number(4);
+		vector<char>the_letter(4);
+		the_number[0] = randint(25);
+		the_number[1] = randint(25);
+		while (the_number[0] == the_number[1])
+		{
+			the_number[1] = randint(25);
+		}
+		the_number[2] = randint(25);
+		while (the_number[0] == the_number[2] || the_number[1] == the_number[2])
+		{
+			the_number[2] = randint(25);
+		}
+		the_number[3] = randint(25);
+		while (the_number[0] == the_number[3] || the_number[1] == the_number[3] || the_number[2] == the_number[3])
+		{
+			the_number[3] = randint(25);
+		}
+
+//integer for char.
+
+		for (int i = 0; i < 4; ++i) 
+		{
+			switch (the_number[i]) {
+			case 0:the_letter[i] = 'a';
+				break;
+			case 1:the_letter[i] = 'b';
+				break;
+			case 2:the_letter[i] = 'c';
+				break;
+			case 3:the_letter[i] = 'd';
+				break;
+			case 4:the_letter[i] = 'e';
+				break;
+			case 5:the_letter[i] = 'f';
+				break;
+			case 6:the_letter[i] = 'g';
+				break;
+			case 7:the_letter[i] = 'h';
+				break;
+			case 8:the_letter[i] = 'i';
+				break;
+			case 9:the_letter[i] = 'j';
+				break;
+			case 10:the_letter[i] = 'k';
+				break;
+			case 11:the_letter[i] = 'l';
+				break;
+			case 12:the_letter[i] = 'm';
+				break;
+			case 13:the_letter[i] = 'n';
+				break;
+			case 14:the_letter[i] = 'o';
+				break;
+			case 15:the_letter[i] = 'p';
+				break;
+			case 16:the_letter[i] = 'q';
+				break;
+			case 17:the_letter[i] = 'r';
+				break;
+			case 18:the_letter[i] = 's';
+				break;
+			case 19:the_letter[i] = 't';
+				break;
+			case 20:the_letter[i] = 'u';
+				break;
+			case 21:the_letter[i] = 'v';
+				break;
+			case 22:the_letter[i] = 'w';
+				break;
+			case 23:the_letter[i] = 'x';
+				break;
+			case 24:the_letter[i] = 'y';
+				break;
+			case 25:the_letter[i] = 'z';
+				break;
+			}
+
+		}
+//---------------------------------check
+//		for (char x : the_letter)	cout << x;
+//		cout << ".\n";
+//---------------------------------
+
+		int bull = 0;
+		int cow = 0;
+
+		vector<char>answer(4);
+		cout << "We play 'Bulls and Cows'\n";
+		while (bull != 4) {
+			bull = 0;
+			cow = 0;
+			cout << "Please enter four different letters.\n";
+
+			char temp = ' ';
+			int check = 1;
+
+// make sure that the player entered four different letters
+			while (check != 0) {
+				check = 0;
+
+				for (int i = 0; i < 4; ++i) { cin >> temp; answer[i] = temp; }
+
+				for (int i = 0; i < 4; ++i) {
+					for (int j = 0; j < 4; ++j) {
+						if (answer[i] == answer[j] && i != j) { ++check; }
+					}
+				}
+				if (check != 0) { cout << "Please enter four different letters.\n"; }
+			}
+
+
+			for (int i = 0; i < 4; ++i) {
+				for (int j = 0; j < 4; ++j) {
+					if (the_letter[i] == answer[j] && i == j) {
+						++bull;
+					}
+					else if (the_letter[i] == answer[j] && i != j) {
+						++cow;
+					}
+				}
+			}
+			cout << "\"" << bull << "bull and " << cow << "cow" << "\"\n";
+		}
+		cout << "B I N G O!!\n";
+
+		cout << "Before we start next game, please gime me another one integer.\n";
+	}
+
+	keep_window_open();
+	return 0;
+}
