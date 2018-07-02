@@ -726,3 +726,76 @@ int main()
 	keep_window_open();
 	return 0;
 }
+
+exercise 9.  //this version ,at this time,I don't know how to exit this program.
+
+#include "std_lib_facilities.h"
+
+int main()
+{
+	vector<char>num(4); //five digits throw out_of_range error.(I think.) 
+	char temp = ' ';
+	cout << "Please enter one number.(accept one,two,three,four digits.)\n";
+	while(true){
+		int i = 0;
+		for (; cin >> temp; ++i) {
+			if (temp != '|')num[i] = temp;
+			else {
+				--i;
+				break;
+			}
+		}
+		if (i == 0)
+		{
+			cout << num[0] << " is ";
+			if (num[0] == '0')cout << num[0] << "one\n";
+			else if (num[0] == '1')cout << num[1] << " one\n";
+			else cout << num[0] << " ones\n";
+
+		}
+		else if(i ==1)
+		{
+
+
+			cout << num[0] << num[1] << " is ";
+			if (num[0] == '1')
+				cout << num[0] << " ten and ";
+			else cout << num[0] << " tens and ";
+			
+			if (num[1] == '1')cout << num[1] << " one\n";
+			else cout << num[1] << " ones\n";
+		}
+		else if (i == 2)
+		{
+			cout << num[0] << num[1] << num[2] <<" is ";
+			
+			if (num[0] == '1')
+				cout << num[0] << " hundred and ";
+			else cout << num[0] << " hundreds and ";
+
+			if (num[1] == '1')cout << num[1] << " ten and ";
+			else cout << num[1] << " tens and ";
+
+			if (num[2] == '1')cout <<num[2]<< " one\n";
+			else cout << num[2] << " ones\n";
+		}
+		else if (i == 3)
+		{
+			cout << num[0] << num[1] << num[2] << num[3] << " is ";
+			if (num[0] == '1') 	cout << num[0] << " thousand and ";
+			else cout << num[0] << " thousand and ";
+
+			if (num[1] == '1') cout << num[1] << " hundred and "; 
+			else cout << num[1] << " hundreds and ";
+
+			if (num[2] == '1')cout << num[2] << " ten and ";
+			else cout << num[2] << " tens and ";
+
+			if (num[3] == '1')  cout << num[3] << " one\n"; 
+			else cout << num[3] << " ones\n";
+		}
+	}
+
+	keep_window_open();
+	return 0;
+}
