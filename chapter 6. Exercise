@@ -504,6 +504,7 @@ int main()
 
 
 exercise 5.
+//done.
 
 exercise 6.
 
@@ -798,4 +799,55 @@ int main()
 
 	keep_window_open();
 	return 0;
+}
+
+exercise 10
+
+#include "std_lib_facilities.h"
+
+class value_error{};
+class porc_error{};
+
+int factorial(int x) {
+	int answer = x;
+	for (int i = 1; i < x; ++i) {
+		answer *= i;
+	}
+	return answer;
+}
+
+int main()
+try{
+	cout << "permutations(press p) or combinations(press c)"
+		<<"followed by two integers.\n";
+
+	char p_or_c;
+	int num1, num2;
+
+	while (cin >> p_or_c) {
+		if (!(p_or_c == 'p' || p_or_c == 'c'))throw porc_error();
+		
+		cin >> num1 >> num2;
+		if (num1 < num2)throw value_error();
+		if (p_or_c == 'p') {
+			cout << "result: " << factorial(num1) / factorial(num1 - num2) << '\n';
+		}
+		else if (p_or_c == 'c') {
+			cout << "result: " << factorial(num1) / factorial(num1 - num2) / factorial(num2) << '\n';
+		}
+	}
+
+	keep_window_open();
+	return 0;
+}catch(value_error){
+	cerr << "error: Please enter larger number first.\n";
+	
+	keep_window_open();			//I have to know what cin.clear(); and cin.ignore(); do.
+	return 1;				//if the input like p 5 6 c 6 8, keep_window_open(); does not work as expected
+}
+catch (porc_error) {
+	cerr << "error: Please enter p or c.\n";
+
+	keep_window_open();
+	return 2;
 }
