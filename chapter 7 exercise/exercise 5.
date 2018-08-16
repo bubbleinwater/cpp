@@ -1,0 +1,423 @@
+/*
+simple calculator
+
+
+this program implements a basic expression calculator.
+input from cin out to cout.
+
+the grammer for input
+
+Statement:
+Expression
+Print
+Quit
+sqrt()
+pow()
+=
+
+Print:
+;
+
+Quit:
+exit
+
+
+
+
+Expression:
+Term
+Expression + Term
+Expression - Term
+
+Term:
+Primary
+Term * Primary
+Term / Primary
+Term % Primary
+
+Primary:
+Number
+( Expression )
+- Primary
++ Primary
+
+Number:
+floating-point-literal
+
+Input comes from sin through the Token_stream called ts.
+
+*/
+
+#include "std_lib_facilities.h"
+
+class Token {
+public:
+	char kind;
+	double value;
+	string name;
+	Token(char ch) :kind{ ch } {}
+	Token(char ch, double val) :kind{ ch }, value{ val } {}
+	Token(char ch, string n) :kind{ ch }, name{ n } {}
+};
+
+class Token_stream {
+public:
+	Token_stream() :full(0), buffer(0) { }
+
+	Token get();
+	void putback(Token t);
+	//	void unget(Token t) { buffer = t; full = true; }
+	void ignore(char);
+
+private:
+	bool full;
+	Token buffer;
+};
+
+Token_stream ts;
+
+class Variable {
+public:
+	string name;
+	double value;
+	double const_value;
+};
+
+
+class Symbol_table {
+public:
+	vector<Variable> var_table;
+	double get(string s);
+	void set(char ch, string s);
+	bool is_declared(string s);
+	double define_name(string var, double val);
+};
+
+double Symbol_table::get(string s)
+{
+	for (int i = 0; i<var_table.size(); ++i)
+		if (var_table[i].name == s) return var_table[i].value;
+	error("get: undefined name ", s);
+}
+
+void Symbol_table::set(char ch, string s)//when user use const keyward this function will be called 
+{
+	Token t = { ch,s };
+	/*	for (int i = 0; i <= var_table.size(); ++i)*/
+	for (Variable& v : var_table)
+		if (v.name == s) {
+			if (!v.const_value)error("it's a const number");
+		}
+	ts.putback(t);
+	//	error("set: undefined name ", s);
+}
+
+Symbol_table St;
+
+bool Symbol_table::is_declared(string s)
+{
+	for (int i = 0; i<var_table.size(); ++i)
+		if (var_table[i].name == s) return true;
+	return false;
+}
+double Symbol_table::define_name(string var, double val)
+{
+	if (St.is_declared(var))error(var, " declared twice");
+	var_table.push_back(Variable{ var,val });
+	return val;
+}
+
+
+
+
+const char let = '#';
+const char const_let = '$';
+const char quit = 'Q';
+const char print = ';';
+const char number = '8';
+const char name = 'a';
+
+double expression();
+//void Symbol_table::set(char ch, string s);
+
+Token Token_stream::get()
+{
+	if (full) { full = false; return buffer; }
+
+	char ch;
+	cin >> ch;
+	if (isspace(ch)) { return Token(ch); }
+	switch (ch) {
+	case '(':
+	case ')':
+	case '+':
+	case '-':
+	case '*':
+	case '/':
+	case '%':
+	case print:
+	case quit:
+	case '=':
+	case ',':
+	case let:
+	case const_let:
+		return Token(ch);
+	case '.':
+	case '0':
+	case '1':
+	case '2':
+	case '3':
+	case '4':
+	case '5':
+	case '6':
+	case '7':
+	case '8':
+	case '9':
+	{
+		cin.putback(ch);
+		double val;
+		cin >> val;
+		return Token(number, val);
+	}
+	default:
+		if (isalpha(ch) || ch == '_') {
+			string s;
+			s += ch;
+			while (cin.get(ch) && ch != '(' && (isalpha(ch) || isdigit(ch))) { s += ch; }
+			cin.putback(ch);
+			if (s == "#") return Token(let);
+			if (s == "exit") return Token(quit);
+			if (s == "sqrt") {
+				double d = expression();
+				if (d < 0)error("square root does not exist");
+				double val = sqrt(d);
+				return Token(number, val);
+			}
+			if (s == "pow") {
+				double val1;
+				double val2;
+				Token t = ts.get();
+				if (t.kind != '(')error("'(' expected.");
+				t = ts.get();
+				if (t.kind != number)error("num ber expected");
+				val1 = t.value;
+				t = ts.get();
+				if (t.kind != ',')error("',' expected");
+				t = ts.get();
+				if (t.kind != number)error("number expected");
+				val2 = t.value;
+				double d = pow(val1, val2);
+				return Token(number, d);
+			}
+			if (s == "const") {
+				return Token(const_let);
+/*				string n;
+				Token t = ts.get();
+				if (t.kind != name)error("name expected");
+				n = t.name;
+				t = ts.get();
+				if (t.kind != '=')error("= expected");
+				t = ts.get();
+				if (t.kind != number)error("number expected");
+				set_value(n, t.value);
+				return Token(name, n);
+*/			}
+			return Token(name, s);
+		}
+		error("Bad token");
+	}
+}
+
+void Token_stream::putback(Token t)
+{
+	if (full)error("putback() into a full buffer");
+	buffer = t;		//copy t to buffer
+	full = true;	//buffer is now full
+}
+
+void Token_stream::ignore(char c)
+{
+	if (full && c == buffer.kind) {
+		full = false;
+		return;
+	}
+	full = false;
+
+	char ch;
+	while (cin >> ch)
+		if (ch == c) return;
+}
+
+double primary()
+{
+	Token t = ts.get();
+	switch (t.kind) {
+	case '(':
+	{
+		double d = expression();
+		t = ts.get();
+		if (t.kind != ')') error("')' expected");
+		return d;
+	}
+		return -primary();	case '-':
+
+	case '+':
+		return primary();
+	case number:
+		return t.value;
+	case name:
+		return St.get(t.name);
+	default:
+		error("primary expected");
+	}
+}
+
+double term()
+{
+	double left = primary();
+	Token t = ts.get();
+	while (true) {
+		switch (t.kind) {
+		case '*':
+			left *= primary();
+			t = ts.get();
+			break;
+		case '/':
+		{	double d = primary();
+		if (d == 0) error("divide by zero");
+		left /= d;
+		t = ts.get();
+		break;
+		}
+		default:
+			ts.putback(t);
+			return left;
+		}
+	}
+}
+
+double expression()
+{
+	double left = term();
+	while (true) {
+		Token t = ts.get();
+		switch (t.kind) {
+		case '+':
+			left += term();
+			break;
+		case '-':
+			left -= term();
+			break;
+		default:
+			ts.putback(t);
+			return left;
+		}
+	}
+}
+
+double declaration()
+{
+	Token t = ts.get();
+	if (t.kind != 'a') error("name expected in declaration");
+	string name = t.name;
+	if (St.is_declared(name)) {
+		Token t2 = ts.get();
+		if (t2.kind != '=') error("= missing in declaration of ", name);
+		double d = expression();
+		for (Variable& x : St.var_table) { if (x.name == name) { x.value = d; } }
+		return d;
+		// error(name, " declared twice");
+	}
+	Token t2 = ts.get();
+	if (t2.kind != '=') error("= missing in declaration of ", name);
+	double d = expression();
+	St.var_table.push_back(Variable{ name, d });
+	return d;
+}
+
+double const_declaration()
+{
+	Token t = ts.get();
+	if (t.kind != 'a') error("name expected in const_declaration");
+	string name = t.name;
+	if (St.is_declared(name)) {
+		Token t2 = ts.get();
+		if (t2.kind != '=') error("= missing in declaration of ", name);
+		double d = expression();
+		for (Variable& x : St.var_table) { if (x.name == name) { x.const_value = d; } }
+		return d;
+		// error(name, " declared twice");
+	}
+	Token t2 = ts.get();
+	if (t2.kind != '=') error("= missing in declaration of ", name);
+	double d = expression();
+	St.var_table.push_back(Variable{ name, d });
+	return d;
+}
+
+
+
+double statement()
+{
+	Token t = ts.get();
+	switch (t.kind) {
+	case let:
+		t = ts.get();
+		St.set(t.kind,t.name);
+		return declaration();
+	case const_let:
+		t = ts.get();
+		St.set(t.kind, t.name);
+		return const_declaration();
+	default:
+		ts.putback(t);
+		return expression();
+	}
+}
+
+void clean_up_mess()
+{
+	ts.ignore(print);
+}
+
+const string prompt = "> ";
+const string result = "= ";
+
+void calculate()
+{
+	while (cin) try {
+		cout << prompt;
+		Token t = ts.get();
+		while (t.kind == print) t = ts.get();
+		if (t.kind == quit) return;
+
+		ts.putback(t);
+		cout << result
+			<< statement()
+			<< '\n';
+	}
+	catch (runtime_error& e) {
+		cerr << e.what() << '\n';
+		clean_up_mess();
+	}
+}
+
+int main()
+try {
+	St.define_name("k", 1000);
+	calculate();
+
+	return 0;
+}
+catch (exception& e) {
+	cerr << "exception: " << e.what() << endl;
+	char c;
+	while (cin >> c && c != ';');
+	return 1;
+}
+catch (...) {
+	cerr << "exception\n";
+	char c;
+	while (cin >> c && c != ';');
+	return 2;
+}
