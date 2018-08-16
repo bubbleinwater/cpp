@@ -49,7 +49,7 @@ Input comes from sin through the Token_stream called ts.
 
 */
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 class Token {
 public:
