@@ -375,7 +375,7 @@ double statement()
 	case help:
 		cout << "--HELP--\n";
 		cout << "This calculator handle +, -, *, /, %, ( ),\n and if you want";
-		cout << "\nresult: enter \";\"\nexit: program enter \"exit\"";
+		cout << "\nresult: enter \";\"\nexit program: enter \"exit\"";
 		cout << "\ndecalrate a variable: enter \"#\" \"name of object\" \"=\" \"number\" \";\"";
 		cout << "\n--HELP--\n";
 		return 0;
