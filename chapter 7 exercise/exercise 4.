@@ -205,6 +205,8 @@ Token Token_stream::get()
 				t = ts.get();
 				if (t.kind != number)error("num ber expected");
 				val2 = t.value;
+				t = ts.get();
+				if (t.kind != ')')error("')' expected.");
 				double d = pow(val1, val2);
 				return Token(number, d);
 			}
