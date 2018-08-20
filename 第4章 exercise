@@ -63,13 +63,13 @@ int main()
 		range[i - 1] = i;
 	}
 
-	char ans= ' ';
+	char ans = ' ';
 	int even_or_not = 0;
 	cout << " Think one number.\n"
-		<<"Please answer my question.(max:7)\n\n";
+		<< "Please answer my question.(max:7)\n\n";
 	cout << "Is the number even?(y or n)\n";
 	cin >> ans;
-	
+
 	//when it's even
 	if (ans == 'y') {
 		even_or_not = 1;
@@ -94,41 +94,41 @@ int main()
 				range.erase(range.begin(), range.begin() + (range.size() / 2));
 			}
 		}
-			while (range.size() > 7) {
+		while (range.size() > 7) {
 
-				if ((range[range.size() / 2]) % 2 == 0) {//when the number center of vector is even. 
-					cout << "Is the number less than " << range[range.size() / 2] + 1 << "?\n";//? A(38, , ,)
-					cin >> ans;
-					if (ans == 'y') {//erase A+1 - range.size()
-						range.erase(range.begin() + (range.size() / 2 + 1), range.begin() + (range.size()));
-					}
-					else if (ans == 'n') {//erase range[0] -  A-1 
-						range.erase(range.begin(), range.begin() + (range.size() / 2 + 1));
-					}
-					for (int x : range)cout << x << '\n';
+			if ((range[range.size() / 2]) % 2 == 0) {//when the number center of vector is even. 
+				cout << "Is the number less than " << range[range.size() / 2] + 1 << "?\n";//? A(38, , ,)
+				cin >> ans;
+				if (ans == 'y') {//erase A+1 - range.size()
+					range.erase(range.begin() + (range.size() / 2 + 1), range.begin() + (range.size()));
+				}
+				else if (ans == 'n') {//erase range[0] -  A-1 
+					range.erase(range.begin(), range.begin() + (range.size() / 2 + 1));
+				}
+//				for (int x : range)cout << x << '\n';
+			}
+
+			else if ((range[range.size() / 2]) % 2 != 0) {
+				cout << "Is the number less than " << range[range.size() / 2] << "?\n";//? A(13,63,33,83)
+				cin >> ans;
+				if (ans == 'y') {//erase A+1 - range.size()
+					range.erase(range.begin() + (range.size() / 2 + 1), range.begin() + (range.size()));
+				}
+				else if (ans == 'n') {//erase range[0] -  A-1 
+					range.erase(range.begin(), range.begin() + (range.size() / 2));
 				}
 
-				else if ((range[range.size() / 2]) % 2 != 0) {
-					cout << "Is the number less than " << range[range.size() / 2]  << "?\n";//? A(13,63,33,83)
-					cin >> ans;
-					if (ans == 'y') {//erase A+1 - range.size()
-						range.erase(range.begin() + (range.size() / 2 + 1), range.begin() + (range.size()));
-					}
-					else if (ans == 'n') {//erase range[0] -  A-1 
-						range.erase(range.begin(), range.begin() + (range.size() / 2 ));
-					}
-
-					for (int x : range)cout << x << '\n';
-				}
+//				for (int x : range)cout << x << '\n';
 			}
 		}
+	}
 
 
 	//odd
 
 	else if (ans == 'n') {
 		while (range.size() > 99) {
-			cout << "Is the number less than " << range[range.size() / 2 -1] << "?\n";//less than {range[49]==50}?
+			cout << "Is the number less than " << range[range.size() / 2 - 1] << "?\n";//less than {range[49]==50}?
 			cin >> ans;
 			if (ans == 'y') {//erase (51-100)　resultsize: 50
 				range.erase(range.begin() + (range.size() / 2), range.begin() + (range.size()));
@@ -136,11 +136,11 @@ int main()
 			else if (ans == 'n') {//erase (1-50)  resultsize: 50
 				range.erase(range.begin(), range.begin() + (range.size() / 2));
 			}
-			for (int x : range)cout << x << '\n';
+//			for (int x : range)cout << x << '\n';
 		}
 
 		while (range.size() > 49) {
-			cout << "Is the number less than " << range[range.size() / 2 ] << "?\n";//less than half+1 (26or76)?
+			cout << "Is the number less than " << range[range.size() / 2] << "?\n";//less than half+1 (26or76)?
 			cin >> ans;
 			if (ans == 'y') {//erase (half+1 - and above)
 				range.erase(range.begin() + (range.size() / 2), range.begin() + (range.size()));
@@ -148,7 +148,7 @@ int main()
 			else if (ans == 'n') {//erase (1 - half)
 				range.erase(range.begin(), range.begin() + (range.size() / 2));
 			}
-			for (int x : range)cout << x << '\n';
+//			for (int x : range)cout << x << '\n';
 
 
 			while (range.size() > 7) {//
@@ -161,7 +161,7 @@ int main()
 					else if (ans == 'n') {//erase range[0] -  A-1 
 						range.erase(range.begin(), range.begin() + (range.size() / 2 + 1));
 					}
-					for (int x : range)cout << x << '\n';
+//					for (int x : range)cout << x << '\n';
 				}
 				else if ((range[range.size() / 2]) % 2 == 0) {//when the center is odd
 					cout << "Is the number less than " << range[range.size() / 2] << "?\n";//? A(38, , ,)
@@ -172,125 +172,126 @@ int main()
 					else if (ans == 'n') {//erase range[0] -  A-1 
 						range.erase(range.begin(), range.begin() + (range.size() / 2));
 					}
-					for (int x : range)cout << x << '\n';
+//					for (int x : range)cout << x << '\n';
 				}
 			}
 		}
 	}
-	
+
 	while (range.size() > 3)//all way to HERE
 	{
-	if (even_or_not == 1) {//when the number we want is even
+		if (even_or_not == 1) {//when the number we want is even
 
-		if (range[0] % 2 == 0) {//when the first element is even
-			cout << "Is the number less than " << range[range.size() / 2] << "?\n";//? when(26 27 28 29 30 31 32) remains then 29
-			cin >> ans;
-			if (ans == 'y') {//erase (center and above)
-				range.erase(range.begin() + (range.size() / 2) + 1, range.begin() + range.size());
-				for (int x : range)cout << x << '\n';
-			}
-			else if (ans == 'n') {//erase (1 - center)
-				range.erase(range.begin(), range.begin() + (range.size() / 2));
-				for (int x : range)cout << x << '\n';
-			}
-		}
-
-		else if ((range[0] % 2 != 0)) {//when range[0] is odd
-
-			cout << "Is the number less than " << range[range.size() / 2 - 1] << "?\n";//? when(1 2 3 4 5 6 7) remains then what
-			cin >> ans;
-			if (ans == 'y') {
-				cout << "the number you are thinking is " << range[1] << ".\n";
-				for (int x : range)cout << x << '\n';
-				keep_window_open();
-				return 0;
-			}
-			else if (ans == 'n') {//erase [0] - [2]
-				range.erase(range.begin(), range.begin() + (range.size() / 2) );
-				for (int x : range)cout << x << '\n';
-				cout << "Is the number less than " << range[1] << "?\n";//?w(4 5 6 7) remain then 5
+			if (range[0] % 2 == 0) {//when the first element is even
+				cout << "Is the number less than " << range[range.size() / 2] << "?\n";//? when(26 27 28 29 30 31 32) remains then 29
 				cin >> ans;
-				if (ans == 'y') {
-					cout << "the number you are thinking is " << range[0] << ".\n";
-					break;
+				if (ans == 'y') {//erase (center and above)
+					range.erase(range.begin() + (range.size() / 2) + 1, range.begin() + range.size());
+					for (int x : range)cout << x << '\n';
 				}
-				else if (ans == 'n') {
-					cout << "the number you are thinking is " << range[2] << ".\n";
+				else if (ans == 'n') {//erase (1 - center)
+					range.erase(range.begin(), range.begin() + (range.size() / 2));
+//					for (int x : range)cout << x << '\n';
 				}
-				break;
-
 			}
-		}
-		
-			
-		}
-	
 
-	else if (even_or_not == 0)//when the number is odd
-	{
-		if (range[0] % 2 == 0) {//first element is even
-			cout << "Is the number less than " << range[range.size() / 2 - 1] << "?\n";//? when(26 27 28 29 30 31 32) remains then 28
-			cin >> ans;
-			if (ans == 'y') {//
-				cout << "the number you are thinking is " << range[1] << ".\n";
-				keep_window_open();
-				return 0;
-			}
-			else if (ans == 'n') {//erase 1 - center-1
-				range.erase(range.begin(), range.begin() + (range.size() / 2));
-				cout << "Is the number less than " << range[1] << "?\n";//?w(4 5 6 7) remain then 5
-				cin >> ans;
-				if (ans == 'y') {
-					cout << "the number you are thinking is " << range[0] << ".\n";
-					break;
-				}
-				else if (ans == 'n') {
-					cout << "the number you are thinking is " << range[2] << ".\n";
-				}
-				break;
-			}
-		}
+			else if ((range[0] % 2 != 0)) {//when range[0] is odd
 
-		else if ((range[0] % 2 != 0)) {//when range[0] is odd
-
-			cout << "Is the number less than " << range[range.size() / 2 ] << "?\n";//? when(1 2 3 4 5 6 7) remains then what
-			cin >> ans;
-			if (ans == 'y') {//erase center - range.size()
-				range.erase(range.begin() + (range.size() / 2) , range.begin() + range.size());
-
-				cout << "Is the number less than " << range[1] << "?\n";//?w(4 5 6 7) remain then 5
-				cin >> ans;
-				if (ans == 'y') {
-					cout << "the number you are thinking is " << range[0] << ".\n";
-					break;
-				}
-				else if (ans == 'n') {
-					cout << "the number you are thinking is " << range[2] << ".\n";
-				}
-				break;
-			}
-			else if (ans == 'n') {//erase [0] - [2]
-				range.erase(range.begin(), range.begin() + (range.size() / 2));
-				
-				cout << "Is the number less than " << range[2] << "?\n";//?w(4 5 6 7) remain then 5
+				cout << "Is the number less than " << range[range.size() / 2 - 1] << "?\n";//? when(1 2 3 4 5 6 7) remains then what
 				cin >> ans;
 				if (ans == 'y') {
 					cout << "the number you are thinking is " << range[1] << ".\n";
+//					for (int x : range)cout << x << '\n';
+					keep_window_open();
+					return 0;
+				}
+				else if (ans == 'n') {//erase [0] - [2]
+					range.erase(range.begin(), range.begin() + (range.size() / 2));
+//					for (int x : range)cout << x << '\n';
+					cout << "Is the number less than " << range[1] << "?\n";//?w(4 5 6 7) remain then 5
+					cin >> ans;
+					if (ans == 'y') {
+						cout << "the number you are thinking is " << range[0] << ".\n";
+						break;
+					}
+					else if (ans == 'n') {
+						cout << "the number you are thinking is " << range[2] << ".\n";
+					}
+					break;
+
+				}
+			}
+
+
+		}
+
+
+		else if (even_or_not == 0)//when the number is odd
+		{
+			if (range[0] % 2 == 0) {//first element is even
+				cout << "Is the number less than " << range[range.size() / 2 - 1] << "?\n";//? when(26 27 28 29 30 31 32) remains then 28
+				cin >> ans;
+				if (ans == 'y') {//
+					cout << "the number you are thinking is " << range[1] << ".\n";
+					keep_window_open();
+					return 0;
+				}
+				else if (ans == 'n') {//erase 1 - center-1
+					range.erase(range.begin(), range.begin() + (range.size() / 2));
+					cout << "Is the number less than " << range[1] << "?\n";//?w(4 5 6 7) remain then 5
+					cin >> ans;
+					if (ans == 'y') {
+						cout << "the number you are thinking is " << range[0] << ".\n";
+						break;
+					}
+					else if (ans == 'n') {
+						cout << "the number you are thinking is " << range[2] << ".\n";
+					}
 					break;
 				}
-				else if (ans == 'n') {
-					cout << "the number you are thinking is " << range[3] << ".\n";
+			}
+
+			else if ((range[0] % 2 != 0)) {//when range[0] is odd
+
+				cout << "Is the number less than " << range[range.size() / 2] << "?\n";//? when(1 2 3 4 5 6 7) remains then what
+				cin >> ans;
+				if (ans == 'y') {//erase center - range.size()
+					range.erase(range.begin() + (range.size() / 2), range.begin() + range.size());
+
+					cout << "Is the number less than " << range[1] << "?\n";//?w(4 5 6 7) remain then 5
+					cin >> ans;
+					if (ans == 'y') {
+						cout << "the number you are thinking is " << range[0] << ".\n";
+						break;
+					}
+					else if (ans == 'n') {
+						cout << "the number you are thinking is " << range[2] << ".\n";
+					}
+					break;
 				}
-				break;
+				else if (ans == 'n') {//erase [0] - [2]
+					range.erase(range.begin(), range.begin() + (range.size() / 2));
+
+					cout << "Is the number less than " << range[2] << "?\n";//?w(4 5 6 7) remain then 5
+					cin >> ans;
+					if (ans == 'y') {
+						cout << "the number you are thinking is " << range[1] << ".\n";
+						break;
+					}
+					else if (ans == 'n') {
+						cout << "the number you are thinking is " << range[3] << ".\n";
+					}
+					break;
+				}
 			}
 		}
-	}
-	
+
 	}
 
 	keep_window_open();
 	return 0;
 }
+
 
 
 
