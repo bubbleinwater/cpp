@@ -1,0 +1,82 @@
+
+
+/*
+chapter 4. 
+exercise 19
+
+08.30.2018
+
+this program record name and their score.
+If you want to exit this program, enter NoName 0,
+then this program write every name and their score.
+
+
+grammer:	//..actually I still do not understand what the grammer is. Whaaattt's thaaaat?????
+
+
+add_new_score:
+name
+score
+
+
+check_the_namevector:
+
+write_scores:
+
+*/
+
+
+
+#include "std_lib_facilities.h"
+
+vector<string>names;
+vector<int>scores;
+
+void add_new_score(string name,int score)
+{
+	names.push_back(name);
+	scores.push_back(score);
+}
+
+void check_the_name_vector(string name)
+{
+	for (string x : names) {
+		if (name == x) {
+			error("same name was entered");
+		}
+	}
+}
+
+void write_scores() {
+
+	for (int i = 0; i < names.size(); ++i) {
+		cout << names[i] << " " << scores[i] << "\n";
+	}
+}
+
+
+int main()
+{
+	string name;
+	int score;
+
+	cout << "Please enter name and score."
+		<< "\nenter NoName and 0 for exit.\n";
+
+	while (cin >> name >> score) {
+		if (name == "NoName" && score == 0) break; 
+
+		if (names.size() == 0) {//first time, same name does not exist.
+			add_new_score(name, score);
+		}
+		else {
+			check_the_name_vector(name);
+			add_new_score(name,score);
+		}
+	}
+
+	write_scores();
+
+	keep_window_open();
+	return 0;
+}
