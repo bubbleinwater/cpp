@@ -1,4 +1,4 @@
-
+exercise 11-1
 
 /*
 chapter 4. 
@@ -79,4 +79,73 @@ int main()
 
 	keep_window_open();
 	return 0;
+}
+
+
+exercise 11-2
+
+
+/*
+chapter 5.
+exercise 7
+
+This program solves the quadratic equation.
+
+ax^2 + bx + c = 0
+
+grammer			//?
+
+d = sqrt(b^2-4ac)
+
+answer == (-b+d)/2a , (-b-d) /2a
+
+*/
+
+
+#include "std_lib_facilities.h"
+
+class negative_number { };
+
+double square_root(double a,double b,double c){// is this function worthy?
+
+	double d = b * b - 4 * a * c;
+	if (d < 0)throw negative_number();
+	return sqrt(d);
+
+}
+
+void write_answer(double b,double d,double a) {
+
+	cout << "x1 = " << (-b + d) / 2 * a << " x2 = " << (-b - d) / 2 * a << "\n";
+
+}
+
+void calculate() {
+
+	double a = 0;
+	double b = 0;
+	double c = 0;
+
+	cin >> a >> b >> c;
+
+	double d = square_root(a, b, c);
+
+	write_answer(b, d, a);
+
+}
+
+int main()
+try{
+
+	cout << "This program solves quadratic equation."
+		<< "\nPlease enter three numbers for a b c(ax^2 + bx + c = 0)\n";
+
+	calculate();
+
+	keep_window_open();
+	return 0;
+}catch(negative_number){
+	simple_error("The discriminant D is a negative number.There is no solution.");
+	keep_window_open();
+	return 1;
 }
