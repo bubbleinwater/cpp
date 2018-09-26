@@ -18,7 +18,7 @@ int main() {
 	string val;
 	double num;
 	vector<string> name;  //" Should I write as vector<string> name(5); here? and if the user enter more than five names then throw an error?"
-	vector<double> age;
+	vector<double> age;	//yes.you should. and this is exercise 8.
 	
 	while (cin>>val) {
 		if (val == "exit")break;
