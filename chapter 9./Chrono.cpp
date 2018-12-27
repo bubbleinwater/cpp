@@ -7,7 +7,7 @@ namespace Chrono {
 	{
 		if (!is_date(yy, mm, dd))throw Invalid{};
 	}
-	const Date&default_date()
+	const Date& default_date()
 	{
 		static Date dd{2001,Month::jan,1}//start of 21th century
 		return dd;
