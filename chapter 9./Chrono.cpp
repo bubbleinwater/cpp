@@ -7,16 +7,17 @@ namespace Chrono {
 	{
 		if (!is_date(yy, mm, dd))throw Invalid{};
 	}
+	
 	const Date& default_date()
 	{
 		static Date dd{2001,Month::jan,1}//start of 21th century
 		return dd;
 	}
+	
 	Date::Date()
 		:y{ default_date().year() },
 		m{default_date().month() },
 		d{default_date().day()}
-
 	{
 	}
 
@@ -39,8 +40,8 @@ namespace Chrono {
 		case Month::feb://the length of February varies
 			days_in_month = (leapyear(y))?29:28;
 			break;
-		case Month::apr:case Month::jun:case Month:::sep:case Month::nov:days_in_month = 30;
-			//the rest have 30 days
+		case Month::apr:case Month::jun:case Month::sep:case Month::nov:days_in_month = 30;
+			//the rest have 31 days
 			break;
 		}
 		if (days_in_month < d)return false;
