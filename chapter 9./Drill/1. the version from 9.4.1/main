@@ -1,6 +1,6 @@
-#include"../../std_lib_facilities.h"
-#include"../../../Chrono.h"
-#include"../../../../Desktop/Chrono.cpp"
+#include"std_lib_facilities.h"
+#include"Chrono.h"
+#include"Chrono.cpp"
 
 struct Date {
 	int y; Chrono::Month m; int d;
