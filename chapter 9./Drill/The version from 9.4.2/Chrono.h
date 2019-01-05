@@ -21,8 +21,9 @@ struct Date {
 //	Date(int y, int m, int d);      //error: LNK2019 and LNK 1120
 //	Date();                         //but I don't know that the code written here really caused these errors or not.
 //--------------------------------- 
+	
+	Date& add_day(Date& dd, int n);
 };
 
-Date& add_day(Date& dd, int n);
 
 ostream& operator<<(ostream& os, const Date& d);
