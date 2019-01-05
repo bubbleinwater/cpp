@@ -1,3 +1,10 @@
+//-----------
+//(2019,1,2)
+//
+//
+//
+//----------
+
 #include"std_lib_facilities.h"
 
 struct Date {
