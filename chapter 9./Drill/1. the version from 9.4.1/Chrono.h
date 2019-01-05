@@ -1,5 +1,11 @@
 //file Chrono.h
 
+//--------------------
+//
+//(2018,12,30)
+//
+//--------------------
+
 namespace Chrono {
 
 	enum class Month {
