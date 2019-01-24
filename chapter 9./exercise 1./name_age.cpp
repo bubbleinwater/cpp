@@ -42,3 +42,18 @@ void Name_pairs::print() {
 		cout << "(" << name[i] << "," << age[i] << ")"<<"\n";
 	}
 }
+
+void Name_pairs::sort() {
+	for (int i = 0; i < name.size()-1; ++i) {
+		for (int j = i+1; j < name.size()-1; ++j) {
+			if (name[i] > name[j]) {
+				string s_tmp = name[i];
+				double d_tmp = age[i];
+ 				name[i] = name[j];
+				age[i] = age[j];
+				name[j] = s_tmp;
+				age[j] = d_tmp;
+			}
+		}
+	}
+}
