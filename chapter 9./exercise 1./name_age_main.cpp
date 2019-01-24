@@ -15,6 +15,8 @@ int main()
 {
 	Name_pairs np;
 	np.read_names();
+	np.sort();
+	np.print();
 
 	keep_window_open();
 	return 0;
