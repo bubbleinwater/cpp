@@ -9,6 +9,7 @@ public:
 	void read_names();
 	void read_ages();
 	void print();
+	void sort();
 
 private:
 	string a_name;
