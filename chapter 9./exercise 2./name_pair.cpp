@@ -1,4 +1,4 @@
-#include"chap9ex1.h"
+#include"name_pair.h"
 
 Name_pairs::Name_pairs(string nn,double aa)
 	:a_name{nn},a_age{aa}
@@ -24,7 +24,6 @@ void Name_pairs::read_names() {
 	if (name.size() == 1) error("error:you did not enter name yet.");
 //	if (name[0] == "finish") error("error:you did not enter name yet.");
 	
-	else read_ages();
 }
 
 void Name_pairs::read_ages() {
@@ -35,17 +34,15 @@ void Name_pairs::read_ages() {
 
 		age.push_back(a_age);
 	}
+}
+
+void Name_pairs::push_back_namepair() {
 
 	for (int i = 0; i < name.size() - 1; ++i) {
 		name_pairs.push_back(Name_pairs(name[i], age[i]));
 	}
 }
 
-//void Name_pairs::print() {
-//	for (int i = 0; i < name.size()-1;++i) {
-//		cout << "(" << name[i] << "," << age[i] << ")"<<"\n";
-//	}
-//}
 
 void Name_pairs::print() {
 	for (int i = 0; i < name.size() - 1; ++i) {
