@@ -1,5 +1,6 @@
 #include"std_lib_facilities.h"
 
+
 class Name_pairs {
 
 	string a_name;
@@ -14,6 +15,7 @@ public:
 	Name_pairs();
 	void read_names();
 	void read_ages();
+	void push_back_namepair();
 	void print();
 	void sort();
 	string name_please()const{ return a_name; }
