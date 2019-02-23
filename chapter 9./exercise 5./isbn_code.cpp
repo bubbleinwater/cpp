@@ -4,7 +4,7 @@ I'll add a function for dealing with ISBN codes
 
 */
 
-#include"book_isbn_Header.h"
+#include"isbn_code.h"
 
 namespace Book {
 
@@ -30,7 +30,16 @@ namespace Book {
 		: isbn{ i }, title{ t }, author{ a }, copyright_Date{ c }, is_checkedout{ is_c }
 	{}
 
+	
+	bool Book::checkout(Book checked_out) {
+		checked_out.is_checkedout = false;
+	}
 
+	bool Book::checkin(Book checked_in) {
+		checked_in.is_checkedout = true;
+	}
+
+	
 	void storing_book() {
 		string i; string t; string a; string c; string checked_out; bool is_c;
 		cout << "Enter \"ISBN\" \"Title\" \"Author\" \"Copyright date.\"";
