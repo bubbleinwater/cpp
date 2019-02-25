@@ -14,8 +14,22 @@ namespace Book {
 	const Book& default_Book()
 	{
 		static Book sb {" "," "," ", "00000000", false };
+		return sb;
 	}
+	
+	void checking_ISBN(string isbn) {
+		if (!(isbn.size() == 13 || isbn.size() == 17)) { throw Book::invalid_isbn(); }
 
+		if (isbn.size() == 13) {//x-xxxxxx-xx-x
+			if(isbn[1] != '-') throw Book::invalid_isbn();
+		}
+		else if (isbn.size() == 17) {//xxx-x-xxxxxx-xx-x
+			if (isbn[3] != '-') throw Book::invalid_isbn();
+		}
+
+		if (isbn[isbn.size() - 5] != '-')throw Book::invalid_data();
+		if (isbn[isbn.size() - 2] != '-')throw Book::invalid_data();
+	}
 
 	Book::Book()//default constructor
 		:isbn{ default_Book().ISBN() }
@@ -31,11 +45,11 @@ namespace Book {
 	{}
 
 	
-	bool Book::checkout(Book checked_out) {
+	void Book::checkout(Book& checked_out) {
 		checked_out.is_checkedout = false;
 	}
 
-	bool Book::checkin(Book checked_in) {
+	void Book::checkin(Book& checked_in) {
 		checked_in.is_checkedout = true;
 	}
 
@@ -43,8 +57,9 @@ namespace Book {
 	void storing_book() {
 		string i; string t; string a; string c; string checked_out; bool is_c;
 		cout << "Enter \"ISBN\" \"Title\" \"Author\" \"Copyright date.\"";
-		cout << "\nISBN: ";
+		cout << "\nISBN(x-xxxxxx-xx-x or xxx-x-xxxxxx-xx-x style): "
 		cin >> i;
+		checking_ISBN(i);
 		cout << "\nTitle: ";
 		cin >> t;
 		cout << "\nAuthor: ";
