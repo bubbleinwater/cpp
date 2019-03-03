@@ -2,6 +2,9 @@
 2019.feb.21
 I'll add a function for dealing with ISBN codes
 
+2019.mar.3
+dealing with LNK1120 and LNK 2019
+
 */
 
 #include"isbn_code.h"
@@ -11,13 +14,14 @@ namespace Book {
 	Book vectorofbooks;//without this, error:E0245 at the calling of "vB.push_back(new_book);".
                       //but I don't know that is it worth declaring this only for that 
 
+
 	const Book& default_Book()
 	{
 		static Book sb {" "," "," ", "00000000", false };
 		return sb;
 	}
-	
-	void checking_ISBN(string isbn) {
+
+	void Book::checking_ISBN(string isbn) {//you have to describe Book::
 		if (!(isbn.size() == 13 || isbn.size() == 17)) { throw Book::invalid_isbn(); }
 
 		if (isbn.size() == 13) {//x-xxxxxx-xx-x
@@ -44,7 +48,6 @@ namespace Book {
 		: isbn{ i }, title{ t }, author{ a }, copyright_Date{ c }, is_checkedout{ is_c }
 	{}
 
-	
 	void Book::checkout(Book& checked_out) {
 		checked_out.is_checkedout = false;
 	}
@@ -53,11 +56,11 @@ namespace Book {
 		checked_in.is_checkedout = true;
 	}
 
-	
-	void storing_book() {
+
+	void Book::storing_book() {//you have to describe Book::
 		string i; string t; string a; string c; string checked_out; bool is_c;
 		cout << "Enter \"ISBN\" \"Title\" \"Author\" \"Copyright date.\"";
-		cout << "\nISBN(x-xxxxxx-xx-x or xxx-x-xxxxxx-xx-x style): "
+		cout << "\nISBN(x-xxxxxx-xx-x or xxx-x-xxxxxx-xx-x style): ";
 		cin >> i;
 		checking_ISBN(i);
 		cout << "\nTitle: ";
@@ -77,5 +80,6 @@ namespace Book {
 		vectorofbooks.vB.push_back(new_book);
 		
 	}
+
 
 }
