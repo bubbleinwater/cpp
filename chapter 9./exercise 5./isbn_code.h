@@ -17,7 +17,7 @@ namespace Book {
 	public:
 		class invalid_data {};//for throwing exception
 		class invalid_isbn {};//invalid ISBN
-		string ISBN()const { return isbn; }				
+		string ISBN()const { return isbn; }
 		void checking_ISBN(string isbn);
 		string TITLE()const { return title; }
 		string AUTHOR() const { return author; }
@@ -39,5 +39,5 @@ namespace Book {
 		bool is_checkedout;
 
 	};
-  
-}//book
+
+}
