@@ -15,10 +15,12 @@ namespace Book {
 
 	class Book {
 	public:
-		class invalid_data {};//for throwing exception
+		class invalid_date {};//for throwing exception
 		class invalid_isbn {};//invalid ISBN
+		class invalid_data {};
 		string ISBN()const { return isbn; }
 		void checking_ISBN(string isbn);
+		void checking_date(string d);
 		string TITLE()const { return title; }
 		string AUTHOR() const { return author; }
 		string COPYRIGHT_DATE()const { return copyright_Date; }
