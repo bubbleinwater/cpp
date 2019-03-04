@@ -21,7 +21,7 @@ namespace Book {
 		return sb;
 	}
 
-	void Book::checking_ISBN(string isbn) {//you have to describe Book::
+	void Book::checking_ISBN(string isbn) {//or should I write this function to return bool?
 		if (!(isbn.size() == 13 || isbn.size() == 17)) { throw Book::invalid_isbn(); }
 
 		if (isbn.size() == 13) {//x-xxxxxx-xx-x
@@ -31,8 +31,15 @@ namespace Book {
 			if (isbn[3] != '-') throw Book::invalid_isbn();
 		}
 
-		if (isbn[isbn.size() - 5] != '-')throw Book::invalid_data();
-		if (isbn[isbn.size() - 2] != '-')throw Book::invalid_data();
+		if (isbn[isbn.size() - 5] != '-')throw Book::invalid_isbn();
+		if (isbn[isbn.size() - 2] != '-')throw Book::invalid_isbn();
+	}
+
+	void Book::checking_date(string d) {//better returning bool?
+										//should this function accept 2019.3.4 and 19.03.04 and 19.3.4 too ?
+										//should I make another function just for checking that is the character digit?
+		if (d.size() != 10)throw Book::invalid_date();
+		if (d[4] != '.' || d[7] != '.')throw Book::invalid_date();
 	}
 
 	Book::Book()//default constructor
@@ -57,7 +64,7 @@ namespace Book {
 	}
 
 
-	void Book::storing_book() {//you have to describe Book::
+	void Book::storing_book() {
 		string i; string t; string a; string c; string checked_out; bool is_c;
 		cout << "Enter \"ISBN\" \"Title\" \"Author\" \"Copyright date.\"";
 		cout << "\nISBN(x-xxxxxx-xx-x or xxx-x-xxxxxx-xx-x style): ";
@@ -67,8 +74,9 @@ namespace Book {
 		cin >> t;
 		cout << "\nAuthor: ";
 		cin >> a;
-		cout << "\nCopyright date: ";
+		cout << "\nCopyright date(xxxx.xx.xx style): ";
 		cin >> c;
+		checking_date(c);
 		cout << "\nif you have this book now Enter f,you don't have the book(just register) Enter t.\n";
 		cin >> checked_out;
 		
