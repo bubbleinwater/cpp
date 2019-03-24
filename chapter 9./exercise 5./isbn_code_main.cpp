@@ -1,11 +1,11 @@
 #include "isbn_code.h"
 
-int main()
-try{
+int main() 
+try {
 
 	Book::Book bookisbn;
-	bookisbn.storing_book();
-
+	
+	cout << storing_book(bookisbn);
 
 	keep_window_open();
 	return 0;
