@@ -15,13 +15,12 @@ namespace Book {
 		string ISBN()const { return isbn; }
 		void checking_ISBN(string isbn);
 		void checking_date(string d);
+		void checking_genre(string isbn, Genre g);
 		string TITLE()const { return title; }
 		string AUTHOR() const { return author; }
 		Genre GENRE() const { return genre; }
 		string COPYRIGHT_DATE()const { return copyright_Date; }
 		bool IS_CHECKEDOUT()const { return is_checkedout; }//when you call this, this function return you 
-		Book& storing_book();//add new book's data
-//		vector<Book> vB;
 		void checkout(Book& checked_out);//to checkout 
 		void checkin(Book& checked_in);//to checkin
 
@@ -38,38 +37,27 @@ namespace Book {
 
 	};
 
-
 	bool operator==(const Book& a, const Book& b);
-
 	bool operator!=(const Book& a, const Book& b);
 
 	ostream& operator<<(ostream& os, const Book& a);
 
+	Book& storing_book(Book& b);//add new book's data
 
 	class patron {
 	public:
 		string USER_NAME() { return user_name; }
 		string CARD_NUMBER() { return card_number; }
 		string FEE() { return fee; }
-		void set_fee(string f) {
-			if (!(owe_fee)) { 
-				fee = f; 
-				owe_fee = true;
-			}
-			else { 
-				cout << "changed fee from " << fee << " to "<< f <<".\n";
-				fee = f;
-			}
-		}
-
+		bool free(patron p) { if (fee == "0")return true; }
+		void set_fee(string f);
 
 	private:
+		bool owe_fee;
 		string user_name;
 		string card_number;
-		bool owe_fee;
 		string fee;
 
-
-
 	};
+
 }
