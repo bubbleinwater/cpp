@@ -4,8 +4,12 @@ int main()
 try {
 
 	Book::Book bookisbn;
-	
 	cout << storing_book(bookisbn);
+
+	Book::patron pt;	
+	cout << set_patron(pt);
+
+
 
 	keep_window_open();
 	return 0;
@@ -18,5 +22,8 @@ try {
 	keep_window_open();
 }catch (Book::Book::invalid_data) {
 	cerr << "error::invalid data\n";
+	keep_window_open();
+}catch (Book::Book::invalid_genre) {
+	cerr << "error::invalid Genre\n";
 	keep_window_open();
 }
