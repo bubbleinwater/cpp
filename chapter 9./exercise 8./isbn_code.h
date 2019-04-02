@@ -11,6 +11,7 @@ namespace Book {
 		class invalid_date {};//for throwing exception
 		class invalid_isbn {};//invalid ISBN
 		class invalid_data {};
+		class invalid_genre {};//for invalid genre
 
 		string ISBN()const { return isbn; }
 		void checking_ISBN(string isbn);
@@ -46,11 +47,14 @@ namespace Book {
 
 	class patron {
 	public:
-		string USER_NAME() { return user_name; }
-		string CARD_NUMBER() { return card_number; }
-		string FEE() { return fee; }
+		string USER_NAME() const { return user_name; }
+		string CARD_NUMBER() const { return card_number; }
+		string FEE() const { return fee; }
 		bool free(patron p) { if (fee == "0")return true; }
 		void set_fee(string f);
+
+		patron();
+		patron(string u_n, string c_n, string f);
 
 	private:
 		bool owe_fee;
@@ -59,5 +63,8 @@ namespace Book {
 		string fee;
 
 	};
+
+	patron& set_patron(patron& pt);
+	ostream& operator<<(ostream& os, const patron& pt);
 
 }
