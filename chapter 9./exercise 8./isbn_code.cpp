@@ -80,10 +80,12 @@ char int_to_char( int i ){return char( '0' + i );}
 
 added patron class
 
+2019.apr.02
+I modified patron class.
 */
 
 
-#include"isbn_code.h"
+#include"book_isbn_Header.h"
 
 
 namespace Book {
@@ -155,7 +157,7 @@ namespace Book {
 		int genre_int = 10 * ten + one;
 
 		if(genre_int - int(g) == 0){}
-		else throw Book::invalid_data();
+		else throw Book::invalid_genre();
 	}
 
 	Book::Book()//default constructor
@@ -275,6 +277,26 @@ namespace Book {
 	}
 
 //----patron class's helperfunction implementation starts here
+
+	const patron& default_patron()
+	{
+		static patron d_pt{ "tomeiningen","0000","0000" };
+		return d_pt;
+	}
+
+	patron::patron()
+		:user_name{ default_patron().USER_NAME() }
+		,card_number{ default_patron().CARD_NUMBER() }
+		, fee{ default_patron().FEE() }
+	{}
+
+		patron::patron(string u_n,string c_n,string f)
+			:user_name{u_n}
+			,card_number{c_n}
+			,fee{f}
+		{}
+
+
 	void patron::set_fee(string f) {
 		if (!(owe_fee)) {
 			fee = f;
@@ -286,4 +308,27 @@ namespace Book {
 		}
 	}
 
+	patron& set_patron(patron& pt) {
+		string name;
+		string number;
+		string fee;
+
+		cout << "\nPlease enter patron's info."
+			<< "\nName: ";
+		cin >> name;
+		cout << "\nCard number: ";
+		cin >> number;
+		cout << "\nFee: ";
+		cin >> fee;
+
+		pt = { name, number, fee };
+		return pt;
+	}
+
+	ostream& operator<<(ostream& os, const patron& pt) {
+		return os <<"\nNAME: "<< pt.USER_NAME()
+			<<"\nCARD NUMBER: "<< pt.CARD_NUMBER()
+			<< "\nFEE: "<< pt.FEE()
+			<< '\n';
+	}
 }
