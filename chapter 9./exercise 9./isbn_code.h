@@ -1,7 +1,6 @@
 #include"std_lib_facilities.h"
 #include"Chrono.h"
 
-
 namespace Book {
 
 	enum class Genre {
@@ -47,20 +46,18 @@ namespace Book {
 
 	ostream& operator<<(ostream& os, const Book& a);
 
-	Book& storing_book(Book& b);//add new book's data
-
-	class patron {
+	class Patron {
 	public:
 		bool OWE_FEE() const{ return owe_fee; }
 		string USER_NAME() const { return user_name; }
 		string CARD_NUMBER() const { return card_number; }
 		string FEE() const { return fee; }
 		bool IN_THE_LIBRARY()const{ return in_the_library; }
-		bool free(patron p) { if (fee == "0")return true; }
+		bool free(Patron p) { if (fee == "0")return true; }
 		void set_fee(string f);
 
-		patron();
-		patron(bool o_f, string u_n, string c_n, string f, bool in_lib);
+		Patron();
+		Patron(bool o_f, string u_n, string c_n, string f, bool in_lib);
 
 	private:
 		bool owe_fee;
@@ -71,30 +68,39 @@ namespace Book {
 
 	};
 
-	patron& set_patron(patron& pt);
-	ostream& operator<<(ostream& os, const patron& pt);
+	ostream& operator<<(ostream& os, const Patron& pt);
 
+
+	struct Transaction {
+		Book b;
+		Patron p;
+		Chrono::Date d;
+
+		Transaction();
+		Transaction(Book bb, Patron pp, Chrono::Date dd);
+	};
 
 	class Library {
 	public:
 		void add_book(Book b);
 		void display_books();
 
-		void add_patron(patron p);
+		void add_patron(Patron pt);
 		void display_patrons();
 
-		void checkout_book(Book& b,patron p);
+		void checkout_book(Book& b,Patron p);
+
+		Library();
+		Library(Book b,Patron p,Transaction t);
+
+		vector<Book> v_b;
+		vector<Patron> v_p;
+		vector<Transaction> v_t;
 
 	private:
-		vector<Book> v_b;
-		vector<patron> v_p;
-
-	};
-
-	struct Transaction {
-		Book b;
-		patron p;
-		Chrono::Date d;
+		Book a_b;
+		Patron a_p;
+		Transaction a_t;
 	};
 
 }
