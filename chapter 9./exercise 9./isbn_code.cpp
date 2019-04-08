@@ -1,4 +1,20 @@
 /*
+pseudo code
+namespace Book{
+Library
+	:add_Book
+	:display_Book
+	:add_Patron
+	:display_Patrons
+	:vector_Book
+	:vector_patron
+	:vector_transaction
+Book
+Patron
+Date
+}
+
+
 2019.feb.21
 I'll add a function for dealing with ISBN codes
 
@@ -85,6 +101,19 @@ I modified patron class.
 
 2019.apr.06
 I made this program better, but it's out of time.I'll go to bed now.soooo sleepy
+
+
+2019.apr.08
+I realize that I need to write comments in quite detail.
+hey! me(apr.06) "better"? where?
+me(apr.02) "modified patron"? what??? how?
+
+today, I begun writing the struct Tansaction
+I'm not sure It was needed to put Transaction body before Library body?
+add_book() replaced storing_book() 
+add_patron() replaced set_patron() too
+
+the rest of this exercise is just add function to check out book and function for who leave the library
 */
 
 
@@ -244,8 +273,61 @@ namespace Book {
 			<< "\n";
 	}
 
+//----implementation of patron class's helperfunction starts here
 
-	Book& storing_book(Book& b) {
+	const Patron& default_patron()
+	{
+		static Patron d_pt{ false,"tomeiningen","0000","0000",false };
+		return d_pt;
+	}
+
+	Patron::Patron()
+		:owe_fee{ default_patron().OWE_FEE()}
+		,user_name{ default_patron().USER_NAME() }
+		,card_number{ default_patron().CARD_NUMBER() }
+		, fee{ default_patron().FEE() }
+		,in_the_library{default_patron().IN_THE_LIBRARY()}
+	{}
+
+		Patron::Patron(bool o_f ,string u_n,string c_n,string f,bool in_lib)
+			:owe_fee{ o_f }
+			,user_name {u_n}
+			,card_number{c_n}
+			,fee{f}
+			,in_the_library{in_lib}
+		{}
+
+
+	void Patron::set_fee(string f) {
+		if (!(owe_fee)) {
+			fee = f;
+			owe_fee = true;
+		}
+		else {
+			cout << "changed fee from " << fee << " to " << f << ".\n";
+			fee = f;
+		}
+	}
+
+
+	ostream& operator<<(ostream& os, const Patron& pt) {
+		if (pt.IN_THE_LIBRARY()) {
+			return os << "\nNAME: " << pt.USER_NAME()
+				<< "\nCARD NUMBER: " << pt.CARD_NUMBER()
+				<< "\nFEE: " << pt.FEE()
+				<< "\nIn the library?: "
+				<< "YES\n";
+		}
+		else {
+			return os << "\nNAME: " << pt.USER_NAME()
+				<< "\nCARD NUMBER: " << pt.CARD_NUMBER()
+				<< "\nFEE: " << pt.FEE()
+				<< "\nIn the library?: "
+				<< "NO\n";
+		}
+	}
+
+	void Library::add_book(Book b){
 		string i; string t; string a; int g; string c; Chrono::Date d_c; string checked_out; bool is_c;
 		cout << "Enter \"ISBN\" \"Title\" \"Author\" \"Copyright date.\"";
 		cout << "\nISBN(x-xxxxxx-xx-x or xxx-x-xxxxxx-xx-x style): ";
@@ -272,114 +354,87 @@ namespace Book {
 
 
 		b = { i, t, a, ge, d_c, is_c };
-		
-		return b;
-	}
 
-
-//----patron class's helperfunction implementation starts here
-
-	const patron& default_patron()
-	{
-		static patron d_pt{ false,"tomeiningen","0000","0000",false };
-		return d_pt;
-	}
-
-	patron::patron()
-		:owe_fee{ default_patron().OWE_FEE()}
-		,user_name{ default_patron().USER_NAME() }
-		,card_number{ default_patron().CARD_NUMBER() }
-		, fee{ default_patron().FEE() }
-		,in_the_library{default_patron().IN_THE_LIBRARY()}
-	{}
-
-		patron::patron(bool o_f ,string u_n,string c_n,string f,bool in_lib)
-			:owe_fee{ o_f }
-			,user_name {u_n}
-			,card_number{c_n}
-			,fee{f}
-			,in_the_library{in_lib}
-		{}
-
-
-	void patron::set_fee(string f) {
-		if (!(owe_fee)) {
-			fee = f;
-			owe_fee = true;
-		}
-		else {
-			cout << "changed fee from " << fee << " to " << f << ".\n";
-			fee = f;
-		}
-	}
-
-	patron& set_patron(patron& pt) {
-		char fee_yes_no, inlib_yes_no;
-		bool f_yes_no, i_yes_no;
-		string name;
-		string number;
-		string fee  = "0";
-
-		cout << "\nPlease enter patron's info."
-			<< "\nneed to pay?(t for yes,f for n): ";
-		cin >> fee_yes_no;
-		if (fee_yes_no == 't') { f_yes_no = true; }
-		else { f_yes_no = false; }
-		cout<< "\nName: ";
-		cin >> name;
-		cout << "\nCard number: ";
-		cin >> number;
-		if(f_yes_no){cout << "\nFee: ";
-		cin >> fee; }
-		cout << "\nin the library now?(t for yes,f for no): ";
-		cin >> inlib_yes_no;
-		if (inlib_yes_no == 't') { i_yes_no = true; }
-		else i_yes_no = false;
-
-
-		pt = { f_yes_no,name, number, fee,i_yes_no };
-		return pt;
-	}
-
-	ostream& operator<<(ostream& os, const patron& pt) {
-		if (pt.IN_THE_LIBRARY()) {
-			return os << "\nNAME: " << pt.USER_NAME()
-				<< "\nCARD NUMBER: " << pt.CARD_NUMBER()
-				<< "\nFEE: " << pt.FEE()
-				<< "\nIn the library?: "
-				<< "YES\n";
-		}
-		else {
-			return os << "\nNAME: " << pt.USER_NAME()
-				<< "\nCARD NUMBER: " << pt.CARD_NUMBER()
-				<< "\nFEE: " << pt.FEE()
-				<< "\nIn the library?: "
-				<< "NO\n";
-		}
-	}
-
-	void Library::add_book(Book b){
 		v_b.push_back(b);
 	}
+
+
 	void Library::display_books() {
 		for (int i = 0; i < v_b.size(); ++i) {
 			cout << v_b[i] << '\n';
 		}
 	}
 
-	void Library::add_patron(patron p) {
-		v_p.push_back(p);
+	void Library::add_patron(Patron pt) {
+
+		char fee_yes_no, inlib_yes_no;
+		bool f_yes_no, i_yes_no;
+		string name;
+		string number;
+		string fee = "0";
+
+		cout << "\nPlease enter patron's info."
+			<< "\nneed to pay?(t for yes,f for no): ";
+		cin >> fee_yes_no;
+		if (fee_yes_no == 't') { f_yes_no = true; }
+		else { f_yes_no = false; }
+		cout << "\nName: ";
+		cin >> name;
+		cout << "\nCard number: ";
+		cin >> number;
+		if (f_yes_no) {
+			cout << "\nFee: ";
+			cin >> fee;
+		}
+		cout << "\nin the library now?(t for yes,f for no): ";
+		cin >> inlib_yes_no;
+		if (inlib_yes_no == 't') { i_yes_no = true; }
+		else i_yes_no = false;
+
+		pt = { f_yes_no,name, number, fee,i_yes_no };
+
+		v_p.push_back(pt);
 	}
+
 	void Library::display_patrons() {
 		for (int i = 0; i < v_p.size(); ++i) {
 			cout << v_p[i] << '\n';
 		}
 	}
 
-	void Library::checkout_book(Book& b, patron p) {
+	void Library::checkout_book(Book& b, Patron p) {
 		if (b.IS_CHECKEDOUT()) { cout << "This book is now on loan.\n"; }
 		else {
 			b.Book::checkout();
 		}
 	}
+
+
+	Library::Library()
+		:a_b{}
+		,a_p{}
+		,a_t{}
+	{}
+
+	Library::Library(Book b, Patron p, Transaction t)
+		:a_b{b}
+		,a_p{p}
+		,a_t{t}
+	{
+		Library::v_b.push_back(b);
+		Library::v_p.push_back(p);
+		Library::v_t.push_back(t);
+	}
+
+	Transaction::Transaction()
+		:b{}
+		,p{}
+		,d{}
+	{}
+
+	Transaction::Transaction(Book bb,Patron pp, Chrono::Date dd)
+		:b{bb}
+		,p{pp}
+		,d{dd}
+	{}
 }
