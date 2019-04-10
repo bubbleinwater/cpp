@@ -113,7 +113,23 @@ I'm not sure It was needed to put Transaction body before Library body?
 add_book() replaced storing_book() 
 add_patron() replaced set_patron() too
 
-the rest of this exercise is just add function to check out book and function for who leave the library
+the rest of this exercise is just add function to check out book and function for who leave the library.
+
+oh I totally forgot that I made the struct called Transaction
+
+in main()
+			for (int i = 0; book != library_for_vector.v_b[i].TITLE()&&i < library_for_vector.v_b.size(); ++i) {
+				b = library_for_vector.v_b[i];
+			}
+			for (int i = 0; name != library_for_vector.v_p[i].USER_NAME()&& i < library_for_vector.v_p.size(); ++i) {
+				p = library_for_vector.v_p[i];
+			}
+didn't work well.I want to know why
+
+2019.apr.10
+checkout_book() didn't work, because I forgot assigning to the vector which included within the Library class.
+and I realized class Date does not work well.which was solved by changing the function named string_to_Date()
+
 */
 
 
@@ -208,13 +224,9 @@ namespace Book {
 		is_checkedout{ is_c }
 	{}
 
-	void Book::checkout() {
-		is_checkedout = true;
-	}
+//	void Book::checkout(Book& b) 
 
-	void Book::checkin() {
-		is_checkedout = false;
-	}
+//	void Book::checkin(Book& b) 
 
 	Genre int_to_genre(int i) {
 		switch (i) {
@@ -248,7 +260,7 @@ namespace Book {
 		return 0;
 	}
 	}
-
+	
 
 	bool operator==(const Book& a, const Book& b){
 		return a.ISBN() == b.ISBN()
@@ -270,6 +282,8 @@ namespace Book {
 			<< genre_to_string(a.GENRE())
 			<< "\nCOPYRIGHT DATE: "
 			<< d//Why just <<a.Chrono_COPYRIGHT_DATE() doesn't work? 
+			<<"\nLoanable?: "
+			<<a.LOANABLE()
 			<< "\n";
 	}
 
@@ -402,13 +416,37 @@ namespace Book {
 		}
 	}
 
-	void Library::checkout_book(Book& b, Patron p) {
+	void Library::checkout_book(Book& b, Patron& p,vector<Book>& v_b) {
 		if (b.IS_CHECKEDOUT()) { cout << "This book is now on loan.\n"; }
+		else if (p.IN_THE_LIBRARY()) { 
+			b.checkout();
+//			cout <<"\ntest\n"<< b << "\ntest\n";
+			for (int i = 0; i < v_b.size(); ++i) {
+				if (b.TITLE() == v_b[i].TITLE()) {
+					v_b[i] = b;
+				}
+			}
+			cout << "Transaction completed.\n\n";
+		}
 		else {
-			b.Book::checkout();
+			cout << "This person is not in this library now.\n";
 		}
 	}
-
+	void Library::checkin_book(Book& b, Patron& p, vector<Book>& v_b) {
+		if (b.IS_CHECKEDOUT() == false) { cout << "The book you have is not our library's book.\n"; }
+		else if (p.IN_THE_LIBRARY()) {
+			b.checkin();
+			for (int i = 0; i < v_b.size(); ++i) {
+				if (b.TITLE() == v_b[i].TITLE()) {
+					v_b[i] = b;
+				}
+			}
+			cout << "Transaction completed.\n\n";
+		}
+		else {
+			cout << "This person is not in this library now.\n";
+		}
+	}
 
 	Library::Library()
 		:a_b{}
