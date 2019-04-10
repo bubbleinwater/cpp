@@ -1,6 +1,5 @@
 #include"Chrono.h"
 
-
 namespace Chrono {
 	const Date& default_date() {
 		static Date dd{ 1978,Month::jun,25 };
@@ -80,7 +79,7 @@ namespace Chrono {
 		for (int i = 5; i < 7; ++i) {
 			month += s[i];
 		}m = { Month(stoi(month) - 1) };
-		for (int i = 9; i < 11; ++i) {
+		for (int i = 8; i < 10; ++i) {
 			day += s[i];
 		}d = { stoi(day) };
 	}
