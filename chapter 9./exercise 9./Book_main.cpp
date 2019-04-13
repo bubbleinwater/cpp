@@ -1,15 +1,16 @@
 #include "isbn_code.h"
 
-
 int main()
 try {
 
 	Book::Library library_for_vector;
+	vector<Book::Transaction> v_t;
+	Book::Transaction t;
 
 	string st = "";
 	while (st != "exit") {
 		cout << "Please enter, addbook or addpatron or displaybooks or displaypatrons\n"
-			<< "or checkoutbook or checkinbook or exit.\n";
+			<< "or checkoutbook or checkinbook or displaytransaction or whoowefee or exit.\n";
 		cin >> st;
 		if (st == "addbook") {
 			Book::Book bookisbn;
@@ -42,6 +43,8 @@ try {
 				}
 			}
 			library_for_vector.checkout_book(b, p, library_for_vector.v_b);
+			t = { b, p, b.Chrono_COPYRIGHT_DATE() };
+			v_t.push_back(t);
 		}
 		else if (st == "checkinbook") {
 			string book, name;
@@ -60,6 +63,20 @@ try {
 				}
 			}
 			library_for_vector.checkin_book(b, p, library_for_vector.v_b);
+			t = { b, p, b.Chrono_COPYRIGHT_DATE() };
+			v_t.push_back(t);
+		}
+		else if (st == "displaytransaction") {
+			for (int i = 0; i < v_t.size(); ++i) {
+				cout << v_t[i] << "\n";
+			}
+		}
+		else if (st == "whoowefee") {
+			for (int i = 0; i < library_for_vector.v_p.size(); ++i) {
+				if (library_for_vector.v_p[i].OWE_FEE()) {
+					cout << library_for_vector.v_p[i] << "\n";
+				}
+			}
 		}
 		else {}
 	}
