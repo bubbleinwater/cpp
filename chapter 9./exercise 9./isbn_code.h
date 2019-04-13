@@ -1,7 +1,6 @@
 #include"std_lib_facilities.h"
 #include"Chrono.h"
 
-
 namespace Book {
 
 	enum class Genre {
@@ -52,7 +51,6 @@ namespace Book {
 		Chrono::Date Chrono_COPYRIGHT_DATE()const{ return chrono_copyright_Date; }
 		string LOANABLE()const{ if (is_checkedout) { return "NO"; } else { return "YES"; } }
 		bool IS_CHECKEDOUT()const { return is_checkedout; }//when you call this, this function return you 
-		
 		Book();
 		Book(string i, string t, string a,Genre g, Chrono::Date c, bool is_c);
 
@@ -74,7 +72,6 @@ namespace Book {
 
 	ostream& operator<<(ostream& os, const Patron& pt);
 
-
 	struct Transaction {
 		Book b;
 		Patron p;
@@ -83,6 +80,8 @@ namespace Book {
 		Transaction();
 		Transaction(Book bb, Patron pp, Chrono::Date dd);
 	};
+
+	ostream& operator<<(ostream& os, Transaction& t);
 
 	class Library {
 	public:
