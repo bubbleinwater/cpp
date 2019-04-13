@@ -127,8 +127,16 @@ in main()
 didn't work well.I want to know why
 
 2019.apr.10
-checkout_book() didn't work, because I forgot assigning to the vector which included within the Library class.
-and I realized class Date does not work well.which was solved by changing the function named string_to_Date()
+checkout_book() didn't work, because I forgot assigning to the vector which included
+within the Library class.
+and I realized class Date does not work well.which was solved by changing the function
+named string_to_Date()
+
+2019.apr.13
+add function to transaction.
+add who-owe-fee function
+when you want to overload, you have to declaration, then definition.I forgot 
+declaration , ostream& operator<<(ostream& os,Transaction& t);
 
 */
 
@@ -475,4 +483,10 @@ namespace Book {
 		,p{pp}
 		,d{dd}
 	{}
+
+	ostream& operator<<(ostream& os, Transaction& t) {
+		return os << "Title: " << t.b.TITLE() <<"\n"
+			<< "User name: " << t.p.USER_NAME() << "\n"
+			<< "Date: " << t.d << "\n";
+	}
 }
