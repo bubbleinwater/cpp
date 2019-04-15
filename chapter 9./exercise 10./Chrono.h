@@ -1,5 +1,10 @@
 #include"std_lib_facilities.h"
 /*
+2019.apr.04
+how to use Date type in main() is like..
+	Chrono::Date today;
+	cout << today << '\n';
+	
 2019.apr.15
 I added leapyaer() and add_year()
 */
