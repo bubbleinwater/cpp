@@ -1,0 +1,23 @@
+#include"Chrono.h"
+
+
+int main() 
+try {
+
+	Chrono::Date today;/*={1978, Month::jun, 25 };*/
+//	Chrono::Date today = { 1994, Chrono::Month::jul,18 };
+	cout <<"today is "<< today << '\n';
+
+	today.Chrono::Date::add_day(1);
+	Chrono::Date tomorrow = today;
+
+	cout <<"tomorrow is "<< tomorrow << '\n';
+
+//	cout << "2021: " << Chrono::leapyear(2021);//0 for false
+
+	keep_window_open();
+	return 0;
+}
+catch (Chrono::Date::Invalid) {
+	error("invalid date");
+}
