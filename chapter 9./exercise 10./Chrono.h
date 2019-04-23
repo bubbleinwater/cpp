@@ -1,12 +1,28 @@
 #include"std_lib_facilities.h"
 /*
-2019.apr.04
+2019.04.04
 how to use Date type in main() is like..
+
 	Chrono::Date today;
 	cout << today << '\n';
-	
-2019.apr.15
-I added leapyaer() and add_year()
+
+	today.add_day(1);
+	Chrono::Date tomorrow = today;
+
+	cout << tomorrow << '\n';
+
+2019.apr.18
+modified add_day.
+but I could hardly understand what add_yaer means.A year has 365 day? so that add one year means equal add 365 day? or just increasing the y?
+
+2019.apr.23
+catch(Chrono::Date::Invalid){
+	error("invalid date.");
+	}
+does not work.
+{cerr<<"invalid date.}
+works.
+
 */
 
 
@@ -61,4 +77,5 @@ namespace Chrono {
 	bool leapyear(int y);
 	Month operator++(Month& m);
 	ostream& operator<<(ostream& os, Date& dd);
+//	Date next_workday(Date d);
 }
