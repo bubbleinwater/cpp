@@ -4,19 +4,27 @@
 int main() 
 try {
 
-	Chrono::Date today = {1999,Chrono::Month::apr,15};/*={1978, Month::jun, 25 };*/
-//	Chrono::Date today = { 1994, Chrono::Month::jul,18 };
-	cout <<"today is "<< today << '\n';
+	Chrono::Date today = {2019,Chrono::Month::may,1};
+	cout <<"\ntoday is "<< today << '\n';
 	Chrono::Day_of_the_week dd = Chrono::whats_the_day(today);
 	cout << dd<<'\n';
+	Chrono::Date work_d = Chrono::next_workday(today);
+	cout << "next work day is " << work_d <<'\n';
+	dd = Chrono::whats_the_day(work_d);
+	cout << dd << '\n';
 
 	today.Chrono::Date::add_day(1);
 	Chrono::Date tomorrow = today;
 
 	cout <<"tomorrow is "<< tomorrow << '\n';
-
+	work_d = next_workday(tomorrow);
 	dd = Chrono::whats_the_day(tomorrow);
+	cout << "tomorrow is " << dd << '\n';
+
+	cout << "next work day is " << work_d << '\n';
+	dd = Chrono::whats_the_day(work_d);
 	cout << dd << '\n';
+
 	cout << "add_year(2) to today. ";
 
 	today.add_year(2);
@@ -24,9 +32,11 @@ try {
 	cout << today << "\n";
 	dd = Chrono::whats_the_day(today);
 	cout << dd << '\n';
+	work_d = next_workday(today);
+	cout << "next work day is " << work_d << '\n';
+	dd = Chrono::whats_the_day(work_d);
+	cout << dd << '\n';
 
-
-//	cout << "2021: " << Chrono::leapyear(2021);//0 for false
 
 	keep_window_open();
 	return 0;
