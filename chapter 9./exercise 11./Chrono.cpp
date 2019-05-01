@@ -77,6 +77,7 @@ namespace Chrono {
 			}
 			else d += n;
 		}
+
 		else {
 			if (leapyear(y)) {
 				if (29 < (d + n))
@@ -127,7 +128,7 @@ namespace Chrono {
 			else return Day_of_the_week::friday;
 		
 		}
-		else if(d.year() < 2000){
+		else {
 			Date ref_date = { 1999,Chrono::Month::dec,31/*is friday*/ };
 			int i = 0;
 			while (d != ref_date) {
@@ -145,10 +146,15 @@ namespace Chrono {
 		}
 	}
 
-//	Date next_workday(Date d) {
+	Date& next_workday(Date d) {
 //next_workday(today) returns wednesday's date if it is tuesday today.
+		if (whats_the_day(d) == Day_of_the_week::friday) { d.add_day(3); return d; }
 
-//	}
+		else if (whats_the_day(d) == Day_of_the_week::saturday) { d.add_day(2); return d; }
+		
+		else { d.add_day(1);
+		return d; }
+	}
 
 
 	bool Chrono::leapyear(int y) {
@@ -184,10 +190,6 @@ namespace Chrono {
 		return !(a == b);
 	}
 
-/*	bool operator==(const Day_of_the_week& a, const Day_of_the_week& b) {
-		return int(a) == int(b);
-	}
-*/
 	int Date::month_to_int(string s)const {
 		for (int i = 0; i < 12; ++i)
 			if (month_input_tbl[i] == s)return (i + 1);
