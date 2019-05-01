@@ -33,6 +33,30 @@ and == for day
 and 	Day_of_the_week whats_the_day(Date d)
 you must not write as Day_of_the_week whats_the_day(Date& d)
 if you do, this function will change the value of d
+
+bool operator==(const Day_of_the_week& a, const Day_of_the_week& b); did not needed.
+
+if you want to use cout << style, you have to
+write as
+Date& next_workday(Date d);
+not as
+Date next_workday(Date d);
+
+2019.may.1
+at the main function,I wanted to write like this.
+
+Chrono::Date today = {1999,Chrono::Month::apr,17};/*={1978, Month::jun, 25 };
+cout << "today is " << today << '\n';
+Chrono::Day_of_the_week dd = Chrono::whats_the_day(today);
+cout << dd << '\n';
+cout << "next work day is " << Chrono::next_workday(today);
+
+but the last 2 line didn't work(they caused runtime error) so I changed them to this
+
+Chrono::Date work_d = Chrono::next_workday(today);
+cout << "next work day is " << work_d;
+
+and also whats_the_day(Date &d) didn't work.(?)
 */
 
 
@@ -94,7 +118,6 @@ namespace Chrono {
 	bool operator==(const Date& a, const Date& b);
 	bool operator!=(const Date& a, const Date& b);
 	Day_of_the_week whats_the_day(Date d);
-//	Date next_workday(Date d);
+	Date& next_workday(Date d);
 	ostream& operator<<(ostream& os, Day_of_the_week& day);
-//	bool operator==(const Day_of_the_week& a, const Day_of_the_week& b);
 }
