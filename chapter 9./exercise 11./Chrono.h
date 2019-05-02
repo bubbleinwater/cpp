@@ -56,7 +56,10 @@ but the last 2 line didn't work(they caused runtime error) so I changed them to 
 Chrono::Date work_d = Chrono::next_workday(today);
 cout << "next work day is " << work_d;
 
-and also whats_the_day(Date &d) didn't work.(?)
+and also whats_the_day(Date &d) didn't work.
+
+2019.may.2
+added week_of_year
 */
 
 
@@ -119,5 +122,6 @@ namespace Chrono {
 	bool operator!=(const Date& a, const Date& b);
 	Day_of_the_week whats_the_day(Date d);
 	Date& next_workday(Date d);
+	int week_of_year(Date d);
 	ostream& operator<<(ostream& os, Day_of_the_week& day);
 }
