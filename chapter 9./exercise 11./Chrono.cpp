@@ -149,11 +149,27 @@ namespace Chrono {
 	Date& next_workday(Date d) {
 //next_workday(today) returns wednesday's date if it is tuesday today.
 		if (whats_the_day(d) == Day_of_the_week::friday) { d.add_day(3); return d; }
-
 		else if (whats_the_day(d) == Day_of_the_week::saturday) { d.add_day(2); return d; }
-		
-		else { d.add_day(1);
-		return d; }
+		else { d.add_day(1);return d; }
+	}
+
+	int week_of_year(Date d) {
+		Date first_day = { d.year(),Chrono::Month::jan,1 };
+//		if (d == first_day) { return 1; }
+
+		int i = 1;
+		if (whats_the_day(first_day) == Chrono::Day_of_the_week::sunday) {  }
+		else if (whats_the_day(first_day) == Chrono::Day_of_the_week::monday) { i += 1; }
+		else if (whats_the_day(first_day) == Chrono::Day_of_the_week::tuesday) { i += 2; }
+		else if (whats_the_day(first_day) == Chrono::Day_of_the_week::wednesday) { i += 3; }
+		else if (whats_the_day(first_day) == Chrono::Day_of_the_week::thursday) { i += 4; }
+		else if (whats_the_day(first_day) == Chrono::Day_of_the_week::friday) { i += 5; }
+		else if (whats_the_day(first_day) == Chrono::Day_of_the_week::saturday) { i += 6; }
+		else throw Date::Invalid();
+		while (first_day != d) {
+			first_day.add_day(1); ++i;
+		}
+		return (i / 7) + 1;
 	}
 
 
