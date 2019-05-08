@@ -66,7 +66,7 @@ for this exercise I'll add calculatedate_function called calcudate .
 
 2019.may.08
 start over from exercise 11.
-added dDate.(I will rename Date something else and then rename dDate to Date)
+added dDate.(which will replace the Date. not now)
 it seems that dDate should have written after Date
 
 at the main function
@@ -80,9 +80,9 @@ not as
 
 	cout << Chrono::CalcuDate(dD) << '\n';
 
-and I don't know why yet
+and I don't know why yet.
+dDate reject negative numbers.
 */
-
 
 namespace Chrono {
 
@@ -136,6 +136,7 @@ namespace Chrono {
 
 	class dDate {
 	public:
+		class itsnegativenumber {};
 		dDate();
 		dDate(long int n);
 		long int THE_DATE() { return the_Date; }
