@@ -2,14 +2,21 @@
 
 int main()
 try{
+	
 	Chrono::Date d;
 	cout << d << '\n';
-
 	Chrono::dDate dD;
-
 	d = Chrono::CalcuDate(dD);
-
 	cout << d <<'\n';
+	dD = 6;
+	d = Chrono::CalcuDate(dD);
+	cout << d << '\n';
+	dD = -5;
+	d = Chrono::CalcuDate(dD);
+	cout << d << '\n';
+	dD = 8;
+	d = Chrono::CalcuDate(dD);
+	cout << d << '\n';
 
 	keep_window_open();
 	return 0;
