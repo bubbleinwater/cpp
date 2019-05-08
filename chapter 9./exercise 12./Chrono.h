@@ -66,7 +66,7 @@ for this exercise I'll add calculatedate_function called calcudate .
 
 2019.may.08
 start over from exercise 11.
-added dDate.(which will replace the Date. not now)
+added dDate.(I will rename Date something else and then rename dDate to Date)
 it seems that dDate should have written after Date
 
 at the main function
