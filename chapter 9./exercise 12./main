@@ -25,3 +25,7 @@ catch (Chrono::Date::Invalid) {
 	cerr << "invalid date\n";
 	keep_window_open();
 }
+catch (Chrono::dDate::itsnegativenumber) {
+	cerr << "rejected (:negative nunmber)";
+	keep_window_open();
+}
