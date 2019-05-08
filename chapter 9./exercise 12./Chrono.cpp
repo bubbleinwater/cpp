@@ -8,7 +8,9 @@ namespace Chrono {
 
 	dDate::dDate(long int n)
 		:the_Date{n}
-	{}
+	{
+		if (n < 0)throw itsnegativenumber();
+	}
 
 	Date& CalcuDate(dDate num) {
 		Date r_d;
