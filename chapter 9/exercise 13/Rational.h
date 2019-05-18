@@ -15,6 +15,20 @@ does assignment mean copying?
 2019.may.17
 I added
 	istream& operator>>(istream& is, Rational& r);
+
+2019.may.18
+added addition
+
+I added one member fuction called reduction()
+and I think it is better when I write this function as
+	Rational& reduction();
+not as
+	Rational reduction();
+
+2019.may.19
+added subtraction
+Is there any better way than write separately for the negative number? 
+
 */
 
 
@@ -29,15 +43,20 @@ namespace Rational {
 		int NUMERATOR() { return numerator; }
 		char OP() { return op; }
 		int DENOMINATOR() { return denominator; }
-		
+		Rational& reduction();
+
 	private:
 		int numerator;
 		char op;
 		int denominator;
 	};
 
+
+//helper functions
 	ostream& operator<<(ostream& os, Rational r);
 	istream& operator>>(istream& is, Rational& r);
+	Rational operator+(Rational r, Rational l);
+	Rational operator-(Rational r, Rational l);
 
 //	Rational operator+(Rational r1, Rational r2);
 }
