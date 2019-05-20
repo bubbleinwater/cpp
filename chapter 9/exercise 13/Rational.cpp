@@ -56,29 +56,46 @@ namespace Rational {
 		result = { num,'/',den };
 		return result;
 	}
+	Rational operator*(Rational r, Rational l) {
+		Rational result = { r.NUMERATOR()*l.NUMERATOR(),'/',r.DENOMINATOR()*l.DENOMINATOR() };
+		return result;
+	}
 
-	Rational& Rational::reduction() {
+	Rational Rational::reduction() {
 		if (numerator < 0) {
 			Rational tmp = { - numerator,'/',denominator };
 			for (int i = 2; i <= tmp.NUMERATOR(); ++i) {
 				if (tmp.NUMERATOR() % i == 0) {
-					if (tmp.DENOMINATOR() % i == 0) {
-						tmp = { - tmp.NUMERATOR() / i ,'/',tmp.DENOMINATOR() / i };
-						tmp.reduction();
+					if (tmp.DENOMINATOR() < i) {}
+					else {
+						if (tmp.DENOMINATOR() % i == 0) {
+							tmp = { - tmp.NUMERATOR() / i ,'/',tmp.DENOMINATOR() / i };
+							tmp.reduction();
+						}
+						else {
+							tmp = { - tmp.NUMERATOR(),'/',tmp.DENOMINATOR() };
+							tmp.reduction();
+						}
 					}
-				}
+				}else {}
 			}
+			if(tmp.numerator > 0){ tmp = { - tmp.NUMERATOR(),'/',tmp.DENOMINATOR() }; }
 			return tmp;
 		}
 		else{
 			Rational tmp = { numerator,'/',denominator };
 			for (int i = 2; i <= tmp.NUMERATOR(); ++i) {
 				if (tmp.NUMERATOR() % i == 0) {
-					if (tmp.DENOMINATOR() % i == 0) {
-						tmp = { tmp.NUMERATOR() / i ,'/',tmp.DENOMINATOR() / i };
-						tmp.reduction();
+					if (tmp.DENOMINATOR() < i) {}
+					else {
+						if (tmp.DENOMINATOR() % i == 0) {
+							tmp = { (tmp.NUMERATOR() / i),'/',(tmp.DENOMINATOR() / i) };
+							tmp.reduction();
+						}
+						else {}
 					}
 				}
+				else{}
 			}
 			return tmp;
 		}

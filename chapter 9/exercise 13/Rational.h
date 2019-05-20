@@ -29,6 +29,13 @@ not as
 added subtraction
 Is there any better way than write separately for the negative number? 
 
+I added multiplication
+I have not decided whether this function include reduction() or not
+
+maybe not
+
+for me at the date may 18
+write WHY
 */
 
 
@@ -39,11 +46,11 @@ namespace Rational {
 	public:
 		class invalid{};
 		Rational();
-		Rational(int nume,char oper, int deno);
+		Rational(int nume,char oper,int deno);
 		int NUMERATOR() { return numerator; }
 		char OP() { return op; }
 		int DENOMINATOR() { return denominator; }
-		Rational& reduction();
+		Rational reduction();
 
 	private:
 		int numerator;
@@ -57,6 +64,7 @@ namespace Rational {
 	istream& operator>>(istream& is, Rational& r);
 	Rational operator+(Rational r, Rational l);
 	Rational operator-(Rational r, Rational l);
+	Rational operator*(Rational r, Rational l);
 
 //	Rational operator+(Rational r1, Rational r2);
 }
