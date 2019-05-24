@@ -36,6 +36,26 @@ maybe not
 
 for me at the date may 18
 write WHY
+
+2019.may.24
+I couldn't figure out why at the main function
+//#1
+	cout << "reduces to " << (ra1 - ra2).reduction();
+//#2
+	cout << (ra1 - ra2).reduction();
+#1 didn't work ,but #2 work.
+
+so I have to write as like
+cout << "reduces to ";
+cout << (ra1 - ra2).reduction();
+
+at the function called reduction()
+I'm solving the problem caused when the number could be divided twice.
+like 49/49
+
+I realize that I totally forgot about assignment before returning the value
+	numerator = tmp.NUMERATOR(); denominator = tmp.DENOMINATOR();
+
 */
 
 
@@ -50,7 +70,7 @@ namespace Rational {
 		int NUMERATOR() { return numerator; }
 		char OP() { return op; }
 		int DENOMINATOR() { return denominator; }
-		Rational reduction();
+		Rational& reduction();
 
 	private:
 		int numerator;
@@ -65,6 +85,7 @@ namespace Rational {
 	Rational operator+(Rational r, Rational l);
 	Rational operator-(Rational r, Rational l);
 	Rational operator*(Rational r, Rational l);
+	Rational operator/(Rational r, Rational l);
 
 //	Rational operator+(Rational r1, Rational r2);
 }

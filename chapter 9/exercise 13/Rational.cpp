@@ -45,7 +45,7 @@ namespace Rational {
 		num = (r.NUMERATOR()*l.DENOMINATOR()) + (r.DENOMINATOR()*l.NUMERATOR());
 		den = r.DENOMINATOR()*l.DENOMINATOR();
 		result = { num,'/',den };
-		return result;
+		return result.reduction();
 	}
 
 	Rational operator-(Rational r, Rational l) {
@@ -61,26 +61,17 @@ namespace Rational {
 		return result;
 	}
 
-	Rational Rational::reduction() {
+	Rational operator/(Rational r, Rational l) {
+		Rational L = { l.DENOMINATOR(),'/',l.NUMERATOR() };
+		return r * L;
+	}
+
+	Rational& Rational::reduction() {
 		if (numerator < 0) {
-			Rational tmp = { - numerator,'/',denominator };
-			for (int i = 2; i <= tmp.NUMERATOR(); ++i) {
-				if (tmp.NUMERATOR() % i == 0) {
-					if (tmp.DENOMINATOR() < i) {}
-					else {
-						if (tmp.DENOMINATOR() % i == 0) {
-							tmp = { - tmp.NUMERATOR() / i ,'/',tmp.DENOMINATOR() / i };
-							tmp.reduction();
-						}
-						else {
-							tmp = { - tmp.NUMERATOR(),'/',tmp.DENOMINATOR() };
-							tmp.reduction();
-						}
-					}
-				}else {}
-			}
-			if(tmp.numerator > 0){ tmp = { - tmp.NUMERATOR(),'/',tmp.DENOMINATOR() }; }
-			return tmp;
+			Rational minus_R = { - numerator,'/',denominator };
+			minus_R = minus_R.reduction();
+			Rational result = { - minus_R.NUMERATOR(),'/',minus_R.DENOMINATOR() };
+			return result;
 		}
 		else{
 			Rational tmp = { numerator,'/',denominator };
@@ -89,14 +80,16 @@ namespace Rational {
 					if (tmp.DENOMINATOR() < i) {}
 					else {
 						if (tmp.DENOMINATOR() % i == 0) {
-							tmp = { (tmp.NUMERATOR() / i),'/',(tmp.DENOMINATOR() / i) };
+							tmp = { tmp.NUMERATOR() / i,'/',tmp.DENOMINATOR() / i };
 							tmp.reduction();
 						}
 						else {}
+						int i = 0;
 					}
 				}
-				else{}
+				else {}
 			}
+			numerator = tmp.NUMERATOR(); denominator = tmp.DENOMINATOR();
 			return tmp;
 		}
 	}
