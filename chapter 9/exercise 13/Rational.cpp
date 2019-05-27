@@ -18,6 +18,14 @@ namespace Rational {
 
 
 	//helper function
+	Rational::operator double(){
+		double num = numerator;
+		double den = denominator;
+		double result = num / den;
+		return result;
+	}
+
+
 	ostream& operator<<(ostream& os, Rational r) {
 		return os << r.NUMERATOR()
 			<< r.OP()
@@ -54,8 +62,9 @@ namespace Rational {
 		num = (r.NUMERATOR()*l.DENOMINATOR()) - (r.DENOMINATOR()*l.NUMERATOR());
 		den = r.DENOMINATOR()*l.DENOMINATOR();
 		result = { num,'/',den };
-		return result;
+		return result.reduction();
 	}
+
 	Rational operator*(Rational r, Rational l) {
 		Rational result = { r.NUMERATOR()*l.NUMERATOR(),'/',r.DENOMINATOR()*l.DENOMINATOR() };
 		return result;
@@ -64,6 +73,12 @@ namespace Rational {
 	Rational operator/(Rational r, Rational l) {
 		Rational L = { l.DENOMINATOR(),'/',l.NUMERATOR() };
 		return r * L;
+	}
+
+	bool operator==(Rational r, Rational l) {
+		Rational result = r - l;
+		if (result.NUMERATOR() == 0)return true;
+		else return false;
 	}
 
 	Rational& Rational::reduction() {
