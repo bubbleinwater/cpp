@@ -56,6 +56,13 @@ like 49/49
 I realize that I totally forgot about assignment before returning the value
 	numerator = tmp.NUMERATOR(); denominator = tmp.DENOMINATOR();
 
+2019.may.25
+I'm trying to provide equality operator
+
+2019.may.27
+today, I added function to conversion rational to double
+reference http://www.cplusplus.com/doc/tutorial/typecasting/
+
 */
 
 
@@ -72,6 +79,8 @@ namespace Rational {
 		int DENOMINATOR() { return denominator; }
 		Rational& reduction();
 
+		operator double();
+
 	private:
 		int numerator;
 		char op;
@@ -86,6 +95,6 @@ namespace Rational {
 	Rational operator-(Rational r, Rational l);
 	Rational operator*(Rational r, Rational l);
 	Rational operator/(Rational r, Rational l);
-
+	bool operator==(Rational r, Rational l);
 //	Rational operator+(Rational r1, Rational r2);
 }
