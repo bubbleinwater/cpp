@@ -42,14 +42,17 @@ namespace Money {
 
 
 	istream& operator>>(istream& is, Money& m) {
-		long int dollar, cent,result;
-		char ch1 = ' ';
+		long int dollar, cent, result;
+		string st1 = " ";
 		char ch2 = ' ';
 
-		is >> ch1;
-		if (ch1 != '$') { throw Money::Invalid(); }
+		is >> st1;
+//		if (st1 != "$" || st1 != "USD" || st1!= "DKK") { throw Money::Invalid(); }
 
-		//123.05 will be 12305 .and 123.4 will be 1234 not 12304
+//123.05 should be 12305 .and 123.4 should be 1234 not 12304
+//,but I could not figure it out. so user has to enter $123.40 for $123.4 
+
+
 		is >> dollar;
 		is >> ch2;
 
@@ -73,35 +76,50 @@ namespace Money {
 				m = { result };
 				return is;
 			}
-			/*	else {
-					result = (dollar * 100) + cent;
-					m = { result };
-					return is;
-				}*/
+/*		else {
+			result = (dollar * 100) + cent;
+			m = { result };
+			return is;
+		}*/
 		}
-		else if (ch2 == 'Ì') {
+/*		else if (ch2 == '$') {
 			cin.putback(ch2);
 			result = dollar * 100;
 			m = { result };
 			return is;
-		}
-		else if (ch2 == '$') {
-			cin.putback(ch2);
-			result = dollar * 100;
-			m = { result };
-			return is;
-		}
-		else if (ch2 == ' ') {
-			cin.putback(ch2);
-			result = dollar * 100;
-			m = { result };
-			return is;
-		}
+		}*/
 		else {
-			cin.putback(ch2);
-			result = dollar * 100;
-			m = { result };
-			return is;
+			throw Money::Invalid();
 		}
+	}
+
+	Money& operator+(Money a, Money b) {
+		Money result;
+		result = ((a.DOLLAR() + b.DOLLAR()) * 100 + (a.CENT() + b.CENT()));
+		return result;
+	}
+
+	Money& operator-(Money a, Money b) {
+		Money result;
+		result = ((a.DOLLAR() - b.DOLLAR()) * 100 + (a.CENT() - b.CENT()));
+		if (result.AOM() < 0) { throw Money::Invalid(); }
+		return result;
+	}
+
+	Money& operator*(Money& a, double d) {
+		double num = a.AOM() * d;
+		int i = 0;
+		for (; i < num; ++i) {
+		}
+		num -= i;
+		if(num < 0.5){
+			Money result = i;
+			return result;
+		}
+		else { 
+			Money result = i + 1;
+			return result;
+		}
+
 	}
 }
