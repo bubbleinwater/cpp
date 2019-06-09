@@ -2,16 +2,16 @@
 
 int main()try {
 	Money::Money money1,money2,money3;
-	cout << "Please enter $XXX.XXX style(X is a digit)\n";
+	cout << "Please enter USDXXX.XXX or KKDXXX.XXX style(X is a digit)\n";
 
-//	cin >> money1;
-//	cout << money1;
-	money1 = 12345;
+	cin >> money1;
+	cout << money1;
 
 	cin >> money2;
 	cout << money2;
 
-	Money::Money sum = money1 + money2;
+	Money::Money sum;
+	sum = money1 + money2;
 	cout << sum;
 
 	Money::Money sub = money1 - money2;
@@ -26,7 +26,7 @@ int main()try {
 	keep_window_open();
 	return 0;
 }
-catch (Money::Money::Invalid) {
+catch (Money::Money::Invalid()) {
 	cerr << "invalid data was entered.\n";
 	keep_window_open();
 }
