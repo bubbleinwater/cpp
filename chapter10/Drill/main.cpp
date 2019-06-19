@@ -29,7 +29,7 @@ int main()
 	vector<Point>points;
 	for (Point p; ist >> p;)
 		points.push_back(p);
-
+*/
 	cout << "Please enter name of output file: ";
 	string oname;
 	cin >> oname;
@@ -37,9 +37,9 @@ int main()
 							//a file named oname
 	if (!ost)error("can't open output file", oname);
 
-	for (Point p : points)
+	for (Point p : original_points)
 		ost << '(' << p.X() << ',' << p.Y() << ")\n";
-*/
+
 
 	keep_window_open();
 	return 0;
