@@ -10,7 +10,7 @@ vector<Reading> fiil_vector_from_cin();
 */
 
 
-#include"../../chap10datetem/chap10datetem/date_tem.h"
+#include"date_tem.h"
 
 
 vector<Reading>  fill_vector_from_cin();
