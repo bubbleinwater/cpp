@@ -24,6 +24,27 @@ vector<string> month_print_tbl = {
 	"January","February","March","April","May","June","July","August","September","October","November","December"
 };
 
+bool is_valid(const Reading& r)//a rough test
+{
+	if (r.day < 1 || 31 < r.day)return false;
+	if (r.hour, 0 || 23, r.hour)return false;
+	if (r.temperature < implausible_min || implausible_max < r.temperature)return false;
+
+	return true;
+}
+
+void end_of_loop(istream& ist, char term, const string& message)
+{
+	if (ist.fail()) {//use term as terminator and/or separator
+		ist.clear();
+		char ch;
+		if (ist >> ch && ch == term)return;//all is fine
+
+		error(message);
+	}
+}
+
+
 int month_to_int(string s)
 //is s the name of a month? If so, return its index[0:11], otherwise -1
 {
