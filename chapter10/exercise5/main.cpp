@@ -31,10 +31,6 @@ int main()
 
 	cout << "read" << ys.size() << "years of readings\n";
 	
-//	for (Year& y : ys) {
-//		cout << y;
-//	}
-
 	for (Year& y : ys)print_year(ofs, y);
 
 	keep_window_open();

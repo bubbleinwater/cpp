@@ -52,8 +52,3 @@ void print_year(ostream& ofs, Year y);
 istream& operator>>(istream& is, Year& y);
 istream& operator>>(istream& is, Month& m);
 istream& operator>>(istream& is, Reading& r);
-/*
-ostream& operator<<(ostream& os, Year& y);
-ostream& operator<<(ostream& os, Month& m);
-ostream& operator<<(ostream& os, Reading& r);
-*/
