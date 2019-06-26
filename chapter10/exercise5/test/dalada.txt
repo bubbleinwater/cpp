@@ -1,0 +1,9 @@
+
+YEAR:1990
+
+YEAR:1991
+
+YEAR:1992
+	month:January day:1 hour:0 temperature: 61.5
+	month:February day:1 hour:1 temperature: 64
+	month:February day:1 hour:2 temperature: 63
