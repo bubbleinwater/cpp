@@ -1,0 +1,1 @@
+year: 1992month:January day:1 hour:0 temperature: 61.5
