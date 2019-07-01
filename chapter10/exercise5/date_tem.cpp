@@ -1,21 +1,5 @@
 #include"date_tem.h"
 
-/*
-int month_to_int(string mm) {
-	if (mm == "jan")return 0;
-	else if (mm == "feb")return 1;
-	else if (mm == "mar")return 2;
-	else if (mm == "apr")return 3;
-	else if (mm == "may")return 4;
-	else if (mm == "jun")return 5;
-	else if (mm == "jul")return 6;
-	else if (mm == "arg")return 7;
-	else if (mm == "sep")return 8;
-	else if (mm == "oct")return 9;
-	else if (mm == "nov")return 10;
-	else if (mm == "dec")return 11;
-	else error("bad month"); return 1;
-}*/
 
 vector<string> month_input_tbl = {
 	"jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"
@@ -50,10 +34,6 @@ void print_year(ostream& ofs, Year y) {
 			for (int j = 0; j < y.month[i].day.size(); ++j) {
 				for (int k = 0; k < y.month[i].day[j].hour.size(); ++k) {
 					if (y.month[i].month == not_a_month || y.month[i].day[j].hour[k] == not_a_reading) {}
-					else if (y.month[i].month != not_a_month && y.month[i].day[j].hour[k] == not_a_reading) {
-//I thought this else if would work, but didn't
-						ofs << "	month:" << int_to_month(y.month[i].month);
-					}
 					else {
 						ofs << "	month:" << int_to_month(y.month[i].month);
 						ofs << " day:" << j;
@@ -177,25 +157,3 @@ istream& operator>>(istream& is, Month& m) {
 		return is;
 	}
 }
-
-/*
-ostream& operator<<(ostream& os, Reading& r) {
-	return os << r.day << ',' << r.hour << ',' << r.temperature << r.c_or_f;
-}
-
-ostream& operator<<(ostream& os, Month& m) {
-	Month mm = m;
-	
-	for (int i = 0; i < mm.month; ++i) {
-
-	}
-
-}
-
-ostream& operator<<(ostream& os, Year& y) {
-
-	int year = y.year;
-	if(y.month[1].month != -1)
-	return os << '{' << year 
-}
-*/
