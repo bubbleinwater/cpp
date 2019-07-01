@@ -2,7 +2,6 @@
 2019.jun.29
 I think I have to make some grammar
 
-
 first I will erase all of the first code
 then as the order of this
 
@@ -19,6 +18,17 @@ I will make this vector
 
 and compare one by one by the index
 
+2019.jul.1
+
+I should have written
+	istream& operator>>(istream& is, Roman_int& r);
+	ostream& operator<<(ostream& os, Roman_int& r);
+not as
+	istream& operator>>(istream& is, Roman_int r);
+	ostream& operator<<(ostream& os, Roman_int r);
+to avoid stack overflow
+
+
 */
 
 
@@ -31,6 +41,7 @@ namespace Roman_num {
 	public:
 		Roman_int(string r);
 		Roman_int();
+		string ROMAN()const;
 		int as_int();
 	private:
 		string roman;
@@ -38,8 +49,10 @@ namespace Roman_num {
 
 	int roman_index_returner(char r);
 
-//	ostream operator<<(ostream& os, Roman_int);
-//	ostream operator>>(istream& is, Roman_int);
-
-
+	istream& operator>>(istream& is, Roman_int& r);
+	ostream& operator<<(ostream& os, Roman_int& r);
+	bool operator==(const Roman_int& l,const Roman_int& r);
+	bool operator==(const Roman_int& l, string r);
+	bool operator!=(const Roman_int& l, const Roman_int& r);
+	bool operator!=(const Roman_int& l, string r);
 }
