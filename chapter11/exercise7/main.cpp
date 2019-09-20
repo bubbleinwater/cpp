@@ -48,7 +48,7 @@ int main()
 					}
 					else { cin.putback(d_next_ch); }
 				}
-				else { /*cin.putback(next_ch);*/ }
+				else { cin.putback(next_ch); }
 //				s += ch;
 			}//for don't;
 
@@ -71,9 +71,9 @@ int main()
 						}
 						else { cin.putback(dd_next_ch); }
 					}
-					else { /*cin.putback(d_next_ch);*/ }
+					else { cin.putback(d_next_ch); }
 				}
-				else { /*cin.putback(next_ch);*/ }
+				else { cin.putback(next_ch); }
 				//				s += ch;
 			}//for can't;
 
