@@ -5,36 +5,50 @@ so I added while() to continue getting new line.
 and for outputting, I wrote
 line += tmp += '\n';
 
+2019.dec.29
+is previous version better than this one?
+
 */
 
 
-#include"../../std_lib_facilities.h"
+#include"std_lib_facilities.h"
+
+void tolower(string& s);
 
 int main()
 {
-	cout << "Please enter the input file name.\n";
 	string iname;
+	cout << "enter the file name.\n";
 	cin >> iname;
 	ifstream ifs{ iname };
-
 	if (!ifs)error("can't open the file named ", iname);
 
-	string line;
-	string tmp;
-	while (getline(ifs, tmp)) {
-		for (char& c : tmp) {
-			if (isupper(c))c = tolower(c);
-		}
-		line += tmp +='\n';
+	string s;
+	vector<string> vs;
+	
+	while (ifs.good()) {
+		getline(ifs, s);
+
+		tolower(s);
+		vs.push_back(s);
 	}
 
-	cout << "Please enter a name for the output file.\n";
 	string oname;
+	cout << "Please enter the output file name.\n";
 	cin >> oname;
 	ofstream ofs{ oname };
 
-	ofs << line;
+	if (!ofs)error("something wrong with the file name ", oname);
+	
+	for (int i = 0; i < vs.size(); ++i) {
+		ofs << vs[i] <<'\n';
+	}
 
 	keep_window_open();
 	return 0;
+}
+
+void tolower(string& s) {
+	for (char& c : s)
+		c = tolower(c);
 }
