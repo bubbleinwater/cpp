@@ -9,70 +9,71 @@
 			}
 did not work as I want.
 
+2020.jan.13
+update
 */
 
 #include"../../std_lib_facilities.h"
 
-void alphato_x(string& s) {
-//	string result;
-	for (char& c : s)if (c == s[1])c = 'x';
-/*	istringstream ist{ s };
-	char ch;
-	int i = 0;
-	while (ist.get(ch)) {
-		if(i == 2){}
-		else
-		{
-			result += ch;
-		}
-	}
-	s = result;
-*/
-}
+string hex_or_oct(string j);
+void o_to_zero(string& s);
 
 int main()
 {
+
+//	cin.unsetf(ios::dec);
 	cout << showbase;
-	string s_num;
 
-	cout << "Please enter several integers in any combination of"
-		<< " decimal hexadecimal octal using the 0 or 0x base suffixes\n"
-		<< "enter | for exit.\n";
+	cout << "Please enter several integers.in any combination of"
+		<< "\noctal, decimal,hexadecimal, using base suffixes: o(for octal)"
+		<< "\nor 0x(for hexadecimal).\n"
+		<<"when you want to exit, enter |.\n";
 
-	while (cin >> s_num) {
-		if (s_num == "|")return 0;
-		if (isalpha(s_num[0]))error("not a number ", s_num);
-		
-		if (s_num[0] == '0') {
-			if (!(s_num[1] == 'x' || s_num[1] == 'X') && !isdigit(s_num[1])) {
-//				error("there's no such suffix.");
-				cout << "Did you mean \'0x\'?\n"
-					<< "if so, the number will be..\n";
-				alphato_x(s_num);
-			}
-			if (s_num[1] == 'x' || s_num[1] == 'X') {
-				istringstream ist{ s_num };
-				int num;
-				ist >> hex >> num;
-				cout << hex << num 
-					<< " hexadecimal converts to " << dec << num << " decimal" << '\n';
-			}
-			else {
-				istringstream ist{ s_num };
-				int num;
-				ist >> oct >> num;
-				cout << oct << num << " octal converts to " << dec << num << " decimal" << '\n';
-			}
+	string s;
+	while (cin >> s) {
+		if (s == "|")return 0;
+
+		istringstream is{ s };
+		int i;
+		cout << setw(8);
+
+		if (hex_or_oct(s) == "hexadecimal") {
+			o_to_zero(s);
+			istringstream hex_is{ s };
+			hex_is >> hex >> i;
+			cout << hex << i;
+		}
+		else if (hex_or_oct(s)=="octal") {
+			o_to_zero(s);
+			istringstream oct_is{ s };
+			oct_is >> oct >> i;
+			cout << oct << i;
 		}
 		else {
-			istringstream ist{ s_num };
-			int num;
-			ist >> dec >> num;
-
-			cout << dec << num << " decimal converts to " << dec << num << " decimal" << '\n';
+			is >> i;
+			cout << dec << i;
 		}
+		cout << setw(15) << hex_or_oct(s) << " converts to "
+			<< setw(10) << dec << i << " decimal\n";
 	}
 
 	keep_window_open();
 	return 0;
+}
+
+
+string hex_or_oct(string j) {
+	ostringstream os{ j };
+
+	if (os.str()[0] == '0' || os.str()[0] == 'o' || os.str()[0] == 'O') {
+		if (os.str()[1] == 'x' || os.str()[1] == 'X') {
+			return "hexadecimal";
+		}
+		else return "octal";
+	}
+	else return "decimal";
+}
+
+void o_to_zero(string& s) {
+	s[0] = '0';
 }
