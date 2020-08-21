@@ -1,0 +1,63 @@
+/*
+
+Q. Write a function that finds thee smallest and largest element of a vector argument and also computes the mean and the median.
+Do not use global variables. Either return a struct containing the results or pass then back through reference arguments.
+Which of the two ways of returning several result values do you prefer and why?
+
+
+2018.10.6
+ummm? Maybe I do not understand the two ways returning values.
+*/
+
+
+
+#include"std_lib_facilities.h"
+
+vector<double> mini_max(vector<double> v){
+	vector<double> v_return;
+	double sum = 0;
+	double mean = 0;
+	double medi = 0;
+
+	sort(v);
+	v_return.push_back(v[0]);
+	v_return.push_back(v[v.size()-1]);
+	for (int i = 0; i < v.size(); ++i) {
+		sum += v[i];
+	}
+	mean = sum / v.size();
+	v_return.push_back(mean);
+
+	if(v.size()%2==0){
+		medi = (v[(v.size() / 2) - 1 ] + v[v.size() / 2 ]) / 2;
+	}
+	else  {
+		medi = v[(v.size() / 2)];
+	}
+	v_return.push_back(medi);
+
+	return v_return;
+}
+
+
+/*
+int main() {
+	double p;
+	vector<double> pv;
+	vector<double> pv_sort;
+	while (cin >> p) {
+		pv.push_back(p);
+	};
+
+	pv_sort = mini_max(pv);
+	
+	for (double x : pv_sort){
+		cout << x <<'\n';
+}
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 0;
+}
+*/

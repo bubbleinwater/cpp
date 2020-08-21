@@ -1,0 +1,38 @@
+#include"std_lib_facilities.h"
+
+void reversevectorf1(vector<int> v) {
+	vector<int> v1(v.size());
+	for (int i = 0; i < v.size(); ++i) {
+		v1[i] = v[v.size()-1-i];
+	}
+	for (int x : v1)cout << x << '\n';
+	return;
+}
+
+void reversevectorf2(vector<int>& v) {
+	int temp;
+	for (int i = 0; i < (v.size())/2; ++i) {
+		temp = v[i];
+		v[i] = v[(v.size() - 1) - i];
+		v[(v.size() - 1) - i] = temp;
+	}
+	for (int x : v)cout << x << '\n';
+	return;
+}
+/*
+int main() {
+	int num;
+	vector<int> v;
+	
+	while (cin >> num) {
+		v.push_back(num);
+	}
+	reversevectorf1(v);
+	reversevectorf2(v);
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 0;
+  }
+  */

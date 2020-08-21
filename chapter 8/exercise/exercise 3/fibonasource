@@ -1,0 +1,31 @@
+#include"std_lib_facilities.h"
+#include"chap8ex2print.cpp"
+
+void print(string s, vector<int>& v);
+
+void fibonacci(int x,int y,vector<int>& v,int n) {
+	v.push_back(x);
+	if (v.size() == 0)error("error.");
+	v.push_back(y);
+
+	while (v.size() < n) {
+		v.push_back(v[v.size() - 2] + v[v.size() - 1]);
+	}
+
+	print("fibonacci", v);
+
+	return;
+}
+
+int main()
+{
+	int x, y, z;
+	vector<int> v_fibo;
+
+	cout << "enter first,second numbers and how many fibo?\n";
+	cin >> x >> y >> z;
+	fibonacci(x, y, v_fibo, z);
+
+	keep_window_open();
+	return 0;
+}

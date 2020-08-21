@@ -1,0 +1,33 @@
+/*
+from 8.4 dangerously agly code
+
+this example doesn't do anything meaningful
+
+*/
+
+struct X{ //simple X class
+		void f(int x){
+			struct Y{ //simple Y class
+				int f(){return 1;} //this function returns 1.
+				int m; //declare m within Y's scope
+			};
+		int m;within scope of X
+ 		m = x; //assigne x to m
+		Y m2; //declare m2 which type Y
+		return f(m2.f());
+		}
+    
+	int m;//outside of scope of X
+	void g(int m /*this m is only used within scope of g*/){
+		if(m) f(m + 2); //if m is true(correct?),call f with m+2
+		else{ g(m + 2);} //if not, call g with m+2
+	}
+  
+X(){}
+void m3(){}
+
+void main(){
+  X a; //variable a of type X
+  a.f(2); //call a's member function f()
+}
+};
