@@ -61,7 +61,7 @@ int main()
 	win.attach(poly2);
 
 
-	Graph_lib::Polygon poly3;//pentagon
+	Graph_lib::Polygon poly3;//pentagon 105
 	double ppx1, ppy1,ppx2,ppy2,ppx3,ppy3,ppx4,ppy4,ppx5,ppy5;
 	ppx1 = center.x;
 	ppy1 = center.y - 105.0;//s^2 = 105^2 + 105^2 - 2*105*105*cos(2*pi/5)
@@ -82,12 +82,44 @@ int main()
 	poly3.add(Point{ int(ppx5),int(ppy5) });
 	poly3.set_color(Color::black);
 	win.attach(poly3);
-
 	//-------
 //	Circle c(Point{ center.x,center.y },105);
 //	c.set_color(Color::red);
 //	win.attach(c);
 	//-------
+
+	constexpr double root3 = 1.732;
+
+	Graph_lib::Polygon poly4;//regular hexagon, to corner 140
+	double hpx1, hpy1;
+	hpx1 = center.x - 70.0;
+	hpy1 = center.y - 70 * root3;
+	double hpx2, hpy2;
+	hpx2 = center.x + 70.0;
+	hpy2 = center.y - 70 * root3;
+	double hpx3, hpy3;
+	hpx3 = center.x + 70.0 * 2;
+	hpy3 = center.y;
+	double hpx4, hpy4;
+	hpx4 = center.x + 70.0;
+	hpy4 = center.y + 70* root3;
+	double hpx5, hpy5;
+	hpx5 = center.x - 70.0;
+	hpy5 = center.y + 70 * root3;
+	double hpx6, hpy6;
+	hpx6 = center.x - 70.0 * 2;
+	hpy6 = center.y;
+
+	poly4.add(Point{ int(hpx1),int(hpy1) });
+	poly4.add(Point{ int(hpx2),int(hpy2) });
+	poly4.add(Point{ int(hpx3),int(hpy3) });
+	poly4.add(Point{ int(hpx4),int(hpy4) });
+	poly4.add(Point{ int(hpx5),int(hpy5) });
+	poly4.add(Point{ int(hpx6),int(hpy6) });
+	poly4.set_color(Color::blue);
+	win.attach(poly4);
+
+
 
 		
 	win.wait_for_button();
