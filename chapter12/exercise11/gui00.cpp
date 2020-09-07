@@ -1,5 +1,5 @@
 /*
-date 9.3.2020
+date 9.7.2020
 
 Q.	Draw a series of regular polygons, one inside the other.
 	The innermost should be an equilateral triangle, enclosed
@@ -88,24 +88,24 @@ int main()
 //	win.attach(c);
 	//-------
 
-	constexpr double root3 = 1.732;
+//	constexpr double root3 = 1.732;
 
 	Graph_lib::Polygon poly4;//regular hexagon, to corner 140
 	double hpx1, hpy1;
 	hpx1 = center.x - 70.0;
-	hpy1 = center.y - 70 * root3;
+	hpy1 = center.y - 70 * tan(pi / 3);
 	double hpx2, hpy2;
 	hpx2 = center.x + 70.0;
-	hpy2 = center.y - 70 * root3;
+	hpy2 = center.y - 70 * tan(pi / 3);
 	double hpx3, hpy3;
 	hpx3 = center.x + 70.0 * 2;
 	hpy3 = center.y;
 	double hpx4, hpy4;
 	hpx4 = center.x + 70.0;
-	hpy4 = center.y + 70* root3;
+	hpy4 = center.y + 70* tan(pi / 3);
 	double hpx5, hpy5;
 	hpx5 = center.x - 70.0;
-	hpy5 = center.y + 70 * root3;
+	hpy5 = center.y + 70 * tan(pi / 3);
 	double hpx6, hpy6;
 	hpx6 = center.x - 70.0 * 2;
 	hpy6 = center.y;
