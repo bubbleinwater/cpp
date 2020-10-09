@@ -1,25 +1,22 @@
-#include"Graph.h"
-#include"std_lib_facilities.h"
-#include<cmath>
+#include"Box.h"
 
 namespace Graph_lib {
 
+	void Box::draw_lines() const
+	{
+	//	lines.draw_lines();
+//		c_a.draw_lines();
 
-	struct Box : Shape {
-	public:
-		//top left and bottom right of the square bounding the box
-		Box(Point tl, Point br)
-			:topl{ tl }, topr{ br.x,tl.y }, botr{ br }, botl{ tl.x,br.y }{}
-		Box(Point tl, int width, int height)
-			:topl{ tl }, topr{ tl.x + width,tl.y }, botr{ tl.x + width,tl.y + height }
-			, botl{ tl.x,tl.y + height }{}
+		c_a.draw_lines();
+		if (color().visibility()) {
+//			Shape::draw_lines();//write here only this will make the closed polyline
+//			without the last line and also without corner arcs.
 
+			corner_Arcs ca(topl, topr, botr, botl);
 
-	private:
-		Lines lines;
-		Point topl, topr, botr, botl;
-	};
-
-
-
+			for (int i = 1; i < number_of_points(); i += 2) {
+				fl_line(point(i - 1).x, point(i - 1).y, point(i).x, point(i).y);
+			}
+		}
+	}
 }
