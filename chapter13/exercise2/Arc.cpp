@@ -10,9 +10,9 @@ namespace Graph_lib{
 		fl_arc(point(0).x, point(0).y, w + w, h + h, start, end);
 	}
 
-	void corner_Arcs::draw_lines()const {
-		if (color().visibility())
-			for (int i = 1; i < number_of_points(); i += 2) {
+//	void corner_Arcs::draw_lines()const {
+//		if (color().visibility())
+/*			for (int i = 1; i < number_of_points(); i += 2) {
 				double z = 90;
 				double d = 0;
 				if (i == 1)z = 90;
@@ -25,7 +25,7 @@ namespace Graph_lib{
 				else if (i == 7) {
 					z = 180; d = 0;
 				}
-				fl_arc(point(i - 1).x + d , point(i - 1).y, 5, z, z + 90);//90,180, 0,90, 270,360, 180,270	
-			}
-	}
+*///				fl_arc(point(i - 1).x + d , point(i - 1).y, 5, z, z + 90);//90,180, 0,90, 270,360, 180,270	
+		//	}
+//	}
 }

@@ -5,10 +5,9 @@
 
 namespace Graph_lib {
 
-
-	struct Box : Shape {
+	struct Boxb : Shape {
 		//top left and bottom right of the square bounding the box
-		Box(Point tl, Point br)
+		Boxb(Point tl, Point br)
 			:topl{ tl }, topr{ br.x,tl.y }, botr{ br }, botl{ tl.x,br.y }
 		{
 //			c_a.add(topl, topr, botr, botl);
@@ -43,6 +42,6 @@ namespace Graph_lib {
 
 //		Lines lines;
 		Point topl, topr, botr, botl;
-		corner_Arcs c_a;
+//		corner_Arcs c_a;
 	};
 }

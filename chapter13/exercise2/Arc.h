@@ -12,9 +12,9 @@ so I will change
 
 namespace Graph_lib {
 
-struct Arc : Shape {
+	struct Arc : Shape {
 		Arc(Graph_lib::Point pp, int ww, int hh, int s, int e) :w{ ww }, h{ hh }, start{ s }, end{ e }
-		{ add( pp ); }
+		{ add(pp); }
 		Arc() :w{ 0 }, h{ 0 }, start{ 0 }, end{ 0 }{add(Point{ 0,0 }); }
 
 
@@ -23,22 +23,22 @@ struct Arc : Shape {
 
 		void draw_lines()const;
 
-//		void draw_Arc() { fl_arc(p.x, p.y, w, h, start, end); }
-//		fl_arc(p, w, h, start, end); wouldn't work
-//
-//Arc arc(Point{ 500,500 }, 200, 100, 0, 180);
-//arc.draw_Arc();
+		//		void draw_Arc() { fl_arc(p.x, p.y, w, h, start, end); }
+		//		fl_arc(p, w, h, start, end); wouldn't work
+		//
+		//Arc arc(Point{ 500,500 }, 200, 100, 0, 180);
+		//arc.draw_Arc();
 
 
 
-//		Graph_lib::Point p;
+		//		Graph_lib::Point p;
 		int w;
 		int h;
 		int start;
 		int end;
 	};
 
-
+/*
 struct corner_Arcs : Shape {//corner arc's radius will be 5
 	corner_Arcs() {}
 	corner_Arcs(Point tl, Point tr, Point br, Point bl) {
@@ -56,5 +56,5 @@ struct corner_Arcs : Shape {//corner arc's radius will be 5
 	};
 
 };
-
+*/
 }
