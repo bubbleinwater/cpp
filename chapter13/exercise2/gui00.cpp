@@ -21,10 +21,8 @@ int main()
 	Point tl{ 10,50 };
 	Simple_window win{ tl,1000,800,"Canvas" };
 
-//	Graph_lib::Arc a{ Point{300,400},120,120,0,180 };
-//	a.set_color(Color::black);
-//	win.attach(a);
-	Boxb b(Point{ 50,100 }, Point{ 200,300 });
+
+	Boxb b(Point{ 50,100 }, Point{ 400,600 });
 	b.set_color(Color::red);
 	win.attach(b);
 
