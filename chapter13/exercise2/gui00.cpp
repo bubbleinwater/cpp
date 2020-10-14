@@ -22,7 +22,7 @@ int main()
 	Simple_window win{ tl,1000,800,"Canvas" };
 
 
-	Boxb b(Point{ 50,100 }, Point{ 400,600 });
+	Boxb b(Point{ 50,100 }, Point{ 800,400 },25);
 	b.set_color(Color::red);
 	win.attach(b);
 

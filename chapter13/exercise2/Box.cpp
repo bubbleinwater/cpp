@@ -2,7 +2,7 @@
 
 namespace Graph_lib {
 	void Boxb::draw_lines()const {
-		constexpr double radius = 30;
+//		constexpr double radius = 30;
 		fl_line(topl.x + radius, topl.y, topl.x + wid - radius, topl.y);
 		fl_line(topl.x + wid, topl.y + radius, topl.x + wid, topl.y + hei - radius);
 		fl_line(topl.x + wid - radius, topl.y + hei, topl.x + radius, topl.y + hei);
