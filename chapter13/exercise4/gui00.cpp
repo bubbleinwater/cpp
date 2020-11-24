@@ -1,12 +1,9 @@
 /*
-Exercise 4.
-Q Define Functions n(),s(),e(),w(),center(),ne(),se(),
-sw(), and nw().
-Each takes a Rectangle argument and returns a Point.
-These functions define "connectiiion points" on and in
-the rectangle.
-For example, nw(r) is the northwest(= topleft) corner of
-a Rectangle called r.
+Exercise 5.
+Q Define the functions from exercise4 for a Circle
+and an Ellipse. Place the connection points on or
+outside the shape but not outside the bounding rectangle.
+
 
 */
 
