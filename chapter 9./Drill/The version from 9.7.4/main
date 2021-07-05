@@ -1,0 +1,20 @@
+#include"Chrono.h"
+#include"Chrono.cpp"
+
+int main() 
+try{
+
+	Date today;
+	cout << today << '\n';
+
+	today.add_day(1);
+	Date tomorrow = today;
+
+	cout << tomorrow << '\n';
+
+	keep_window_open();
+	return 0;
+}
+catch (Date::Invalid) {
+	error("invalid date");
+}

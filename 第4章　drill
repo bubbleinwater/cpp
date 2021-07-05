@@ -1,478 +1,457 @@
-ドリル1.
 
-#include "../../std_lib_facilities.h"
+1.
+#include "std_lib_facilities.h"
 
 int main()
 {
-
+	cout << "整数値を2つ入力してください。|を入力すると繰り返しを終了します。\n";
 	int val1, val2;
-	cout << "入力された2つの整数を並べて表示します。|を入力すると終了します。\n";
 
-	while (cin >> val1 >> val2) {
-		cout << val1 << ' ' << val2 << '\n';
+	while(cin>>val1>>val2)
+	{
+		cout <<' '<< val1 << "と" << val2 << "が入力されました。\n";
 	}
+
+	keep_window_open();
 	return 0;
 }
 
 
-ドリル2.3.
+2.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-
+	cout << "整数値を2つ入力してください。|を入力すると繰り返しを終了します。\n";
 	int val1, val2;
-	cout << "入力された2つの整数を小さい順に表示します。|を入力すると終了します。\n";
 
-	while (cin >> val1 >> val2) {
-		if (val1 > val2) {
-			cout << "the smaller value is: " << val2 << ", the larger value is: " << val1 << '\n';
-		}
-		else if (val1 < val2) {
-			cout << "the smaller value is: " << val1 << ", the larger value is: " << val2 << '\n';
-		}
-		else
-			cout << "the numbers are equal\n";
+	while(cin>>val1>>val2)
+	{
+		if (val2 < val1)cout << "the smaller value is: " << val2 << "  the larger value is: " << val1 << "\n";
+		else if (val1 < val2)cout << "the smaller value is: " << val1 << "  the larger value is: " << val2 << "\n";
 	}
+
+	keep_window_open();
 	return 0;
 }
 
 
-ドリル4.
+3.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
+	cout << "数値を2つ入力してください。|を入力すると繰り返しを終了します。\n";
+	int val1, val2;
 
+	while(cin>>val1>>val2)
+	{
+		if (val2 < val1)cout << "the smaller value is: " << val2 << "  the larger value is: " << val1 << "\n";
+		else if (val1 < val2)cout << "the smaller value is: " << val1 << "  the larger value is: " << val2 << "\n";
+		else cout << " the numbers are equal.\n";
+	}
+
+	keep_window_open();
+	return 0;
+}
+
+4.
+
+#include "std_lib_facilities.h"
+
+int main()
+{
+	cout << "数値を2つ入力してください。|を入力すると繰り返しを終了します。\n";
 	double val1, val2;
-	cout << "入力された2つの整数を小さい順に表示します。|を入力すると終了します。\n";
 
-	while (cin >> val1 >> val2) {
-		if (val1 > val2) {
-			cout << "the smaller value is: " << val2 << ", the larger value is: " << val1 << '\n';
-		}
-		else if (val1 < val2) {
-			cout << "the smaller value is: " << val1 << ", the larger value is: " << val2 << '\n';
-		}
-		else
-			cout << "the numbers are equal\n";
+	while(cin>>val1>>val2)
+	{
+		if (val2 < val1)cout << "the smaller value is: " << val2 << "  the larger value is: " << val1 << "\n";
+		else if (val1 < val2)cout << "the smaller value is: " << val1 << "  the larger value is: " << val2 << "\n";
+		else cout << " the numbers are equal.\n";
 	}
+
+	keep_window_open();
 	return 0;
 }
 
-ドリル 5.
-
-#include "../../std_lib_facilities.h"
+5.
+#include "std_lib_facilities.h"
 
 int main()
 {
-
+	cout << "数値を2つ入力してください。|を入力すると繰り返しを終了します。\n";
 	double val1, val2;
-	cout << "入力された2つの整数を小さい順に表示します。|を入力すると終了します。\n";
 
-	while (cin >> val1 >> val2) {
-		if (val1 > val2) {
-			cout << "the smaller value is: " << val2 << ", the larger value is: " << val1 << '\n';
-			if (val1 - val2 < 1.0 / 100)
-				cout << "the numbers are almost equal\n";
+	while(cin>>val1>>val2)
+	{
+		if (val2 < val1)
+		{ cout << "the smaller value is: " << val2 
+			<< "  the larger value is: " << val1 << "\n"; 
+		if (val1 - val2 < 1.0 / 100)
+			cout << "the numbers are almost equal.\n";
 		}
-		else if (val1 < val2) {
-			cout << "the smaller value is: " << val1 << ", the larger value is: " << val2 << '\n';
-			if (val2 - val1 < 1.0 / 100)
-				cout << "the numbers are almost equal\n";
+		else if (val1 < val2){cout << "the smaller value is: " << val1 
+			<< "  the larger value is: " << val2 << "\n"; 
+		if (val2 - val1 < 1.0 / 100)
+			cout << "the numbers are almost equal.\n";
 		}
-		else  {
-			cout << "the numbers are equal\n";
-		}
-		
+		else { cout << " the numbers are equal.\n"; }
 	}
+
+	keep_window_open();
 	return 0;
 }
 
-ドリル 6.
 
-#include "../../std_lib_facilities.h"
+6.
+//---------I did    compile-time error    ---------------
+#include "std_lib_facilities.h"
 
 int main()
 {
+	cout << "数値を入力してください。|を入力すると繰り返しを終了します。\n";
+	double val;
+	double smallest=0;
+	double largest=0;
 
-	double val1 = 0;
-	double max,mini;
+	while (cin >> val)
+	{
+		if (!smallest) smallest = val;
+		if (!largest) largest = val;
 
-	cout << "入力された数字の最大と最小を追跡します。|を入力すると終了します。\n";
+		if (val < smallest) {
+			cout << val << ": the smallest so far.\n";
+			smallest = val;
+		}
+		else if (val > largest) {
+			cout << val << ": the largest so far.\n";
+			largest = val;
+		}
+	}
 
-	for (int i = 0; cin >> val1; ++i) {
+	keep_window_open();
+	return 0;
+}
+//--------------------------------------------
+
+#include "std_lib_facilities.h"
+
+int main()
+{
+	cout << "数値を入力してください。|を入力すると繰り返しを終了します。\n";
+	double val;
+	double smallest=0;
+	double largest=0;
+	int i = 0;
+
+	while (cin >> val)
+	{
 		if (i == 0) {
-			max = val1;
-			mini = val1;
+			smallest = val;
+			largest = val;
+			++i;
 		}
-		else if (i != 0 && val1 > max) {
-			max = val1;
-			cout << "the largest so far\n";
+
+		cout << val;
+		if (val < smallest) {
+			cout << ": the smallest so far.\n";
+			smallest = val;
 		}
-		else if (i != 0 && val1 < mini) {
-			mini = val1;
-			cout << "the smallest so far\n";
+		else if (val > largest) {
+			cout << ": the largest so far.\n";
+			largest = val;
 		}
-		else {}
-		
+		else cout << '\n';
 	}
-	return 0;
-}
 
-ドリル 7.
-
-#include "../../std_lib_facilities.h"
-
-int main()
-{
-
-	double val1 = 0;
-	string unit;
-	double max,mini;
-
-	cout << "入力された	長さの最大と最小を追跡します。単位は(cm,m,in,ft)の4つに限ります。|を入力すると終了します。\n";
-
-	for (int i = 0; cin >> val1 >> unit; ++i) {
-
-		if (unit == "cm") {
-			val1 *= 0.01;
-		}
-		else if(unit =="m"){}
-		else if (unit == "in") {
-			val1 *= 0.0254;
-		}
-		else if (unit == "ft") {
-			//1ft == 12in == 12*0.0254m
-			constexpr double fttom = 12 * 0.0254;
-			val1 *= fttom;
-		}
-
-
-		if (i == 0) {
-			max = val1;
-			mini = val1;
-		}
-		else if (i != 0 && val1 > max) {
-			max = val1;
-			cout << "the longest so far\n";
-		}
-		else if (i != 0 && val1 < mini) {
-			mini = val1;
-			cout << "the shortest so far\n";
-		}
-		else {}
-		
-	}
+	keep_window_open();
 	return 0;
 }
 
 
-ドリル 8.
+7.
 
-#include "../../std_lib_facilities.h"
-
-double maxv = 0, miniv = 0;
-
-void otherdenyer(int i,double val2)
-{
-	if (i == 0) {
-		maxv = val2;
-		miniv = val2;
-	}
-	else if (i != 0 && val2 > maxv) {
-		maxv = val2;
-		cout << "the longest so far\n";
-	}
-	else if (i != 0 && val2 < miniv) {
-		miniv = val2;
-		cout << "the shortest so far\n";
-	}
-	else {}
-}
-
+#include "std_lib_facilities.h"
 
 int main()
 {
-	double val1 = 0;
+	cout << "数値と単位(cm,m,in,ft)を入力してください。|を入力すると繰り返しを終了します。\n";
+	double val;
+	double smallest=0;
+	double largest=0;
+	int i = 0;
 	string unit;
 
-	cout << "入力された長さの最大と最小を追跡します。単位は(cm,m,in,ft)の4つに限ります。|を入力すると終了します。\n";
+	while (cin >> val >> unit)
+	{
+		if(unit == "cm"){}
+		if (unit == "m")val *= 100;
+		if (unit == "in")val *= 2.54;
+		if (unit == "ft")val *= ( 12 * 2.54);		//val * 12 * 2.54 do nothing.
 
-	for (int i = 0; cin >> val1 >> unit; ++i) {
-	
+		if (i == 0) {
+			smallest = val;
+			largest = val;
+			++i;
+		}
+
+		cout << val<<"cm";
+		if (val < smallest) {
+			cout << ": the shortest so far.\n";		//smallest to shortest
+			smallest = val;
+		}
+		else if (val > largest) {
+			cout << ": the longest so far.\n";		//largest to longest
+			largest = val;
+		}
+		else cout << '\n';
+	}
+
+	keep_window_open();
+	return 0;
+}
+
+
+8.
+
+#include "std_lib_facilities.h"
+
+int main()
+{
+	cout << "長さとその単位(cm,m,in,ft)を入力してください。|を入力すると繰り返しを終了します。\n";
+	double val;
+	double shortest=0;
+	double longest=0;
+	int i = 0;
+	string unit;
+
+	while (cin >> val >> unit)
+	{
+		if (unit == "cm") {}
+		if (unit == "m") { val *= 100; unit = "cm"; }
+		if (unit == "in") { val *= 2.54; unit = "cm"; }
+		if (unit == "ft") { val *=(12 * 2.54); unit = "cm"; }
+
+		
 		if (unit == "cm") {
-			val1 *= 0.01;
-			unit = " ";
-			otherdenyer(i, val1);
-		}
-		else if(unit =="m"){ 
-			{}
-			unit = " "; 
-			otherdenyer(i, val1);
-		}
-		else if (unit == "in") {
-			val1 *= 0.0254;
-			unit = " ";	
-			otherdenyer(i, val1);
-		}
-		else if (unit == "ft") {
-			//1ft == 12in == 12*0.0254m
-			constexpr double fttom = 12 * 0.0254;
-			val1 *= fttom;
-			unit = " ";
-			otherdenyer(i, val1);
-		}
-		else {
-			cout << "Denied.Please enter another length followed by(cm,m,in,ft).\n";
+
 			if (i == 0) {
-				i = -1;                                                        //I thought "Is --i better?"but it won't last. so I wrote this. 
+				shortest = val;
+				longest = val;
+				++i;
 			}
-			else {}
+
+			cout << val << "cm";
+			if (val < shortest) {
+				cout << ": the shortest so far.\n";
+				shortest = val;
+			}
+			else if (val > longest) {
+				cout << ": the longest so far.\n";
+				longest = val;
+			}
+			else cout << '\n';
 		}
+		else cout << "The unit called " << unit << " is denied.\n";
 	}
+
+	keep_window_open();
 	return 0;
 }
 
-ドリル 9.
 
-#include "../../std_lib_facilities.h"
+9.
 
-double maxv = 0, miniv = 0,sum = 0;
-
-void otherdenyer(int i,double val2)
-{
-	if (i == 0) {
-		maxv = val2;
-		miniv = val2;
-	}
-	else if (i != 0 && val2 > maxv) {
-		maxv = val2;
-		cout << "the longest so far\n";
-	}
-	else if (i != 0 && val2 < miniv) {
-		miniv = val2;
-		cout << "the shortest so far\n";
-	}
-	else {}
-}
-
+#include "std_lib_facilities.h"
 
 int main()
 {
-	int j = 0;
-	double val1 = 0;
+	cout << "長さとその単位(cm,m,in,ft)を入力してください。|を入力すると繰り返しを終了します。\n";
+	double val;
+	double shortest=0;
+	double longest=0;
+	int first_number = 0;
 	string unit;
+	//1cm = 0.01m,1in = 2.54cm, 1ft = 12in
+	constexpr double m_per_cm = 0.01;
+	constexpr double m_per_in = 0.0254;
+	constexpr double m_per_ft = 0.3048;
 
-	cout << "入力された長さをｍに変換し最大値と最小値を追跡します。単位は(cm,m,in,ft)の4つに限ります。|を入力すると終了します。終了後に、最小値と最大値と値の個数と値の合計を書き出します。\n";
+	double sum=0;
+	int i = 0;
 
-	for (int i = 0; cin >> val1 >> unit; ++i) {
+	while (cin >> val >> unit)
+	{
+		if (unit == "cm") { val *= m_per_cm; unit = "m"; }
+		if (unit == "m") {}
+		if (unit == "in") { val *= m_per_in; unit = "m";}
+		if (unit == "ft") { val *= m_per_ft; unit = "m";}
 
-		if (unit == "cm") {
-			val1 *= 0.01;
-			sum += val1;
-			unit = " ";
-			otherdenyer(i, val1);
-		}
-		else if(unit =="m"){ 
-			{}
-			sum += val1;
-			unit = " "; 
-			otherdenyer(i, val1);
-		}
-		else if (unit == "in") {
-			val1 *= 0.0254;
-			sum += val1;
-			unit = " ";	
-			otherdenyer(i, val1);
-		}
-		else if (unit == "ft") {
-			//1ft == 12in == 12*0.0254m
-			constexpr double fttom = 12 * 0.0254;
-			val1 *= fttom;
-			sum += val1;
-			unit = " ";
-			otherdenyer(i, val1);
-		}
-		else {
-			cout << "Denied.Please enter another length followed by(cm,m,in,ft).\n";
-			--i;
+		
+		if (unit == "m") {
+			++i;
+			sum += val;
+
+			if (first_number == 0) {
+				shortest = val;
+				longest = val;
+				++first_number;
 			}
-		j = i;
+
+			cout << val << "m";
+			if (val < shortest) {
+				cout << ": the shortest so far.\n";
+				shortest = val;
+			}
+			else if (val > longest) {
+				cout << ": the longest so far.\n";
+				longest = val;
+			}
+			else cout << '\n';
+		}
+		else cout << "The unit called " << unit << " is denied.\n";
 	}
-	cout << "最小値は" << miniv << "m, 最大値は" << maxv << "m, 値の個数は" << j + 1 << ", 値の合計は" << sum << "mです。\n";
+
+	cout << i << " numbers.\n" << "shortest: " << shortest << "m\n"
+		<< "longest: " << longest << "m\n" << "total: " << sum << "m\n";
+
+	keep_window_open();	
 	return 0;
 }
 
-ドリル 10.
 
-#include "../../std_lib_facilities.h"
+10.
 
-
-double maxv = 0, miniv = 0,sum = 0;
-
-void otherdenyer(int i,double val2)
-{
-
-
-	if (i == 0) {
-		maxv = val2;
-		miniv = val2;
-	}
-	else if (i != 0 && val2 > maxv) {
-		maxv = val2;
-		cout << "the longest so far\n";
-	}
-	else if (i != 0 && val2 < miniv) {
-		miniv = val2;
-		cout << "the shortest so far\n";
-	}
-	else {}
-
-
-}
-
+#include "std_lib_facilities.h"
 
 int main()
 {
-	int j = 0;
-	double val1 = 0;
+	cout << "長さとその単位(cm,m,in,ft)を入力してください。|を入力すると繰り返しを終了します。\n";
+	double val;
+	double shortest=0;
+	double longest=0;
+	int first_number = 0;
 	string unit;
-	vector <double> length;
+	//1cm = 0.01m,1in = 2.54cm, 1ft = 12in
+	constexpr double m_per_cm = 0.01;
+	constexpr double m_per_in = 0.0254;
+	constexpr double m_per_ft = 0.3048;
 
-	cout << "入力された長さの最大と最小を追跡します。単位は(cm,m,in,ft)の4つに限ります。|を入力すると終了します。\n";
+	double sum=0;
+	int i = 0;
 
-	for (int i = 0; cin >> val1 >> unit; ++i) {
+	vector<double> meter;
 
-		if (unit == "cm") {
-			val1 *= 0.01;
-			length.push_back(val1);
-			sum += val1;
-			unit = " ";
-			otherdenyer(i, val1);
-		}
-		else if(unit =="m"){ 
-			{}
-			length.push_back(val1);
-			sum += val1;
-			unit = " "; 
-			otherdenyer(i, val1);
-		}
-		else if (unit == "in") {
-			val1 *= 0.0254;
-			length.push_back(val1);
-			sum += val1;
-			unit = " ";	
-			otherdenyer(i, val1);
-		}
-		else if (unit == "ft") {
-			//1ft == 12in == 12*0.0254m
-			constexpr double fttom = 12 * 0.0254;
-			val1 *= fttom;
-			length.push_back(val1);
-			sum += val1;
-			unit = " ";
-			otherdenyer(i, val1);
-		}
-		else {
-			cout << "Denied.Please enter another length followed by(cm,m,in,ft).\n";
-			--i;
+	while (cin >> val >> unit)
+	{
+		if (unit == "cm") { val *= m_per_cm; unit = "m"; }
+		if (unit == "m") {}
+		if (unit == "in") { val *= m_per_in; unit = "m";}
+		if (unit == "ft") { val *= m_per_ft; unit = "m";}
+
+		
+		if (unit == "m") {
+			++i;
+			sum += val;
+			meter.push_back(val);
+
+			if (first_number == 0) {
+				shortest = val;
+				longest = val;
+				++first_number;
 			}
-		j = i;
+
+			cout << val << "m";
+			if (val < shortest) {
+				cout << ": the shortest so far.\n";
+				shortest = val;
+			}
+			else if (val > longest) {
+				cout << ": the longest so far.\n";
+				longest = val;
+			}
+			else cout << '\n';
+		}
+		else cout << "The unit called " << unit << " is denied.\n";
 	}
 
-	cout << "最小値は" << miniv << "m, 最大値は" << maxv << "m, 値の個数は" << j + 1 << ", 値の合計は" << sum << "mです。\n";
-	cout << "入力された値を全て書き出します。\n";
-	for (double x : length) {
-		cout << x << '\n';
-	}
+	cout <<'\n'<< i << " numbers.\n" << "shortest: " << shortest << "m\n"
+		<< "longest: " << longest << "m\n" << "total: " << sum << "m\n\n";
+
+	for (double x : meter)
+		cout << x << "m\n";
+
+	keep_window_open();	
 	return 0;
+
 }
 
-ドリル 11.
+11.
 
 #include "../../std_lib_facilities.h"
 
-
-double maxv = 0, miniv = 0,sum = 0;
-
-void otherdenyer(int i,double val2)
-{
-
-
-	if (i == 0) {
-		maxv = val2;
-		miniv = val2;
-	}
-	else if (i != 0 && val2 > maxv) {
-		maxv = val2;
-		cout << "the longest so far\n";
-	}
-	else if (i != 0 && val2 < miniv) {
-		miniv = val2;
-		cout << "the shortest so far\n";
-	}
-	else {}
-
-
-}
-
-
 int main()
 {
-	int j = 0;
-	double val1 = 0;
+	cout << "長さとその単位(cm,m,in,ft)を入力してください。|を入力すると繰り返しを終了します。\n";
+	double val;
+	double shortest=0;
+	double longest=0;
+	int first_number = 0;
 	string unit;
-	vector <double> length;
+	//1cm = 0.01m,1in = 2.54cm, 1ft = 12in
+	constexpr double m_per_cm = 0.01;
+	constexpr double m_per_in = 0.0254;
+	constexpr double m_per_ft = 0.3048;
 
-	cout << "入力された長さの最大と最小を追跡します。単位は(cm,m,in,ft)の4つに限ります。|を入力すると終了します。\n";
+	double sum=0;
+	int i = 0;
 
-	for (int i = 0; cin >> val1 >> unit; ++i) {
+	vector<double> meter;
 
-		if (unit == "cm") {
-			val1 *= 0.01;
-			length.push_back(val1);
-			sum += val1;
-			unit = " ";
-			otherdenyer(i, val1);
-		}
-		else if(unit =="m"){ 
-			{}
-			length.push_back(val1);
-			sum += val1;
-			unit = " "; 
-			otherdenyer(i, val1);
-		}
-		else if (unit == "in") {
-			val1 *= 0.0254;
-			length.push_back(val1);
-			sum += val1;
-			unit = " ";	
-			otherdenyer(i, val1);
-		}
-		else if (unit == "ft") {
-			//1ft == 12in == 12*0.0254m
-			constexpr double fttom = 12 * 0.0254;
-			val1 *= fttom;
-			length.push_back(val1);
-			sum += val1;
-			unit = " ";
-			otherdenyer(i, val1);
-		}
-		else {
-			cout << "Denied.Please enter another length followed by(cm,m,in,ft).\n";
-			--i;
+	while (cin >> val >> unit)
+	{
+		if (unit == "cm") { val *= m_per_cm; unit = "m"; }
+		if (unit == "m") {}
+		if (unit == "in") { val *= m_per_in; unit = "m";}
+		if (unit == "ft") { val *= m_per_ft; unit = "m";}
+
+		
+		if (unit == "m") {
+			++i;
+			sum += val;
+			meter.push_back(val);
+
+			if (first_number == 0) {
+				shortest = val;
+				longest = val;
+				++first_number;
 			}
-		j = i;
+
+			cout << val << "m";
+			if (val < shortest) {
+				cout << ": the shortest so far.\n";
+				shortest = val;
+			}
+			else if (val > longest) {
+				cout << ": the longest so far.\n";
+				longest = val;
+			}
+			else cout << '\n';
+		}
+		else cout << "The unit called " << unit << " is denied.\n";
 	}
 
-	cout << "最小値は" << miniv << "m, 最大値は" << maxv << "m, 値の個数は" << j + 1 << ", 値の合計は" << sum << "mです。\n";
-	cout << "入力された値を全て昇順に書き出します。\n";
-	sort(length);
-	for (double x : length) {
-		cout << x << '\n';
-	}
+	cout <<'\n'<< i << " numbers.\n" << "shortest: " << shortest << "m\n"
+		<< "longest: " << longest << "m\n" << "total: " << sum << "m\n\n";
+
+	sort(meter);
+
+	for (double x : meter)
+		cout << x << "m\n";
+
+	keep_window_open();
 	return 0;
 }

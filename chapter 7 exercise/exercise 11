@@ -1,0 +1,151 @@
+exercise 11-1
+
+/*
+chapter 4. 
+exercise 19
+
+08.30.2018
+
+this program record name and their score.
+If you want to exit this program, enter NoName 0,
+then this program write every name and their score.
+
+
+grammer:	//..actually I still do not understand what the grammer is. Whaaattt's thaaaat?????
+
+
+add_new_score:
+name
+score
+
+
+check_the_namevector:
+
+write_scores:
+
+*/
+
+
+
+#include "std_lib_facilities.h"
+
+vector<string>names;
+vector<int>scores;
+
+void add_new_score(string name,int score)
+{
+	names.push_back(name);
+	scores.push_back(score);
+}
+
+void check_the_name_vector(string name)
+{
+	for (string x : names) {
+		if (name == x) {
+			error("same name was entered");
+		}
+	}
+}
+
+void write_scores() {
+
+	for (int i = 0; i < names.size(); ++i) {
+		cout << names[i] << " " << scores[i] << "\n";
+	}
+}
+
+
+int main()
+{
+	string name;
+	int score;
+
+	cout << "Please enter name and score."
+		<< "\nenter NoName and 0 for exit.\n";
+
+	while (cin >> name >> score) {
+		if (name == "NoName" && score == 0) break; 
+
+		if (names.size() == 0) {//first time, same name does not exist.
+			add_new_score(name, score);
+		}
+		else {
+			check_the_name_vector(name);
+			add_new_score(name,score);
+		}
+	}
+
+	write_scores();
+
+	keep_window_open();
+	return 0;
+}
+
+
+exercise 11-2
+
+
+/*
+chapter 5.
+exercise 7
+
+This program solves the quadratic equation.
+
+ax^2 + bx + c = 0
+
+grammer			//?
+
+d = sqrt(b^2-4ac)
+
+answer == (-b+d)/2a , (-b-d) /2a
+
+*/
+
+
+#include "std_lib_facilities.h"
+
+class negative_number { };
+
+double square_root(double a,double b,double c){// is this function worthy?
+
+	double d = b * b - 4 * a * c;
+	if (d < 0)throw negative_number();
+	return sqrt(d);
+
+}
+
+void write_answer(double b,double d,double a) {
+
+	cout << "x1 = " << (-b + d) / 2 * a << " x2 = " << (-b - d) / 2 * a << "\n";
+
+}
+
+void calculate() {
+
+	double a = 0;
+	double b = 0;
+	double c = 0;
+
+	cin >> a >> b >> c;
+
+	double d = square_root(a, b, c);
+
+	write_answer(b, d, a);
+
+}
+
+int main()
+try{
+
+	cout << "This program solves quadratic equation."
+		<< "\nPlease enter three numbers for a b c(ax^2 + bx + c = 0)\n";
+
+	calculate();
+
+	keep_window_open();
+	return 0;
+}catch(negative_number){
+	simple_error("The discriminant D is a negative number.There is no solution.");
+	keep_window_open();
+	return 1;
+}

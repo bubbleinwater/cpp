@@ -1,0 +1,33 @@
+#include "std_lib_facilities.h"
+
+void print(string s,vector<int>& v) {
+
+	for (int i = 0; i < v.size(); ++i) cout << v[i] << '\n'; 
+
+	return;
+}
+
+
+
+int main()
+{
+	string s = " ";
+	int value;
+	vector<int> v_int(0);
+
+	cout << "enter the label of your vector.\n";
+	cin >> s;
+
+	cout << "enter the value of vector.\n";
+	while(cin>>value){
+		v_int.push_back(value);
+	}
+
+	print(s, v_int);
+
+	cin.clear();
+	cin.ignore();
+
+	keep_window_open();
+	return 0;
+}

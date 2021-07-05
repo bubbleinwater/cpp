@@ -1,0 +1,641 @@
+練習問題1.　trythis
+
+exercise 2.
+//-----error
+#include"std_lib_facilities.h"
+
+double ctok(double c)
+{
+	int k = c + 273.15;
+	return int
+}
+
+int main()
+{
+	double c = 0;
+	cin >> d;
+	double k = ctok("c");
+	Cout << k << '/n';
+}
+
+//---------error
+
+//---------debugged
+#include"../../std_lib_facilities.h"
+
+double ctok(double c)
+{
+	double k = c + 273.15;
+	return k;
+}
+
+int main()
+{
+	double c = 0;
+	cin >> c;
+	double k = ctok(c);
+	cout << k << '\n';
+
+	keep_window_open();
+	return 0;
+}
+//-------debugged
+
+exercise 3.
+
+#include"std_lib_facilities.h"
+
+class bad_temperature{};
+
+double ctok(double c)
+{
+	double k = c + 273.15;
+	return k;
+}
+
+int main()
+try{
+	double c = 0;
+	cin >> c;
+	if (c < -273.15)throw bad_temperature();
+	double k = ctok(c);
+	cout << k << '\n';
+
+	keep_window_open();
+	return 0;
+}
+catch (bad_temperature) {
+	error("bad temp");
+
+	keep_window_open();
+	return 1;
+}
+
+exercise 4.
+
+#include"std_lib_facilities.h"
+
+class bad_temperature{};
+
+double ctok(double c)
+{
+	if (c < -273.15) throw bad_temperature();
+	double k = c + 273.15;
+	return k;
+}
+
+int main()
+try{
+	double c = 0;
+	cin >> c;
+	double k = ctok(c);
+	cout << k << '\n';
+
+	keep_window_open();
+	return 0;
+}
+catch (bad_temperature) {
+	error("bad temp");
+
+	keep_window_open();
+	return 1;
+}
+
+exercise 5.
+
+#include"std_lib_facilities.h"
+
+class bad_temperature{};
+
+double ctok(double c)
+{
+	double k = c + 273.15;
+	return k;
+}
+double ktoc(double k)
+{
+	double c = k - 273.15;
+	return c;
+}
+
+int main()
+try{
+	cout << "Please enter a temperature followed by (c or k)\n";
+	double T = 0;
+	char n = ' ';
+	cin >> T >> n;
+	if (n == 'c') {
+		if (T < -273.15)throw bad_temperature();
+		double k = ctok(T);
+		cout << T << "c = " << k << "k\n";
+	}
+	else if (n == 'k') {
+		if (T < 0)throw bad_temperature();
+		double c = ktoc(T);
+		cout << T << "k = " << c << "c\n";
+	}
+
+	keep_window_open();
+	return 0;
+}
+catch (bad_temperature) {
+	error("bad temp");
+
+	keep_window_open();
+	return 1;
+}
+
+exercise 6.
+
+#include"std_lib_facilities.h"
+
+class bad_temperature{};
+
+double ctof(double c)
+//-273.15 <= c
+{
+	if (c < -273.15) throw bad_temperature();
+	double f = c * 9 / 5 + 32;
+	return f;
+}
+double ftoc(double f)
+//-459.67 <= f
+{
+	if (f < -459.67) throw bad_temperature();
+	double c = (f - 32) * 5 / 9;
+	return c;
+}
+
+int main()
+try{
+	cout << "Please enter a temperature followed by (c or f)\n";
+	double T = 0;
+	char n = ' ';
+	cin >> T >> n;
+	if (n == 'c') {
+		if (T < -273.15)throw bad_temperature();
+		double f = ctof(T);
+		cout << T << "c = " << f << "f\n";
+	}
+	else if (n == 'f') {
+		if (T < 0)throw bad_temperature();
+		double c = ftoc(T);
+		cout << T << "f = " << c << "c\n";
+	}
+
+	keep_window_open();
+	return 0;
+}
+catch (bad_temperature) {
+	error("bad temp");
+
+	keep_window_open();
+	return 1;
+}
+
+
+exercise 7.
+
+#include "std_lib_facilities.h"
+
+class bad_variable {};
+
+int main()
+try{
+	cout << "This program solve a quadratic equation ax^2 + bx + c = 0 .\nPlease enter (a,b,c)\n";
+	double a = 0;
+	double b = 0;
+	double c = 0;
+
+	cin >> a >> b >> c;
+	if (a == 0)throw bad_variable();
+	double d = b * b - 4 * a * c;
+	if (d < 0) {
+		cout << "this has no solution.\n";
+		keep_window_open();
+		return 0;
+	}
+	else if (d == 0) { cout << "x = " << -b / 2 * a << '\n'; }
+	else if (d > 0) { cout << "x = " << (-b - sqrt(d)) / 2 * a << " and x = " << (-b + sqrt(d)) / 2 * a << '\n'; }
+
+	keep_window_open();
+	return 0;
+}
+catch (bad_variable) {
+	error("a >= 0");
+
+	keep_window_open();
+	return 1;
+}
+
+exercise 8.
+
+#include "std_lib_facilities.h"
+
+class not_enough{};
+
+int main()
+try{
+	cout << "How many numbers dow you want to sum?\n";
+	int N = 0;
+	cin >> N;
+
+	vector<int> v;
+	int n = 0;
+	int sum = 0;
+
+	cout << "Please enter numbers you want to sum.(enter | to end)\n";
+	while (cin>>n) {
+		v.push_back(n);
+	}
+
+	if (v.size() < N) { throw not_enough(); }
+
+	for (int i = 0; i < N;++i) { sum += v[i]; }
+	cout <<"result : "<< sum<<'\n';
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 0;
+}
+catch (not_enough) {
+	cerr << "not enough\n";
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 1;
+}
+
+exercise 9.
+
+#include "std_lib_facilities.h"
+
+class not_enough{};
+class not_int{};
+
+int main()
+try{
+	cout << "How many numbers dow you want to sum?\n";
+	int N = 0;
+	cin >> N;
+
+	vector<double> v;
+	double n = 0;
+	double sum = 0;
+
+	cout << "Please enter numbers you want to sum.(enter | to end)\n";
+	while (cin>>n) {
+		v.push_back(n);
+	}
+
+	if (v.size() < N) { throw not_enough(); }
+
+	for (int i = 0; i < N;++i) { sum += v[i]; }
+	
+	int intsum = sum;
+	if (sum != intsum) { throw not_int(); }
+	
+	cout <<"result : "<< sum<<'\n';
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 0;
+}
+catch (not_enough) {
+	cerr << "error : not enough\n";
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 1;
+}
+catch(not_int){
+	cerr << "error : not int\n";
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 2;
+}
+
+exercise 10.
+#include "std_lib_facilities.h"
+
+class not_enough{};
+class not_int{};
+
+int main()
+try{
+	cout << "How many numbers dow you want to sum?\n";
+	int N = 0;
+	cin >> N;
+
+	vector<double> v;
+	vector<double> vv;
+	double n = 0;
+	double sum = 0;
+
+	cout << "Please enter numbers you want to sum.(enter | to end)\n";
+	while (cin>>n) {
+		v.push_back(n);
+	}
+
+	if (v.size() < N) { throw not_enough(); }
+
+	for (int i = 0; i < N;++i) { sum += v[i]; }
+	for (int i = 1; i < N; ++i) { vv.push_back(v[i] - v[i - 1]); }
+	cout <<"result : "<< sum<<'\n';
+
+	for (double x : vv)cout << x << '\n';
+
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 0;
+}
+catch (not_enough) {
+	cerr << "error : not enough\n";
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 1;
+}
+
+exercise 11.
+#include "std_lib_facilities.h"
+
+int main()
+{
+
+	//this for search	
+	//	for (int i = 2147483643; i <= 2147483651;++i) {
+	//		cout << i << '\n';
+	//		if (i >= 2147483647)cout << "ok\n";
+	//	}
+	//I learned from this,when the number more than 2147483648 is entered,
+	//the value put in this variable become negative number.
+
+	vector<int>Fibonacci{1,1,2,3};
+	while (Fibonacci[Fibonacci.size() - 2] + Fibonacci[Fibonacci.size() - 1] > 0) {
+		Fibonacci.push_back(Fibonacci[Fibonacci.size() - 2] + Fibonacci[Fibonacci.size() - 1]);
+	}
+
+	while (true) {
+		cout << "How many Fibonacci numbers do you want me to write out?\n";
+		int limit = 0;
+		cin >> limit;
+		if (!cin) { return 0; }
+		while (limit > Fibonacci.size() ) {
+			cout << "exceeded the limit. Please re-enter.\n";
+			cin >> limit;
+			if (!cin) { return 0; }
+		}
+
+		for (int i = 0; i < limit; ++i) {
+			cout << Fibonacci[i] << '\n';
+		}
+
+	}
+
+	keep_window_open();
+	return 0;
+}
+
+
+exercise 12.
+
+#include "std_lib_facilities.h"
+
+int main()
+{
+	vector<int>the_number(4);
+	the_number[0] = 2;
+	the_number[1] = 5;
+	the_number[2] = 1;
+	the_number[3] = 9;
+
+	int bull = 0;
+	int cow = 0;
+
+	vector<int>answer(4);
+	cout << "We play 'Bulls and Cows'\n";
+	while (bull != 4) {
+		bull = 0;
+		cow = 0;
+		cout << "Please enter four different integer.\n";
+
+		int temp = 0;
+		int check = 1;
+
+		while (check != 0) {
+			check = 0;
+
+			for (int i = 0; i < 4; ++i) { cin >> temp; answer[i] = temp; }
+
+			for (int i = 0; i < 4; ++i) {
+				for (int j = 0; j < 4; ++j) {
+					if (answer[i] == answer[j] && i != j) { ++check; }
+				}
+			}
+			if (check != 0) { cout << "Please enter four different integer.\n"; }
+		}
+
+		for (int i = 0; i < 4; ++i) {
+			for (int j = 0; j < 4; ++j) {
+				if (the_number[i] == answer[j] && i == j) {
+					++bull;
+				}
+				else if (the_number[i] == answer[j] && i != j) {
+					++cow;
+				}
+			}
+		}
+		cout << "\"" << bull << "bull and " << cow << "cow" << "\"\n";
+	}
+	cout << "B I N G O!!\n";
+
+	keep_window_open();
+	return 0;
+}
+
+exercise 13.
+
+#include "std_lib_facilities.h"
+
+int main()
+{
+
+	cout << "Before we start this game, please give me one integer.(this makes the game exciting.)\n";
+	while (true) {
+		int n = 0;
+		cin >> n;
+		srand(n);
+		vector<int>the_number(4);
+		the_number[0] = randint(9);
+		the_number[1] = randint(9);
+		while (the_number[0] == the_number[1])
+		{
+			the_number[1] = randint(9);
+		}
+		the_number[2] = randint(9);
+		while (the_number[0] == the_number[2] || the_number[1] == the_number[2])
+		{
+			the_number[2] = randint(9);
+		}
+		the_number[3] = randint(9);
+		while(the_number[0]==the_number[3]|| the_number[1] == the_number[3]|| the_number[2] == the_number[3])
+		{
+			the_number[3] = randint(9);
+		}
+
+//		for (int x : the_number)cout << x;
+
+		int bull = 0;
+		int cow = 0;
+
+		vector<int>answer(4);
+		cout << "We play 'Bulls and Cows'\n";
+		while (bull != 4) {
+			bull = 0;
+			cow = 0;
+			cout << "Please enter four different integer.\n";
+
+			int temp = 0;
+			int check = 1;
+
+			while (check != 0) {
+				check = 0;
+
+				for (int i = 0; i < 4; ++i) { cin >> temp; answer[i] = temp; }
+
+				for (int i = 0; i < 4; ++i) {
+					for (int j = 0; j < 4; ++j) {
+						if (answer[i] == answer[j] && i != j) { ++check; }
+					}
+				}
+				if (check != 0) { cout << "Please enter four different integer.\n"; }
+			}
+
+			for (int i = 0; i < 4; ++i) {
+				for (int j = 0; j < 4; ++j) {
+					if (the_number[i] == answer[j] && i == j) {
+						++bull;
+					}
+					else if (the_number[i] == answer[j] && i != j) {
+						++cow;
+					}
+				}
+			}
+			cout << "\"" << bull << "bull and " << cow << "cow" << "\"\n";
+		}
+		cout << "B I N G O!!\n";
+
+		cout << "Before we start next game, please gime me another one integer.\n";
+	}
+	keep_window_open();
+	return 0;
+}
+
+exercise 14.
+
+#include "std_lib_facilities.h"
+
+
+int main()
+{
+	vector<int>sun;
+	vector<int>mon;
+	vector<int>tues;
+	vector<int>wednes;
+	vector<int>thurs;
+	vector<int>fri;
+	vector<int>satur;
+	vector<int>others;
+	
+	int sun_sum = 0;
+	int mon_sum = 0;
+	int tues_sum = 0;
+	int wednes_sum = 0;
+	int thurs_sum = 0;
+	int fri_sum = 0;
+	int satur_sum = 0;
+	int others_sum = 0;
+
+	string weekday = " ";
+	int value = 0;
+
+	cout << "Please enter weekday & value pairs.(e.g.tuesday -3) Enter q for exit.\n";
+	
+	while (cin >> weekday) {
+		if (weekday == "q") { break; }
+		cin >> value;
+
+		if (weekday == "Sunday" || weekday == "Sun" || weekday == "sunday" || weekday == "sun") {
+			sun_sum += value;
+			sun.push_back(value);
+			}
+		else if (weekday == "Monday" || weekday == "Mon" || weekday == "monday" || weekday == "mon") {
+			mon_sum += value;mon.push_back(value);
+		}
+		else if (weekday == "Tuesday" || weekday == "Tues" || weekday == "tuesday" || weekday == "tues") {
+			tues_sum += value;tues.push_back(value);
+		}
+		else if (weekday == "Wednesday" || weekday == "Wednes" || weekday == "wednesday" || weekday == "wednes") {
+			wednes_sum += value;wednes.push_back(value);
+		}
+		else if (weekday == "Thursday" || weekday == "Thurs" || weekday == "thursday" || weekday == "thurs") {
+			thurs_sum += value;thurs.push_back(value);
+		}
+		else if (weekday == "Friday" || weekday == "Fri" || weekday == "friday" || weekday == "fri") {
+			fri_sum += value;fri.push_back(value);
+		}
+		else if (weekday == "Saturday" || weekday == "Satur" || weekday == "saturday" || weekday == "satur") {
+			satur_sum += value;satur.push_back(value);
+		}
+		else {
+		others_sum += value; others.push_back(value);
+		}
+
+	}
+
+	cout << "Sunday\n";
+	for (int x : sun)cout << x << '\n';
+	cout << "\nMonday\n";
+	for (int x : mon)cout << x << '\n';
+	cout << "\nTuesday\n";
+	for (int x : tues)cout << x << '\n';
+	cout << "\nWednesday\n";
+	for (int x : wednes)cout << x << '\n';
+	cout << "\nThursday\n";
+	for (int x : thurs)cout << x << '\n';
+	cout<< "\nFriday\n";
+	for (int x : fri)cout << x << '\n';
+	cout << "\nSaturday\n";
+	for (int x : satur)cout << x << '\n';
+	cout << "\nOthers\n";
+	for (int x : others)cout << x << '\n';
+
+
+	cout << "\nSum"
+		<< "\n Sunday : " << sun_sum
+		<< "\n Monday : " << mon_sum
+		<< "\n Tuesday : " << tues_sum
+		<< "\n Wednesday : " << wednes_sum
+		<< "\n Thursday : " << thurs_sum
+		<< "\n Friday : " << fri_sum
+		<< "\n Saturday : " << satur_sum
+		<< "\n Others : " << others_sum << "\n";
+	
+	if (others.size() != 0) {
+		if (others.size() == 1)cout << others.size() << " item rejected.\n";
+		else cout << others.size() << " items rejected.\n";
+	}
+
+	keep_window_open();
+	return 0;
+}

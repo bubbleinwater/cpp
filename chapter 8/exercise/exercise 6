@@ -1,0 +1,61 @@
+#include"std_lib_facilities.h"
+
+void reversevectorf1(vector<int> v) {
+	vector<int> v1(v.size());
+	for (int i = 0; i < v.size(); ++i) {
+		v1[i] = v[v.size()-1-i];
+	}
+	for (int x : v1)cout << x << '\n';
+	return;
+}
+
+void reversevectorf2(vector<int>& v) {
+	int temp;
+	for (int i = 0; i < (v.size())/2; ++i) {
+		temp = v[i];
+		v[i] = v[(v.size() - 1) - i];
+		v[(v.size() - 1) - i] = temp;
+	}
+	for (int x : v)cout << x << '\n';
+	return;
+}
+
+
+void rvf1_string(vector<string> v) {
+	vector<string> v1(v.size());
+	for (int i = 0; i < v.size(); ++i) {
+		v1[i] = v[v.size() - 1 - i];
+	}
+	for (string x : v1)cout << x << '\n';
+	return;
+}
+
+void rvf2_string(vector<string>& v) {
+	string temp;
+	for (int i = 0; i < (v.size()) / 2; ++i) {
+		temp = v[i];
+		v[i] = v[(v.size() - 1) - i];
+		v[(v.size() - 1) - i] = temp;
+	}
+	for (string x : v)cout << x << '\n';
+	return;
+}
+/*
+
+int main() {
+	string val;
+	vector<string> v;
+	
+	while (cin>>val) {
+		if (val == "exit")break;
+		v.push_back(val);
+	}
+	rvf1_string(v);
+	rvf2_string(v);
+
+	cin.clear();
+	cin.ignore();
+	keep_window_open();
+	return 0;
+}
+*/

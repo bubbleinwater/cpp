@@ -1,0 +1,43 @@
+#include"std_lib_facilities.h"
+#include"Chrono.h"
+#include"Chrono.cpp"
+
+struct Date {
+	int y; Chrono::Month m; int d;
+};
+
+
+
+//helper function:
+
+void init_day(Date& dd, int y, Chrono::Month m, int d)
+{
+	if (y < 0)error("invalid date");
+	if (int(m) < 1 || 12 < int(m))error("invalid month");
+	if (d < 1 || 31 < d)error("invalid day");
+
+	dd = { y,m,d };
+}
+
+void add_day(Date& dd, int n) 
+{
+	if (dd.d + n <= 31) {
+		dd.d += n;
+	}
+	else {
+		dd.d += (n - 31);
+	}
+}
+
+int main() {
+	Date today;
+	init_day(today, 1978, Chrono::Month::jun, 25);
+	add_day(today, 1);
+	Date tomorrow = today;
+
+//I have not solved how to use "<<" yet.
+
+	keep_window_open();
+	return 0;
+
+}

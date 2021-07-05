@@ -1,0 +1,23 @@
+/*
+2018.10.5
+
+Write a function maxv() that returns the largest element of a vector argument.
+*/
+
+
+
+
+
+
+#include"std_lib_facilities.h"
+
+double maxv(vector<double> v){
+	for (int i = 1; i < v.size(); ++i) {
+		if (v[i - 1] > v[i]) { 
+			double temp = v[i - 1]; 
+			v[i - 1] = v[i];
+			v[i] = temp;
+		}
+	}
+	return v[v.size() - 1];
+}

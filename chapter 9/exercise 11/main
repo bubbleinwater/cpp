@@ -1,0 +1,49 @@
+#include"Chrono.h"
+
+
+int main() 
+try {
+
+	Chrono::Date today = {2019,Chrono::Month::jan,13};
+	cout <<"\ntoday is "<< today << '\n';
+	Chrono::Day_of_the_week dd = Chrono::whats_the_day(today);
+	cout <<"Today is "<< dd<<'\n';
+	cout << "week of year: " << Chrono::week_of_year(today)<<'\n';
+	Chrono::Date work_d = Chrono::next_workday(today);
+	cout << "next work day is " << work_d <<'\n';
+	dd = Chrono::whats_the_day(work_d);
+	cout <<"which is "<< dd << '\n';
+	cout << "week of year: " << Chrono::week_of_year(work_d) << '\n';
+
+	today.Chrono::Date::add_day(1);
+	Chrono::Date tomorrow = today;
+
+	cout <<"tomorrow is "<< tomorrow << '\n';
+	work_d = next_workday(tomorrow);
+	dd = Chrono::whats_the_day(tomorrow);
+	cout << "tomorrow is " << dd << '\n';
+	cout << "week of year: " << Chrono::week_of_year(tomorrow) << '\n';
+	cout << "next work day is " << work_d << '\n';
+	dd = Chrono::whats_the_day(work_d);
+	cout <<"which is "<< dd << '\n';
+	cout << "week of year: " << Chrono::week_of_year(work_d) << '\n';
+
+	today.add_year(2);
+	cout <<"two years later from today is "<< today << "\n";
+	dd = Chrono::whats_the_day(today);
+	cout <<"which is "<< dd << '\n';
+	cout << "week of year: " << Chrono::week_of_year(today) << '\n';
+	work_d = next_workday(today);
+	cout << "next work day is " << work_d << '\n';
+	dd = Chrono::whats_the_day(work_d);
+	cout <<"which is "<< dd << '\n';
+	cout << "week of year: " << Chrono::week_of_year(work_d) << '\n';
+
+
+	keep_window_open();
+	return 0;
+}
+catch (Chrono::Date::Invalid) {
+	cerr << "invalid date\n";
+	keep_window_open();
+}

@@ -1,101 +1,87 @@
-//練習問題2.
+﻿_//練習問題2.
 
 #include "../../std_lib_facilities.h"
 
 int main()
 {
-	cout << "マイルをキロメートルに変換します。\n" << "マイル数を入力してください\n";
+	cout << "kmに変換します。単位がマイルの値を入力してください。\n";
+	double length;
+	cin >> length;
 
-	double mile = 0.0;
-	double kilo = 0.0;
+//mileをkmに変換して出力
+	cout << length << "mileは" << length * 1.609 << "kmです。\n";
 
-	cin >> mile;
-
-	kilo = mile * 1.609;
-
-	cout << mile << "マイルは" << kilo << "kmです。\n";
-
+	keep_window_open();
 	return 0;
 }
 
-
 //練習問題4.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	int val1, val2,difference = 0,rem,div1 = 0,div2 = 0;
-	cout << "整数を２つ入力して下さい\n";
+	int val1, val2;
+	cout << "整数を2つ入力してください\n";
 	cin >> val1 >> val2;
 
-	if (val1 > val2) {
-		cout << "最小値は" << val2 << "最大値は" << val1 << "です\n";
-		difference = val1 - val2;
-		rem = val1 % val2;
-		if (rem == 0) {
-			div1 = val1 / val2;
-		}
-	}
-	else if (val1 < val2) {
-		cout << "最小値は" << val1 << "最大値は" << val2 << "です\n";
-		difference = val2 - val1;
-		rem = val2 % val1;
-		if (rem == 0) {
-			div2 = val2 / val1;
-		}
-	}
+	if (val1 - val2 < 0) 
+		cout << "最小値は" << val1 << " 最大値は" << val2 << "です。\n";
+	else if (val1 - val2 == 0)
+		cout << "2つの値は等しいです。\n";
 	else
-		cout << "二つの値は等しいです\n";
-
-	cout << "二つの値の合計は" << val1 + val2 << "です\n";
-	cout << "二つの値の差は" << difference << "です\n";
-	cout << "二つの値の積は" << val1*val2 << "です\n";
-	if (div2 == 0) {
-		if (rem != 0)
-			cout << "比率は" << val1 << "/" << val2 << "です\n";
-		else
-			cout << "比率は" << div1 << "です\n";
-	}
-	else
-		if (rem != 0)
-			cout << "比率は" << val1 << "/" << val2 << "です\n";
-		else
-			cout << 1 << "/" << div2 << "です\n";
+		cout << "最小値は" << val2 << " 最大値は" << val1 << "です。\n";
 	
+	cout << "2数の合計は" << val1 + val2
+		<< "\n差の絶対値は";
+	if (val1 - val2 < 0)
+		cout << (val1 - val2)* -1 << "です。\n";
+	else if (val1 - val2 > 0)
+		cout << val1 - val2 << "です。\n";
+	else
+		cout << "差はありません。\n";
+	
+	cout << "積は" << val1 * val2 << "です。\n";
+	double div = (double)val1 / val2;
+	cout << "比率は" << div << "です。\n";
+
+	keep_window_open();
 	return 0;
 }
 
 練習問題5.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	double val1, val2, difference = 0;
-	cout << "整数を２つ入力して下さい\n";
+	double val1, val2;
+	cout << "値を2つ入力してください\n";
 	cin >> val1 >> val2;
 
-	if (val1 > val2) {
-		cout << "最小値は" << val2 << "最大値は" << val1 << "です\n";
-		difference = val1 - val2;
-	}
-
-	else if (val1 < val2) {
-		cout << "最小値は" << val1 << "最大値は" << val2 << "です\n";
-		difference = val2 - val1;
-	}
+	if (val1 - val2 < 0) 
+		cout << "最小値は" << val1 << " 最大値は" << val2 << "です。\n";
+	else if (val1 - val2 == 0)
+		cout << "2つの値は等しいです。\n";
 	else
-		cout << "二つの値は等しいです\n";
-
-	cout << "二つの値の合計は" << val1 + val2 << "です\n";
-	cout << "二つの値の差は" << difference << "です\n";
-	cout << "二つの値の積は" << val1*val2 << "です\n";
-	cout << "比率は" << val1 / val2 << "です。\n";
+		cout << "最小値は" << val2 << " 最大値は" << val1 << "です。\n";
 	
+	cout << "2数の合計は" << val1 + val2
+		<< "\n差の絶対値は";
+	if (val1 - val2 < 0)
+		cout << (val1 - val2)* -1 << "です。\n";
+	else if (val1 - val2 > 0)
+		cout << val1 - val2 << "です。\n";
+	else
+		cout << "差はありません。\n";
+	
+	cout << "積は" << val1 * val2 << "です。\n";
+	double div = val1 / val2;
+	cout << "比率は" << div << "です。\n";
+
+	keep_window_open();
 	return 0;
 }
-
 
 練習問題6.
 
@@ -103,63 +89,70 @@ int main()
 
 int main()
 {
-	int val1, val2, val3,tmp;
+	cout << "整数値を3つ入力してください。\n";
+	int val1, val2, val3;
+	while (cin >> val1 >> val2 >> val3)
+	{
 
-	cout << "整数値を3つ入力してください\n";
-
-	cin >> val1 >> val2 >> val3;
-	// 10 4 6 if-check
-	if (val1 > val2) {
-		tmp = val2; val2 = val1; val1 = tmp;
-		if (val2 > val3) {
-			tmp = val3; val3 = val2; val2 = tmp;
-			if (val1 > val2) {
-				tmp = val1; val1 = val2; val2 = tmp;
-			}
+		int tmp;
+		if (val1 > val2)
+		{
+			tmp = val1;
+			val1 = val2;
+			val2 = tmp;
 		}
-	}
-	else if (val2 > val3) {
-		tmp = val3; val3 = val2; val2 = tmp;
-		if (val1 > val2) {
-			tmp = val1; val1 = val2; val2 = tmp;
+		if (val2 > val3)
+		{
+			tmp = val2;
+			val2 = val3;
+			val3 = tmp;
 		}
+		if (val1 > val2)
+		{
+			tmp = val1;
+			val1 = val2;
+			val2 = tmp;
+		}
+
+		cout << "(" << val1 << "," << val2 << "," << val3 << ")\n";
+
 	}
 
-	cout << "(" << val1 << "," << val2 << "," << val3 << ")";
-
+	keep_window_open();
 	return 0;
 }
 
+練習問題7.
 
-練習問題 7.
-
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	string val1, val2, val3,tmp;
+	cout << "名前など、文字列を3つ入力してください。辞書式に出力します。\n";
+	string st1, st2, st3;
+	string tmpst = " ";
 
-	cout << "文字列を3つ入力してください\n";
-
-	cin >> val1 >> val2 >> val3;
-
-	if (val1 > val2) {
-		tmp = val2; val2 = val1; val1 = tmp;
-		if (val2 > val3) {
-			tmp = val3; val3 = val2; val2 = tmp;
-			if (val1 > val2) {
-				tmp = val1; val1 = val2; val2 = tmp;
-			}
-		}
-	}
-	else if (val2 > val3) {
-		tmp = val3; val3 = val2; val2 = tmp;
-		if (val1 > val2) {
-			tmp = val1; val1 = val2; val2 = tmp;
-		}
+while(cin >> st1 >> st2 >> st3){
+	if (st1 > st2) {
+		tmpst = st1;
+		st1 = st2;
+		st2 = tmpst;
 	}
 
-	cout << "(" << val1 << "," << val2 << "," << val3 << ")";
+	if (st2 > st3) {
+		tmpst = st2;
+		st2 = st3;
+		st3 = tmpst;
+	}
+
+	if (st1 > st2) {
+		tmpst = st1;
+		st1 = st2;
+		st2 = tmpst;
+	}
+
+	cout << "(" << st1 << "," << st2 << "," << st3 << ")\n";
+}
 
 	return 0;
 }
@@ -167,93 +160,81 @@ int main()
 
 練習問題 8.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	int number = 0;
-	int oper = 0;
+	cout << "整数を入力してください。\n";
+	int num;
+	while (cin >> num) {
 
-	cout << "整数を一つ入力してください\n";
-
-	cin >> number;
-	oper = number % 2;
-	
-	if (oper == 0)
-		cout << number << " is an even number\n";
-	else
-		cout << number << " is an odd number\n";
+		if (num % 2 != 0)
+			cout << "値" << num << "は奇数です。\n";
+		else
+			cout << "値" << num << "は偶数です。\n";
+	}
 
 	return 0;
 }
+
 
 　練習問題　9.
 
-#include "../../std_lib_facilities.h"
+#include "std_lib_facilities.h"
 
 int main()
 {
-	string oper;
-	cout << "英単語を数字に変換します数字の英単語を入力してください\n";
+	cout << "値をzeroやoneのように文字で入力してください。\n";
+	string stnum;
+	int num;
+	while (cin >> stnum) {
+		if (stnum == "zero" || stnum == "Zero" || stnum == "ZERO")
+			num = 0;
+		else if (stnum == "one" || stnum == "One" || stnum == "ONE")
+			num = 1;
+		else if (stnum == "two" || stnum == "Two" || stnum == "TWO")
+			num = 2;
+		else if (stnum == "three" || stnum == "Three" || stnum == "THREE")
+			num = 3;
+		else if (stnum == "four" || stnum == "Four" || stnum == "FOUR")
+			num = 4;
+//		else if (stnum == "" || stnum == "" || stnum == "")
+//			num =
+		else {
+			cout << "not a number I know.\n";
+			num = -1;
+		}
 
-	cin >> oper;
-
-	if (oper == "zero") {
-		cout << "That is" << 0 <<'\n';
-	}
-
-	else if (oper == "one") {
-		cout << "That is" << 1 <<'\n';
-	}
-
-	else if (oper == "two") {
-		cout << "That is" << 2 <<'\n';
-	}
-
-	else if (oper == "three") {
-		cout << "That is" << 3 <<'\n';
-	}
-
-	else if (oper == "four") {
-		cout << "That is" << 4 <<'\n';
-	}
-
-	else {
-		cout << "not a number I know\n";
+		if (num != -1)
+			cout << "入力された数字は" << num << "です。\n";
 	}
 	return 0;
 }
+
 
 練習問題 10.
+
 #include "../../std_lib_facilities.h"
 
 int main()
 {
-	cout << "望む演算と、演算したい数字二つを順に入力してください\n";
+	cout << "演算の種類と数字を(* 1 2)のように入力してください。\n";
+	string operation;
+	int val1, val2;
 
-	string operation = " ";
-	double val1, val2;
-	cin >> operation >> val1 >> val2;
-
-	if (operation == "+")
-		cout << val1 << " " << operation << " " << val2 << " is " << val1 + val2 << "\n";    //should "is" been replaced by "equals"?
-	else if (operation == "-")
-		cout << val1 << " " << operation << " " << val2 << " is " << val1 - val2 << "\n";
-	else if (operation == "*")
-		cout << val1 << " " << operation << " " << val2 << " is " << val1 * val2 << "\n";
-	else if (operation == "/")
-		cout << val1 << " " << operation << " " << val2 << " is " << val1 / val2 << "\n";
-	else if (operation == "plus")
-		cout << val1 << " " << operation << " " << val2 << " is " << val1 + val2 << "\n";
-	else if (operation == "minus")
-		cout << val1 << " " << operation << " " << val2 << " is " << val1 - val2 << "\n";
-	else if (operation == "mul")
-		cout << val1 << " multiplied by " << val2 << " is " << val1 * val2 << "\n";
-	else if (operation == "div")
-		cout << val1 << " divided by " << val2 << " is " << val1 / val2 << "\n";
-
+	while (cin >> operation >> val1 >> val2) {
+		if (operation == "+"||operation == "plus")
+			cout << "答えは" << val1 + val2 << "です。\n";
+		else if (operation == "-"||operation == "minus")
+			cout << "答えは" << val1 - val2 << "です。\n";
+		else if (operation == "*" || operation == "mul")
+			cout << "答えは" << val1 * val2 << "です。\n";
+		else if (operation == "/"|| operation == "div")
+			cout << "答えは" << val1 / val2 << "です。\n";
+	}
 	return 0;
 }
+
 練習問題 11.
 #include "../../std_lib_facilities.h"
 
@@ -297,86 +278,97 @@ int main()
 	return 0;
 }
 練習問題　11-2
-#include "../../std_lib_facilities.h"
+
+#include "std_lib_facilities.h"
 
 int main()
 {
-	int penny = 0;
-	int nickel = 0;
-	int dime = 0;
-	int quarter = 0;
-	int half_dollar = 0;
-	int dollar = 0;
-	int sum = 0;
-	int dollar_sum = 0;
-	int cent_sum = 0;
+	
+	int penny = 0, nickel = 0, dime = 0, quarter = 0, halfdollar = 0, dollar = 0;
 
-	cout << "How many pennies do you have? :";
+	cout << "How many pennies do you have? ";
 	cin >> penny;
-	cout << "How many nickels do you have? :";
+	cout << "\nHow many nickels do you have? ";
 	cin >> nickel;
-	cout << "How many dimes do you have? :";
+	cout << "\nHow many dimes do you have? ";
 	cin >> dime;
-	cout << "How many quarters do you have? :";
+	cout << "\nHow many quarters do you have? ";
 	cin >> quarter;
-	cout << "How many half dollars do you have? :";
-	cin >> half_dollar;
-	cout << "How many dollars do you have? :";
+	cout << "\nHow many half dollars do you have? ";
+	cin >> halfdollar;
+	cout << "\nHow many dollars do you have? ";
 	cin >> dollar;
-	cout << '\n';
-	if (penny == 1)
-		cout << "You have " << penny << " penny.\n";
+
+	//plural or not
+	if (penny > 1)
+		cout << "\nYou have " << penny << " pennies.\n";
 	else
-		cout << "You have " << penny << " pennies.\n";
-	if (nickel == 1)
-		cout << "You have " << nickel << " nickel.\n";
-	else
+		cout << "\nYou have " << penny << " penny.\n";
+
+	if (nickel > 1)
 		cout << "You have " << nickel << " nickels.\n";
-	if (dime == 1)
-		cout << "You have " << dime << " dime.\n";
 	else
+		cout << "You have " << nickel << " nickel.\n";
+
+	if (dime > 1)
 		cout << "You have " << dime << " dimes.\n";
-	if (quarter == 1)
-		cout << "You have " << quarter << " quarter.\n";
 	else
+		cout << "You have " << dime << " dime.\n";
+
+	if (quarter > 1)
 		cout << "You have " << quarter << " quarters.\n";
-	if (half_dollar == 1)
-		cout << "You have " << half_dollar << " half dollar.\n";
 	else
-		cout << "You have " << half_dollar << " half dollars.\n";
-	if (dollar == 1)
-		cout << "You have " << dollar << " dollar.\n";
+		cout << "You have " << quarter << " quarter.\n";
+
+	if (halfdollar > 1)
+		cout << "You have " << halfdollar << " half dollars.\n";
 	else
+		cout << "You have " << halfdollar << " half dollar.\n";
+
+	if (dollar > 1)
 		cout << "You have " << dollar << " dollars.\n";
+	else
+		cout << "You have " << dollar << " dollar.\n";
 
-	sum = penny + (nickel * 5) + (dime * 10)
-		+ (quarter * 25) + (half_dollar * 50) + (dollar * 100);
-	//cout << "sum is" << sum << ".\n";                                                    //check
-
-	if (sum == 0)
-		cout << "oh,you have no money.\n";
-	else if (sum == 1)
-		cout << "The value of all of your coins is 1 cent.\n";
-	else if (100 > sum && sum > 1)
-		cout << "The value of all of your coins is" << sum << " cents.\n";
-	else if (sum >= 10*10) {											//if sum is greater than 100.
-		cent_sum = sum % 100;                                       //now Im about trying to use "%"
-		dollar_sum = (sum - cent_sum)/100;
-		if (dollar_sum == 1) {
-			if (cent_sum <= 1)
-				cout << "The value of all of your coins is " << dollar_sum << " dollar " << cent_sum << " cent.\n";
-			else
-			{
-				cout << "The value of all of your coins is " << dollar_sum << " dollar " << cent_sum << " cents.\n";
-			}
-		}
-		else {
-			if (cent_sum <= 1)
-				cout << "The value of all of your coins is " << dollar_sum << " dollars " << cent_sum << " cent.\n";
-			else
-				cout << "The value of all of your coins is " << dollar_sum << " dollars " << cent_sum << " cents.\n";
-		}
+	int sum = penny + nickel * 5 + dime * 10 + quarter * 25 + halfdollar * 50 + dollar * 100;
+	
+	//i for dollar and sum for cent.
+	int i = 0;
+	for (; sum > 100; ++i) {
+		sum -= 100;
 	}
 
+	//under 1 dollar
+	if (i == 0) {
+		cout << "The value of all of your coins is "
+			<< sum;
+		if (sum != 1)
+			cout << " cents.\n";
+		else
+			cout << " cent.\n";
+	}
+
+	//1 dollar and
+	else if (i == 1) {
+		cout << "The value of all of your coins is "
+			<< i << " dollar and " << sum;
+		if (sum != 1)
+			cout << " cents.\n";
+		else
+			cout << " cent.\n";
+	}
+
+	//not less than 2 dollars
+	else {
+		cout << "The value of all of your coins is "
+			<< i << " dollars and " << sum;
+			if (sum != 1)
+				cout << " cents.\n";
+			else
+				cout << " cent.\n";
+	}
+
+	keep_window_open();
 	return 0;
 }
+

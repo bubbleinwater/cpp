@@ -1,0 +1,8 @@
+/*
+Q. Can we declare a non-reference function argument const(e.g., void f(const int);)? What might that mean? Why might
+ we want to do that? Why don't people do that often? Try it; write a couple of small programs to see what works.
+
+yes we can.
+once you declare, that value inside int won't change in the fuction just like as write const int x = 7;.(?)
+
+*/

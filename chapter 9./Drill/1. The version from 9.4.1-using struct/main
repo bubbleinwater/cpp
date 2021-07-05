@@ -1,0 +1,17 @@
+#include"Chrono.h"
+#include"Chrono.cpp"
+
+int main() {
+	Date today;
+	init_date(today, 1978, 6, 25);
+	
+	cout << today;
+
+	Date tomorrow;
+	tomorrow = add_day(today, 1);
+
+	cout << tomorrow;
+
+	keep_window_open();
+	return 0;
+}

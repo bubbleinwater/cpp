@@ -1,81 +1,299 @@
+﻿
+p76第3章　drill
+
+step 1.
+
 #include "../../std_lib_facilities.h"
 
 int main()
 {
-	string first_name, friend_name;
-	char friend_gender;
-	cout << "Enter the name of the person you want to write to\n";
+	cout << " Please enter your first name.\n";
+
+	string first_name;
 	cin >> first_name;
-	cout << "Enter the name of the person who you want to call you.followed by 'm' or 'f'(MALE=>m,FEMALE=>f)\n";
-	cin >> friend_name >> friend_gender;
 
+	cout << "Hello," << first_name << '\n';
 
-	cout << "Dear " << first_name << ","
-		<< "How are you?" << "\n I'm fine." << "\n Do you still love listening music? Recently I always listening to the album 'CHUBBY GROOVE' from INABA/SALAS\n"
-		<< "\n Have you seen " << friend_name << " lately?\n";
-	if (friend_gender == 'm')
-		cout << "If you see " << friend_name << " please ask him to call me.\n";
-	if (friend_gender == 'f')
-		cout << "If you see " << friend_name << " please ask her to call me.\n";
-	
-		return 0;
+	keep_window_open();
+	return 0;
 }
-	
-		
-/*
-性別を尋ねるif文で
-if (friend_gender == "m")
-と入力したところ、
-オペランドに互換性がありません("char"と"const char")
-というエラーが出た。
-if (frienf_name == 'm')
-などと書き換えたところ、
-これらのオペランドと一致する演算子"=="はありません
-二項演算子'==':型'std::string'の左オペランドを扱う演算子が見つかりません(または変換できません)
-と出た。
-結論
-比較するときには
-別途、
-char male = 'm';
-などと事前にchar型の変数を宣言してそれと比較させないとダメなのかもなと思った。※よく読んだら問題文に書いてあった。
-今ちょっと考えたら
-そもそもstringで扱えばよかった。
-*/
+
+
+1-2
 
 #include "../../std_lib_facilities.h"
 
 int main()
 {
-	string first_name, friend_name;
-	char friend_gender;
-	int age;
-	cout << "Enter the name of the person you want to write to\n";
+	cout << " Enter the name of the person you want to write to\n";
+
+	string first_name;
 	cin >> first_name;
-	cout << "Enter the name of the person who you want to call you.followed by 'm' or 'f'(MALE=>m,FEMALE=>f),and age\n";
-	cin >> friend_name >> friend_gender;
+
+	cout << "Dear " << first_name << ",\n";
+
+	keep_window_open();
+	return 0;
+}
+
+step 2.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	cout << " Enter the name of the person you want to write to\n";
+
+	string first_name;
+	cin >> first_name;
+
+	cout << " Dear " << first_name << ", "
+		<< "How are you? I am fine.\n I went to STARBUCKS this morning.\n";
+
+	keep_window_open();
+	return 0;
+}
+
+step 3.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	cout << " Enter the name of the person you want to write to\n";
+
+	string first_name;
+	cin >> first_name;
+	cout << "next, enter your another friend's name\n";
+
+	string friend_name;
+	cin >> friend_name;
+
+	cout << " Dear " << first_name << ", "
+		<< "How are you? I am fine.\n I went to STARBUCKS this morning."
+		<<" I really like the starbucks latte.\n\n";
+	cout << " Have you seen " << friend_name << " lately?\n";
+
+
+	keep_window_open();
+	return 0;
+}
+
+step 4.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	cout << " Enter the name of the person you want to write to\n";
+
+	string first_name;
+	cin >> first_name;
+	cout << "next, enter your another friend's name "
+		<<"followed by friend's gender(f for female,m for male.)\n";
+
+	string friend_name;
+	cin >> friend_name;
+
+	char friend_gender = 0;
+	cin >> friend_gender;
+
+	cout << " Dear " << first_name << ", "
+		<< "How are you? I am fine.\n I went to STARBUCKS this morning."
+		<<" I really like the starbucks latte.\n\n";
+	cout << " Have you seen " << friend_name << " lately?\n";
+	cout << "If you see " << friend_name << " please ask ";
+	
+	if (friend_gender == 'f')
+		cout << "her";
+	if (friend_gender == 'm')
+		cout << "him";
+	
+	cout << " to call me.\n";
+
+
+	keep_window_open();
+	return 0;
+}
+
+step 5.
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	cout << " Enter the name followed her/him age of the person you want to write to\n";
+
+	string first_name;
+	cin >> first_name;
+	double age = 0;
 	cin >> age;
 
-	cout << "Dear " << first_name << ","
-		<< "How are you?" << " I'm fine." << "\n Do you still love listening music? Recently I always listening the album 'CHUBBY GROOVE' from INABA/SALAS\n"
-		<< "\n Have you seen " << friend_name << " lately?\n";
+	cout << "next, enter your another friend's name "
+		<<"followed by friend's gender(f for female,m for male.)\n";
+
+	string friend_name;
+	cin >> friend_name;
+
+	char friend_gender = 0;
+	cin >> friend_gender;
+	/*
+	cout << "and ";
+		if (friend_gender == 'f')
+			cout << "her";
 	if (friend_gender == 'm')
-		cout << "If you see " << friend_name << " please ask him to call me.\n";
+		cout << "him";
+	cout << " age?";
+
+	double age = 0;
+	cin >> age;
+	*/
+	cout << " Dear " << first_name << ", "
+		<< "How are you? I am fine.\n I went to STARBUCKS this morning."
+		<<" I really like the starbucks latte.\n\n";
+	cout << " Have you seen " << friend_name << " lately?\n";
+	cout << " If you see " << friend_name << " please ask ";
+	
 	if (friend_gender == 'f')
-		cout << "If you see " << friend_name << " please ask her to call me.\n";
+		cout << "her";
+	if (friend_gender == 'm')
+		cout << "him";
+	
+	cout << " to call me.\n";
 
-
-	if (age <= 0 || age >= 110)
+	if (age <= 0 || 110 <= age) {
+		cout << "your age:" << age << "?\n";
 		simple_error("you're kidding!");
+	}
 	else
-		cout << "I hear you just had a birthday and you are " << age << " years old.\n";
+		cout << " I hear you just had a birthday and you are "
+		<< age << " years old.\n";
 
-	if (age <= 12)
-		cout << "Next year you will be " << age + 1 << "!\n";
-	else if (age == 17)
-		cout << "Next year you will be able to vote";
-	else if (age >= 70)
-		cout << "I hope you are enjoying retirement";
+	keep_window_open();
+	return 0;
+}
 
-	cout << "\nYours sincerely" << "\n\n\nbubble in water";
+
+
+step 6
+
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	cout << " Enter the name followed her/him age of the person you want to write to\n";
+
+	string first_name;
+	cin >> first_name;
+	double age = 0;
+	cin >> age;
+
+	cout << "next, enter your another friend's name "
+		<<"followed by friend's gender(f for female,m for male.)\n";
+
+	string friend_name;
+	cin >> friend_name;
+	char friend_gender = 0;
+	cin >> friend_gender;
+
+	cout << " Dear " << first_name << ", "
+		<< "How are you? I am fine.\n I went to STARBUCKS this morning."
+		<<" I really like the starbucks latte.\n\n";
+	cout << " Have you seen " << friend_name << " lately?\n";
+	cout << "If you see " << friend_name << " please ask ";
+	
+	if (friend_gender == 'f')
+		cout << "her";
+	if (friend_gender == 'm')
+		cout << "him";
+	
+	cout << " to call me.\n";
+
+	if (age <= 0 || 110 <= age) {
+		cout << "your age:" << age << "?\n";
+		simple_error("you're kidding!");
 		return 0;
+	}
+
+	else
+		cout << " I hear you just had a birthday and you are "
+		<< age << " years old.\n";
+	if (age < 12)
+		cout << "Next year you will be " << age + 1<<"!\n";
+	if (age == 17)
+		cout << "Next year you will be able to vote!\n";
+	if (age >= 70)
+		cout << "I hope you are enjoying retirement!\n";
+
+	keep_window_open();
+	return 0;
+}
+
+step7
+
+#include "../../std_lib_facilities.h"
+
+int main()
+{
+	cout << " Enter the name followed her/him age of the person you want to write to\n";
+
+	string first_name;
+	cin >> first_name;
+	double age = 0;
+	cin >> age;
+
+	cout << "next, enter your another friend's name "
+		<<"followed by friend's gender(f for female,m for male.)\n";
+
+	string friend_name;
+	cin >> friend_name;
+
+	char friend_gender = 0;
+	cin >> friend_gender;
+	/*
+	cout << "and ";
+		if (friend_gender == 'f')
+			cout << "her";
+	if (friend_gender == 'm')
+		cout << "him";
+	cout << " age?";
+
+	double age = 0;
+	cin >> age;
+	*/
+	cout << " Dear " << first_name << ", "
+		<< "How are you? I am fine.\n I went to STARBUCKS this morning."
+		<<" I really like the starbucks latte.\n\n";
+	cout << " Have you seen " << friend_name << " lately?\n";
+	cout << "If you see " << friend_name << " please ask ";
+	
+	if (friend_gender == 'f')
+		cout << "her";
+	if (friend_gender == 'm')
+		cout << "him";
+	
+	cout << " to call me.\n";
+
+	if (age <= 0 || 110 <= age) {
+		cout << "your age:" << age << "?\n";
+		simple_error("you're kidding!");
+		return 0;
+	}
+	else
+		cout << " I hear you just had a birthday and you are "
+		<< age << " years old.\n";
+
+	if (age < 12)
+		cout << "Next year you will be " << age + 1<<"!\n";
+	if (age == 17)
+		cout << "Next year you will be able to vote!\n";
+	if (age >= 70)
+		cout << "I hope you are enjoying retirement!\n";
+
+	cout << "\nYours sincerely"
+		<< "\n\n\nBubble in water\n";
+
+	keep_window_open();
+	return 0;
 }
